@@ -7,6 +7,7 @@ import { UneteComponent } from './components/unete/unete.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
