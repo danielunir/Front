@@ -20,3 +20,12 @@ h3 {
 .lato {
   font-family: 'lato', sans-serif;
 }
+
+.btn:hover {
+  background-color: #FF5722;
+  border-color: #FF5722;
+}
+
+.title:hover {
+  color: #FF5722;
+}
