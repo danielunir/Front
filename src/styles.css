@@ -1,26 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-  background-color: #f7f7f7;
+  background-color: white;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 1.7;
-}
-
-h1 {
-  font-size: 36px;
-  color: #0d47a1;
-}
-
-h2 {
-  font-size: 30px;
-  color: #0d47a1;
-}
-
-h3 {
-  font-size: 24px;
-  color: #0d47a1;
-}
-
-.lato {
-  font-family: 'lato', sans-serif;
 }
