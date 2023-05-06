@@ -8,7 +8,8 @@ import { UneteComponent } from './components/unete/unete.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { TeacherCardComponent } from './components/teacher-card/teacher-card.component';
+import { TeacherCardComponent } from './components/teacher/teacher-card/teacher-card.component';
+import { TeacherComponent } from './components/teacher/teacher.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { TeacherCardComponent } from './components/teacher-card/teacher-card.com
     HomeComponent,
     UneteComponent,
     FooterComponent,
-    TeacherCardComponent
+    TeacherCardComponent,
+    TeacherComponent
   ],
   imports: [
     BrowserModule,
