@@ -19,7 +19,7 @@ import { TeacherComponent } from './components/teacher/teacher.component';
     HeaderComponent,
     HomeComponent,
     UneteComponent,
-    RegistroComponent
+    RegistroComponent,
     FooterComponent,
     TeacherCardComponent,
     TeacherComponent
