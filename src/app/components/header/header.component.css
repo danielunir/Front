@@ -4,6 +4,8 @@
 
 .fa-whatsapp {
   font-size: 1.25em;
+  color: #009688;
+
 }
 
 h1 {
@@ -32,4 +34,57 @@ h3 {
 
 .title:hover {
   color: #FF5722;
+}
+
+.container-fluid {
+  width: 100%;
+  display: flex;
+}
+
+.half {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.half.right {
+  padding: 0;
+}
+
+.left {
+  background-color: #F2F2F2;
+  /* Color de fondo para la mitad izquierda */
+}
+
+.right {
+  background-color: #FFFFFF;
+  /* Color de fondo para la mitad derecha */
+}
+
+.findOnline {
+  font-size: 28px;
+  /* margin-top: 0; */
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+
+  /* Ajustar para dispositivos móviles */
+  .half {
+    width: 100%;
+  }
+
+  .left,
+  .right {
+    width: 100%;
+  }
+
+  .left {
+    order: 2;
+    /* Cambiar el orden de las mitades */
+  }
 }
