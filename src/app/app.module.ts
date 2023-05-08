@@ -12,6 +12,7 @@ import { RegistroComponent } from './components/usuarios/registro/registro.compo
 import { FooterComponent } from './components/footer/footer.component';
 import { TeacherCardComponent } from './components/teacher/teacher-card/teacher-card.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
+import { ComoFuncionaComponent } from './components/como-funciona/como-funciona.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { TeacherComponent } from './components/teacher/teacher.component';
     RegistroComponent,
     FooterComponent,
     TeacherCardComponent,
-    TeacherComponent
+    TeacherComponent,
+    ComoFuncionaComponent
   ],
   imports: [
     BrowserModule,

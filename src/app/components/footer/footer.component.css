@@ -76,7 +76,6 @@ footer {
 .policy {
     flex-basis: 25%;
     margin: 0 1rem;
-    /* text-align: center; */
 }
 
 .teacherapp i,
@@ -131,7 +130,7 @@ footer {
 
 /* Media queries */
 
-@media (max-width: 767.98px) {
+@media (max-width: 800px) {
     .footer-wrapper {
         flex-direction: column;
         align-content: center;
