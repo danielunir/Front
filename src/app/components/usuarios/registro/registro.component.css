@@ -37,11 +37,11 @@
   left: 0;
 }
 
-.tabsNav .tab:nth-of-type(2) label {
+.tabsNav form .tab:nth-of-type(1) label {
   left: 300px;
 }
 
-.tabsNav .tab:nth-of-type(3) label {
+.tabsNav form .tab:nth-of-type(2) label {
   left: calc(2 * 300px);
 }
 
@@ -84,4 +84,21 @@
 
 .borde-rojo {
   border: 2px solid red;
+}
+
+.nivel {
+  height: 160px;
+}
+
+input.ng-invalid.ng-touched {
+  border-bottom: 3px solid red;
+}
+
+input.ng-valid.ng-touched {
+  border-bottom: 3px solid lightgreen;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
 }
