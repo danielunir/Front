@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { UneteComponent } from './components/unete/unete.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
+import { RegistroComponent } from './components/usuarios/registro/registro.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TeacherCardComponent } from './components/teacher/teacher-card/teacher-card.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
@@ -18,6 +19,7 @@ import { TeacherComponent } from './components/teacher/teacher.component';
     HeaderComponent,
     HomeComponent,
     UneteComponent,
+    RegistroComponent
     FooterComponent,
     TeacherCardComponent,
     TeacherComponent
