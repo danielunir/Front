@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TeacherCardComponent } from './components/teacher/teacher-card/teacher-card.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
 import { LoginComponent } from './components/usuarios/login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -26,7 +27,8 @@ import { LoginComponent } from './components/usuarios/login/login.component';
     FooterComponent,
     TeacherCardComponent,
     TeacherComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

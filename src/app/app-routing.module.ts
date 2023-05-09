@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RegistroComponent } from './components/usuarios/registro/registro.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
 import { LoginComponent } from './components/usuarios/login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'teachers', component: TeacherComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '**', component: HomeComponent }
 ];
 
