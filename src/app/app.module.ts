@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TeacherCardComponent } from './components/teacher/teacher-card/teacher-card.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
 import { ComoFuncionaComponent } from './components/como-funciona/como-funciona.component';
+import { GraficInfoComponent } from './components/grafic-info/grafic-info.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ComoFuncionaComponent } from './components/como-funciona/como-funciona.
     FooterComponent,
     TeacherCardComponent,
     TeacherComponent,
-    ComoFuncionaComponent
+    ComoFuncionaComponent,
+    GraficInfoComponent
   ],
   imports: [
     BrowserModule,

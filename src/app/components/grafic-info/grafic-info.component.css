@@ -1,0 +1,43 @@
+.mapAndTeachersContainer {
+    display: flex;
+    width: 100%;
+    padding-left: 8%;
+    padding-right: 8%;
+
+}
+
+.mapContainer {
+    display: flex;
+    width: 60%;
+
+}
+
+.map {
+    width: 100%;
+}
+
+.teacherContainer {
+    display: flex;
+    width: 40%;
+}
+
+.teacher {
+    width: 100%;
+}
+
+/* Ajustar para dispositivos móviles */
+
+@media (max-width: 800px) {
+
+    .mapAndTeachersContainer {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .mapContainer,
+    .teacherContainer {
+        width: 100%;
+    }
+
+}
