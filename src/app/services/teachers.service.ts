@@ -18,4 +18,10 @@ export class TeachersService {
   getAll(pPage: number = 1): Promise<any> {
     return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}?page=${pPage}`));
   }
+
+  registroProfesor(values: { cuota: number, experiencia: string, usuario_id: string }) {
+    return firstValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/`, values)
+    )
+  }
 }
