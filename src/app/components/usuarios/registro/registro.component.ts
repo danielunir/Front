@@ -2,7 +2,12 @@ import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PersonalService } from 'src/app/services/personal.service';
+import { TeachersService } from 'src/app/services/teachers.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { AlumnosService } from 'src/app/services/alumnos.service';
+import { RamasService } from 'src/app/services/ramas.service';
+import { NivelesService } from 'src/app/services/niveles.service';
+
 
 @Component({
   selector: 'app-registro',
@@ -23,19 +28,22 @@ export class RegistroComponent {
   formRegisterPerfil: FormGroup;
 
   rolUser: string;
-  // nombre: boolean = false;
-  // apellidos: boolean = false;;
-  // direccion: boolean = false;;
-  // ciudad: boolean = false;;
-  // codigo_postal: boolean = false;
-  // telefono: boolean = false;
 
   insertId: number = 0;
+  insertIdProfesor: number = 0;
+
+  values: any;
+  valuesNivel: any;
+  valuesArea: any;
 
   constructor(
     private renderer2: Renderer2,
     private usuariosService: UsuariosService,
     private personalService: PersonalService,
+    private teachersService: TeachersService,
+    private alumnosService: AlumnosService,
+    private ramasService: RamasService,
+    private nivelesService: NivelesService,
     private router: Router
     ) {
 
@@ -211,7 +219,65 @@ export class RegistroComponent {
     }
   }
 
-  getDataPerfil() {
+  async getDataPerfil() {
+
+    this.formRegisterPerfil.value.usuario_id = this.insertId;
+
+    if (this.rolUser === 'profesor') {
+
+      const { area_conocimiento, nivel, cuota, experiencia, usuario_id } = this.formRegisterPerfil.value;
+
+      this.values = { cuota, experiencia, usuario_id }
+      this.valuesArea = { materia: area_conocimiento, usuario_id }
+      this.valuesNivel = { nivel, usuario_id }
+
+      try {
+        const response = await this.teachersService.registroProfesor(this.values);
+
+        if (!response.insertId) {
+          return alert('Registro de datos de perfil erroneo')
+        }
+      } catch (error) {
+        console.log(error)
+      }
+
+      try {
+        const responseArea = await this.ramasService.registroRamas(this.valuesArea);
+
+        if (!responseArea.insertId) {
+          return alert('Registro de datos de perfil erroneo')
+        }
+      } catch (error) {
+        console.log(error)
+      }
+
+      try {
+        const responseNivel = await this.nivelesService.registroNiveles(this.valuesNivel);
+
+        if (!responseNivel.insertId) {
+          return alert('Registro de datos de perfil erroneo')
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    if (this.rolUser === 'alumno') {
+
+      const { estudia, usuario_id } = this.formRegisterPerfil.value;
+
+      this.values = { estudia, usuario_id }
+
+      try {
+        const response = await this.alumnosService.registroAlumno(this.values);
+
+        if (!response.insertId) {
+          return alert('Registro de datos de perfil erroneo')
+        }
+      } catch (error) {
+
+      }
+    }
 
   }
 

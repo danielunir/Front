@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PerfilService {
+export class RamasService {
 
   private baseUrl: string;
 
@@ -12,7 +13,9 @@ export class PerfilService {
     this.baseUrl = '';
   }
 
-  registroPerfilProfesor(values: {  }) {
-
+  registroRamas(values: { materia: string, usuario_id: number }){
+    return firstValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/`, values)
+    )
   }
 }

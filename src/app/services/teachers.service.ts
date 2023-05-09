@@ -20,4 +20,10 @@ export class TeachersService {
       this.httpClient.get<any>(this.baseUrl)
     )
   }
+
+  registroProfesor(values: { cuota: number, experiencia: string, usuario_id: string }) {
+    return firstValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/`, values)
+    )
+  }
 }
