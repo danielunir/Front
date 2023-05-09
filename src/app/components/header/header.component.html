@@ -2,15 +2,15 @@
   <div class="container">
     <div class="row mt-4">
       <div class="col-12 col-md-4">
-        <h1>TeacherApp</h1>
+        <h1 class="title">TeacherApp</h1>
       </div>
       <div class="col-12 col-md-4">
-        <p><i class="fa-solid fa-phone"></i> 625879654</p>
+        <p><i class="fa-brands fa-whatsapp"></i> 625879654</p>
       </div>
       <div class="col-12 col-md-4">
         <div class="row">
           <div class="col-6"><button class="btn btn-primary">Login</button></div>
-          <div class="col-6"><button class="btn btn-primary">Registrarse</button></div>
+          <div class="col-6"><button class="btn btn-primary" [routerLink]="['/registro']">Registrarse</button></div>
         </div>
       </div>
     </div>
@@ -28,8 +28,13 @@
       </div>
     </div>
   </nav>
-  <div class="container-fluid position-relative">
-    <img src="assets/images/Depositphotos_165452398_XL.jpg" alt="" class="img-fluid">
-    <h2 class="position-absolute top-50 start-50 translate-middle fw-bold">Encuentre El Profesor Online Adecuado Para Usted</h2>
+  <div class="container-fluid position-relative d-flex flex-wrap">
+    <div class="half left">
+      <h2 class="findOnline">Encuentre El Profesor Online Adecuado Para Usted</h2>
+    </div>
+    <div class="half right">
+      <img src="assets/images/Depositphotos_165452398_XL.jpg" alt="" class="img-fluid">
+    </div>
   </div>
+
 </header>
