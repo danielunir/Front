@@ -23,7 +23,7 @@ export class UsuariosService {
     return this._logged.asObservable();
   }
 
-  registroUsuario(values: { rol: string, username: string, email: string, password: string }) {
+  registroUsuario(values: { role: string, username: string, email: string, password: string }) {
 
     return firstValueFrom(
       this.httpClient.post<any>(`${this.baseUrl}/register`, values)
