@@ -1,14 +1,41 @@
 .navContainer {
   display: flex;
-  margin-bottom: 2rem;
-  margin-left: 7%;
-  margin-right: 7%;
+  margin-bottom: 1rem;
+  padding-left: 7%;
+  padding-right: 7%;
+  /* border-bottom: 1px solid silver; */
 }
 
 
-h1 {
-  font-size: 36px;
+.custom-navbar {
+  background-color: whitesmoke;
+}
+
+.custom-navbar .nav-link,
+.custom-navbar {
+  font-size: 1.5rem;
   color: #0d47a1;
+}
+
+.register {
+  margin-right: 2rem;
+}
+
+i {
+  color: #0d47a1;
+}
+
+.fa-address-card {
+  font-size: 1.6rem;
+}
+
+
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: #0d47a1;
+  margin: 0%;
 }
 
 h2 {
