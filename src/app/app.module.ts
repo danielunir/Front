@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 <<<<<<< HEAD
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './login/login.component';
 =======
 import { UneteComponent } from './components/unete/unete.component';
 >>>>>>> main
@@ -15,7 +16,8 @@ import { UneteComponent } from './components/unete/unete.component';
     AppComponent,
 <<<<<<< HEAD
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
 =======
     UneteComponent
 >>>>>>> main
