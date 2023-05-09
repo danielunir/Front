@@ -34,6 +34,11 @@ footer {
 .teacherapp {
     display: flex;
     justify-content: center;
+    transition: color 0.5s ease;
+}
+
+.teacherapp:hover {
+    color: #FF5722;
 }
 
 
@@ -120,7 +125,6 @@ footer {
 .copy-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
     padding-top: 1rem;
 }
 
