@@ -8,6 +8,7 @@ import { BehaviorSubject, firstValueFrom } from 'rxjs';
 export class UsuariosService {
 
   private baseUrl: string;
+
   private loggedIn: boolean;
 
   private _logged: BehaviorSubject<boolean>;
@@ -22,7 +23,8 @@ export class UsuariosService {
     return this._logged.asObservable();
   }
 
-  registro(values: { username: string, email: string, password: string }) {
+  registroUsuario(values: { rol: string, username: string, email: string, password: string }) {
+
     return firstValueFrom(
       this.httpClient.post<any>(`${this.baseUrl}/register`, values)
     )
@@ -43,4 +45,3 @@ export class UsuariosService {
   }
 
 }
-

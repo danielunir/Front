@@ -57,11 +57,11 @@
       </div>
 
     </div>
-    <form novalidate [formGroup]="formRegisterRol" (ngSubmit)="getDataRol()">
-      <div class="tab">
-        <input type="radio" name="tabs" #t2 disabled>
-        <label for="t2">2.- INFORMACIÓN PERSONAL</label>
-        <div>
+    <div class="tab">
+      <input type="radio" name="tabs" #t2 disabled>
+      <label for="t2">2.- INFORMACIÓN PERSONAL</label>
+      <div>
+        <form novalidate [formGroup]="formRegisterPersonal" (ngSubmit)="getDataPersonal()">
           <div class="row">
             <div class="mb-3 col-12 col-md-6">
               <label class="form-label">Nombre *</label>
@@ -113,18 +113,20 @@
               <input type="date" class="form-control" formControlName="fecha_nacimiento">
             </div>
           </div>
+
           <div class="mb-3">
             <p class="text-end small-text">* Campos obligatorios</p>
-            <fieldset #fieldset disabled><label class="form-label btn btn-primary" role="button" for="t3" (click)="continue($event)">Continuar</label></fieldset>
+            <input class="form-control" type="submit" value="Continuar" class="btn btn-primary" for="t3" (click)="continue($event)" [disabled]="!formRegisterPersonal.valid">
           </div>
-        </div>
+        </form>
       </div>
-      <div class="tab">
-        <input type="radio" name="tabs" #t3 disabled>
-        <label for="t3">3.- INFORMACIÓN DE PERFIL</label>
-        <div>
-
-          <div class="row">
+    </div>
+    <div class="tab">
+      <input type="radio" name="tabs" #t3 disabled>
+      <label for="t3">3.- INFORMACIÓN DE PERFIL</label>
+      <div>
+        <form novalidate [formGroup]="formRegisterPerfil" (ngSubmit)="getDataPerfil()">
+          <div class="row" *ngIf="rolUser === 'alumno'">
             <div class="mb-3 col-12">
               <label class="form-label">Breve descripción de sus necesidades de aprendizaje</label>
               <textarea class="form-control textarea" formControlGroup="estudia" (keypress)="onKey($event)" [ngClass]="{'borde-rojo' : contador >= contadorMax}"></textarea>
@@ -132,7 +134,8 @@
               <p class="error" *ngIf="checkControl('estudia', 'required')">El campo es requerido</p>
             </div>
           </div>
-          <div class="mb-3">
+
+          <div class="mb-3" *ngIf="rolUser === 'profesor'">
             <div class="row">
               <div class="mb-3 col-12">
                 <label class="form-label">Área de conocimiento</label>
@@ -174,11 +177,10 @@
             <div class="mb-3">
               <p class="text-end small-text">* Todos los campos son obligatorios</p>
             </div>
-            <input class="form-control" type="submit" value="Confirmar" class="btn btn-primary" [disabled]="!formRegisterRol.valid">
+            <input class="form-control" type="submit" value="Confirmar" class="btn btn-primary" [disabled]="!formRegisterPersonal.valid">
           </div>
-
-        </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
 </div>
