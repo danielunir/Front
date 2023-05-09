@@ -12,7 +12,8 @@ import { RegistroComponent } from './components/usuarios/registro/registro.compo
 import { FooterComponent } from './components/footer/footer.component';
 import { TeacherCardComponent } from './components/teacher/teacher-card/teacher-card.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/usuarios/login/login.component';
+
 
 
 @NgModule({
