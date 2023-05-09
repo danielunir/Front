@@ -1,15 +1,149 @@
-.copy {
-    color: gray;
+/* Estilos generales */
+
+* {
+    box-sizing: border-box;
+
 }
 
-.fa-whatsapp {
-    font-size: 1.25em;
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    margin-right: 0%;
+    margin-left: 0%;
+    padding: 0;
+}
+
+/* Estilos del footer */
+
+footer {
+    background-color: #000;
+    color: #fff;
+}
+
+.footer-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
 }
 
 .teacherapp {
-    color: whitesmoke;
+    display: flex;
+    justify-content: center;
 }
 
-.fa-book {
-    font-size: 1.25rem;
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.policy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.policy-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    padding-left: 16px;
+}
+
+.teacherapp,
+.contact,
+.social,
+.policy {
+    flex-basis: 25%;
+    margin: 0 1rem;
+    /* text-align: center; */
+}
+
+.teacherapp i,
+.teacherapp h4 {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.teacherapp i {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+}
+
+.contact p {
+    margin-top: 0.5rem;
+}
+
+.social h5,
+.policy h5 {
+    margin-bottom: 0.5rem;
+}
+
+.social-links a,
+.policy-links a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+}
+
+.social-links a span,
+.policy-links a span {
+    display: inline-block;
+    padding-left: 0.5rem;
+}
+
+.social-links a:first-child,
+.policy-links a:first-child {
+    margin-top: 0.5rem;
+}
+
+.copy-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.copy-wrapper h6 {
+    font-size: 0.8rem;
+}
+
+/* Media queries */
+
+@media (max-width: 767.98px) {
+    .footer-wrapper {
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+    }
+
+    .teacherapp,
+    .contact,
+    .social,
+    .policy {
+        flex-basis: 100%;
+        margin: 0;
+        margin-bottom: 1rem;
+    }
 }

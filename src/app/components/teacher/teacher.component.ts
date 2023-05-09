@@ -8,16 +8,31 @@ import { TeachersService } from 'src/app/services/teachers.service';
 })
 export class TeacherComponent {
   teachers_list: any;
+  totalPages: number = 0;
+  arrPages: number[] = [];
+  currentPage: number = 0;
   constructor(
     private teachersService: TeachersService
   ) { }
 
   async ngOnInit() {
+    this.teachers_list = [];
+    this.gotoPage();
+  }
+  async gotoPage(pNum: number = 1): Promise<void> {
     try {
-      const response = await this.teachersService.getAll();
-      const teachers = response.results;
-      this.teachers_list = teachers;
-    } catch (error) {
+      let response = await this.teachersService.getAll(pNum);
+      this.currentPage = response.page;
+      this.totalPages = response.totalPages;
+      this.teachers_list = response.results;
+      if (this.arrPages.length !== this.totalPages) {
+        this.arrPages = [];
+        for (let i = 1; i <= this.totalPages; i++) {
+          this.arrPages.push(i);
+        }
+      }
+    }
+    catch (error) {
       alert('No hay profesores disponibles en la BBDD');
     }
   }

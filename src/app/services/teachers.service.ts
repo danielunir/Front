@@ -15,10 +15,8 @@ export class TeachersService {
     this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/teachers';
   }
 
-  getAll() {
-    return firstValueFrom(
-      this.httpClient.get<any>(this.baseUrl)
-    )
+  getAll(pPage: number = 1): Promise<any> {
+    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}?page=${pPage}`));
   }
 
   registroProfesor(values: { cuota: number, experiencia: string, usuario_id: string }) {
