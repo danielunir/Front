@@ -11,7 +11,7 @@
 .custom-column {
     display: flex;
     flex-direction: column;
-    max-width: 347px;
+    max-width: 336px;
     padding: 0px;
     margin: 2rem;
 }
@@ -85,7 +85,7 @@ i {
 
 /* Media queries */
 
-@media (min-width: 920px) {
+@media (min-width: 930px) {
     .custom-column {
         max-width: 400px;
     }
