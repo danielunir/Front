@@ -1,3 +1,11 @@
+.navContainer {
+  display: flex;
+  margin-bottom: 2rem;
+  margin-left: 7%;
+  margin-right: 7%;
+}
+
+
 h1 {
   font-size: 36px;
   color: #0d47a1;
@@ -25,6 +33,7 @@ h3 {
 .title:hover {
   color: #FF5722;
 }
+
 
 
 

@@ -1,6 +1,6 @@
 .row {
     display: flex;
-    flex-direction: row;
+    width: 100%;
     justify-content: space-evenly;
     padding-top: 3rem;
     padding-bottom: 5rem;
