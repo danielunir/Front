@@ -29,7 +29,9 @@ export class LoginComponent {
       return alert(response.fatal);
     }
 
+
     localStorage.setItem('token_login', response.token);
+    console.log(response)
     this.usuariosService.changeLogin(true);
     this.router.navigate(['/users/profile']);
   }
