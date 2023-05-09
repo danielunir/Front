@@ -33,7 +33,7 @@ export class LoginComponent {
     localStorage.setItem('token_login', response.token);
     console.log(response)
     this.usuariosService.changeLogin(true);
-    this.router.navigate(['api/users/profile']);
+    this.router.navigate(['/profile']);
   }
 
 }
