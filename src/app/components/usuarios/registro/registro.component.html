@@ -8,11 +8,11 @@
         <form novalidate [formGroup]="formRegisterUsuario" (ngSubmit)="getDataUsuario()">
           <div class="mb-3">
             <label class="form-label">Tipo de Cuenta</label>
-            <select class="form-control" formControlName="rol">
+            <select class="form-control" formControlName="role">
               <option value="profesor">Profesor</option>
               <option value="alumno">Alumno</option>
             </select>
-            <p class="error" *ngIf="checkControl('rol', 'required')">El campo es requerido</p>
+            <p class="error" *ngIf="checkControl('role', 'required')">El campo es requerido</p>
           </div>
           <div class="row">
             <div class="mb-3 col-12 col-md-6">

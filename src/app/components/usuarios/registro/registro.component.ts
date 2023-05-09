@@ -18,7 +18,6 @@ export class RegistroComponent {
   @ViewChild("t1")t1!: ElementRef;
   @ViewChild("t2")t2!: ElementRef;
   @ViewChild("t3")t3!: ElementRef;
-  // @ViewChild("fieldset")fieldset!: ElementRef;
 
   contador = 0;
   contadorMax = 255;
@@ -48,7 +47,7 @@ export class RegistroComponent {
     ) {
 
     this.formRegisterUsuario = new FormGroup({
-      rol: new FormControl("",[
+      role: new FormControl("",[
         Validators.required
       ]),
       username: new FormControl("",[
@@ -105,7 +104,7 @@ export class RegistroComponent {
       fecha_nacimiento: new FormControl("",[])
     },[]);
 
-    this.rolUser = this.formRegisterUsuario.value.rol;
+    this.rolUser = this.formRegisterUsuario.value.role;
 
     console.log(this.rolUser);
 
