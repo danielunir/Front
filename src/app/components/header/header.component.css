@@ -52,3 +52,28 @@ i {
 .title:hover {
   color: #FF5722;
 }
+
+@media(max-width: 800px) {
+  .navContainer {
+    margin-bottom: 6%;
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+}
+
+@media (max-width: 380px) {
+  .title {
+    font-size: 9.5vw;
+  }
+
+  .navbar-toggler {
+    font-size: 5vw;
+  }
+
+  .navContainer {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+
+}
