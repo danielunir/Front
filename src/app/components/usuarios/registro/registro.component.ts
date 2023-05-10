@@ -22,11 +22,11 @@ export class RegistroComponent {
   contador = 0;
   contadorMax = 255;
 
-  formRegisterUsuario: FormGroup;
+
   formRegisterPersonal: FormGroup;
   formRegisterPerfil: FormGroup;
 
-  rolUser: string;
+
 
   insertId: number = 0;
   insertIdProfesor: number = 0;
@@ -37,7 +37,6 @@ export class RegistroComponent {
 
   constructor(
     private renderer2: Renderer2,
-    private usuariosService: UsuariosService,
     private personalService: PersonalService,
     private teachersService: TeachersService,
     private alumnosService: AlumnosService,
@@ -46,69 +45,12 @@ export class RegistroComponent {
     private router: Router
     ) {
 
-    this.formRegisterUsuario = new FormGroup({
-      role: new FormControl("",[
-        Validators.required
-      ]),
-      username: new FormControl("",[
-        Validators.required,
-        Validators.minLength(3)
-      ]),
-      email: new FormControl("",[
-        Validators.required,
-        Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
-      ]),
-      password: new FormControl("",[
-        Validators.required,
-        Validators.pattern(/^(?=(.*[a-zA-Z].*){2,})(?=.*\d.*)(?=.*\W.*)[a-zA-Z0-9\S]{8,15}$/)
-      ]),
-      confirmPassword: new FormControl("",[
-        Validators.required
-      ]),
-      acepta: new FormControl("",[
-        Validators.required
-      ])
-    },[
-      this.checkPassword
-    ]);
 
 
-    this.formRegisterPersonal = new FormGroup({
-      nombre: new FormControl("", [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(45)
-      ]),
-      apellidos: new FormControl("", [
-        Validators.required,
-        Validators.maxLength(45)
-      ]),
-      direccion: new FormControl("", [
-        Validators.required,
-        Validators.maxLength(100)
-      ]),
-      ciudad: new FormControl("",[
-        Validators.required,
-        Validators.maxLength(45)
-      ]),
-      codigo_postal: new FormControl("",[
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(5)
-      ]),
-      telefono: new FormControl("",[
-        Validators.required,
-        Validators.minLength(9),
-        Validators.maxLength(12)
-      ]),
-      fecha_nacimiento: new FormControl("",[])
-    },[]);
 
-    this.rolUser = this.formRegisterUsuario.value.role;
 
-    console.log(this.rolUser);
 
-    (this.rolUser === 'profesor') ?
+
 
     this.formRegisterPerfil = new FormGroup({
       area_conocimiento: new FormControl("",[
@@ -125,7 +67,6 @@ export class RegistroComponent {
       ])
     },[])
 
-    :
 
     this.formRegisterPerfil = new FormGroup({
       estudia: new FormControl("",[
@@ -180,43 +121,9 @@ export class RegistroComponent {
     return null;
   }
 
-  checkControl(pControlName: string, pError: string): boolean {
-    if(this.formRegisterUsuario.get(pControlName)?.hasError(pError) && this.formRegisterUsuario.get(pControlName)?.touched) {
-      return true;
-    }
-    return false;
-  }
 
-  async getDataUsuario() {
 
-    try {
-      const response = await this.usuariosService.registroUsuario(this.formRegisterUsuario.value);
 
-      this.insertId = response.insertId;
-
-      if (!response.insertId) {
-        return alert('Registro de usuario erroneo');
-      }
-    } catch (error) {
-      console.log(error);
-    }
-
-  }
-
-  async getDataPersonal() {
-
-    this.formRegisterPersonal.value.usuario_id = this.insertId;
-
-    try {
-      const response = await this.personalService.registroPersonal(this.formRegisterPersonal.value);
-
-      if (!response.insertId) {
-        return alert('Registro  de datos personales erroneo')
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   async getDataPerfil() {
 

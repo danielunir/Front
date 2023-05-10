@@ -13,6 +13,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TeacherCardComponent } from './components/teacher/teacher-card/teacher-card.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
 import { LoginComponent } from './components/usuarios/login/login.component';
+import { FormUserComponent } from './components/form-user/form-user.component';
+import { FormPersonalComponent } from './components/form-personal/form-personal.component';
+import { FormPerfilTeacherComponent } from './components/form-perfil-teacher/form-perfil-teacher.component';
 
 
 
@@ -26,7 +29,10 @@ import { LoginComponent } from './components/usuarios/login/login.component';
     FooterComponent,
     TeacherCardComponent,
     TeacherComponent,
-    LoginComponent
+    LoginComponent,
+    FormUserComponent,
+    FormPersonalComponent,
+    FormPerfilTeacherComponent
   ],
   imports: [
     BrowserModule,
