@@ -1,12 +1,6 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PersonalService } from 'src/app/services/personal.service';
-import { TeachersService } from 'src/app/services/teachers.service';
-import { UsuariosService } from 'src/app/services/usuarios.service';
-import { AlumnosService } from 'src/app/services/alumnos.service';
-import { RamasService } from 'src/app/services/ramas.service';
-import { NivelesService } from 'src/app/services/niveles.service';
+
 
 
 @Component({
@@ -22,12 +16,6 @@ export class RegistroComponent {
   contador = 0;
   contadorMax = 255;
 
-
-  formRegisterPersonal: FormGroup;
-  formRegisterPerfil: FormGroup;
-
-
-
   insertId: number = 0;
   insertIdProfesor: number = 0;
 
@@ -37,42 +25,9 @@ export class RegistroComponent {
 
   constructor(
     private renderer2: Renderer2,
-    private personalService: PersonalService,
-    private teachersService: TeachersService,
-    private alumnosService: AlumnosService,
-    private ramasService: RamasService,
-    private nivelesService: NivelesService,
     private router: Router
     ) {
 
-
-
-
-
-
-
-
-    this.formRegisterPerfil = new FormGroup({
-      area_conocimiento: new FormControl("",[
-        Validators.required
-      ]),
-      nivel: new FormControl("",[
-        Validators.required
-      ]),
-      cuota: new FormControl("",[
-        Validators.required
-      ]),
-      experiencia: new FormControl("",[
-        Validators.required
-      ])
-    },[])
-
-
-    this.formRegisterPerfil = new FormGroup({
-      estudia: new FormControl("",[
-        Validators.required
-      ])
-    },[]);
 
   }
 
@@ -100,91 +55,6 @@ export class RegistroComponent {
       this.disable();
       this.enablet3();
     }
-  }
-
-  onKey($event: any) {
-    this.contador = $event.target.value.length;
-    if(this.contador >= this.contadorMax) {
-      $event.preventDefault();
-
-    }
-  }
-
-  checkPassword(pFormValue: AbstractControl) {
-
-    const password: string = pFormValue.get('password')?.value;
-    const confirmPassword: string = pFormValue.get('confirmPassword')?.value;
-
-    if(password !== confirmPassword) {
-      return { 'checkpassword': true }
-    }
-    return null;
-  }
-
-
-
-
-
-  async getDataPerfil() {
-
-    this.formRegisterPerfil.value.usuario_id = this.insertId;
-
-    if (this.rolUser === 'profesor') {
-
-      const { area_conocimiento, nivel, cuota, experiencia, usuario_id } = this.formRegisterPerfil.value;
-
-      this.values = { cuota, experiencia, usuario_id }
-      this.valuesArea = { materia: area_conocimiento, usuario_id }
-      this.valuesNivel = { nivel, usuario_id }
-
-      try {
-        const response = await this.teachersService.registroProfesor(this.values);
-
-        if (!response.insertId) {
-          return alert('Registro de datos de perfil erroneo')
-        }
-      } catch (error) {
-        console.log(error)
-      }
-
-      try {
-        const responseArea = await this.ramasService.registroRamas(this.valuesArea);
-
-        if (!responseArea.insertId) {
-          return alert('Registro de datos de perfil erroneo')
-        }
-      } catch (error) {
-        console.log(error)
-      }
-
-      try {
-        const responseNivel = await this.nivelesService.registroNiveles(this.valuesNivel);
-
-        if (!responseNivel.insertId) {
-          return alert('Registro de datos de perfil erroneo')
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
-
-    if (this.rolUser === 'alumno') {
-
-      const { estudia, usuario_id } = this.formRegisterPerfil.value;
-
-      this.values = { estudia, usuario_id }
-
-      try {
-        const response = await this.alumnosService.registroAlumno(this.values);
-
-        if (!response.insertId) {
-          return alert('Registro de datos de perfil erroneo')
-        }
-      } catch (error) {
-
-      }
-    }
-
   }
 
 }

@@ -5,15 +5,14 @@
       <input type="radio" name="tabs" #t1 checked disabled>
       <label for="t1">1.- INFORMACIÓN DE LA CUENTA</label>
       <div>
-        <app-form-user></app-form-user>
+        <app-form-user (continuar)="continue($event)"></app-form-user>
       </div>
-
     </div>
     <div class="tab">
       <input type="radio" name="tabs" #t2 disabled>
       <label for="t2">2.- INFORMACIÓN PERSONAL</label>
       <div>
-        <app-form-personal></app-form-personal>
+        <app-form-personal (continuar)="continue($event)"></app-form-personal>
       </div>
     </div>
     <div class="tab">
@@ -21,51 +20,7 @@
       <label for="t3">3.- INFORMACIÓN DE PERFIL</label>
       <div>
         <app-form-perfil-teacher></app-form-perfil-teacher>
-        <div class="mb-3" *ngIf="rolUser === 'profesor'">
-          <div class="row">
-            <div class="mb-3 col-12">
-              <label class="form-label">Área de conocimiento</label>
-              <input type="text" class="form-control" formControlName="area_conocimiento" placeholder="Ejemplo: Matemáticas, Física, Química,...">
-              <p class="error" *ngIf="checkControl('area_conocimiento', 'required')">El campo es requerido</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="mb-3 col-12">
-              <label class="form-label">Nivel de estudios en que imparte formación</label>
-              <select class="form-control nivel" formControlName="nivel" multiple>
-                <option value="primaria">Primaria</option>
-                <option value="eso">ESO</option>
-                <option value="fp">FP</option>
-                <option value="diplomatura">Diplomatura</option>
-                <option value="grado">Grado</option>
-                <option value="tercerciclo">Máter y Doctorado</option>
-                <option value="mayores">Personas Mayores</option>
-              </select>
-              <p class="small-text">Nota: Para una selección de múltiples niveles mantenga presionada la tecla CTRL, Comando o Mayúsculas dependiendo de su sistema operativo.</p>
-              <p class="error" *ngIf="checkControl('nivel', 'required')">El campo es requerido</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="mb-3 col-12">
-              <label class="form-label">Cuota por hora</label>
-              <input type="number" class="form-control" formControlName="cuota" step="0.1">
-              <p class="error" *ngIf="checkControl('cuota', 'required')">El campo es requerido</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="mb-3 col-12">
-              <label class="form-label">Breve descripción de su Experiencia</label>
-              <textarea class="form-control textarea" formControlName="experiencia" (keypress)="onKey($event)" [ngClass]="{'borde-rojo' : contador >= contadorMax}"></textarea>
-              <p class="small-text">{{contador + 1}} / {{ contadorMax }}</p>
-              <p class="error" *ngIf="checkControl('experiencia', 'required')">El campo es requerido</p>
-            </div>
-          </div>
-          <div class="mb-3">
-            <p class="text-end small-text">* Todos los campos son obligatorios</p>
-          </div>
-          <input class="form-control" type="submit" value="Confirmar" class="btn btn-primary" [disabled]="!formRegisterPerfil.valid">
-        </div>
-        </form>
+        <app-form-perfil-alumno></app-form-perfil-alumno>
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
@@ -18,6 +18,8 @@ export class FormUserComponent {
   @Input() disable: any;
   @Input() enable: any;
   @Input() enablet3: any;
+
+  @Output() continuar = new EventEmitter()
 
   constructor(
     private usuariosService: UsuariosService,
@@ -52,15 +54,19 @@ export class FormUserComponent {
     this.rolUser = this.formRegisterUsuario.value.role;
   }
 
-  continue($event: any) {
-    if($event.target.attributes.for.value === 't2') {
-      this.enable();
-    } else if($event.target.attributes.for.value === 't3') {
-
-      this.disable();
-      this.enablet3();
-    }
+  onContinuar($event: any) {
+    this.continuar.emit($event)
   }
+
+  // continue($event: any) {
+  //   if($event.target.attributes.for.value === 't2') {
+  //     this.enable();
+  //   } else if($event.target.attributes.for.value === 't3') {
+
+  //     this.disable();
+  //     this.enablet3();
+  //   }
+  // }
 
   checkPassword(pFormValue: AbstractControl) {
 

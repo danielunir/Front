@@ -43,7 +43,7 @@
   <div class="mb-3">
     <p class="text-end small-text">* Todos los campos son obligatorios</p>
     <!-- <label class="form-label btn btn-primary" for="t2" (click)="continue($event)">Continuar</label> -->
-    <input class="form-control" type="submit" value="Continuar" class="btn btn-primary" for="t2" (click)="continue($event)" [disabled]="!formRegisterUsuario.valid">
+    <input class="form-control" type="submit" value="Continuar" class="btn btn-primary" for="t2" (click)="onContinuar($event)" [disabled]="!formRegisterUsuario.valid">
   </div>
 
 </form>
