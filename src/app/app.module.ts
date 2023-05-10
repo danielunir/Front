@@ -12,11 +12,16 @@ import { RegistroComponent } from './components/usuarios/registro/registro.compo
 import { FooterComponent } from './components/footer/footer.component';
 import { TeacherCardComponent } from './components/teacher/teacher-card/teacher-card.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
+import { ComoFuncionaComponent } from './components/como-funciona/como-funciona.component';
+import { GraficInfoComponent } from './components/grafic-info/grafic-info.component';
 import { LoginComponent } from './components/usuarios/login/login.component';
 import { FormUserComponent } from './components/form-user/form-user.component';
 import { FormPersonalComponent } from './components/form-personal/form-personal.component';
 import { FormPerfilTeacherComponent } from './components/form-perfil-teacher/form-perfil-teacher.component';
 import { FormPerfilAlumnoComponent } from './components/form-perfil-alumno/form-perfil-alumno.component';
+import { StudentprofileComponent } from './components/profiles/studentprofile/studentprofile.component';
+import { TeacherprofileComponent } from './components/profiles/teacherprofile/teacherprofile.component';
+import { AdminprofileComponent } from './components/profiles/adminprofile/adminprofile.component';
 
 
 
@@ -34,7 +39,12 @@ import { FormPerfilAlumnoComponent } from './components/form-perfil-alumno/form-
     FormUserComponent,
     FormPersonalComponent,
     FormPerfilTeacherComponent,
-    FormPerfilAlumnoComponent
+    FormPerfilAlumnoComponent,
+    ComoFuncionaComponent,
+    GraficInfoComponent,
+    StudentprofileComponent,
+    TeacherprofileComponent,
+    AdminprofileComponent,
   ],
   imports: [
     BrowserModule,

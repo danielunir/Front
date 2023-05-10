@@ -102,3 +102,14 @@ input.ng-valid.ng-touched {
     color: red;
     font-size: 14px;
 }
+
+.text-register-button {
+    margin-top: 1.5rem;
+    margin-left: 35rem;
+    margin-right: 1rem;
+}
+
+.btn-close {
+    margin-left: 35;
+    margin-bottom: 1.5;
+}

@@ -28,7 +28,6 @@ export class RegistroComponent {
     private router: Router
     ) {
 
-
   }
 
   disable() {
@@ -48,13 +47,12 @@ export class RegistroComponent {
   }
 
   continue($event: any) {
-    if($event.target.attributes.for.value === 't2') {
+    if ($event.target.attributes.for.value === 't2') {
       this.enable();
-    } else if($event.target.attributes.for.value === 't3') {
+    } else if ($event.target.attributes.for.value === 't3') {
 
       this.disable();
       this.enablet3();
     }
   }
-
 }
