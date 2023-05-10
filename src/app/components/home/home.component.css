@@ -1,7 +1,8 @@
 .rowContainer {
     display: flex;
     flex-direction: column;
-    min-width: 100%;
-    margin: 0px;
+    min-width: 300px;
+    max-width: 1550px;
+    margin: 0px auto;
     padding: 0px;
 }

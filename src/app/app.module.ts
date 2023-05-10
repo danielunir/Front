@@ -31,7 +31,7 @@ import { AdminprofileComponent } from './components/profiles/adminprofile/adminp
     TeacherCardComponent,
     TeacherComponent,
     ComoFuncionaComponent,
-    GraficInfoComponent
+    GraficInfoComponent,
     LoginComponent,
     StudentprofileComponent,
     TeacherprofileComponent,

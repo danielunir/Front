@@ -20,12 +20,14 @@
   margin-right: 2rem;
 }
 
-.custom-navbar .nav-link:hover {
+.custom-navbar:hover .nav-link,
+.title {
   color: #FF5722;
 }
 
 i {
   color: #0d47a1;
+  transition: color 0.33s ease;
 }
 
 .fa-address-card {
@@ -49,9 +51,14 @@ i {
   border-color: #FF5722;
 }
 
-.title:hover {
+.container-fluid:hover .title {
   color: #FF5722;
 }
+
+.container-fluid:hover i {
+  color: black;
+}
+
 
 @media(max-width: 800px) {
   .navContainer {
@@ -75,5 +82,10 @@ i {
     padding-right: 5%;
   }
 
+}
 
+@media (max-width: 300px) {
+  .navContainer {
+    min-width: 300px;
+  }
 }
