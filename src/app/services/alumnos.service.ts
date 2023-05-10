@@ -10,12 +10,12 @@ export class AlumnosService {
   private baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = '';
+    this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/alumno';
   }
 
   registroAlumno(values: { estudia: string, usuario_id: string }) {
     return firstValueFrom(
-      this.httpClient.post<any>(`${this.baseUrl}/`, values)
+      this.httpClient.post<any>(`${this.baseUrl}`, values)
     )
   }
 
