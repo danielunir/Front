@@ -12,12 +12,12 @@ import { RegistroComponent } from './components/usuarios/registro/registro.compo
 import { FooterComponent } from './components/footer/footer.component';
 import { TeacherCardComponent } from './components/teacher/teacher-card/teacher-card.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
+import { ComoFuncionaComponent } from './components/como-funciona/como-funciona.component';
+import { GraficInfoComponent } from './components/grafic-info/grafic-info.component';
 import { LoginComponent } from './components/usuarios/login/login.component';
 import { StudentprofileComponent } from './components/profiles/studentprofile/studentprofile.component';
 import { TeacherprofileComponent } from './components/profiles/teacherprofile/teacherprofile.component';
 import { AdminprofileComponent } from './components/profiles/adminprofile/adminprofile.component';
-
-
 
 
 @NgModule({
@@ -30,6 +30,8 @@ import { AdminprofileComponent } from './components/profiles/adminprofile/adminp
     FooterComponent,
     TeacherCardComponent,
     TeacherComponent,
+    ComoFuncionaComponent,
+    GraficInfoComponent
     LoginComponent,
     StudentprofileComponent,
     TeacherprofileComponent,

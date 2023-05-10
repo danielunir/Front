@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 100%;
+    justify-content: space-evenly;
+    margin-top: 0rem;
+}
+
+.icontainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 275px;
+    margin: 2rem;
+    flex-basis: 15%;
+
+}
+
+.icon {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.icontext {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+i {
+    font-size: 4rem;
+}
+
+/* Media queries */
+
+@media (max-width: 800px) {
+    .container {
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+    }
+}

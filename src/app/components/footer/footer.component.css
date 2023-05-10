@@ -15,7 +15,7 @@ body {
     min-width: 100%;
     margin-right: 0%;
     margin-left: 0%;
-    padding: 0;
+    padding: 1rem;
 }
 
 /* Estilos del footer */
@@ -34,6 +34,11 @@ footer {
 .teacherapp {
     display: flex;
     justify-content: center;
+    transition: color 0.5s ease;
+}
+
+.teacherapp:hover {
+    color: #FF5722;
 }
 
 
@@ -76,7 +81,6 @@ footer {
 .policy {
     flex-basis: 25%;
     margin: 0 1rem;
-    /* text-align: center; */
 }
 
 .teacherapp i,
@@ -121,7 +125,6 @@ footer {
 .copy-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
     padding-top: 1rem;
 }
 
@@ -131,7 +134,7 @@ footer {
 
 /* Media queries */
 
-@media (max-width: 767.98px) {
+@media (max-width: 800px) {
     .footer-wrapper {
         flex-direction: column;
         align-content: center;
@@ -143,7 +146,7 @@ footer {
     .social,
     .policy {
         flex-basis: 100%;
-        margin: 0;
+        margin-top: 1rem;
         margin-bottom: 1rem;
     }
 }

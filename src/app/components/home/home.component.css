@@ -1,0 +1,7 @@
+.rowContainer {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    margin: 0px;
+    padding: 0px;
+}

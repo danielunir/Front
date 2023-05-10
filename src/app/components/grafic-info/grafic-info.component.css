@@ -1,0 +1,46 @@
+.mapAndTeachersContainer {
+    display: flex;
+    max-width: 100%;
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 0rem;
+    /*  position: relative;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; */
+}
+
+.mapContainer {
+    display: flex;
+    width: 60%;
+
+}
+
+.map {
+    width: 100%;
+}
+
+.teacherContainer {
+    display: flex;
+    width: 40%;
+}
+
+.teacher {
+    width: 100%;
+}
+
+/* Ajustar para dispositivos móviles */
+
+@media (max-width: 800px) {
+
+    .mapAndTeachersContainer {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .mapContainer,
+    .teacherContainer {
+        width: 100%;
+    }
+
+}

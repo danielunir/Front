@@ -19,7 +19,8 @@
               <label class="form-label">Username</label>
               <input type="text" class="form-control" formControlName="username">
               <p class="error" *ngIf="checkControl('username', 'required')">El campo es requerido</p>
-              <p class="error" *ngIf="checkControl('username', 'minlength')">El apodo no puede ser más corto de 3 letras</p>
+              <p class="error" *ngIf="checkControl('username', 'minlength')">El apodo no puede ser más corto de 3 letras
+              </p>
             </div>
             <div class="mb-3 col-12 col-md-6">
               <label class="form-label">Email</label>
@@ -33,24 +34,30 @@
               <label class="form-label">Password</label>
               <input type="password" class="form-control" formControlName="password">
               <p class="error" *ngIf="checkControl('password', 'required')">El campo es requerido</p>
-              <p class="error" *ngIf="checkControl('password', 'pattern')">Al menos dos letras, un numero y un caracter especial. Sin espacios.</p>
+              <p class="error" *ngIf="checkControl('password', 'pattern')">Al menos dos letras, un numero y un caracter
+                especial. Sin espacios.</p>
             </div>
             <div class="mb-3 col-12 col-md-6">
               <label class="form-label">Confirme el Password</label>
               <input type="password" class="form-control" formControlName="confirmPassword">
               <p class="error" *ngIf="checkControl('confirmpassword', 'required')">El campo es requerido</p>
-              <p class="error" *ngIf="formRegisterUsuario.hasError('checkpassword')">Los campos password no son iguales</p>
+              <p class="error" *ngIf="formRegisterUsuario.hasError('checkpassword')">Los campos password no son iguales
+              </p>
             </div>
           </div>
           <div class="mb-3">
             <input type="checkbox" class="checkbox" formControlName="acepta">
-            <label class="form-label small-text">He leído y estoy de acuerdo con los <span class="text-decoration-underline" [routerLink]="['/home']" role="button">Términos y Condiciones</span> y la <span class="text-decoration-underline" [routerLink]="['/home']" role="button">Política de Privacidad</span> de TeacherApp</label>
+            <label class="form-label small-text">He leído y estoy de acuerdo con los <span
+                class="text-decoration-underline" [routerLink]="['/home']" role="button">Términos y Condiciones</span> y
+              la <span class="text-decoration-underline" [routerLink]="['/home']" role="button">Política de
+                Privacidad</span> de TeacherApp</label>
             <p class="error" *ngIf="checkControl('acepta', 'required')">El campo es requerido</p>
           </div>
           <div class="mb-3">
             <p class="text-end small-text">* Todos los campos son obligatorios</p>
             <!-- <label class="form-label btn btn-primary" for="t2" (click)="continue($event)">Continuar</label> -->
-            <input class="form-control" type="submit" value="Continuar" class="btn btn-primary" for="t2" (click)="continue($event)" [disabled]="!formRegisterUsuario.valid">
+            <input class="form-control" type="submit" value="Continuar" class="btn btn-primary" for="t2"
+              (click)="continue($event)" [disabled]="!formRegisterUsuario.valid">
           </div>
 
         </form>
@@ -67,14 +74,17 @@
               <label class="form-label">Nombre *</label>
               <input type="text" class="form-control" formControlName="nombre">
               <p class="error" *ngIf="checkControl('nombre', 'required')">El campo es requerido</p>
-              <p class="error" *ngIf="checkControl('nombre', 'minlength')">El nombre no puede ser más corto de 3 letras</p>
-              <p class="error" *ngIf="checkControl('nombre', 'maxlength')">El nombre no puede ser más largo de 45 letras</p>
+              <p class="error" *ngIf="checkControl('nombre', 'minlength')">El nombre no puede ser más corto de 3 letras
+              </p>
+              <p class="error" *ngIf="checkControl('nombre', 'maxlength')">El nombre no puede ser más largo de 45 letras
+              </p>
             </div>
             <div class="mb-3 col-12 col-md-6">
               <label class="form-label">Apellidos *</label>
               <input type="text" class="form-control" formControlName="apellidos">
               <p class="error" *ngIf="checkControl('apellidos', 'required')">El campo es requerido</p>
-              <p class="error" *ngIf="checkControl('apellidos', 'maxlength')">Los apellidos no pueden ser más largos de 45 letras</p>
+              <p class="error" *ngIf="checkControl('apellidos', 'maxlength')">Los apellidos no pueden ser más largos de
+                45 letras</p>
             </div>
           </div>
           <div class="row">
@@ -82,7 +92,8 @@
               <label class="form-label">Dirección y Número *</label>
               <input type="text" class="form-control" formControlName="direccion">
               <p class="error" *ngIf="checkControl('direccion', 'required')">El campo es requerido</p>
-              <p class="error" *ngIf="checkControl('direccion', 'maxlength')">La dirección no puede ser más larga de 100 letras</p>
+              <p class="error" *ngIf="checkControl('direccion', 'maxlength')">La dirección no puede ser más larga de 100
+                letras</p>
             </div>
           </div>
           <div class="row">
@@ -90,14 +101,17 @@
               <label class="form-label">Ciudad *</label>
               <input type="text" class="form-control" formControlName="ciudad">
               <p class="error" *ngIf="checkControl('ciudad', 'required')">El campo es requerido</p>
-              <p class="error" *ngIf="checkControl('ciudad', 'maxlength')">La ciudad no puede ser más larga de 45 letras</p>
+              <p class="error" *ngIf="checkControl('ciudad', 'maxlength')">La ciudad no puede ser más larga de 45 letras
+              </p>
             </div>
             <div class="mb-3 col-12 col-md-6">
               <label class="form-label">Código Postal *</label>
               <input type="number" class="form-control" formControlName="codigo_postal">
               <p class="error" *ngIf="checkControl('codigo_postal', 'required')">El campo es requerido</p>
-              <p class="error" *ngIf="checkControl('codigo_postal', 'maxlength')">El código postal debe ser de 5 números</p>
-              <p class="error" *ngIf="checkControl('codigo_postal', 'minlength')">El código postal debe ser de 5 números</p>
+              <p class="error" *ngIf="checkControl('codigo_postal', 'maxlength')">El código postal debe ser de 5 números
+              </p>
+              <p class="error" *ngIf="checkControl('codigo_postal', 'minlength')">El código postal debe ser de 5 números
+              </p>
             </div>
           </div>
           <div class="row">
@@ -105,7 +119,8 @@
               <label class="form-label">Teléfono *</label>
               <input type="text" class="form-control" formControlName="telefono">
               <p class="error" *ngIf="checkControl('telefono', 'required')">El campo es requerido</p>
-              <p class="error" *ngIf="checkControl('telefono', 'maxlength')">El teléfono debe ser de máximo 12 números</p>
+              <p class="error" *ngIf="checkControl('telefono', 'maxlength')">El teléfono debe ser de máximo 12 números
+              </p>
               <p class="error" *ngIf="checkControl('telefono', 'minlength')">El teléfono debe ser mínimo 9 números</p>
             </div>
             <div class="mb-3 col-12 col-md-6">
@@ -129,7 +144,8 @@
           <div class="row" *ngIf="rolUser === 'alumno'">
             <div class="mb-3 col-12">
               <label class="form-label">Breve descripción de sus necesidades de aprendizaje</label>
-              <textarea class="form-control textarea" formControlGroup="estudia" (keypress)="onKey($event)" [ngClass]="{'borde-rojo' : contador >= contadorMax}"></textarea>
+              <textarea class="form-control textarea" formControlGroup="estudia" (keypress)="onKey($event)"
+                [ngClass]="{'borde-rojo' : contador >= contadorMax}"></textarea>
               <p class="small-text">{{contador}} / {{ contadorMax }}</p>
               <p class="error" *ngIf="checkControl('estudia', 'required')">El campo es requerido</p>
             </div>
@@ -139,7 +155,8 @@
             <div class="row">
               <div class="mb-3 col-12">
                 <label class="form-label">Área de conocimiento</label>
-                <input type="text" class="form-control" formControlName="area_conocimiento" placeholder="Ejemplo: Matemáticas, Física, Química,...">
+                <input type="text" class="form-control" formControlName="area_conocimiento"
+                  placeholder="Ejemplo: Matemáticas, Física, Química,...">
                 <p class="error" *ngIf="checkControl('area_conocimiento', 'required')">El campo es requerido</p>
               </div>
             </div>
@@ -155,7 +172,8 @@
                   <option value="tercerciclo">Máter y Doctorado</option>
                   <option value="mayores">Personas Mayores</option>
                 </select>
-                <p class="small-text">Nota: Para una selección de múltiples niveles mantenga presionada la tecla CTRL, Comando o Mayúsculas dependiendo de su sistema operativo.</p>
+                <p class="small-text">Nota: Para una selección de múltiples niveles mantenga presionada la tecla CTRL,
+                  Comando o Mayúsculas dependiendo de su sistema operativo.</p>
                 <p class="error" *ngIf="checkControl('nivel', 'required')">El campo es requerido</p>
               </div>
             </div>
@@ -169,7 +187,8 @@
             <div class="row">
               <div class="mb-3 col-12">
                 <label class="form-label">Breve descripción de su Experiencia</label>
-                <textarea class="form-control textarea" formControlName="experiencia" (keypress)="onKey($event)" [ngClass]="{'borde-rojo' : contador >= contadorMax}"></textarea>
+                <textarea class="form-control textarea" formControlName="experiencia" (keypress)="onKey($event)"
+                  [ngClass]="{'borde-rojo' : contador >= contadorMax}"></textarea>
                 <p class="small-text">{{contador}} / {{ contadorMax }}</p>
                 <p class="error" *ngIf="checkControl('experiencia', 'required')">El campo es requerido</p>
               </div>
