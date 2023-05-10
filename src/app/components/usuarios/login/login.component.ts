@@ -36,4 +36,11 @@ export class LoginComponent {
     this.router.navigate(['/profile']);
   }
 
+  registro() {
+    this.router.navigate(['/registro']);
+  }
+
+  cerrar() {
+    this.router.navigate(['/home']);
+  }
 }
