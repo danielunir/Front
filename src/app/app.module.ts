@@ -13,7 +13,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TeacherCardComponent } from './components/teacher/teacher-card/teacher-card.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
 import { LoginComponent } from './components/usuarios/login/login.component';
-import { ProfileComponent } from './profile/profile.component';
+import { StudentprofileComponent } from './components/profiles/studentprofile/studentprofile.component';
+import { TeacherprofileComponent } from './components/profiles/teacherprofile/teacherprofile.component';
+import { AdminprofileComponent } from './components/profiles/adminprofile/adminprofile.component';
+
 
 
 
@@ -28,7 +31,9 @@ import { ProfileComponent } from './profile/profile.component';
     TeacherCardComponent,
     TeacherComponent,
     LoginComponent,
-    ProfileComponent
+    StudentprofileComponent,
+    TeacherprofileComponent,
+    AdminprofileComponent,
   ],
   imports: [
     BrowserModule,
