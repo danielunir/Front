@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ProfileService } from 'src/app/services/profile.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class LoginComponent {
 
   constructor(
     private usuariosService: UsuariosService,
+    private profileService: ProfileService,
     private router: Router
   ) {
     this.formLogin = new FormGroup({
@@ -31,9 +33,19 @@ export class LoginComponent {
 
 
     localStorage.setItem('token_login', response.token);
-    console.log(response)
     this.usuariosService.changeLogin(true);
-    this.router.navigate(['/profile']);
+
+    const data = await this.profileService.getProfile();
+
+    console.log(data.role)
+
+    if (data.role = "alumno") {
+      return this.router.navigate(['/studentprofile']);
+    }
+    if (data.role = "profesor") {
+      return this.router.navigate(['/teacherprofile']);
+    }
+    this.router.navigate(['/adminprofile']);
   }
 
   registro() {
