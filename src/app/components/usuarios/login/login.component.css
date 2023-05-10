@@ -1,0 +1,115 @@
+/*Contiene todo el sistema de tabs*/
+.tabsNav {
+    position: relative;
+    font-size: 16px;
+    line-height: 150%;
+    width: 900px;
+}
+
+/*Las pestañas: cabecera inputs y labels*/
+.tabsNav .tab {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.tabsNav .tab input[type=radio] {
+    display: none;
+}
+
+.tabsNav .tab label:not(.form-label) {
+    display: inline-block;
+    position: relative;
+    top: 1px;
+    z-index: 1000;
+    width: 300px;
+    text-align: center;
+    text-decoration: none;
+    color: lightgray;
+    border: 1px solid lightgray;
+    border-bottom: none;
+    padding: 20px;
+}
+
+/*Etiquetas de pestañas individuales*/
+.tabsNav .tab:nth-of-type(1) label {
+    left: 0;
+}
+
+.tabsNav form .tab:nth-of-type(1) label {
+    left: 300px;
+}
+
+.tabsNav form .tab:nth-of-type(2) label {
+    left: calc(2 * 300px);
+}
+
+/*Las pestañas contenido dentro de los tabs*/
+.tabsNav .tab div:not(.mb-3, .row) {
+    position: relative;
+    box-sizing: border-box;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background: #efefef;
+    border: 1px solid #d6d4d4;
+    padding: 30px;
+    text-align: justify;
+    box-shadow: 3px 3px 10px 1px #d3d3d3d4;
+}
+
+/*Etiquetas pulsadas*/
+.tabsNav .tab input:checked+label:not(.form-label) {
+    color: white;
+    border: 1px solid #d6d4d4;
+    background-color: black;
+    border-bottom: 1px solid #efefef;
+}
+
+/*tab visibles*/
+.tabsNav .tab input:checked~div {
+    display: block;
+}
+
+.small-text {
+    font-size: 14px;
+}
+
+.textarea {
+    height: 250px;
+}
+
+.borde-rojo {
+    border: 2px solid red;
+}
+
+.nivel {
+    height: 160px;
+}
+
+input.ng-invalid.ng-touched {
+    border-bottom: 3px solid red;
+}
+
+input.ng-valid.ng-touched {
+    border-bottom: 3px solid lightgreen;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+.text-register-button {
+    margin-top: 1.5rem;
+    margin-left: 35rem;
+    margin-right: 1rem;
+}
+
+.btn-close {
+    margin-left: 35;
+    margin-bottom: 1.5;
+}

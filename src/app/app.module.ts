@@ -14,6 +14,10 @@ import { TeacherCardComponent } from './components/teacher/teacher-card/teacher-
 import { TeacherComponent } from './components/teacher/teacher.component';
 import { ComoFuncionaComponent } from './components/como-funciona/como-funciona.component';
 import { GraficInfoComponent } from './components/grafic-info/grafic-info.component';
+import { LoginComponent } from './components/usuarios/login/login.component';
+import { StudentprofileComponent } from './components/profiles/studentprofile/studentprofile.component';
+import { TeacherprofileComponent } from './components/profiles/teacherprofile/teacherprofile.component';
+import { AdminprofileComponent } from './components/profiles/adminprofile/adminprofile.component';
 
 
 @NgModule({
@@ -28,6 +32,10 @@ import { GraficInfoComponent } from './components/grafic-info/grafic-info.compon
     TeacherComponent,
     ComoFuncionaComponent,
     GraficInfoComponent
+    LoginComponent,
+    StudentprofileComponent,
+    TeacherprofileComponent,
+    AdminprofileComponent,
   ],
   imports: [
     BrowserModule,
