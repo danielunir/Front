@@ -31,21 +31,18 @@ export class LoginComponent {
       return alert(response.fatal);
     }
 
-
     localStorage.setItem('token_login', response.token);
     this.usuariosService.changeLogin(true);
 
     const data = await this.profileService.getProfile();
 
-    console.log(data.role)
-
-    if (data.role = "alumno") {
+    if (data.role === "alumno") {
       return this.router.navigate(['/studentprofile']);
     }
-    if (data.role = "profesor") {
+    if (data.role === "profesor") {
       return this.router.navigate(['/teacherprofile']);
     }
-    this.router.navigate(['/adminprofile']);
+    return this.router.navigate(['/adminprofile']);
   }
 
   registro() {
