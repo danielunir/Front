@@ -64,6 +64,8 @@ i {
 }
 
 .btn {
+    background-color: #0D47A1;
+    border-color: #0D47A1;
     transition: background-color 0.33s ease, border-color 0.33s ease;
 }
 
