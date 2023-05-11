@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NivelesService } from 'src/app/services/niveles.service';
 import { RamasService } from 'src/app/services/ramas.service';
@@ -16,7 +16,7 @@ export class FormPerfilTeacherComponent {
 
   formRegisterPerfilTeacher: FormGroup;
 
-  insertId: number = 0;
+  @Input() usuarioId: number = 0;
 
   values: any;
   valuesNivel: any;
@@ -62,7 +62,7 @@ export class FormPerfilTeacherComponent {
 
   async getDataPerfilTeacher() {
 
-    this.formRegisterPerfilTeacher.value.usuario_id = this.insertId;
+    this.formRegisterPerfilTeacher.value.usuario_id = this.usuarioId;
 
     const { area_conocimiento, nivel, cuota, experiencia, usuario_id } = this.formRegisterPerfilTeacher.value;
 

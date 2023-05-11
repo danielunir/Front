@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 
@@ -14,7 +14,7 @@ export class FormPerfilAlumnoComponent {
 
   formRegisterPerfilAlumno: FormGroup;
 
-  insertId: number = 0;
+  @Input() usuarioId: number = 0;
 
   values: any;
 
@@ -47,7 +47,7 @@ export class FormPerfilAlumnoComponent {
 
   async getDataPerfilAlumno() {
 
-    this.formRegisterPerfilAlumno.value.usuario_id = this.insertId;
+    this.formRegisterPerfilAlumno.value.usuario_id = this.usuarioId;
 
     const { estudia, usuario_id } = this.formRegisterPerfilAlumno.value;
 

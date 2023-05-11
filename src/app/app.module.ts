@@ -17,6 +17,7 @@ import { FormUserComponent } from './components/form-user/form-user.component';
 import { FormPersonalComponent } from './components/form-personal/form-personal.component';
 import { FormPerfilTeacherComponent } from './components/form-perfil-teacher/form-perfil-teacher.component';
 import { FormPerfilAlumnoComponent } from './components/form-perfil-alumno/form-perfil-alumno.component';
+import { InfoUsuariosComponent } from './components/usuarios/info-usuarios/info-usuarios.component';
 
 
 
@@ -34,7 +35,8 @@ import { FormPerfilAlumnoComponent } from './components/form-perfil-alumno/form-
     FormUserComponent,
     FormPersonalComponent,
     FormPerfilTeacherComponent,
-    FormPerfilAlumnoComponent
+    FormPerfilAlumnoComponent,
+    InfoUsuariosComponent
   ],
   imports: [
     BrowserModule,

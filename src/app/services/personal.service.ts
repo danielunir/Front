@@ -10,12 +10,18 @@ export class PersonalService {
   private baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = '';
+    this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/personal';
   }
 
-  registroPersonal(values: { nombre: string, apellidos: string, direccion: string, ciudad: string, codigo_postal: string, telefono: string, fecha_nacimiento: string, usuario_id: number }) {
+  registroPersonalProfesor(values: { nombre: string, apellidos: string, fecha_nacimiento: string, foto: string, direccion: string, ciudad: string, codigo_postal: string, telefono: string, usuario_id: number }) {
     return firstValueFrom(
-      this.httpClient.post<any>(`${this.baseUrl}/`, values)
+      this.httpClient.post<any>(`${this.baseUrl}/teacher`, values)
+    )
+  }
+
+  registroPersonalAlumno(values: { nombre: string, apellidos: string, fecha_nacimiento: string, foto: string, direccion: string, ciudad: string, codigo_postal: string, telefono: string, usuario_id: number }) {
+    return firstValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/alumno`, values)
     )
   }
 }

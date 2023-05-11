@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
@@ -21,8 +22,12 @@ export class FormUserComponent {
 
   @Output() continuar = new EventEmitter()
 
+  @Output() insertarId = new EventEmitter()
+  @Output() determinarRol = new EventEmitter()
+
   constructor(
     private usuariosService: UsuariosService,
+    private router: Router
   ) {
 
     this.formRegisterUsuario = new FormGroup({
@@ -58,16 +63,6 @@ export class FormUserComponent {
     this.continuar.emit($event)
   }
 
-  // continue($event: any) {
-  //   if($event.target.attributes.for.value === 't2') {
-  //     this.enable();
-  //   } else if($event.target.attributes.for.value === 't3') {
-
-  //     this.disable();
-  //     this.enablet3();
-  //   }
-  // }
-
   checkPassword(pFormValue: AbstractControl) {
 
     const password: string = pFormValue.get('password')?.value;
@@ -92,7 +87,11 @@ export class FormUserComponent {
       const response = await this.usuariosService.registroUsuario(this.formRegisterUsuario.value);
 
       this.insertId = response.insertId;
+      this.insertarId.emit(this.insertId);
       this.rolUser = this.formRegisterUsuario.value.role;
+      this.determinarRol.emit(this.rolUser)
+
+      this.router.navigate(['/login']);
 
       if (!response.insertId) {
         return alert('Registro de usuario erroneo');

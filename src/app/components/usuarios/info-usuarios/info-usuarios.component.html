@@ -1,0 +1,19 @@
+<div class="container mb-5">
+  <div class="tabsNav mt-5 mx-auto">
+    <div class="tab">
+      <input type="radio" name="tabs" #t1 checked disabled>
+      <label for="t1">INFORMACIÓN PERSONAL</label>
+      <div>
+        <app-form-personal (continuar)="continue($event)"></app-form-personal>
+      </div>
+    </div>
+    <div class="tab">
+      <input type="radio" name="tabs" #t2 disabled>
+      <label for="t2">INFORMACIÓN DE PERFIL</label>
+      <div>
+        <app-form-perfil-teacher></app-form-perfil-teacher>
+        <app-form-perfil-alumno></app-form-perfil-alumno>
+      </div>
+    </div>
+  </div>
+</div>

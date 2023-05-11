@@ -9,15 +9,17 @@ import { PersonalService } from 'src/app/services/personal.service';
 })
 export class FormPersonalComponent {
 
-  formRegisterPersonal: FormGroup;
-
-  insertId: number = 0;
+  formRegisterPersonal: FormGroup;;
 
   @Input() disable: any;
   @Input() enable: any;
   @Input() enablet3: any;
 
   @Output() continuar = new EventEmitter()
+
+  @Input() usuarioId: number = 0;
+
+  @Input() role: string = '';
 
   constructor(
     private personalService: PersonalService,
@@ -51,23 +53,14 @@ export class FormPersonalComponent {
         Validators.minLength(9),
         Validators.maxLength(12)
       ]),
-      fecha_nacimiento: new FormControl("",[])
+      fecha_nacimiento: new FormControl("",[]),
+      foto: new FormControl("",[])
     },[]);
   }
 
   onContinuar($event: any) {
     this.continuar.emit($event)
   }
-
-  // continue($event: any) {
-  //   if($event.target.attributes.for.value === 't2') {
-  //     this.enable();
-  //   } else if($event.target.attributes.for.value === 't3') {
-
-  //     this.disable();
-  //     this.enablet3();
-  //   }
-  // }
 
   checkControl(pControlName: string, pError: string): boolean {
     if(this.formRegisterPersonal.get(pControlName)?.hasError(pError) && this.formRegisterPersonal.get(pControlName)?.touched) {
@@ -78,16 +71,33 @@ export class FormPersonalComponent {
 
   async getDataPersonal() {
 
-    this.formRegisterPersonal.value.usuario_id = this.insertId;
+    this.formRegisterPersonal.value.usuario_id = this.usuarioId;
 
-    try {
-      const response = await this.personalService.registroPersonal(this.formRegisterPersonal.value);
+    if (this.role === 'profesor') {
+      try {
+        const response = await this.personalService.registroPersonalProfesor(this.formRegisterPersonal.value);
+        console.log(response);
 
-      if (!response.insertId) {
-        return alert('Registro  de datos personales erroneo')
+        if (!response.usuario_id) {
+          return alert('Registro  de datos personales erroneo')
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+
+    }
+
+    if (this.role === 'alumno') {
+      try {
+        const response = await this.personalService.registroPersonalAlumno(this.formRegisterPersonal.value);
+
+        if (!response.usuario_id) {
+          return alert('Registro  de datos personales erroneo')
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
     }
   }
 }
