@@ -1,0 +1,65 @@
+.w-profile {
+    display: flex;
+    padding: 2rem;
+}
+
+.w-dataprofile {
+    display: flex;
+    border: 1px solid black;
+    padding: 2rem;
+}
+
+.w-manage {
+    border: 1px solid black;
+    padding: 2rem;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.manage-text {
+    margin-left: 1rem;
+}
+
+.student-image {
+    max-width: 10rem;
+    margin-top: 1rem;
+    margin-left: 5rem;
+}
+
+.student-image2 {
+    max-width: 2rem;
+    margin-left: 2rem;
+}
+
+.image-button {
+    margin-left: 1rem;
+}
+
+.table-data {
+    display: flex;
+}
+
+.data1 {
+    margin-top: 2rem;
+    margin-left: 3rem;
+}
+
+.data2 {
+    margin-top: 2rem;
+    margin-left: 7rem;
+}
+
+.list {
+    list-style: none;
+}
+
+.btns {
+    margin-top: 3rem;
+    margin-left: 25rem;
+}
+
+.btn-act {
+    margin-right: 5rem;
+}

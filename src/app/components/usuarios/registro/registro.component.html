@@ -1,128 +1,27 @@
-<div class="container">
+<div class="container mb-5">
   <div class="tabsNav mt-5 mx-auto">
-    <form>
-      <div class="tab">
-        <input type="radio" name="tabs" id="t1" checked disabled>
-        <label for="t1">1.- INFORMACIÓN DE LA CUENTA</label>
-        <div>
-          <div class="mb-3">
-            <label class="form-label">Tipo de Cuenta</label>
-            <select class="form-control" formControlName="rol">
-              <option>Seleccione una opción...</option>
-              <option value="profesor">Profesor</option>
-              <option value="alumno">Alumno</option>
-            </select>
-          </div>
-          <div class="row">
-            <div class="mb-3 col-12 col-md-6">
-              <label class="form-label">Username</label>
-              <input type="text" class="form-control" formControlName="username">
-            </div>
-            <div class="mb-3 col-12 col-md-6">
-              <label class="form-label">Email</label>
-              <input type="text" class="form-control" formControlName="email">
-            </div>
-          </div>
-          <div class="row">
-            <div class="mb-3 col-12 col-md-6">
-              <label class="form-label">Password</label>
-              <input type="password" class="form-control" formControlName="password">
-            </div>
-            <div class="mb-3 col-12 col-md-6">
-              <label class="form-label">Confirme el Password</label>
-              <input type="password" class="form-control" formControlName="confirmPassword">
-            </div>
-          </div>
-          <div class="mb-3">
-            <input type="checkbox" class="checkbox">
-            <label class="form-label small-text">He leído y estoy de acuerdo con los <span class="text-decoration-underline" [routerLink]="['/home']" role="button">Términos y Condiciones</span> y la <span class="text-decoration-underline" [routerLink]="['/home']" role="button">Política de Privacidad</span> de TeacherApp</label>
-          </div>
-          <div class="mb-3">
-            <p class="text-end small-text">* Todos los campos son obligatorios</p>
-          </div>
-          <label class="form-label btn btn-primary" for="t2" (click)="continue($event)">Continuar</label>
-        </div>
 
+    <div class="tab">
+      <input type="radio" name="tabs" #t1 checked disabled>
+      <label for="t1">1.- INFORMACIÓN DE LA CUENTA</label>
+      <div>
+        <app-form-user (continuar)="continue($event)"></app-form-user>
       </div>
-      <div class="tab">
-        <input type="radio" name="tabs" id="t2" [disabled]="disabled">
-        <label for="t2">2.- INFORMACIÓN PERSONAL</label>
-        <div>
-          <div class="row">
-            <div class="mb-3 col-12 col-md-6">
-              <label class="form-label">Nombre *</label>
-              <input type="text" class="form-control" formControlName="nombre">
-            </div>
-            <div class="mb-3 col-12 col-md-6">
-              <label class="form-label">Apellidos *</label>
-              <input type="text" class="form-control" formControlName="apellidos">
-            </div>
-          </div>
-          <div class="row">
-            <div class="mb-3 col-12 col-md-6">
-              <label class="form-label">Dirección *</label>
-              <input type="text" class="form-control" formControlName="direccion">
-            </div>
-            <div class="mb-3 col-12 col-md-6">
-              <label class="form-label">Número *</label>
-              <input type="text" class="form-control" formControlName="numero">
-            </div>
-          </div>
-          <div class="row">
-            <div class="mb-3 col-12 col-md-6">
-              <label class="form-label">Planta *</label>
-              <input type="text" class="form-control" formControlName="planta">
-            </div>
-            <div class="mb-3 col-12 col-md-6">
-              <label class="form-label">Puerta</label>
-              <input type="text" class="form-control" formControlName="puerta">
-            </div>
-          </div>
-          <div class="row">
-            <div class="mb-3 col-12 col-md-6">
-              <label class="form-label">Ciudad *</label>
-              <input type="text" class="form-control" formControlName="ciudad">
-            </div>
-            <div class="mb-3 col-12 col-md-6">
-              <label class="form-label">Código Postal *</label>
-              <input type="text" class="form-control" formControlName="codigo_postal">
-            </div>
-          </div>
-          <div class="row">
-            <div class="mb-3 col-12 col-md-6">
-              <label class="form-label">Teléfono *</label>
-              <input type="text" class="form-control" formControlName="telefono">
-            </div>
-            <div class="mb-3 col-12 col-md-6">
-              <label class="form-label">Fecha Nacimiento</label>
-              <input type="date" class="form-control" formControlName="fecha_nacimiento">
-            </div>
-          </div>
-          <div class="mb-3">
-            <p class="text-end small-text">* Campos obligatorios</p>
-          </div>
-          <label class="form-label btn btn-primary" for="t3" (click)="continue($event)">Continuar</label>
-        </div>
-
+    </div>
+    <div class="tab">
+      <input type="radio" name="tabs" #t2 disabled>
+      <label for="t2">2.- INFORMACIÓN PERSONAL</label>
+      <div>
+        <app-form-personal (continuar)="continue($event)"></app-form-personal>
       </div>
-      <div class="tab">
-        <input type="radio" name="tabs" id="t3" [disabled]="disabled">
-        <label for="t3">3.- INFORMACIÓN DE PERFIL</label>
-        <div>
-          <div class="row">
-            <div class="mb-3 col-12">
-              <label class="form-label">Breve descripción de sus necesidades de aprendizaje</label>
-              <textarea class="form-control textarea" formControlName="estudia" (keypress)="onKey($event)" [ngClass]="{'borde-rojo' : contador >= contadorMax}"></textarea>
-              <p class="small-text">{{contador}} / {{ contadorMax }}</p>
-            </div>
-          </div>
-          <div class="mb-3">
-            <p class="text-end small-text">* Todos los campos son obligatorios</p>
-          </div>
-          <input type="submit" value="Enviar" class="btn btn-primary">
-        </div>
-
+    </div>
+    <div class="tab">
+      <input type="radio" name="tabs" #t3 disabled>
+      <label for="t3">3.- INFORMACIÓN DE PERFIL</label>
+      <div>
+        <app-form-perfil-teacher></app-form-perfil-teacher>
+        <app-form-perfil-alumno></app-form-perfil-alumno>
       </div>
-    </form>
+    </div>
   </div>
 </div>

@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-registro',
@@ -6,26 +9,50 @@ import { Component } from '@angular/core';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent {
+  @ViewChild("t1")t1!: ElementRef;
+  @ViewChild("t2")t2!: ElementRef;
+  @ViewChild("t3")t3!: ElementRef;
 
-  disabled = true;
   contador = 0;
   contadorMax = 255;
 
-  continue($event: any) {
+  insertId: number = 0;
+  insertIdProfesor: number = 0;
 
-    $event.target.control.disabled = !this.disabled;
+  values: any;
+  valuesNivel: any;
+  valuesArea: any;
 
-    setTimeout(() => {
-      $event.target.control.disabled = true;
-    }, 100);
+  constructor(
+    private renderer2: Renderer2,
+    private router: Router
+    ) {
+
   }
 
-  onKey($event: any) {
-    this.contador = $event.target.value.length;
-    if(this.contador >= this.contadorMax) {
-      $event.preventDefault();
+  disable() {
+    this.renderer2.setAttribute(this.t2.nativeElement, 'disabled', 'true');
+    this.renderer2.removeAttribute(this.t2.nativeElement, 'checked');
+  }
 
+  enable() {
+    this.renderer2.removeAttribute(this.t2.nativeElement, "disabled");
+    this.renderer2.setAttribute(this.t2.nativeElement, 'checked', 'true');
+    this.renderer2.removeAttribute(this.t1.nativeElement, 'checked');
+  }
+
+  enablet3() {
+    this.renderer2.removeAttribute(this.t3.nativeElement, "disabled");
+    this.renderer2.setAttribute(this.t3.nativeElement, 'checked', 'true');
+  }
+
+  continue($event: any) {
+    if ($event.target.attributes.for.value === 't2') {
+      this.enable();
+    } else if ($event.target.attributes.for.value === 't3') {
+
+      this.disable();
+      this.enablet3();
     }
   }
-
 }

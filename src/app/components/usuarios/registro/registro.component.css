@@ -85,3 +85,7 @@
 .borde-rojo {
   border: 2px solid red;
 }
+
+.nivel {
+  height: 160px;
+}

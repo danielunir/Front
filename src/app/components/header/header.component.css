@@ -1,28 +1,49 @@
-.container-fluid {
-  --bs-gutter-x: 0;
+.navContainer {
+  display: flex;
+  margin-bottom: 1rem;
+  padding-left: 7%;
+  padding-right: 7%;
 }
 
-.fa-whatsapp {
-  font-size: 1.25em;
+.custom-navbar {
+  background-color: whitesmoke;
 }
 
-h1 {
-  font-size: 36px;
+.custom-navbar .nav-link,
+.custom-navbar {
+  font-size: 1.5rem;
   color: #0d47a1;
+  transition: color 0.33s ease;
 }
 
-h2 {
-  font-size: 30px;
+.register {
+  margin-right: 2rem;
+}
+
+.custom-navbar:hover .nav-link,
+.title {
+  color: #FF5722;
+}
+
+i {
   color: #0d47a1;
+  transition: color 0.33s ease;
 }
 
-h3 {
-  font-size: 24px;
+.fa-address-card {
+  font-size: 1.6rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 600;
   color: #0d47a1;
+  margin: 0%;
+  transition: color 0.33s ease;
 }
 
-.lato {
-  font-family: 'lato', sans-serif;
+.btn {
+  transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
 .btn:hover {
@@ -30,6 +51,41 @@ h3 {
   border-color: #FF5722;
 }
 
-.title:hover {
+.container-fluid:hover .title {
   color: #FF5722;
+}
+
+.container-fluid:hover i {
+  color: black;
+}
+
+
+@media(max-width: 800px) {
+  .navContainer {
+    margin-bottom: 6%;
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+}
+
+@media (max-width: 380px) {
+  .title {
+    font-size: 9.5vw;
+  }
+
+  .navbar-toggler {
+    font-size: 5vw;
+  }
+
+  .navContainer {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+}
+
+@media (max-width: 300px) {
+  .navContainer {
+    min-width: 300px;
+  }
 }
