@@ -11,8 +11,8 @@
       <input type="radio" name="tabs" #t2 disabled>
       <label for="t2">INFORMACIÓN DE PERFIL</label>
       <div>
-        <app-form-perfil-teacher></app-form-perfil-teacher>
-        <app-form-perfil-alumno></app-form-perfil-alumno>
+        <app-form-perfil-teacher (userID)="getUserId" (rol)="getRol($event)" [usuarioId]="userId" *ngIf="role === 'profesor'"></app-form-perfil-teacher>
+        <app-form-perfil-alumno (userID)="getUserId" (rol)="getRol($event)" [usuarioId]="userId" *ngIf="role === 'alumno'"></app-form-perfil-alumno>
       </div>
     </div>
   </div>

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PersonalService } from 'src/app/services/personal.service';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-form-personal',
@@ -17,12 +18,15 @@ export class FormPersonalComponent {
 
   @Output() continuar = new EventEmitter()
 
-  @Input() usuarioId: number = 0;
+  userId:number = 0;
 
-  @Input() role: string = '';
+  role: string = '';
+
+  @Output() rol = new EventEmitter();
 
   constructor(
     private personalService: PersonalService,
+    private profileService: ProfileService
   ) {
 
     this.formRegisterPersonal = new FormGroup({
@@ -69,9 +73,29 @@ export class FormPersonalComponent {
     return false;
   }
 
+  async datarecovery(){
+    const data = await this.profileService.getProfile();
+
+    this.userId = data.id;
+    console.log(this.userId);
+    this.role = data.role;
+    this.rol.emit(this.role);
+  }
+
   async getDataPersonal() {
 
-    this.formRegisterPersonal.value.usuario_id = this.usuarioId;
+    const data = await this.profileService.getProfile();
+
+    this.userId = data.id;
+    this.role = data.role;
+
+    console.log(this.role);
+
+
+
+    this.formRegisterPersonal.value.usuario_id = this.userId;
+
+    console.log(this.formRegisterPersonal.value)
 
     if (this.role === 'profesor') {
       try {

@@ -1,4 +1,5 @@
 import { Component, Renderer2, ElementRef, ViewChild } from '@angular/core';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-info-usuarios',
@@ -10,8 +11,12 @@ export class InfoUsuariosComponent {
   @ViewChild("t1")t1!: ElementRef;
   @ViewChild("t2")t2!: ElementRef;
 
+  userId!: number;
+  role: string = '';
+
   constructor(
-    private renderer2: Renderer2
+    private renderer2: Renderer2,
+    private profileService: ProfileService
   ) {
 
   }
@@ -32,4 +37,17 @@ export class InfoUsuariosComponent {
       this.enable();
     }
   }
+
+
+
+  getRol($event: any){
+    this.role = $event;
+    console.log($event);
+  }
+
+  getUserId($event: any) {
+    this.userId = $event;
+  }
+
+
 }

@@ -41,7 +41,7 @@ import { AdminprofileComponent } from './components/profiles/adminprofile/adminp
     FormPersonalComponent,
     FormPerfilTeacherComponent,
     FormPerfilAlumnoComponent,
-    InfoUsuariosComponent
+    InfoUsuariosComponent,
     ComoFuncionaComponent,
     GraficInfoComponent,
     StudentprofileComponent,

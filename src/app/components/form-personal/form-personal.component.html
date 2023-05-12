@@ -2,7 +2,7 @@
   <div class="row">
     <div class="mb-3 col-12 col-md-6">
       <label class="form-label">Nombre *</label>
-      <input type="text" class="form-control" formControlName="nombre">
+      <input type="text" class="form-control" formControlName="nombre" (focus)="datarecovery()">
       <p class="error" *ngIf="checkControl('nombre', 'required')">El campo es requerido</p>
       <p class="error" *ngIf="checkControl('nombre', 'minlength')">El nombre no puede ser más corto de 3 letras</p>
       <p class="error" *ngIf="checkControl('nombre', 'maxlength')">El nombre no puede ser más largo de 45 letras</p>
