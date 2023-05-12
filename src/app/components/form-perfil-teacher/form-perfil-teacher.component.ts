@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NivelesService } from 'src/app/services/niveles.service';
 import { RamasService } from 'src/app/services/ramas.service';
 import { TeachersService } from 'src/app/services/teachers.service';
@@ -16,7 +17,7 @@ export class FormPerfilTeacherComponent {
 
   formRegisterPerfilTeacher: FormGroup;
 
-  insertId: number = 0;
+  @Input() usuarioId: number = 0;
 
   values: any;
   valuesNivel: any;
@@ -25,7 +26,8 @@ export class FormPerfilTeacherComponent {
   constructor(
     private teachersService: TeachersService,
     private ramasService: RamasService,
-    private nivelesService: NivelesService
+    private nivelesService: NivelesService,
+    private router: Router
   ) {
 
     this.formRegisterPerfilTeacher = new FormGroup({
@@ -62,7 +64,7 @@ export class FormPerfilTeacherComponent {
 
   async getDataPerfilTeacher() {
 
-    this.formRegisterPerfilTeacher.value.usuario_id = this.insertId;
+    this.formRegisterPerfilTeacher.value.usuario_id = this.usuarioId;
 
     const { area_conocimiento, nivel, cuota, experiencia, usuario_id } = this.formRegisterPerfilTeacher.value;
 
@@ -73,8 +75,9 @@ export class FormPerfilTeacherComponent {
     try {
       const response = await this.teachersService.registroProfesor(this.values);
 
-      if (!response.insertId) {
-        return alert('Registro de datos de perfil erroneo')
+      console.log(response);
+      if (!response.usuario_id) {
+        return alert('Registro de datos de perfil Profesor erroneo')
       }
     } catch (error) {
       console.log(error)
@@ -83,8 +86,9 @@ export class FormPerfilTeacherComponent {
     try {
       const responseArea = await this.ramasService.registroRamas(this.valuesArea);
 
-      if (!responseArea.insertId) {
-        return alert('Registro de datos de perfil erroneo')
+      console.log(responseArea)
+      if (!responseArea.usuarioId) {
+        return alert('Registro de datos de perfil Ramas erroneo')
       }
     } catch (error) {
       console.log(error)
@@ -93,12 +97,15 @@ export class FormPerfilTeacherComponent {
     try {
       const responseNivel = await this.nivelesService.registroNiveles(this.valuesNivel);
 
-      if (!responseNivel.insertId) {
-        return alert('Registro de datos de perfil erroneo')
+      console.log(responseNivel)
+      if (!responseNivel.usuarioId) {
+        return alert('Registro de datos de perfil Niveles erroneo')
       }
+
     } catch (error) {
       console.log(error)
     }
+    this.router.navigate(['/teacherprofile']);
   }
 }
 
