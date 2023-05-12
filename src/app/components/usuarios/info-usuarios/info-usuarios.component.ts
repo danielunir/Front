@@ -1,4 +1,4 @@
-import { Component, Renderer2, ElementRef, ViewChild } from '@angular/core';
+import { Component, Renderer2, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ProfileService } from 'src/app/services/profile.service';
   templateUrl: './info-usuarios.component.html',
   styleUrls: ['./info-usuarios.component.css']
 })
-export class InfoUsuariosComponent {
+export class InfoUsuariosComponent implements OnInit {
 
   @ViewChild("t1")t1!: ElementRef;
   @ViewChild("t2")t2!: ElementRef;
@@ -19,6 +19,14 @@ export class InfoUsuariosComponent {
     private profileService: ProfileService
   ) {
 
+  }
+
+  async ngOnInit() {
+    const data = await this.profileService.getProfile();
+
+    this.userId = data.id;
+    console.log(this.userId);
+    this.role = data.role;
   }
 
   disable() {
@@ -40,14 +48,14 @@ export class InfoUsuariosComponent {
 
 
 
-  getRol($event: any){
-    this.role = $event;
-    console.log($event);
-  }
+  // getRol($event: any){
+  //   this.role = $event;
+  //   console.log($event);
+  // }
 
-  getUserId($event: any) {
-    this.userId = $event;
-  }
+  // getUserId($event: any) {
+  //   this.userId = $event;
+  // }
 
 
 }

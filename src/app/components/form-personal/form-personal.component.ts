@@ -22,8 +22,6 @@ export class FormPersonalComponent {
 
   role: string = '';
 
-  @Output() rol = new EventEmitter();
-
   constructor(
     private personalService: PersonalService,
     private profileService: ProfileService
@@ -73,14 +71,14 @@ export class FormPersonalComponent {
     return false;
   }
 
-  async datarecovery(){
-    const data = await this.profileService.getProfile();
+  // async datarecovery(){
+  //   const data = await this.profileService.getProfile();
 
-    this.userId = data.id;
-    console.log(this.userId);
-    this.role = data.role;
-    this.rol.emit(this.role);
-  }
+  //   this.userId = data.id;
+  //   console.log(this.userId);
+  //   this.role = data.role;
+  //   this.rol.emit(this.role);
+  // }
 
   async getDataPersonal() {
 
@@ -89,18 +87,18 @@ export class FormPersonalComponent {
     this.userId = data.id;
     this.role = data.role;
 
-    console.log(this.role);
+    // console.log(this.role);
 
 
 
     this.formRegisterPersonal.value.usuario_id = this.userId;
 
-    console.log(this.formRegisterPersonal.value)
+    // console.log(this.formRegisterPersonal.value)
 
     if (this.role === 'profesor') {
       try {
         const response = await this.personalService.registroPersonalProfesor(this.formRegisterPersonal.value);
-        console.log(response);
+        // console.log(response);
 
         if (!response.usuario_id) {
           return alert('Registro  de datos personales erroneo')

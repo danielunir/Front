@@ -19,7 +19,7 @@ export class TeachersService {
     return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}?page=${pPage}`));
   }
 
-  registroProfesor(values: { cuota: number, experiencia: string, usuario_id: string }) {
+  registroProfesor(values: { cuota: number, experiencia: string, status: number, usuario_id: string }) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token_login')!

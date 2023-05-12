@@ -13,7 +13,7 @@ export class AlumnosService {
     this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/alumno';
   }
 
-  registroAlumno(values: { estudia: string, usuario_id: string }) {
+  registroAlumno(values: { estudia: string, status: number, usuario_id: string }) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token_login')!

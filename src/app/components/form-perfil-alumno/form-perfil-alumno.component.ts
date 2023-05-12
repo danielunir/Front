@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class FormPerfilAlumnoComponent {
   values: any;
 
   constructor(
-    private alumnosService: AlumnosService
+    private alumnosService: AlumnosService,
+    private router: Router
   ) {
 
     this.formRegisterPerfilAlumno = new FormGroup({
@@ -56,11 +58,14 @@ export class FormPerfilAlumnoComponent {
     try {
       const response = await this.alumnosService.registroAlumno(this.values);
 
-      if (!response.insertId) {
+      console.log(response)
+      if (!response.usuario_id) {
         return alert('Registro de datos de perfil erroneo')
       }
+
     } catch (error) {
       console.log(error)
     }
+    this.router.navigate(['/studentprofile']);
   }
 }
