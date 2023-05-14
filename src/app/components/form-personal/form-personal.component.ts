@@ -101,6 +101,7 @@ export class FormPersonalComponent {
         // console.log(response);
 
         if (!response.usuario_id) {
+          alert(response.fatal);
           return alert('Registro  de datos personales erroneo')
         }
       } catch (error) {
@@ -114,6 +115,7 @@ export class FormPersonalComponent {
         const response = await this.personalService.registroPersonalAlumno(this.formRegisterPersonal.value);
 
         if (!response.usuario_id) {
+          alert(response.fatal);
           return alert('Registro  de datos personales erroneo')
         }
       } catch (error) {

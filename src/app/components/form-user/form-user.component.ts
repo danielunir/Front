@@ -94,6 +94,7 @@ export class FormUserComponent {
       this.router.navigate(['/login']);
 
       if (!response.insertId) {
+        alert(response.fatal);
         return alert('Registro de usuario erroneo');
       }
     } catch (error) {

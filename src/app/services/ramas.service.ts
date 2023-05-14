@@ -13,7 +13,7 @@ export class RamasService {
     this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/clase';
   }
 
-  registroRamas(values: { materia: string, usuario_id: number }){
+  registroRamas(values: { usuario_id: number, materia: string  }){
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token_login')!
