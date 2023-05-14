@@ -47,15 +47,4 @@ export class InfoUsuariosComponent implements OnInit {
   }
 
 
-
-  // getRol($event: any){
-  //   this.role = $event;
-  //   console.log($event);
-  // }
-
-  // getUserId($event: any) {
-  //   this.userId = $event;
-  // }
-
-
 }

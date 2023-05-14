@@ -58,8 +58,8 @@ export class FormPerfilAlumnoComponent {
     try {
       const response = await this.alumnosService.registroAlumno(this.values);
 
-      console.log(response)
       if (!response.usuario_id) {
+        alert(response.fatal);
         return alert('Registro de datos de perfil erroneo')
       }
 
