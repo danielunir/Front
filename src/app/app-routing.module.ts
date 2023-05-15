@@ -14,7 +14,7 @@ import { AdminprofileComponent } from './components/profiles/adminprofile/adminp
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'registro', component: RegistroComponent },
+  { path: 'register', component: RegistroComponent },
   { path: 'info-usuario', component: InfoUsuariosComponent },
   { path: 'teachers', component: TeacherComponent },
   { path: 'login', component: LoginComponent },

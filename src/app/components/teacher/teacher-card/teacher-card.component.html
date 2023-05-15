@@ -1,10 +1,10 @@
 <img [src]="teacher.foto" class="card-img-top" [alt]="teacher.nombre">
 <div class="card-body">
-    <h5 class="card-title">{{teacher.nombre}} {{teacher.apellidos}}</h5>
-    <p class="card-text">{{teacher.experiencia}}</p>
+  <h5 class="card-title">{{teacher.nombre}} {{teacher.apellidos}}</h5>
+  <p class="card-text">{{teacher.experiencia}}</p>
 </div>
 <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{teacher.direccion}}, {{teacher.ciudad}}</li>
-    <li class="list-group-item">{{teacher.cuota | currency: 'EUR'}}</li>
-    <li class="list-group-item">{{teacher.telefono}}</li>
+  <li class="list-group-item">{{teacher.direccion}}, {{teacher.ciudad}}</li>
+  <li class="list-group-item">{{teacher.cuota | currency: 'EUR'}}</li>
+  <li class="list-group-item">{{teacher.telefono}}</li>
 </ul>
