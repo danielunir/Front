@@ -16,7 +16,13 @@ export class TeachersService {
   }
 
   getAll(pPage: number = 1): Promise<any> {
-    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}?page=${pPage}`));
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_login')!
+      })
+    }
+
+    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}?page=${pPage}`, httpOptions));
   }
 
   registroProfesor(values: { cuota: number, experiencia: string, status: number, usuario_id: string }) {
@@ -42,4 +48,5 @@ export class TeachersService {
       this.httpClient.get<any>(`${this.baseUrl}/user/${userId}`, httpOptions)
     )
   }
+
 }

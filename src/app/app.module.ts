@@ -23,6 +23,7 @@ import { InfoUsuariosComponent } from './components/usuarios/info-usuarios/info-
 import { StudentprofileComponent } from './components/profiles/studentprofile/studentprofile.component';
 import { TeacherprofileComponent } from './components/profiles/teacherprofile/teacherprofile.component';
 import { AdminprofileComponent } from './components/profiles/adminprofile/adminprofile.component';
+import { TeacherScoreCardComponent } from './components/teacher/teacher-score-card/teacher-score-card.component';
 
 
 
@@ -47,6 +48,7 @@ import { AdminprofileComponent } from './components/profiles/adminprofile/adminp
     StudentprofileComponent,
     TeacherprofileComponent,
     AdminprofileComponent,
+    TeacherScoreCardComponent,
   ],
   imports: [
     BrowserModule,
