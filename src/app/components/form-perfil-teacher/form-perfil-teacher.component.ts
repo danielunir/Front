@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NivelesService } from 'src/app/services/niveles.service';
 import { RamasService } from 'src/app/services/ramas.service';
 import { TeachersService } from 'src/app/services/teachers.service';
@@ -13,10 +14,12 @@ export class FormPerfilTeacherComponent {
 
   contador = 0;
   contadorMax = 255;
+  listaNiveles: string[] = ["Primaria", "ESO","FP", "Bachillerato", "Diplomatura", "Grado", "Máster y Doctorado", "Personas Mayores"];
+  nivelesSeleccionados:string[] = [];
 
   formRegisterPerfilTeacher: FormGroup;
 
-  insertId: number = 0;
+  @Input() usuarioId: number = 0;
 
   values: any;
   valuesNivel: any;
@@ -25,11 +28,12 @@ export class FormPerfilTeacherComponent {
   constructor(
     private teachersService: TeachersService,
     private ramasService: RamasService,
-    private nivelesService: NivelesService
+    private nivelesService: NivelesService,
+    private router: Router
   ) {
 
     this.formRegisterPerfilTeacher = new FormGroup({
-      area_conocimiento: new FormControl("",[
+      materia: new FormControl("",[
         Validators.required
       ]),
       nivel: new FormControl("",[
@@ -62,19 +66,22 @@ export class FormPerfilTeacherComponent {
 
   async getDataPerfilTeacher() {
 
-    this.formRegisterPerfilTeacher.value.usuario_id = this.insertId;
+    this.formRegisterPerfilTeacher.value.nivel = this.nivelesSeleccionados.toString();
 
-    const { area_conocimiento, nivel, cuota, experiencia, usuario_id } = this.formRegisterPerfilTeacher.value;
+    this.formRegisterPerfilTeacher.value.usuario_id = this.usuarioId;
+
+    const { materia, nivel, cuota, experiencia, usuario_id } = this.formRegisterPerfilTeacher.value;
 
     this.values = { cuota, experiencia, usuario_id }
-    this.valuesArea = { materia: area_conocimiento, usuario_id }
+    this.valuesArea = { materia, usuario_id }
     this.valuesNivel = { nivel, usuario_id }
 
     try {
       const response = await this.teachersService.registroProfesor(this.values);
 
-      if (!response.insertId) {
-        return alert('Registro de datos de perfil erroneo')
+      if (!response.usuario_id) {
+        alert(response.fatal);
+        return alert('Registro de datos de perfil Profesor erroneo')
       }
     } catch (error) {
       console.log(error)
@@ -83,8 +90,10 @@ export class FormPerfilTeacherComponent {
     try {
       const responseArea = await this.ramasService.registroRamas(this.valuesArea);
 
+      // console.log(responseArea)
       if (!responseArea.insertId) {
-        return alert('Registro de datos de perfil erroneo')
+        alert(responseArea.fatal);
+        return alert('Registro de datos de perfil Ramas erroneo')
       }
     } catch (error) {
       console.log(error)
@@ -93,12 +102,16 @@ export class FormPerfilTeacherComponent {
     try {
       const responseNivel = await this.nivelesService.registroNiveles(this.valuesNivel);
 
+      console.log(responseNivel)
       if (!responseNivel.insertId) {
-        return alert('Registro de datos de perfil erroneo')
+        alert(responseNivel.fatal);
+        return alert('Registro de datos de perfil Niveles erroneo')
       }
+
     } catch (error) {
       console.log(error)
     }
+    this.router.navigate(['/teacherprofile']);
   }
 }
 

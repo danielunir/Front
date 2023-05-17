@@ -3,21 +3,22 @@
     <div class="row">
       <div class="mb-3 col-12">
         <label class="form-label">Área de conocimiento</label>
-        <input type="text" class="form-control" formControlName="area_conocimiento" placeholder="Ejemplo: Matemáticas, Física, Química,...">
+        <input type="text" class="form-control" formControlName="materia" placeholder="Ejemplo: Matemáticas, Física, Química,...">
         <p class="error" *ngIf="checkControl('area_conocimiento', 'required')">El campo es requerido</p>
       </div>
     </div>
     <div class="row">
       <div class="mb-3 col-12">
         <label class="form-label">Nivel de estudios en que imparte formación</label>
-        <select class="form-control nivel" formControlName="nivel" multiple>
-          <option value="primaria">Primaria</option>
-          <option value="eso">ESO</option>
+        <select class="form-control nivel" formControlName="nivel" multiple [(ngModel)]="nivelesSeleccionados">
+          <option [value]="item" *ngFor="let item of listaNiveles">{{item}}</option>
+          <!-- <option value="eso">ESO</option>
           <option value="fp">FP</option>
+          <option value="bachillerato">Bachillerato</option>
           <option value="diplomatura">Diplomatura</option>
           <option value="grado">Grado</option>
           <option value="tercerciclo">Máter y Doctorado</option>
-          <option value="mayores">Personas Mayores</option>
+          <option value="mayores">Personas Mayores</option> -->
         </select>
         <p class="small-text">Nota: Para una selección de múltiples niveles mantenga presionada la tecla CTRL, Comando o Mayúsculas dependiendo de su sistema operativo.</p>
         <p class="error" *ngIf="checkControl('nivel', 'required')">El campo es requerido</p>

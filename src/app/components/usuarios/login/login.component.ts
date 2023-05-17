@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
+import { TeachersService } from 'src/app/services/teachers.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { AlumnosService } from 'src/app/services/alumnos.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +17,8 @@ export class LoginComponent {
 
   constructor(
     private usuariosService: UsuariosService,
+    private teachersService: TeachersService,
+    private alumnosService: AlumnosService,
     private profileService: ProfileService,
     private router: Router
   ) {
@@ -37,9 +41,21 @@ export class LoginComponent {
     const data = await this.profileService.getProfile();
 
     if (data.role === "alumno") {
+      const personaldata = await this.alumnosService.getByUserId(data.id);
+
+      if(!(personaldata.apellidos)) {
+        return this.router.navigate(['/info-usuario']);
+      }
+
       return this.router.navigate(['/studentprofile']);
     }
     if (data.role === "profesor") {
+      const personaldata = await this.teachersService.getByUserId(data.id);
+
+      if(!(personaldata.apellidos)) {
+        return this.router.navigate(['/info-usuario']);
+      }
+
       return this.router.navigate(['/teacherprofile']);
     }
     return this.router.navigate(['/adminprofile']);

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PersonalService } from 'src/app/services/personal.service';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-form-personal',
@@ -9,9 +10,7 @@ import { PersonalService } from 'src/app/services/personal.service';
 })
 export class FormPersonalComponent {
 
-  formRegisterPersonal: FormGroup;
-
-  insertId: number = 0;
+  formRegisterPersonal: FormGroup;;
 
   @Input() disable: any;
   @Input() enable: any;
@@ -19,8 +18,13 @@ export class FormPersonalComponent {
 
   @Output() continuar = new EventEmitter()
 
+  userId:number = 0;
+
+  role: string = '';
+
   constructor(
     private personalService: PersonalService,
+    private profileService: ProfileService
   ) {
 
     this.formRegisterPersonal = new FormGroup({
@@ -51,23 +55,14 @@ export class FormPersonalComponent {
         Validators.minLength(9),
         Validators.maxLength(12)
       ]),
-      fecha_nacimiento: new FormControl("",[])
+      fecha_nacimiento: new FormControl("",[]),
+      foto: new FormControl("",[])
     },[]);
   }
 
   onContinuar($event: any) {
     this.continuar.emit($event)
   }
-
-  // continue($event: any) {
-  //   if($event.target.attributes.for.value === 't2') {
-  //     this.enable();
-  //   } else if($event.target.attributes.for.value === 't3') {
-
-  //     this.disable();
-  //     this.enablet3();
-  //   }
-  // }
 
   checkControl(pControlName: string, pError: string): boolean {
     if(this.formRegisterPersonal.get(pControlName)?.hasError(pError) && this.formRegisterPersonal.get(pControlName)?.touched) {
@@ -76,18 +71,57 @@ export class FormPersonalComponent {
     return false;
   }
 
+  // async datarecovery(){
+  //   const data = await this.profileService.getProfile();
+
+  //   this.userId = data.id;
+  //   console.log(this.userId);
+  //   this.role = data.role;
+  //   this.rol.emit(this.role);
+  // }
+
   async getDataPersonal() {
 
-    this.formRegisterPersonal.value.usuario_id = this.insertId;
+    const data = await this.profileService.getProfile();
 
-    try {
-      const response = await this.personalService.registroPersonal(this.formRegisterPersonal.value);
+    this.userId = data.id;
+    this.role = data.role;
 
-      if (!response.insertId) {
-        return alert('Registro  de datos personales erroneo')
+    // console.log(this.role);
+
+
+
+    this.formRegisterPersonal.value.usuario_id = this.userId;
+
+    // console.log(this.formRegisterPersonal.value)
+
+    if (this.role === 'profesor') {
+      try {
+        const response = await this.personalService.registroPersonalProfesor(this.formRegisterPersonal.value);
+        // console.log(response);
+
+        if (!response.usuario_id) {
+          alert(response.fatal);
+          return alert('Registro  de datos personales erroneo')
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+
+    }
+
+    if (this.role === 'alumno') {
+      try {
+        const response = await this.personalService.registroPersonalAlumno(this.formRegisterPersonal.value);
+
+        if (!response.usuario_id) {
+          alert(response.fatal);
+          return alert('Registro  de datos personales erroneo')
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
     }
   }
 }
