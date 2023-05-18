@@ -24,6 +24,10 @@ import { StudentprofileComponent } from './components/profiles/studentprofile/st
 import { TeacherprofileComponent } from './components/profiles/teacherprofile/teacherprofile.component';
 import { AdminprofileComponent } from './components/profiles/adminprofile/adminprofile.component';
 import { TeacherScoreCardComponent } from './components/teacher/teacher-score-card/teacher-score-card.component';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from 'src/environments/environments';
+import { MapaComponent } from './components/mapa/mapa.component';
+import { CountryViewComponent } from './components/country-view/country-view.component';
 
 
 
@@ -49,12 +53,15 @@ import { TeacherScoreCardComponent } from './components/teacher/teacher-score-ca
     TeacherprofileComponent,
     AdminprofileComponent,
     TeacherScoreCardComponent,
+    MapaComponent,
+    CountryViewComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot(environment.googleMaps)
   ],
   providers: [],
   bootstrap: [AppComponent]
