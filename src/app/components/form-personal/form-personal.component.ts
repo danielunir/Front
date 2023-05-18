@@ -10,7 +10,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class FormPersonalComponent {
 
-  formRegisterPersonal: FormGroup;;
+  formRegisterPersonal: FormGroup;
 
   @Input() disable: any;
   @Input() enable: any;

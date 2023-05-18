@@ -20,11 +20,6 @@ export class CountriesService {
   }
 
   getTeachersNearby(value: any): Promise<any> {
-    console.log(value)
-
-    console.log(this.httpClient.post<any>(`${this.baseUrl}`, value))
-
-    console.log(firstValueFrom( this.httpClient.post<any>(`${this.baseUrl}`, value)))
 
     return firstValueFrom( this.httpClient.post<any>(`${this.baseUrl}`, value))
 
