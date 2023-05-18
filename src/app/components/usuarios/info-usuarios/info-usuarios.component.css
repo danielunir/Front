@@ -23,7 +23,7 @@
   position: relative;
   top: 1px;
   z-index: 1000;
-  width: 300px;
+  width: 450px;
   text-align: center;
   text-decoration: none;
   color: lightgray;
@@ -38,11 +38,7 @@
 }
 
 .tabsNav .tab:nth-of-type(2) label {
-  left: 300px;
-}
-
-.tabsNav .tab:nth-of-type(3) label {
-  left: calc(2 * 300px);
+  left: 450px;
 }
 
 /*Las pestañas contenido dentro de los tabs*/
@@ -87,5 +83,5 @@
 }
 
 .nivel {
-  height: 160px;
+  height: 180px;
 }
