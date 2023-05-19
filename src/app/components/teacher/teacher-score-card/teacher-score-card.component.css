@@ -1,10 +1,11 @@
 .stars-outer {
-  display: inline-block;
+  display: flex;
   position: relative;
   font-family: FontAwesome;
   font-size: 32px;
-  width: 63%;
+  width: 180px;
   margin: 0 auto;
+  justify-content: left;
 }
 
 .stars-outer::before {
@@ -12,16 +13,23 @@
 }
 
 .stars-inner {
+  display: block;
   position: absolute;
-  top: 0;
-  left: 0;
+  /* top: 0;
+  left: 0; */
   white-space: nowrap;
   overflow: hidden;
   width: 0;
 }
 
 .stars-inner::before {
-  display: inline-block;
+  display: block;
+  text-align: left;
   content: "\f005 \f005 \f005 \f005 \f005";
   color: #f8ce0b;
+  margin: 0;
+}
+
+img {
+  height: 15.4rem;
 }
