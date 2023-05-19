@@ -20,8 +20,32 @@
   margin-right: 2rem;
 }
 
+.modal-title {
+  color: #FF5722;
+}
+
+button {
+  transition: all 1s ease-in-out;
+}
+
+.enter {
+  background-color: #FF5722;
+  border-color: #da4112;
+}
+
+.text-orange {
+  color: orange;
+  background-color: transparent;
+  border: none;
+}
+
+
 .custom-navbar:hover .nav-link,
 .title {
+  color: #FF5722;
+}
+
+.text-orange {
   color: #FF5722;
 }
 
@@ -57,6 +81,14 @@ i {
 
 .container-fluid:hover i {
   color: black;
+}
+
+/*Login con modal en el enlace del header*/
+.modal-footer {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
 
 
