@@ -28,6 +28,7 @@ import { AgmCoreModule } from '@agm/core';
 import { environment } from 'src/environments/environments';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { CountryViewComponent } from './components/country-view/country-view.component';
+import { TeacherScoreComponent } from './components/teacher-score/teacher-score.component';
 
 
 
@@ -55,6 +56,7 @@ import { CountryViewComponent } from './components/country-view/country-view.com
     TeacherScoreCardComponent,
     MapaComponent,
     CountryViewComponent,
+    TeacherScoreComponent,
   ],
   imports: [
     BrowserModule,
