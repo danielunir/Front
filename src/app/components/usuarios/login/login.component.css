@@ -113,3 +113,11 @@ input.ng-valid.ng-touched {
     margin-left: 35;
     margin-bottom: 1.5;
 }
+
+/*Login con modal en el enlace del header*/
+.modal-footer {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
