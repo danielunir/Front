@@ -32,6 +32,7 @@ export class HeaderComponent {
         Validators.required
       ])
     });
+
   }
 
   async onSubmit() {
@@ -74,5 +75,10 @@ export class HeaderComponent {
   cerrar() {
     this.router.navigate(['/home']);
   }
+
+  limpiarFormulario() {
+    this.formLogin.reset();
+  }
+
 
 }
