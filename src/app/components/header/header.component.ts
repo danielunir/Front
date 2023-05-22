@@ -66,7 +66,7 @@ export class HeaderComponent {
           return this.router.navigate(['/info-usuario']);
         }
 
-        return this.router.navigate([`/studentprofile/:${data.id}`]);
+        return this.router.navigate([`/studentprofile/${data.id}`]);
       }
       if (data.role === "profesor") {
         const personaldata = await this.teachersService.getByUserId(data.id);
@@ -75,9 +75,9 @@ export class HeaderComponent {
           return this.router.navigate(['/info-usuario']);
         }
 
-        return this.router.navigate([`/teacherprofile/:${data.id}`]);
+        return this.router.navigate([`/teacherprofile/${data.id}`]);
       }
-      return this.router.navigate([`/adminprofile/:${data.id}`]);
+      return this.router.navigate([`/adminprofile/${data.id}`]);
 
     } catch (error) {
       console.log(error);
