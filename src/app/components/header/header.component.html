@@ -9,18 +9,31 @@
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <div class="collapse navbar-collapse" [ngClass]="{'justify-content-evenly': logados, 'justify-content-end': !logados}" id="navbarNavDropdown">
+        <p *ngIf="logados" class="pt-3">Bienvenido {{username}}</p>
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <li *ngIf="!logados" class="nav-item">
             <a class="nav-link active register" [routerLink]="['/registro']"><i class="fa-solid fa-address-card"></i>
               Registro</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="!logados" class="nav-item">
             <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
               <i class="fa-solid fa-user"></i> Login
             </a>
           </li>
-
+          <li *ngIf="logados" class="nav-item">
+            <a *ngIf="role === 'alumno'" [routerLink]="['/studentprofile']" class="nav-link">
+              <i class="fa-solid fa-lock"></i> Acceso a zona privada
+            </a>
+            <a *ngIf="role === 'profesor'" [routerLink]="['/teacherprofile']" class="nav-link">
+              <i class="fa-solid fa-lock"></i> Acceso a zona privada
+            </a>
+          </li>
+          <li *ngIf="logados" class="nav-item">
+            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -61,22 +74,16 @@
                 </span>
               </div>
             </div>
-
-
-
             <button [class]="formLogin.valid ? 'btn btn-primary enter' : 'text-orange'" [disabled]="!formLogin.valid">
               {{formLogin.valid ? 'Entrar' : 'Introduzca sus datos'}}
             </button>
-
           </form>
-
         </div>
         <div class="modal-footer">
           <div>
             <p>¿No estás registrado?</p>
           </div>
-          <div><button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-              [routerLink]="['/registro']">Regístrate</button>
+          <div><button type="button" class="btn btn-primary" data-bs-dismiss="modal" [routerLink]="['/registro']">Regístrate</button>
           </div>
         </div>
       </div>
