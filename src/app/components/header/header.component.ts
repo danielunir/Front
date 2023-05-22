@@ -39,6 +39,7 @@ export class HeaderComponent {
         Validators.required
       ])
     });
+
   }
 
   async onSubmit() {
@@ -90,5 +91,23 @@ export class HeaderComponent {
   cerrar() {
     this.router.navigate(['/home']);
   }
+
+  limpiarFormulario() {
+    this.formLogin.reset();
+  }
+
+  showPassword = false;
+
+  toggleVisibility(input: any): void {
+    if (input.type === 'password') {
+      input.type = 'text';
+      this.showPassword = true;
+    } else {
+      input.type = 'password';
+      this.showPassword = false;
+    }
+  }
+
+
 
 }

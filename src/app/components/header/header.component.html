@@ -1,8 +1,12 @@
 <header>
   <nav class="navContainer navbar navbar-expand-md custom-navbar navbar-light">
     <div class="container-fluid">
-      <h1 class="title" [routerLink]="['/home']"><i class="fa-solid fa-book"></i> TeacherApp</h1>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="titleContain">
+        <h1 class="title" [routerLink]="['/home']"><i class="fa-solid fa-book"></i> TeacherApp</h1>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" [ngClass]="{'justify-content-evenly': logados, 'justify-content-end': !logados}" id="navbarNavDropdown">
@@ -40,8 +44,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">LOGIN</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="title-container">
+            <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-book"></i> TeacherApp Login</h1>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            (click)="limpiarFormulario()"></button>
         </div>
         <div class="modal-body">
           <form class="mt-3" novalidate [formGroup]="formLogin" (ngSubmit)="onSubmit()">
@@ -49,15 +56,28 @@
               <label class="form-label">Email</label>
               <input type="text" class="form-control" formControlName="email">
             </div>
+            <!--  <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" formControlName="password" #passwordInput>
+              <div class="icontainer"><i class="fa cursor-pointer"
+                  [ngClass]="{'fa-eye-slash': showPassword, 'fa-eye': !showPassword}"
+                  (click)="toggleVisibility(passwordInput)"></i></div>
+
+            </div> -->
             <div class="mb-3">
               <label class="form-label">Password</label>
-              <input type="password" class="form-control" formControlName="password">
+              <div class="input-group">
+                <input type="password" class="form-control" formControlName="password" #passwordInput>
+                <span class="input-group-text">
+                  <i class="fa" [ngClass]="{'fa-eye-slash': showPassword, 'fa-eye': !showPassword}"
+                    (click)="toggleVisibility(passwordInput)"></i>
+                </span>
+              </div>
             </div>
-            <input type="submit" [class]="formLogin.valid ? 'btn btn-primary enter' : 'text-orange'" [disabled]="!formLogin.valid" value="{{formLogin.valid ? 'Entrar' : 'Introduzca sus datos'}}" data-bs-dismiss="modal">
-
-
+            <button [class]="formLogin.valid ? 'btn btn-primary enter' : 'text-orange'" [disabled]="!formLogin.valid">
+              {{formLogin.valid ? 'Entrar' : 'Introduzca sus datos'}}
+            </button>
           </form>
-
         </div>
         <div class="modal-footer">
           <div>

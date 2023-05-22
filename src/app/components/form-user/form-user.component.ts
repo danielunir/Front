@@ -31,28 +31,28 @@ export class FormUserComponent {
   ) {
 
     this.formRegisterUsuario = new FormGroup({
-      role: new FormControl("",[
+      role: new FormControl("", [
         Validators.required
       ]),
-      username: new FormControl("",[
+      username: new FormControl("", [
         Validators.required,
         Validators.minLength(3)
       ]),
-      email: new FormControl("",[
+      email: new FormControl("", [
         Validators.required,
         Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
       ]),
-      password: new FormControl("",[
+      password: new FormControl("", [
         Validators.required,
         Validators.pattern(/^(?=(.*[a-zA-Z].*){2,})(?=.*\d.*)(?=.*\W.*)[a-zA-Z0-9\S]{8,15}$/)
       ]),
-      confirmPassword: new FormControl("",[
+      confirmPassword: new FormControl("", [
         Validators.required
       ]),
-      acepta: new FormControl("",[
+      acepta: new FormControl("", [
         Validators.required
       ])
-    },[
+    }, [
       this.checkPassword
     ]);
 
@@ -68,14 +68,14 @@ export class FormUserComponent {
     const password: string = pFormValue.get('password')?.value;
     const confirmPassword: string = pFormValue.get('confirmPassword')?.value;
 
-    if(password !== confirmPassword) {
+    if (password !== confirmPassword) {
       return { 'checkpassword': true }
     }
     return null;
   }
 
   checkControl(pControlName: string, pError: string): boolean {
-    if(this.formRegisterUsuario.get(pControlName)?.hasError(pError) && this.formRegisterUsuario.get(pControlName)?.touched) {
+    if (this.formRegisterUsuario.get(pControlName)?.hasError(pError) && this.formRegisterUsuario.get(pControlName)?.touched) {
       return true;
     }
     return false;
@@ -91,7 +91,7 @@ export class FormUserComponent {
       this.rolUser = this.formRegisterUsuario.value.role;
       this.determinarRol.emit(this.rolUser)
 
-      this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
 
       if (!response.insertId) {
         alert(response.fatal);
