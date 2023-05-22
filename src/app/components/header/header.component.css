@@ -40,8 +40,7 @@ button {
 }
 
 
-.custom-navbar:hover .nav-link,
-.title {
+.container-fluid:hover .nav-link {
   color: #FF5722;
 }
 
@@ -64,6 +63,8 @@ i {
   color: #0d47a1;
   margin: 0%;
   transition: color 0.33s ease;
+  padding: 8px;
+  cursor: pointer;
 }
 
 .btn {
@@ -110,6 +111,10 @@ i {
 
 .input-group-text {
   background-color: transparent;
+}
+
+.titleContain {
+  display: flex;
 }
 
 
