@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+/* SE HA PASADO EL CONTENIDO DE ESTE COMPONENTE AL HEADER */
+/* QUEDA PENDIENTE DE ELIMINAR ESTE COMPONENTE LOGIN */
+
+/* import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -68,4 +71,4 @@ export class LoginComponent {
   cerrar() {
     this.router.navigate(['/home']);
   }
-}
+} */

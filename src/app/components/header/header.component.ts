@@ -80,5 +80,18 @@ export class HeaderComponent {
     this.formLogin.reset();
   }
 
+  showPassword = false;
+
+  toggleVisibility(input: any): void {
+    if (input.type === 'password') {
+      input.type = 'text';
+      this.showPassword = true;
+    } else {
+      input.type = 'password';
+      this.showPassword = false;
+    }
+  }
+
+
 
 }

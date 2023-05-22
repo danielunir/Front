@@ -91,6 +91,27 @@ i {
   align-items: center;
 }
 
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.fa {
+  color: rgba(0, 0, 0, 0.69);
+}
+
+.icontainer {
+  display: flex;
+  padding: 0.25rem;
+  justify-content: right;
+}
+
+.input-group-text {
+  background-color: transparent;
+}
+
 
 @media(max-width: 700px) {
   .navContainer {

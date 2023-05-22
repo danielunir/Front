@@ -28,7 +28,9 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">LOGIN</h1>
+          <div class="title-container">
+            <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-book"></i> TeacherApp Login</h1>
+          </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
             (click)="limpiarFormulario()"></button>
         </div>
@@ -38,10 +40,27 @@
               <label class="form-label">Email</label>
               <input type="text" class="form-control" formControlName="email">
             </div>
+            <!--  <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" formControlName="password" #passwordInput>
+              <div class="icontainer"><i class="fa cursor-pointer"
+                  [ngClass]="{'fa-eye-slash': showPassword, 'fa-eye': !showPassword}"
+                  (click)="toggleVisibility(passwordInput)"></i></div>
+
+            </div> -->
             <div class="mb-3">
               <label class="form-label">Password</label>
-              <input type="password" class="form-control" formControlName="password">
+              <div class="input-group">
+                <input type="password" class="form-control" formControlName="password" #passwordInput>
+                <span class="input-group-text">
+                  <i class="fa" [ngClass]="{'fa-eye-slash': showPassword, 'fa-eye': !showPassword}"
+                    (click)="toggleVisibility(passwordInput)"></i>
+                </span>
+              </div>
             </div>
+
+
+
             <button [class]="formLogin.valid ? 'btn btn-primary enter' : 'text-orange'" [disabled]="!formLogin.valid">
               {{formLogin.valid ? 'Entrar' : 'Introduzca sus datos'}}
             </button>

@@ -1,20 +1,23 @@
+/* SE HA PASADO EL CONTENIDO DE ESTE COMPONENTE AL HEADER */
+/* QUEDA PENDIENTE DE ELIMINAR ESTE COMPONENTE LOGIN */
+
 /*Contiene todo el sistema de tabs*/
-.tabsNav {
+/* .tabsNav {
     position: relative;
     font-size: 16px;
     line-height: 150%;
     width: 900px;
-}
+} */
 
 /*Las pestañas: cabecera inputs y labels*/
-.tabsNav .tab {
+/* .tabsNav .tab {
     display: block;
     position: absolute;
     width: 100%;
     height: 100%;
-}
+} */
 
-.tabsNav .tab input[type=radio] {
+/* .tabsNav .tab input[type=radio] {
     display: none;
 }
 
@@ -30,10 +33,10 @@
     border: 1px solid lightgray;
     border-bottom: none;
     padding: 20px;
-}
+} */
 
 /*Etiquetas de pestañas individuales*/
-.tabsNav .tab:nth-of-type(1) label {
+/* .tabsNav .tab:nth-of-type(1) label {
     left: 0;
 }
 
@@ -43,10 +46,10 @@
 
 .tabsNav form .tab:nth-of-type(2) label {
     left: calc(2 * 300px);
-}
+} */
 
 /*Las pestañas contenido dentro de los tabs*/
-.tabsNav .tab div:not(.mb-3, .row) {
+/* .tabsNav .tab div:not(.mb-3, .row) {
     position: relative;
     box-sizing: border-box;
     display: none;
@@ -59,18 +62,18 @@
     padding: 30px;
     text-align: justify;
     box-shadow: 3px 3px 10px 1px #d3d3d3d4;
-}
+} */
 
 /*Etiquetas pulsadas*/
-.tabsNav .tab input:checked+label:not(.form-label) {
+/* .tabsNav .tab input:checked+label:not(.form-label) {
     color: white;
     border: 1px solid #d6d4d4;
     background-color: black;
     border-bottom: 1px solid #efefef;
-}
+} */
 
 /*tab visibles*/
-.tabsNav .tab input:checked~div {
+/* .tabsNav .tab input:checked~div {
     display: block;
 }
 
@@ -112,12 +115,12 @@ input.ng-valid.ng-touched {
 .btn-close {
     margin-left: 35;
     margin-bottom: 1.5;
-}
+} */
 
 /*Login con modal en el enlace del header*/
-.modal-footer {
+/* .modal-footer {
     display: flex;
     flex-direction: column;
     align-content: center;
     align-items: center;
-}
+} */

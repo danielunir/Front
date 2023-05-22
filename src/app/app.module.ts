@@ -14,7 +14,7 @@ import { TeacherCardComponent } from './components/teacher/teacher-card/teacher-
 import { TeacherComponent } from './components/teacher/teacher.component';
 import { ComoFuncionaComponent } from './components/como-funciona/como-funciona.component';
 import { GraficInfoComponent } from './components/grafic-info/grafic-info.component';
-import { LoginComponent } from './components/usuarios/login/login.component';
+/* import { LoginComponent } from './components/usuarios/login/login.component'; */
 import { FormUserComponent } from './components/form-user/form-user.component';
 import { FormPersonalComponent } from './components/form-personal/form-personal.component';
 import { FormPerfilTeacherComponent } from './components/form-perfil-teacher/form-perfil-teacher.component';
@@ -42,7 +42,7 @@ import { TeacherScoreComponent } from './components/teacher-score/teacher-score.
     FooterComponent,
     TeacherCardComponent,
     TeacherComponent,
-    LoginComponent,
+    /* LoginComponent, */
     FormUserComponent,
     FormPersonalComponent,
     FormPerfilTeacherComponent,
