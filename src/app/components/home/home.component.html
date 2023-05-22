@@ -1,8 +1,8 @@
-<app-header></app-header>
+<app-header (logado)="getLogado($event)"></app-header>
 <div class="rowContainer">
   <app-grafic-info></app-grafic-info>
-  <app-como-funciona></app-como-funciona>
-  <app-teacher></app-teacher>
-  <app-unete></app-unete>
+  <app-teachers-home-logado *ngIf="logado" class="teachers-home-logado my-5"></app-teachers-home-logado>
+  <app-como-funciona class="my-5"></app-como-funciona>
+  <app-unete *ngIf="!logado"></app-unete>
 </div>
 <app-footer></app-footer>

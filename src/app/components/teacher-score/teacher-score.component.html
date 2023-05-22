@@ -1,0 +1,7 @@
+<div class="cards-equipo">
+  <ul>
+    <li *ngFor="let current_teacher of teachers_list">
+      <app-teacher-score-card class="card" [teacher]="current_teacher"></app-teacher-score-card>
+    </li>
+  </ul>
+</div>

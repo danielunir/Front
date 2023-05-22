@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  logado: boolean = false;
+
+  getLogado(event: boolean) {
+    this.logado = event
+  }
+
 }

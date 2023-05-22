@@ -1,43 +1,52 @@
 .mapAndTeachersContainer {
-    display: flex;
-    max-width: 100%;
-    margin-left: 8%;
-    margin-right: 8%;
-    margin-top: 0rem;
+  display: flex;
+  max-width: 100%;
+  margin-left: 8%;
+  margin-right: 8%;
+  margin-top: 0rem;
+  margin-bottom: 3rem;
+  height: 23rem;
+  gap: 0.6rem;
 }
 
 .mapContainer {
-    display: flex;
-    width: 60%;
+  display: flex;
+  width: 65%;
 
 }
 
 .map {
-    width: 100%;
+  width: 100%;
 }
 
 .teacherContainer {
-    display: flex;
-    width: 40%;
+  display: flex;
+  width: 35%;
 }
 
 .teacher {
-    width: 100%;
+  width: 100%;
 }
 
 /* Ajustar para dispositivos móviles */
 
-@media (max-width: 800px) {
+@media (max-width: 996px) {
 
-    .mapAndTeachersContainer {
-        flex-direction: column;
-        align-items: center;
+  .mapAndTeachersContainer {
+    flex-direction: column;
+    align-items: center;
+    height: 50rem;
+    gap: 2rem;
+  }
 
-    }
+  .mapContainer,
+  .teacherContainer {
+    width: 100%;
+    height: 24rem;
+  }
 
-    .mapContainer,
-    .teacherContainer {
-        width: 100%;
-    }
+  .mapContainer {
+    height: 40vh;
+  }
 
 }
