@@ -2,4 +2,6 @@ agm-map {
   width: 100%;
   display: block;
   height: 100%;
+  border-radius: 6px;
+  overflow: hidden;
 }
