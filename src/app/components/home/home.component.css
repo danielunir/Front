@@ -1,8 +1,12 @@
 .rowContainer {
-    display: flex;
-    flex-direction: column;
-    min-width: 300px;
-    max-width: 1550px;
-    margin: 0px auto;
-    padding: 0px;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  max-width: 1550px;
+  margin: 0px auto;
+  padding: 0px;
+}
+
+.teachers-home-logado {
+  height: 500px;
 }
