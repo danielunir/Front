@@ -6,3 +6,23 @@
     margin: 0px auto;
     padding: 0px;
 }
+
+@media (min-height: 1640px) {
+    .footerContainer {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+
+    .x {
+        min-width: 1600px;
+    }
+
+    @media (max-width: 900px) {
+        .footerContainer {
+            position: unset;
+        }
+    }
+}
