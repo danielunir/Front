@@ -92,7 +92,7 @@ i {
 }
 
 
-@media(max-width: 800px) {
+@media(max-width: 700px) {
   .navContainer {
     margin-bottom: 6%;
     padding-left: 6%;

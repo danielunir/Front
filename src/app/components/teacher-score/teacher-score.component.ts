@@ -13,7 +13,6 @@ export class TeacherScoreComponent {
 
   pageHome: boolean = true;
   constructor(
-    private teachersService: TeachersService,
     private puntuacionService: PuntuacionService
   ) { }
 
@@ -28,8 +27,8 @@ export class TeacherScoreComponent {
       const response = await this.puntuacionService.getBestScore();
       console.log(response);
       this.teachers_list = response;
-      }
-      catch (error) {
+    }
+    catch (error) {
       alert('No hay profesores disponibles en la BBDD');
     }
   }

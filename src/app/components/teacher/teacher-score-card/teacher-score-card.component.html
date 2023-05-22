@@ -1,13 +1,9 @@
-<img [src]="teacher.teacher.foto" class="card-img-top" [alt]="teacher.teacher.nombre">
-<div class="card-body">
-  <h5 class="card-title text-center">{{teacher.teacher.nombre}} {{teacher.teacher.apellidos}}</h5>
-  <!-- <p class="card-text">{{teacher.experiencia}}</p> -->
-</div>
-<ul class="list-group list-group-flush">
-  <div class="stars-outer">
-    <div class="stars-inner" [ngStyle]="{'width': startPercentatgeRounded}"></div>
+<div class="card">
+  <img [src]="teacher.teacher.foto" class="card-img-top" [alt]="teacher.teacher.nombre">
+  <div class="card-overlay">
+    <h5 class="card-title">Teacher <br>{{teacher.teacher.nombre}} {{teacher.teacher.apellidos}}</h5>
+    <div class="stars-outer">
+      <div class="stars-inner" [ngStyle]="{'width': startPercentatgeRounded}"></div>
+    </div>
   </div>
-  <!-- <li class="list-group-item">{{teacher.promedio_puntuacion}}</li> -->
-  <!-- <li class="list-group-item">{{teacher.direccion}}, {{teacher.ciudad}}</li>
-  <li class="list-group-item">{{teacher.cuota | currency: 'EUR'}}</li> -->
-</ul>
+</div>
