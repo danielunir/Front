@@ -111,7 +111,7 @@ export class FormPerfilTeacherComponent {
     } catch (error) {
       console.log(error)
     }
-    this.router.navigate([`/teacherprofile/:${this.usuarioId}`]);
+    this.router.navigate([`/teacherprofile/${this.usuarioId}`]);
   }
 }
 
