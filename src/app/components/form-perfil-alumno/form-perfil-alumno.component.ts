@@ -66,6 +66,6 @@ export class FormPerfilAlumnoComponent {
     } catch (error) {
       console.log(error)
     }
-    this.router.navigate(['/studentprofile']);
+    this.router.navigate([`/studentprofile/:${this.usuarioId}`]);
   }
 }
