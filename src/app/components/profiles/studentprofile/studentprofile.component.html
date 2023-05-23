@@ -1,51 +1,38 @@
 <app-header [logados]="logados"></app-header>
-<div class="w-profile">
-  <div class="w-manage">
-    <h1 class="title">Gestionar</h1>
-    <p class="manage-text">Mis profesores</p>
+<div class="row">
+  <div class="p-5 border border-2 border-dark col-12 col-sm-4 col-md-2">
+    <h2>Gestionar</h2>
+    <h5>Mis Profesores</h5>
   </div>
-  <div class="w-dataprofile">
-    <div>
-      <div>
-        <h1 class="title">Perfil</h1>
-        <img class="student-image" src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="student_image">
-        <button class="image-button">Seleccionar foto de perfil</button>
-      </div>
-      <div class="table-data">
-        <div class="data1">
-          <ul class="list">
-            <li>Nombre: "Nombre y apellidos"</li>
-            <li>Nombre de usuario: "Nombre usuario</li>
-            <li>Email: "Email"</li>
-            <li>Rol: "rol"</li>
-          </ul>
-        </div>
-        <div class="data2">
-          <ul class="list">
-            <li>Dirección: "dirección"</li>
-            <li>Población: "Población"</li>
-            <li>Teléfono: "teléfono"</li>
-          </ul>
-        </div>
-        <div class="data2">
-          <p>Recibe formación de:</p>
-          <ul>
-            <li>"Matemáticas"</li>
-            <li>"Biología"</li>
-          </ul>
-        </div>
-      </div>
-      <div class="btns">
-        <span>
-          <button class="btn-act">Actualizar</button>
-          <button>Darme de baja</button>
-        </span>
+  <div class="p-5 border border-2 border-dark col-12 col-sm-8 col-md-10">
+    <div class="container-fluid">
+      <h5>Perfil</h5>
+      <img src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="Teacher Image"
+        class="img-thumbnail w-25">
+      <div class="d-inline-block m-4 align-bottom">
+        <p>Seleccionar foto de perfil: </p>
+        <input class="btn btn-primary file-upload w-100" type="file">
       </div>
     </div>
-    <div>
-      <div class="r-profile">
-        <span>Nombre y apellidos</span>
-        <img class="student-image2" src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="student_image">
+    <div class="row mt-4 justify-content-around">
+      <div class="col-12 col-sm-6 col-md-4">
+        <p>Nombre: Nombre y Apellidos</p>
+        <p>Nombre de usuario: Username</p>
+        <p>Email: correo@correo.com</p>
+        <p>Rol: Alumno</p>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4">
+        <p>Dirección: C/ Tres Puertas Nº 58 Planta 3 Puerta 5</p>
+        <p>Población: Barcelona 08321</p>
+        <p>Teléfono: 654821466</p>
+        <input class="btn btn-primary file-upload w-100" type="file">
+      </div>
+      <div class="col-12 col-sm-6 col-md-4">
+        <p>Recibe formación a nivel de:</p>
+        <ul class="list-group">
+          <li class="list-group-item"><i class="fa-solid fa-check"></i> ESO</li>
+          <li class="list-group-item"><i class="fa-solid fa-check"></i> FP</li>
+        </ul>
       </div>
     </div>
   </div>
