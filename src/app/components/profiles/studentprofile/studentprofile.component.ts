@@ -1,24 +1,25 @@
-import { Component } from '@angular/core';
-import { ProfileService } from 'src/app/services/profile.service';
+import { Component, OnInit } from '@angular/core';
+import { AlumnosService } from 'src/app/services/alumnos.service';
+
 
 @Component({
   selector: 'app-studentprofile',
   templateUrl: './studentprofile.component.html',
   styleUrls: ['./studentprofile.component.css']
 })
-export class StudentprofileComponent {
+export class StudentprofileComponent implements OnInit {
 
   logados: boolean = true;
-  data: object = {}
+  data: any = {}
 
   constructor(
-    private profileService: ProfileService,
+    private alumnosService: AlumnosService,
   ) {
   }
 
-  async onInit() {
-    this.data = await this.profileService.getProfile();
-    console.log(this.data)
+  async ngOnInit() {
+    const userId = localStorage.getItem('user_id');
+    this.data = await this.alumnosService.getByUserId(userId);
   }
 
 }

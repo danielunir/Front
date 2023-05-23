@@ -52,9 +52,11 @@ export class HeaderComponent {
       this.usuariosService.changeLogin(true);
 
       const data = await this.profileService.getProfile();
+      localStorage.setItem('user_id', data.id)
 
       this.role = data.role;
       this.logados = true;
+
 
       if (data.role === "alumno") {
         const personaldata = await this.alumnosService.getByUserId(data.id);
