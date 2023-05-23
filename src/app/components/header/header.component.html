@@ -108,7 +108,11 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-        <p *ngIf="logado && currentRoute !== 'home'" class="pt-3 privateArea">Bienvenido a tu área personal {{username}}
+        <p *ngIf="logado && currentRoute !== 'home' && role !== 'admin'" class="pt-3 privateArea">Bienvenido a tu área
+          personal {{username}}
+        </p>
+        <p *ngIf="logado && currentRoute !== 'home' && role === 'admin'" class="pt-3 privateArea">Bienvenido al área de
+          administración {{username}}
         </p>
         <ul class="navbar-nav">
           <li *ngIf="!logado && currentRoute === 'home'; else privateAccess" class="nav-item">
@@ -125,6 +129,10 @@
               <a *ngIf="role === 'profesor'" [routerLink]="['/teacherprofile/{{data.id}}']" class="nav-link goPrivate"
                 [ngClass]="{'logged-in': logado}">
                 <i class="fa-solid fa-house-user"></i> Ir al área personal
+              </a>
+              <a *ngIf="role === 'admin'" [routerLink]="['/adminprofile/{{data.id}}']" class="nav-link goPrivate"
+                [ngClass]="{'logged-in': logado}">
+                <i class="fa-solid fa-screwdriver-wrench"></i> Administrar
               </a>
 
 
