@@ -1,0 +1,23 @@
+<agm-map [latitude]="lat" [longitude]="long" [zoom]="5">
+
+  <agm-marker [latitude]="lat" [longitude]="long" [iconUrl]="$any({
+    url:'https://images.vexels.com/media/users/3/135409/isolated/preview/ce89e34d35b8d83d821650449e7e096f-sombrilla-de-playa.png',
+    scaledSize: { width: 50, height: 50 }
+  })">
+    <agm-info-window></agm-info-window>
+  </agm-marker>
+
+  <!-- cargar información de los diferentes profesores -->
+  <agm-marker *ngFor="let teacher of teachersPositions" [latitude]="teacher?.latitud!" [longitude]="teacher?.longitud!">
+    <agm-info-window>
+      <h5>Nombre: {{teacher?.nombre}}</h5>
+      <h6>Apellidos: {{teacher?.apellidos}}</h6>
+    </agm-info-window>
+  </agm-marker>
+
+</agm-map>
+<div *ngIf="!geolocal" class="formAddress">
+  <div class="row">
+    <p>Si deseas conocer la ubicación de los profesores más cercanos a tí, da permiso para conocer tu ubicación</p>
+  </div>
+</div>

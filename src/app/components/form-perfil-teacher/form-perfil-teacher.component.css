@@ -1,0 +1,20 @@
+input.ng-invalid.ng-touched {
+  border-bottom: 3px solid red;
+}
+
+input.ng-valid.ng-touched {
+  border-bottom: 3px solid lightgreen;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.textarea {
+  height: 250px;
+}
+
+.nivel {
+  height: 180px;
+}

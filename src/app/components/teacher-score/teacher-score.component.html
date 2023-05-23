@@ -1,0 +1,15 @@
+<div id="carouselExampleRide" class="carousel slide allcontent" data-bs-ride="true">
+  <div class="carousel-inner">
+    <div *ngFor="let current_teacher of teachers_list; let i = index" class="carousel-item" [class.active]="i == 0">
+      <app-teacher-score-card class="card d-block w-100" [teacher]="current_teacher"></app-teacher-score-card>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

@@ -1,30 +1,74 @@
-.container-fluid {
-  --bs-gutter-x: 0;
+.navContainer {
+  display: flex;
+  margin-bottom: 1rem;
+  padding-left: 7%;
+  padding-right: 7%;
 }
 
-.fa-whatsapp {
-  font-size: 1.25em;
-  color: #009688;
-
+.custom-navbar {
+  background-color: whitesmoke;
 }
 
-h1 {
-  font-size: 36px;
+.custom-navbar .nav-link,
+.custom-navbar {
+  font-size: 1.5rem;
   color: #0d47a1;
+  transition: color 0.33s ease;
 }
 
-h2 {
-  font-size: 30px;
+.register {
+  margin-right: 2rem;
+}
+
+.modal-title {
+  color: #FF5722;
+}
+
+button {
+  transition: all 1s ease-in-out;
+}
+
+.enter {
+  background-color: #FF5722;
+  border-color: #da4112;
+}
+
+.text-orange {
+  color: orange;
+  background-color: transparent;
+  border: none;
+}
+
+
+.container-fluid:hover .nav-link {
+  color: #FF5722;
+}
+
+.text-orange {
+  color: #FF5722;
+}
+
+i {
   color: #0d47a1;
+  transition: color 0.33s ease;
 }
 
-h3 {
-  font-size: 24px;
+.fa-address-card {
+  font-size: 1.6rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 600;
   color: #0d47a1;
+  margin: 0%;
+  transition: color 0.33s ease;
+  padding: 8px;
+  cursor: pointer;
 }
 
-.lato {
-  font-family: 'lato', sans-serif;
+.btn {
+  transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
 .btn:hover {
@@ -32,59 +76,74 @@ h3 {
   border-color: #FF5722;
 }
 
-.title:hover {
+.container-fluid:hover .title {
   color: #FF5722;
 }
 
-.container-fluid {
-  width: 100%;
+.container-fluid:hover i {
+  color: black;
+}
+
+/*Login con modal en el enlace del header*/
+.modal-footer {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.fa {
+  color: rgba(0, 0, 0, 0.69);
+}
+
+.icontainer {
+  display: flex;
+  padding: 0.25rem;
+  justify-content: right;
+}
+
+.input-group-text {
+  background-color: transparent;
+}
+
+.titleContain {
   display: flex;
 }
 
-.half {
-  width: 50%;
-  box-sizing: border-box;
-  padding: 20px;
+
+@media(max-width: 700px) {
+  .navContainer {
+    margin-bottom: 6%;
+    padding-left: 6%;
+    padding-right: 6%;
+  }
 }
 
-.half.right {
-  padding: 0;
-}
-
-.left {
-  background-color: #F2F2F2;
-  /* Color de fondo para la mitad izquierda */
-}
-
-.right {
-  background-color: #FFFFFF;
-  /* Color de fondo para la mitad derecha */
-}
-
-.findOnline {
-  font-size: 28px;
-  /* margin-top: 0; */
-}
-
-.img-fluid {
-  max-width: 100%;
-  height: auto;
-}
-
-@media (max-width: 767px) {
-
-  /* Ajustar para dispositivos móviles */
-  .half {
-    width: 100%;
+@media (max-width: 380px) {
+  .title {
+    font-size: 9.5vw;
   }
 
-  .left,
-  .right {
-    width: 100%;
+  .navbar-toggler {
+    font-size: 5vw;
   }
 
-  .left {
-    order: 2;
-    /* Cambiar el orden de las mitades */
+  .navContainer {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+}
+
+@media (max-width: 300px) {
+  .navContainer {
+    min-width: 300px;
   }
 }

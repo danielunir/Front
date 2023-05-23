@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PuntuacionService } from 'src/app/services/puntuacion.service';
 import { TeachersService } from 'src/app/services/teachers.service';
 
 @Component({
@@ -11,13 +12,20 @@ export class TeacherComponent {
   totalPages: number = 0;
   arrPages: number[] = [];
   currentPage: number = 0;
+
+  logados: boolean = true;
+
+  pageHome: boolean = false;
   constructor(
-    private teachersService: TeachersService
+    private teachersService: TeachersService,
+    private puntuacionService: PuntuacionService
   ) { }
 
   async ngOnInit() {
     this.teachers_list = [];
-    this.gotoPage();
+
+    (!this.pageHome) ? this.gotoPage() : this.bestScore();
+
   }
   async gotoPage(pNum: number = 1): Promise<void> {
     try {
@@ -33,6 +41,17 @@ export class TeacherComponent {
       }
     }
     catch (error) {
+      alert('No hay profesores disponibles en la BBDD');
+    }
+  }
+
+  async bestScore(): Promise<void> {
+    try {
+      const response = await this.puntuacionService.getBestScore();
+      console.log(response);
+      this.teachers_list = response;
+      }
+      catch (error) {
       alert('No hay profesores disponibles en la BBDD');
     }
   }

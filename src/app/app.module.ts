@@ -12,11 +12,24 @@ import { RegistroComponent } from './components/usuarios/registro/registro.compo
 import { FooterComponent } from './components/footer/footer.component';
 import { TeacherCardComponent } from './components/teacher/teacher-card/teacher-card.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
-import { LoginComponent } from './components/usuarios/login/login.component';
+import { ComoFuncionaComponent } from './components/como-funciona/como-funciona.component';
+import { GraficInfoComponent } from './components/grafic-info/grafic-info.component';
+import { FormUserComponent } from './components/form-user/form-user.component';
+import { FormPersonalComponent } from './components/form-personal/form-personal.component';
+import { FormPerfilTeacherComponent } from './components/form-perfil-teacher/form-perfil-teacher.component';
+import { FormPerfilAlumnoComponent } from './components/form-perfil-alumno/form-perfil-alumno.component';
+import { InfoUsuariosComponent } from './components/usuarios/info-usuarios/info-usuarios.component';
 import { StudentprofileComponent } from './components/profiles/studentprofile/studentprofile.component';
 import { TeacherprofileComponent } from './components/profiles/teacherprofile/teacherprofile.component';
 import { AdminprofileComponent } from './components/profiles/adminprofile/adminprofile.component';
-
+import { TeacherScoreCardComponent } from './components/teacher/teacher-score-card/teacher-score-card.component';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from 'src/environments/environments';
+import { MapaComponent } from './components/mapa/mapa.component';
+import { CountryViewComponent } from './components/country-view/country-view.component';
+import { TeacherScoreComponent } from './components/teacher-score/teacher-score.component';
+import { TeachersHomeLogadoComponent } from './components/teachers-home-logado/teachers-home-logado.component';
+import { TeachersHomeCardsComponent } from './components/teachers-home-cards/teachers-home-cards.component';
 
 
 
@@ -30,16 +43,29 @@ import { AdminprofileComponent } from './components/profiles/adminprofile/adminp
     FooterComponent,
     TeacherCardComponent,
     TeacherComponent,
-    LoginComponent,
+    FormUserComponent,
+    FormPersonalComponent,
+    FormPerfilTeacherComponent,
+    FormPerfilAlumnoComponent,
+    InfoUsuariosComponent,
+    ComoFuncionaComponent,
+    GraficInfoComponent,
     StudentprofileComponent,
     TeacherprofileComponent,
     AdminprofileComponent,
+    TeacherScoreCardComponent,
+    MapaComponent,
+    CountryViewComponent,
+    TeacherScoreComponent,
+    TeachersHomeLogadoComponent,
+    TeachersHomeCardsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot(environment.googleMaps)
   ],
   providers: [],
   bootstrap: [AppComponent]

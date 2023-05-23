@@ -8,6 +8,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class StudentprofileComponent {
 
+  logados: boolean = true;
   data: object = {}
 
   constructor(
