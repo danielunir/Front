@@ -13,14 +13,10 @@ import { AlumnosService } from 'src/app/services/alumnos.service';
 })
 export class HeaderComponent implements OnInit {
 
-  username: string = ''; // NO ESTÁ ASIGNADO
-
+  username: string = '';
   role: string = '';
-
-
-
-
   currentRoute: string = '';
+
 
   @Input() logado: boolean = false;
 
