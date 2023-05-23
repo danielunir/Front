@@ -5,12 +5,11 @@
         <h1 class="title" [routerLink]="['/home']"><i class="fa-solid fa-book"></i> TeacherApp</h1>
       </div>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" [ngClass]="{'justify-content-evenly': logados, 'justify-content-end': !logados}" id="navbarNavDropdown">
-        <p *ngIf="logados" class="pt-3">Bienvenido {{username}}</p>
+        <p *ngIf="logados" class="pt-3">Bienvenido</p>
         <ul class="navbar-nav">
           <li *ngIf="!logados" class="nav-item">
             <a class="nav-link active register" [routerLink]="['/registro']"><i class="fa-solid fa-address-card"></i>
@@ -19,14 +18,6 @@
           <li *ngIf="!logados" class="nav-item">
             <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
               <i class="fa-solid fa-user"></i> Login
-            </a>
-          </li>
-          <li *ngIf="logados" class="nav-item">
-            <a *ngIf="role === 'alumno'" [routerLink]="['/studentprofile']" class="nav-link">
-              <i class="fa-solid fa-lock"></i> Acceso a zona privada
-            </a>
-            <a *ngIf="role === 'profesor'" [routerLink]="['/teacherprofile']" class="nav-link">
-              <i class="fa-solid fa-lock"></i> Acceso a zona privada
             </a>
           </li>
           <li *ngIf="logados" class="nav-item">
@@ -47,8 +38,7 @@
           <div class="title-container">
             <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-book"></i> TeacherApp Login</h1>
           </div>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-            (click)="limpiarFormulario()"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="limpiarFormulario()"></button>
         </div>
         <div class="modal-body">
           <form class="mt-3" novalidate [formGroup]="formLogin" (ngSubmit)="onSubmit()">
@@ -69,12 +59,11 @@
               <div class="input-group">
                 <input type="password" class="form-control" formControlName="password" #passwordInput>
                 <span class="input-group-text">
-                  <i class="fa" [ngClass]="{'fa-eye-slash': showPassword, 'fa-eye': !showPassword}"
-                    (click)="toggleVisibility(passwordInput)"></i>
+                  <i class="fa" [ngClass]="{'fa-eye-slash': showPassword, 'fa-eye': !showPassword}" (click)="toggleVisibility(passwordInput)"></i>
                 </span>
               </div>
             </div>
-            <button [class]="formLogin.valid ? 'btn btn-primary enter' : 'text-orange'" [disabled]="!formLogin.valid">
+            <button [class]="formLogin.valid ? 'btn btn-primary enter' : 'text-orange'" [disabled]="!formLogin.valid" data-bs-dismiss="modal">
               {{formLogin.valid ? 'Entrar' : 'Introduzca sus datos'}}
             </button>
           </form>
