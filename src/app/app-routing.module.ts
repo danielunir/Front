@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'teachers', component: TeacherComponent },
   { path: 'login', component: LoginComponent },
   { path: 'studentprofile', component: StudentprofileComponent },
-  { path: 'teacherprofile', component: TeacherprofileComponent },
+  { path: 'teacherprofile/:teacherId', component: TeacherprofileComponent },
   { path: 'adminprofile', component: AdminprofileComponent },
   { path: '**', component: HomeComponent }
 ];
