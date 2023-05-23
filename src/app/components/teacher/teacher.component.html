@@ -1,4 +1,4 @@
-<app-header *ngIf="!pageHome"></app-header>
+<app-header *ngIf="!pageHome" [logados]="logados"></app-header>
 <div class="container-fluid d-flex flex-wrap gap-5 justify-content-center my-5">
   <div class="card" style="width: 18rem;" *ngFor="let current_teacher of teachers_list">
     <app-teacher-card *ngIf="!pageHome" [teacher]="current_teacher"></app-teacher-card>

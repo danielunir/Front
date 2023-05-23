@@ -13,7 +13,9 @@ export class TeacherComponent {
   arrPages: number[] = [];
   currentPage: number = 0;
 
-  pageHome: boolean = true;
+  logados: boolean = true;
+
+  pageHome: boolean = false;
   constructor(
     private teachersService: TeachersService,
     private puntuacionService: PuntuacionService
@@ -23,6 +25,7 @@ export class TeacherComponent {
     this.teachers_list = [];
 
     (!this.pageHome) ? this.gotoPage() : this.bestScore();
+
   }
   async gotoPage(pNum: number = 1): Promise<void> {
     try {

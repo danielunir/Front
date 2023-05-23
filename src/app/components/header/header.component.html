@@ -63,7 +63,7 @@
                 </span>
               </div>
             </div>
-            <button [class]="formLogin.valid ? 'btn btn-primary enter' : 'text-orange'" [disabled]="!formLogin.valid">
+            <button [class]="formLogin.valid ? 'btn btn-primary enter' : 'text-orange'" [disabled]="!formLogin.valid" data-bs-dismiss="modal">
               {{formLogin.valid ? 'Entrar' : 'Introduzca sus datos'}}
             </button>
           </form>
