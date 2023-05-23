@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -17,9 +17,7 @@ export class HeaderComponent {
 
   role: string = '';
 
-  logados: boolean = false;
-
-  @Output() logado = new EventEmitter<boolean>();
+  @Input() logados: boolean = false;
 
   formLogin: FormGroup;
 
@@ -56,7 +54,6 @@ export class HeaderComponent {
       const data = await this.profileService.getProfile();
 
       this.role = data.role;
-      this.logado.emit(true);
       this.logados = true;
 
       if (data.role === "alumno") {
@@ -66,7 +63,7 @@ export class HeaderComponent {
           return this.router.navigate(['/info-usuario']);
         }
 
-        return this.cerrar();
+        return this.router.navigate([`/studentprofile/${data.id}`]);
       }
       if (data.role === "profesor") {
         const personaldata = await this.teachersService.getByUserId(data.id);
@@ -75,9 +72,9 @@ export class HeaderComponent {
           return this.router.navigate(['/info-usuario']);
         }
 
-        return this.router.navigate(['/home']);
+        return this.router.navigate([`/teacherprofile/${data.id}`]);
       }
-      return this.router.navigate(['/adminprofile']);
+      return this.router.navigate([`/adminprofile/${data.id}`]);
 
     } catch (error) {
       console.log(error);

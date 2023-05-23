@@ -16,9 +16,9 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'info-usuario', component: InfoUsuariosComponent },
   { path: 'teachers', component: TeacherComponent },
-  { path: 'studentprofile', component: StudentprofileComponent },
-  { path: 'teacherprofile', component: TeacherprofileComponent },
-  { path: 'adminprofile', component: AdminprofileComponent },
+  { path: 'studentprofile/:studentId', component: StudentprofileComponent },
+  { path: 'teacherprofile/:teacherId', component: TeacherprofileComponent },
+  { path: 'adminprofile/:adminId', component: AdminprofileComponent },
   { path: '**', component: HomeComponent }
 ];
 

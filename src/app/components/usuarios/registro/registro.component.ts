@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent {
 
+  logados: boolean = false;
+
   insertId: number = 0;
   userRole: string = '';
 

@@ -8,6 +8,8 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class InfoUsuariosComponent implements OnInit {
 
+  logados: boolean = true;
+
   @ViewChild("t1")t1!: ElementRef;
   @ViewChild("t2")t2!: ElementRef;
 
@@ -25,7 +27,7 @@ export class InfoUsuariosComponent implements OnInit {
     const data = await this.profileService.getProfile();
 
     this.userId = data.id;
-    console.log(this.userId);
+    // console.log(this.userId);
     this.role = data.role;
   }
 
