@@ -1,1 +1,28 @@
-<p>adminprofile works!</p>
+<app-header [logados]="logados"></app-header>
+<div class="row">
+    <div class="p-5 border border-2 border-dark col-12 col-sm-4 col-md-2">
+        <h2>Administrar</h2>
+        <h5>Alumnos</h5>
+        <h5>Profesores</h5>
+    </div>
+    <div class="p-5 border border-2 border-dark col-12 col-sm-8 col-md-10">
+        <div class="container-fluid">
+            <h5>Perfil</h5>
+            <img src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="Teacher Image"
+                class="img-thumbnail w-25">
+            <div class="d-inline-block m-4 align-bottom">
+                <p>Seleccionar foto de perfil: </p>
+                <input class="btn btn-primary file-upload w-100" type="file">
+            </div>
+        </div>
+        <div class="row mt-4 justify-content-around">
+            <div class="col-12 col-sm-6 col-md-4">
+                <p>Nombre: Nombre y Apellidos</p>
+                <p>Nombre de usuario: Username</p>
+                <p>Método de identificación: correo@correo.com</p>
+                <p>Contraseña: *******</p>
+                <p>Rol: Administrador</p>
+            </div>
+        </div>
+    </div>
+</div>

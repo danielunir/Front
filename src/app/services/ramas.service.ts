@@ -13,7 +13,7 @@ export class RamasService {
     this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/clase';
   }
 
-  registroRamas(values: { usuario_id: number, materia: string  }){
+  registroRamas(values: { usuario_id: number, materia: string }) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token_login')!
@@ -22,6 +22,18 @@ export class RamasService {
 
     return firstValueFrom(
       this.httpClient.post<any>(`${this.baseUrl}/rama`, values, httpOptions)
+    )
+  }
+
+  getByUserId(userId: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_login')!
+      })
+    }
+
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/${userId}`, httpOptions)
     )
   }
 }

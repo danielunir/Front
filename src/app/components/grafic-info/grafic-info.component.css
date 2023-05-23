@@ -11,32 +11,41 @@
 
 .mapContainer {
   display: flex;
-  width: 65%;
+  height: 100%;
+  width: 75%;
+  min-width: 50%;
 
 }
 
 .map {
   width: 100%;
+  height: 100%;
 }
 
 .teacherContainer {
   display: flex;
-  width: 35%;
+  width: 25%;
+  max-width: 50%;
+  min-width: 368px;
+  height: 100%;
 }
 
 .teacher {
+  display: flex;
   width: 100%;
+  height: 100%;
 }
 
-/* Ajustar para dispositivos móviles */
 
-@media (max-width: 996px) {
+@media (max-width: 900px) {
 
   .mapAndTeachersContainer {
     flex-direction: column;
     align-items: center;
     height: 50rem;
-    gap: 2rem;
+    max-height: 85vh;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
 
   .mapContainer,
@@ -46,7 +55,13 @@
   }
 
   .mapContainer {
-    height: 40vh;
+    min-width: 323px;
+  }
+
+  .teacherContainer {
+    margin-left: 7%;
+    margin-right: 7%;
+    min-width: 323px;
   }
 
 }
