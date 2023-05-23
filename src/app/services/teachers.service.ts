@@ -48,7 +48,7 @@ export class TeachersService {
     )
   }
 
-  getByUserId(userId: number) {
+  getByUserId(userId: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token_login')!

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TeachersService } from 'src/app/services/teachers.service';
 
 @Component({
   selector: 'app-teacherprofile',
@@ -8,4 +9,15 @@ import { Component } from '@angular/core';
 export class TeacherprofileComponent {
 
   logados: boolean = true;
+  data: any = {}
+
+  constructor(
+    private teachersService: TeachersService,
+  ) {
+  }
+
+  async ngOnInit() {
+    const userId = localStorage.getItem('user_id')
+    this.data = await this.teachersService.getByUserId(userId);
+  }
 }
