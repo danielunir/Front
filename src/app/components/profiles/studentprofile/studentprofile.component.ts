@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-studentprofile',
@@ -8,5 +9,16 @@ import { Component } from '@angular/core';
 export class StudentprofileComponent {
 
   logados: boolean = true;
+  data: object = {}
+
+  constructor(
+    private profileService: ProfileService,
+  ) {
+  }
+
+  async onInit() {
+    this.data = await this.profileService.getProfile();
+    console.log(this.data)
+  }
 
 }
