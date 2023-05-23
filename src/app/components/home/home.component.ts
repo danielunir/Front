@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   }
 
   checkToken() {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token_login');
     this.logado = !!token;
   }
 
