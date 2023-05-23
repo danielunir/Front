@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class TeacherprofileComponent {
 
-  logados: boolean = true;
+  logado: boolean = true;
 }

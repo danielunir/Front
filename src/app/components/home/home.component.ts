@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   logado: boolean = false;
 
-  getLogado(event: boolean) {
-    this.logado = event
+  ngOnInit() {
+    this.checkToken();
+  }
+
+  checkToken() {
+    const token = localStorage.getItem('token');
+    this.logado = !!token;
   }
 
 }

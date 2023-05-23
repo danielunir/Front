@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
 import { TeachersService } from 'src/app/services/teachers.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
@@ -11,13 +11,18 @@ import { AlumnosService } from 'src/app/services/alumnos.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
-  username: string = '';
+  username: string = ''; // NO ESTÁ ASIGNADO
 
   role: string = '';
 
-  @Input() logados: boolean = false;
+
+
+
+  currentRoute: string = '';
+
+  @Input() logado: boolean = false;
 
   formLogin: FormGroup;
 
@@ -26,7 +31,8 @@ export class HeaderComponent {
     private teachersService: TeachersService,
     private alumnosService: AlumnosService,
     private profileService: ProfileService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.formLogin = new FormGroup({
       email: new FormControl('', [
@@ -37,24 +43,65 @@ export class HeaderComponent {
         Validators.required
       ])
     });
-
   }
+
+  ngOnInit() {
+    this.checkToken();
+    this.checkUserRole();
+    this.checkUsername();
+    this.route.url.subscribe(url => {
+      this.currentRoute = url[0].path;
+    });
+  }
+  checkToken() {
+    const token = localStorage.getItem('token_login');
+    this.logado = !!token;
+  }
+  checkUserRole() {
+    const role = localStorage.getItem('user_role');
+    this.role = role ? role : '';
+  }
+
+  checkUsername() {
+    const username = localStorage.getItem('username');
+    this.username = username ? username : '';
+  }
+
+  logOut() {
+    localStorage.removeItem('token_login');
+    localStorage.removeItem('user_role');
+    localStorage.removeItem('username');
+    this.usuariosService.changeLogin(false);
+    this.checkToken();
+    this.checkUserRole();
+    this.checkUsername();
+    this.router.navigate(['/home']);
+  }
+
+
 
   async onSubmit() {
     try {
       const response = await this.usuariosService.login(this.formLogin.value);
 
       if (response.fatal) {
+        this.formLogin.reset();
         return alert(response.fatal);
+
       }
+
 
       localStorage.setItem('token_login', response.token);
       this.usuariosService.changeLogin(true);
+      this.checkToken();
 
       const data = await this.profileService.getProfile();
 
-      this.role = data.role;
-      this.logados = true;
+
+      localStorage.setItem('user_role', data.role); // almacena el rol en el almacenamiento local
+      localStorage.setItem('username', data.username); // almacena el username en localStorage
+      this.logado = true;
+      this.username = data.username;
 
       if (data.role === "alumno") {
         const personaldata = await this.alumnosService.getByUserId(data.id);

@@ -13,7 +13,7 @@ export class TeacherComponent {
   arrPages: number[] = [];
   currentPage: number = 0;
 
-  logados: boolean = true;
+  logado: boolean = true;
 
   pageHome: boolean = false;
   constructor(
@@ -50,8 +50,8 @@ export class TeacherComponent {
       const response = await this.puntuacionService.getBestScore();
       console.log(response);
       this.teachers_list = response;
-      }
-      catch (error) {
+    }
+    catch (error) {
       alert('No hay profesores disponibles en la BBDD');
     }
   }

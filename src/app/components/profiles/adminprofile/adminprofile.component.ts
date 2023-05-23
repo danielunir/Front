@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AdminprofileComponent {
 
-  logados: boolean = true;
+  logado: boolean = true;
 }
