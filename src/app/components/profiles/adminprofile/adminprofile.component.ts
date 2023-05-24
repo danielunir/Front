@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -12,14 +13,17 @@ export class AdminprofileComponent {
   admin: any = {}
 
   constructor(
+    private activateRoute: ActivatedRoute,
     private adminService: AdminService
   ) {
   }
 
   async ngOnInit() {
-    const userId = localStorage.getItem('user_id');
-    this.admin = await this.adminService.getByUserId(userId);
-    console.log(this.admin)
+    this.activateRoute.params.subscribe(async (params: any) => {
+      let currentId: number = params.adminId;
+      let response: any = await this.adminService.getByUserId(currentId);
+      this.admin = response;
+    });
   }
 
 }
