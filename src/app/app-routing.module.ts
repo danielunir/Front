@@ -8,6 +8,7 @@ import { InfoUsuariosComponent } from './components/usuarios/info-usuarios/info-
 import { StudentprofileComponent } from './components/profiles/studentprofile/studentprofile.component';
 import { TeacherprofileComponent } from './components/profiles/teacherprofile/teacherprofile.component';
 import { AdminprofileComponent } from './components/profiles/adminprofile/adminprofile.component';
+import { TableInfoComponent } from './components/table-info/table-info.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'studentprofile/:studentId', component: StudentprofileComponent },
   { path: 'teacherprofile/:teacherId', component: TeacherprofileComponent },
   { path: 'adminprofile/:adminId', component: AdminprofileComponent },
+  { path: 'adminprofile/:adminId/tables/:tableType', component: TableInfoComponent },
   { path: '**', component: HomeComponent }
 ];
 

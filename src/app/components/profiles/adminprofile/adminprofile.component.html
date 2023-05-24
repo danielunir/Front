@@ -1,9 +1,9 @@
 <app-header [logados]="logados"></app-header>
 <div class="row">
     <div class="p-5 border border-2 border-dark col-12 col-sm-4 col-md-2">
-        <h2>Administrar</h2>
-        <h5>Alumnos</h5>
-        <h5>Profesores</h5>
+        <h2 [routerLink]="['/adminprofile', admin.id]" role="button">Administrar</h2>
+        <h5 [routerLink]="['/adminprofile', admin.id, 'tables', 'alumnos']" role="button">Alumnos</h5>
+        <h5 [routerLink]="['/adminprofile', admin.id, 'tables', 'profesores']" role="button">Profesores</h5>
     </div>
     <div class="p-5 border border-2 border-dark col-12 col-sm-8 col-md-10">
         <div class="container-fluid">
