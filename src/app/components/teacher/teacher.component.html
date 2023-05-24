@@ -1,4 +1,4 @@
-<app-header *ngIf="!pageHome" [logados]="logados"></app-header>
+<app-header *ngIf="!pageHome" [logado]="logado"></app-header>
 <div class="container-fluid d-flex flex-wrap gap-5 justify-content-center my-5">
   <div class="card" style="width: 18rem;" *ngFor="let current_teacher of teachers_list">
     <app-teacher-card *ngIf="!pageHome" [teacher]="current_teacher"></app-teacher-card>
@@ -8,7 +8,8 @@
 <div *ngIf="!pageHome" class="container-fluid d-flex flex-wrap gap-5 justify-content-center my-3">
   <nav class="d-flex justify-content-center mt-5">
     <ul class="pagination pagination-lg">
-      <li *ngFor="let pagina of arrPages" class="page-item"><button class="page-link" [ngClass]="{'active': (currentPage === pagina)}" (click)="gotoPage(pagina)">{{pagina}}</button>
+      <li *ngFor="let pagina of arrPages" class="page-item"><button class="page-link"
+          [ngClass]="{'active': (currentPage === pagina)}" (click)="gotoPage(pagina)">{{pagina}}</button>
       </li>
     </ul>
   </nav>

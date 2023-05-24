@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent {
 
-  logados: boolean = false;
+  logado: boolean = false;
 
   insertId: number = 0;
   userRole: string = '';
@@ -22,7 +22,7 @@ export class RegistroComponent {
   constructor(
     private renderer2: Renderer2,
     private router: Router
-    ) {
+  ) {
 
   }
 
