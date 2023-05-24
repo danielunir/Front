@@ -1,29 +1,56 @@
 <header>
-  <nav class="navContainer navbar navbar-expand-md custom-navbar navbar-light">
+  <nav class="navContainer navbar navbar-expand-md custom-navbar navbar-light" [ngClass]="{'logged-in': logado}">
     <div class="container-fluid">
       <div class="titleContain">
-        <h1 class="title" [routerLink]="['/home']"><i class="fa-solid fa-book"></i> TeacherApp</h1>
+        <h1 class="title" [routerLink]="['/home']" [ngClass]="{'logged-in': logado}"><i class="fa-solid fa-book"></i>
+          TeacherApp</h1>
       </div>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse"
-        [ngClass]="{'justify-content-evenly': logados, 'justify-content-end': !logados}" id="navbarNavDropdown">
-        <p *ngIf="logados" class="pt-3">Bienvenido</p>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <p *ngIf="logado && currentRoute !== 'home' && role !== 'admin'" class="pt-3 privateArea">Bienvenido a tu área
+          personal {{username}}
+        </p>
+        <p *ngIf="logado && currentRoute !== 'home' && role === 'admin'" class="pt-3 privateArea">Bienvenido al área de
+          administración {{username}}
+        </p>
         <ul class="navbar-nav">
-          <li *ngIf="!logados" class="nav-item">
-            <a class="nav-link active register" [routerLink]="['/registro']"><i class="fa-solid fa-address-card"></i>
+          <li *ngIf="!logado && currentRoute === 'home'; else privateAccess" class="nav-item">
+            <a class="nav-link active register" [routerLink]="['/registro']" [ngClass]="{'logged-in': logado}"><i
+                class="fa-solid fa-address-card"></i>
               Registro</a>
           </li>
-          <li *ngIf="!logados" class="nav-item">
-            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <ng-template #privateAccess>
+            <li *ngIf="logado && currentRoute === 'home'" class="nav-item">
+              <a *ngIf="role === 'alumno'" [routerLink]="['/studentprofile/{{data.id}}']" class="nav-link goPrivate"
+                [ngClass]="{'logged-in': logado}">
+                <i class="fa-solid fa-house-user"></i> Ir al área personal
+              </a>
+              <a *ngIf="role === 'profesor'" [routerLink]="['/teacherprofile/{{data.id}}']" class="nav-link goPrivate"
+                [ngClass]="{'logged-in': logado}">
+                <i class="fa-solid fa-house-user"></i> Ir al área personal
+              </a>
+              <a *ngIf="role === 'admin'" [routerLink]="['/adminprofile/{{data.id}}']" class="nav-link goPrivate"
+                [ngClass]="{'logged-in': logado}">
+                <i class="fa-solid fa-screwdriver-wrench"></i> Administrar
+              </a>
+
+
+            </li>
+          </ng-template>
+
+          <li *ngIf="!logado" class="nav-item">
+            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              [ngClass]="{'logged-in': logado}">
               <i class="fa-solid fa-user"></i> Login
             </a>
           </li>
-          <li *ngIf="logados" class="nav-item">
-            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+          <li *ngIf="logado" class="nav-item">
+            <a href="#" class="nav-link" (click)="logOut()" [ngClass]="{'logged-in': logado}">
               <i class="fa-solid fa-right-from-bracket"></i> Logout
             </a>
           </li>
@@ -38,7 +65,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <div class="title-container">
-            <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-book"></i> TeacherApp Login</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel" [ngClass]="{'logged-in': logado}"><i
+                class="fa-solid fa-book"></i> TeacherApp Login</h1>
           </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
             (click)="limpiarFormulario()"></button>
@@ -49,20 +77,13 @@
               <label class="form-label">Email</label>
               <input type="text" class="form-control" formControlName="email">
             </div>
-            <!--  <div class="mb-3">
-              <label class="form-label">Password</label>
-              <input type="password" class="form-control" formControlName="password" #passwordInput>
-              <div class="icontainer"><i class="fa cursor-pointer"
-                  [ngClass]="{'fa-eye-slash': showPassword, 'fa-eye': !showPassword}"
-                  (click)="toggleVisibility(passwordInput)"></i></div>
 
-            </div> -->
             <div class="mb-3">
               <label class="form-label">Password</label>
               <div class="input-group">
                 <input type="password" class="form-control" formControlName="password" #passwordInput>
                 <span class="input-group-text">
-                  <i class="fa" [ngClass]="{'fa-eye-slash': showPassword, 'fa-eye': !showPassword}"
+                  <i class="fa" [ngClass]="{'fa-eye-slash': showPassword, 'fa-eye': !showPassword, 'logged-in': logado}"
                     (click)="toggleVisibility(passwordInput)"></i>
                 </span>
               </div>
