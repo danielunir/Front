@@ -22,10 +22,6 @@ export class TeacherprofileComponent {
   async ngOnInit() {
     const userId = localStorage.getItem('user_id')
     this.data = await this.teachersService.getByUserId(userId);
-    const teacherId = this.data.id
-    console.log(teacherId)
     this.alumnos = await this.ramasService.getByUserId(userId);
-    console.log(this.alumnos)
-
   }
 }
