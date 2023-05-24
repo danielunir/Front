@@ -10,7 +10,7 @@ import { AlumnosService } from 'src/app/services/alumnos.service';
 export class StudentprofileComponent implements OnInit {
 
   logados: boolean = true;
-  data: any = {}
+  student: any = {}
 
   constructor(
     private alumnosService: AlumnosService,
@@ -19,7 +19,7 @@ export class StudentprofileComponent implements OnInit {
 
   async ngOnInit() {
     const userId = localStorage.getItem('user_id');
-    this.data = await this.alumnosService.getByUserId(userId);
+    this.student = await this.alumnosService.getByUserId(userId);
   }
 
 }

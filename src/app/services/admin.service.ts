@@ -14,7 +14,6 @@ export class AdminService {
   }
 
 
-
   getByUserId(userId: any) {
     const httpOptions = {
       headers: new HttpHeaders({
