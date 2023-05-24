@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { RamasService } from 'src/app/services/ramas.service';
 import { TeachersService } from 'src/app/services/teachers.service';
 
@@ -7,21 +9,27 @@ import { TeachersService } from 'src/app/services/teachers.service';
   templateUrl: './teacherprofile.component.html',
   styleUrls: ['./teacherprofile.component.css']
 })
-export class TeacherprofileComponent {
+export class TeacherprofileComponent implements OnInit {
+  teacher: any;
 
-  logados: boolean = true;
   data: any = {}
   alumnos: any = []
 
+  logados: boolean = true;
+
   constructor(
-    private teachersService: TeachersService,
+    private teacherService: TeachersService,
+    private activateRoute: ActivatedRoute,
     private ramasService: RamasService
-  ) {
-  }
+  ) { }
 
   async ngOnInit() {
     const userId = localStorage.getItem('user_id')
-    this.data = await this.teachersService.getByUserId(userId);
-    this.alumnos = await this.ramasService.getByUserId(userId);
+    this.activateRoute.params.subscribe(async (params: any) => {
+      let currentId: number = params.teacherId;
+      let response: any = await this.teacherService.getByUserId(currentId);
+      this.teacher = response;
+      console.log(this.teacher);
+    });
   }
 }
