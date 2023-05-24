@@ -37,5 +37,15 @@ export class AlumnosService {
     )
   }
 
+  getAllStudents() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_login')!
+      })
+    }
 
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}`, httpOptions)
+    )
+  }
 }
