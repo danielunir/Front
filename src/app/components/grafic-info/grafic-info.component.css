@@ -44,7 +44,8 @@
     align-items: center;
     height: 50rem;
     max-height: 85vh;
-    gap: 2rem;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
 
   .mapContainer,
