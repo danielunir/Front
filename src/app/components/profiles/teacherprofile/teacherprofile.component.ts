@@ -10,11 +10,9 @@ import { TeachersService } from 'src/app/services/teachers.service';
   styleUrls: ['./teacherprofile.component.css']
 })
 export class TeacherprofileComponent implements OnInit {
-  teacher: any;
 
-  data: any = {}
+  teacher: any = {}
   alumnos: any = []
-
   logados: boolean = true;
 
   constructor(
@@ -29,7 +27,7 @@ export class TeacherprofileComponent implements OnInit {
       let currentId: number = params.teacherId;
       let response: any = await this.teacherService.getByUserId(currentId);
       this.teacher = response;
-      console.log(this.teacher);
+      this.alumnos = await this.ramasService.getByUserId(currentId)
     });
   }
 }
