@@ -25,7 +25,6 @@ export class TeacherScoreComponent {
   async bestScore(): Promise<void> {
     try {
       const response = await this.puntuacionService.getBestScore();
-      console.log(response);
       this.teachers_list = response;
     }
     catch (error) {

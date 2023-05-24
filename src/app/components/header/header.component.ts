@@ -76,6 +76,7 @@ export class HeaderComponent {
 
         return this.router.navigate([`/teacherprofile/${data.id}`]);
       }
+
       return this.router.navigate([`/adminprofile/${data.id}`]);
 
     } catch (error) {
