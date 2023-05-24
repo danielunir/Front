@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 
 
@@ -13,13 +14,17 @@ export class StudentprofileComponent implements OnInit {
   student: any = {}
 
   constructor(
-    private alumnosService: AlumnosService,
+    private activateRoute: ActivatedRoute,
+    private alumnoService: AlumnosService,
   ) {
   }
 
   async ngOnInit() {
-    const userId = localStorage.getItem('user_id');
-    this.student = await this.alumnosService.getByUserId(userId);
+    this.activateRoute.params.subscribe(async (params: any) => {
+      let currentId: number = params.studentId;
+      let response: any = await this.alumnoService.getByUserId(currentId);
+      this.student = response;
+    });
   }
 
 }
