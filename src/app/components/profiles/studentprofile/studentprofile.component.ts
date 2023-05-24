@@ -1,24 +1,32 @@
-import { Component } from '@angular/core';
-import { ProfileService } from 'src/app/services/profile.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AlumnosService } from 'src/app/services/alumnos.service';
+
 
 @Component({
   selector: 'app-studentprofile',
   templateUrl: './studentprofile.component.html',
   styleUrls: ['./studentprofile.component.css']
 })
-export class StudentprofileComponent {
+export class StudentprofileComponent implements OnInit {
+
 
   logado: boolean = true;
-  data: object = {}
+  student: any = {}
+
 
   constructor(
-    private profileService: ProfileService,
+    private activateRoute: ActivatedRoute,
+    private alumnoService: AlumnosService,
   ) {
   }
 
-  async onInit() {
-    this.data = await this.profileService.getProfile();
-    console.log(this.data)
+  async ngOnInit() {
+    this.activateRoute.params.subscribe(async (params: any) => {
+      let currentId: number = params.studentId;
+      let response: any = await this.alumnoService.getByUserId(currentId);
+      this.student = response;
+    });
   }
 
 }

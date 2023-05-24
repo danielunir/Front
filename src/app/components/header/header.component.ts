@@ -92,12 +92,14 @@ export class HeaderComponent implements OnInit {
       this.checkToken();
 
       const data = await this.profileService.getProfile();
+      localStorage.setItem('user_id', data.id)
 
 
       localStorage.setItem('user_role', data.role); // almacena el rol en el almacenamiento local
       localStorage.setItem('username', data.username); // almacena el username en localStorage
       this.logado = true;
       this.username = data.username;
+
 
       if (data.role === "alumno") {
         const personaldata = await this.alumnosService.getByUserId(data.id);
@@ -117,6 +119,7 @@ export class HeaderComponent implements OnInit {
 
         return this.router.navigate([`/teacherprofile/${data.id}`]);
       }
+
       return this.router.navigate([`/adminprofile/${data.id}`]);
 
     } catch (error) {

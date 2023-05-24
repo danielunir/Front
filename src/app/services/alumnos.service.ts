@@ -25,7 +25,7 @@ export class AlumnosService {
     )
   }
 
-  getByUserId(userId: number) {
+  getByUserId(userId: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token_login')!
@@ -37,5 +37,15 @@ export class AlumnosService {
     )
   }
 
+  getAllStudents() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_login')!
+      })
+    }
 
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}`, httpOptions)
+    )
+  }
 }

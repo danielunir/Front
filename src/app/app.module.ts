@@ -30,6 +30,7 @@ import { CountryViewComponent } from './components/country-view/country-view.com
 import { TeacherScoreComponent } from './components/teacher-score/teacher-score.component';
 import { TeachersHomeLogadoComponent } from './components/teachers-home-logado/teachers-home-logado.component';
 import { TeachersHomeCardsComponent } from './components/teachers-home-cards/teachers-home-cards.component';
+import { TableInfoComponent } from './components/table-info/table-info.component';
 
 
 
@@ -59,6 +60,7 @@ import { TeachersHomeCardsComponent } from './components/teachers-home-cards/tea
     TeacherScoreComponent,
     TeachersHomeLogadoComponent,
     TeachersHomeCardsComponent,
+    TableInfoComponent,
   ],
   imports: [
     BrowserModule,

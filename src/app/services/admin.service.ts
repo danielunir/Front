@@ -5,25 +5,14 @@ import { firstValueFrom } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class RamasService {
+export class AdminService {
 
   private baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/clase';
+    this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/admin';
   }
 
-  registroRamas(values: { usuario_id: number, materia: string }) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('token_login')!
-      })
-    }
-
-    return firstValueFrom(
-      this.httpClient.post<any>(`${this.baseUrl}/rama`, values, httpOptions)
-    )
-  }
 
   getByUserId(userId: any) {
     const httpOptions = {
@@ -36,4 +25,8 @@ export class RamasService {
       this.httpClient.get<any>(`${this.baseUrl}/${userId}`, httpOptions)
     )
   }
+
+
 }
+
+
