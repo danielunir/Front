@@ -11,6 +11,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <p *ngIf="!logado && currentRoute === 'registro'" class="pt-3 registerNoLoged">Introduzca sus datos para
+          registrarse
+        </p>
         <p *ngIf="logado && currentRoute !== 'home' && role !== 'admin'" class="pt-3 privateArea">Bienvenido a tu área
           personal {{username}}
         </p>
@@ -25,15 +28,16 @@
           </li>
           <ng-template #privateAccess>
             <li *ngIf="logado && currentRoute === 'home'" class="nav-item">
-              <a *ngIf="role === 'alumno'" [routerLink]="['/studentprofile/{{data.id}}']" class="nav-link goPrivate"
+              <a *ngIf="role === 'alumno'" (click)="navigateToProfile()" class="nav-link goPrivate"
                 [ngClass]="{'logged-in': logado}">
                 <i class="fa-solid fa-house-user"></i> Ir al área personal
               </a>
-              <a *ngIf="role === 'profesor'" [routerLink]="['/teacherprofile/{{data.id}}']" class="nav-link goPrivate"
+
+              <a *ngIf="role === 'profesor'" (click)="navigateToProfile()" class="nav-link goPrivate"
                 [ngClass]="{'logged-in': logado}">
                 <i class="fa-solid fa-house-user"></i> Ir al área personal
               </a>
-              <a *ngIf="role === 'admin'" [routerLink]="['/adminprofile/{{data.id}}']" class="nav-link goPrivate"
+              <a *ngIf="role === 'admin'" (click)="navigateToProfile()" class="nav-link goPrivate"
                 [ngClass]="{'logged-in': logado}">
                 <i class="fa-solid fa-screwdriver-wrench"></i> Administrar
               </a>
