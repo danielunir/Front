@@ -13,6 +13,7 @@ export class StudentprofileComponent implements OnInit {
 
   logado: boolean = true;
   student: any = {}
+  teachers: any = []
 
 
   constructor(
@@ -26,6 +27,8 @@ export class StudentprofileComponent implements OnInit {
       let currentId: number = params.studentId;
       let response: any = await this.alumnoService.getByUserId(currentId);
       this.student = response;
+      this.teachers = await this.alumnoService.getAllTeachers(currentId)
+      console.log(this.teachers)
     });
   }
 
