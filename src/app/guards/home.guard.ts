@@ -1,22 +1,3 @@
-/* import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-
-@Injectable({
-    providedIn: 'root',
-})
-export class HomeGuard implements CanActivate {
-    constructor(private router: Router) { }
-
-    canActivate(): boolean {
-        const currentRoute = this.router.url;
-        if (currentRoute.includes('info-usuario')) {
-            return false;
-        }
-        return true;
-    }
-}
- */
-
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AlumnosService } from 'src/app/services/alumnos.service';
