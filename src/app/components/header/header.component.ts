@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   username: string = '';
   role: string = '';
   currentRoute: string = '';
+  userId: string = '';
 
 
   @Input() logado: boolean = false;
@@ -52,7 +53,12 @@ export class HeaderComponent implements OnInit {
   checkToken() {
     const token = localStorage.getItem('token_login');
     this.logado = !!token;
+    if (this.logado) {
+      const userId = localStorage.getItem('user_id');
+      this.userId = userId ? userId : '';
+    }
   }
+
   checkUserRole() {
     const role = localStorage.getItem('user_role');
     this.role = role ? role : '';
@@ -63,10 +69,22 @@ export class HeaderComponent implements OnInit {
     this.username = username ? username : '';
   }
 
+  navigateToProfile() {
+    if (this.role === 'alumno') {
+      this.router.navigate(['/studentprofile', this.userId]);
+    } else if (this.role === 'profesor') {
+      this.router.navigate(['/teacherprofile', this.userId]);
+    } else if (this.role === 'admin') {
+      this.router.navigate(['/adminprofile', this.userId]);
+    }
+  }
+
+
   logOut() {
     localStorage.removeItem('token_login');
     localStorage.removeItem('user_role');
     localStorage.removeItem('username');
+    localStorage.removeItem('user_id')
     this.usuariosService.changeLogin(false);
     this.checkToken();
     this.checkUserRole();
@@ -93,12 +111,11 @@ export class HeaderComponent implements OnInit {
 
       const data = await this.profileService.getProfile();
       localStorage.setItem('user_id', data.id)
-
-
       localStorage.setItem('user_role', data.role); // almacena el rol en el almacenamiento local
       localStorage.setItem('username', data.username); // almacena el username en localStorage
       this.logado = true;
       this.username = data.username;
+      this.userId = data.id;
 
 
       if (data.role === "alumno") {
@@ -150,6 +167,11 @@ export class HeaderComponent implements OnInit {
       this.showPassword = false;
     }
   }
+
+  isInfoUsuarioRoute() {
+    return this.currentRoute === 'info-usuario';
+  }
+
 
 
 
