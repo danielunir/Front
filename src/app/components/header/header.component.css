@@ -9,7 +9,8 @@
   background-color: whitesmoke;
 }
 
-.custom-navbar .nav-link,
+.nav-link,
+.register,
 .custom-navbar {
   font-size: 1.5rem;
   color: #0d47a1;
@@ -17,6 +18,16 @@
 }
 
 .register {
+  margin-right: 2rem;
+}
+
+.goPrivate {
+  cursor: pointer;
+  margin-right: 24px;
+}
+
+.privateArea {
+  color: rgb(0, 0, 0);
   margin-right: 2rem;
 }
 
@@ -116,6 +127,27 @@ i {
 .titleContain {
   display: flex;
 }
+
+.logged-in {
+  color: #FF5722;
+}
+
+.registerNoLoged {
+  margin-right: 5rem;
+}
+
+.info-user {
+  margin-right: 5rem;
+  color: rgba(0, 0, 0, 0.825);
+}
+
+.no-pointer {
+  cursor: default;
+}
+
+
+
+
 
 
 @media(max-width: 700px) {

@@ -8,10 +8,10 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class InfoUsuariosComponent implements OnInit {
 
-  logados: boolean = true;
+  logado: boolean = true;
 
-  @ViewChild("t1")t1!: ElementRef;
-  @ViewChild("t2")t2!: ElementRef;
+  @ViewChild("t1") t1!: ElementRef;
+  @ViewChild("t2") t2!: ElementRef;
 
   userId!: number;
   role: string = '';
@@ -43,7 +43,7 @@ export class InfoUsuariosComponent implements OnInit {
   }
 
   continue($event: any) {
-    if($event.target.attributes.for.value === 't2') {
+    if ($event.target.attributes.for.value === 't2') {
       this.enable();
     }
   }

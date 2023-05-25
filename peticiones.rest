@@ -13,4 +13,4 @@ Content-Type: application/json
 ###
 //GET PROFILE
 GET {{host}}/api/users/profile
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMjEsImV4cCI6MTY4MzY1OTU3NywiaWF0IjoxNjgzNjU5Mjc3fQ.mGHu-RpLDiuU4tJzVD7cVY0yE1k6IqrnxtuTfph8ElI
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMjEsImV4cCI6MTY4NDg4Njc3NiwiaWF0IjoxNjg0ODcyMzc2fQ.RrRbp8LRHaetNmPnEpyTREvIBIhEcc7hUqMftmPCdYk

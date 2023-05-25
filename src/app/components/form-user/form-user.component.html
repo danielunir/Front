@@ -26,7 +26,8 @@
       <label class="form-label">Password</label>
       <input type="password" class="form-control" formControlName="password">
       <p class="error" *ngIf="checkControl('password', 'required')">El campo es requerido</p>
-      <p class="error" *ngIf="checkControl('password', 'pattern')">Al menos dos letras, un numero y un caracter especial. Sin espacios. Entre 8 y 15 caracteres</p>
+      <p class="error" *ngIf="checkControl('password', 'pattern')">Al menos dos letras, un numero y un caracter
+        especial. Sin espacios. Entre 8 y 15 caracteres</p>
     </div>
     <div class="mb-3 col-12 col-md-6">
       <label class="form-label">Confirme el Password</label>
@@ -37,13 +38,16 @@
   </div>
   <div class="mb-3">
     <input type="checkbox" class="checkbox" formControlName="acepta">
-    <label class="form-label small-text">He leído y estoy de acuerdo con los <span class="text-decoration-underline" [routerLink]="['/home']" role="button">Términos y Condiciones</span> y la <span class="text-decoration-underline" [routerLink]="['/home']" role="button">Política de Privacidad</span> de TeacherApp</label>
+    <label class="form-label small-text">Acepto los <span class="text-decoration-underline" [routerLink]="['/home']"
+        role="button">Términos y Condiciones</span> y la <span class="text-decoration-underline"
+        [routerLink]="['/home']" role="button">Política de Privacidad</span> de TeacherApp</label>
     <p class="error" *ngIf="checkControl('acepta', 'required')">El campo es requerido</p>
   </div>
   <div class="mb-3">
     <p class="text-end small-text">* Todos los campos son obligatorios</p>
     <!-- <label class="form-label btn btn-primary" for="t2" (click)="continue($event)">Continuar</label> -->
-    <input class="form-control" type="submit" value="Continuar" class="btn btn-primary" for="t2" (click)="onContinuar($event)" [disabled]="!formRegisterUsuario.valid">
+    <input class="form-control" type="submit" value="Continuar" class="btn btn-primary" for="t2"
+      (click)="onContinuar($event)" [disabled]="!formRegisterUsuario.valid">
   </div>
 
 </form>

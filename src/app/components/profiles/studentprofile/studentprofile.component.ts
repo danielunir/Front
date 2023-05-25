@@ -10,8 +10,10 @@ import { AlumnosService } from 'src/app/services/alumnos.service';
 })
 export class StudentprofileComponent implements OnInit {
 
-  logados: boolean = true;
+
+  logado: boolean = true;
   student: any = {}
+
 
   constructor(
     private activateRoute: ActivatedRoute,

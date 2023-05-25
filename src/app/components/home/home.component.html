@@ -2,10 +2,8 @@
   <div class="rowContainer">
     <app-grafic-info></app-grafic-info>
     <app-como-funciona></app-como-funciona>
-    <!-- <app-teacher></app-teacher> -->
-    <app-unete></app-unete>
+    <app-unete *ngIf="!logado"></app-unete>
   </div>
   <div class="footerContainer"><app-footer></app-footer>
   </div>
 </div>
-

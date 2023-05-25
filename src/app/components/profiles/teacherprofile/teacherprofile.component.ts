@@ -11,9 +11,11 @@ import { TeachersService } from 'src/app/services/teachers.service';
 })
 export class TeacherprofileComponent implements OnInit {
 
+
+  logado: boolean = true;
   teacher: any = {}
   alumnos: any = []
-  logados: boolean = true;
+
 
   constructor(
     private teacherService: TeachersService,
@@ -30,4 +32,5 @@ export class TeacherprofileComponent implements OnInit {
       this.alumnos = await this.ramasService.getByUserId(currentId)
     });
   }
+
 }
