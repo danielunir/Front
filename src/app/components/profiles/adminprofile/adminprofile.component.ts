@@ -9,7 +9,7 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class AdminprofileComponent {
 
-  logados: boolean = true;
+  logado: boolean = true;
   admin: any = {}
 
   constructor(
@@ -25,6 +25,7 @@ export class AdminprofileComponent {
       this.admin = response;
     });
   }
+
 
 }
 

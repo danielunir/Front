@@ -10,7 +10,7 @@ import { TeachersService } from 'src/app/services/teachers.service';
   styleUrls: ['./table-info.component.css']
 })
 export class TableInfoComponent implements OnInit {
-  logados: boolean = true;
+  logado: boolean = true;
   admin: any = {}
   studentList: [] = [];
   teacherList: [] = [];
