@@ -2,7 +2,8 @@
   <nav class="navContainer navbar navbar-expand-md custom-navbar navbar-light" [ngClass]="{'logged-in': logado}">
     <div class="container-fluid">
       <div class="titleContain">
-        <h1 class="title" [routerLink]="['/home']" [ngClass]="{'logged-in': logado}"><i class="fa-solid fa-book"></i>
+        <h1 class="title" [routerLink]="['/home']"
+          [ngClass]="{'logged-in': logado, 'no-pointer': isInfoUsuarioRoute()}"><i class="fa-solid fa-book"></i>
           TeacherApp</h1>
       </div>
 
@@ -14,15 +15,18 @@
         <p *ngIf="!logado && currentRoute === 'registro'" class="pt-3 registerNoLoged">Introduzca sus datos para
           registrarse
         </p>
-        <p *ngIf="logado && currentRoute !== 'home' && role !== 'admin'" class="pt-3 privateArea">Bienvenido a tu área
-          personal {{username}}
-        </p>
+        <p *ngIf="logado && currentRoute !== 'home' && currentRoute !== 'info-usuario' && role !== 'admin'"
+          class="pt-3 privateArea">Bienvenido a tu área personal {{username}}</p>
+
+        <p *ngIf="logado && currentRoute === 'info-usuario' && role !== 'admin'" class="pt-3 privateArea">Completa tu
+          perfil {{username}}</p>
+
         <p *ngIf="logado && currentRoute !== 'home' && role === 'admin'" class="pt-3 privateArea">Bienvenido al área de
-          administración {{username}}
-        </p>
+          administración {{username}}</p>
+
         <ul class="navbar-nav">
           <li *ngIf="!logado && currentRoute === 'home'; else privateAccess" class="nav-item">
-            <a class="nav-link active register" [routerLink]="['/registro']" [ngClass]="{'logged-in': logado}"><i
+            <a class="nav-link register" [routerLink]="['/registro']" [ngClass]="{'logged-in': logado}"><i
                 class="fa-solid fa-address-card"></i>
               Registro</a>
           </li>
