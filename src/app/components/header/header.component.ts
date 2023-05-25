@@ -168,6 +168,11 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  isInfoUsuarioRoute() {
+    return this.currentRoute === 'info-usuario';
+  }
+
+
 
 
 }
