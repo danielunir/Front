@@ -3,6 +3,12 @@
   <div class="p-5 border border-2 border-dark col-12 col-sm-4 col-md-2">
     <h2>Gestionar</h2>
     <h5>Mis Profesores</h5>
+    <ul class="list-group">
+      <li *ngFor="let teacher of teachers; let i=index" class="list-group-item">
+        {{teachers[i].datos_per.nombre}}
+        {{teachers[i].datos_per.apellidos}}
+      </li>
+    </ul>
   </div>
   <div class="p-5 border border-2 border-dark col-12 col-sm-8 col-md-10">
     <div class="container-fluid">
