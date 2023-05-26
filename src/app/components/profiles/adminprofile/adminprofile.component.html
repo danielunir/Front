@@ -1,27 +1,64 @@
 <app-header [logado]="logado"></app-header>
-<div class="row">
-    <div class="p-5 border border-2 border-dark col-12 col-sm-4 col-md-2">
-        <h2 [routerLink]="['/adminprofile', admin.id]" role="button">Administrar</h2>
-        <h5 [routerLink]="['/adminprofile', admin.id, 'tables', 'alumnos']" role="button">Alumnos</h5>
-        <h5 [routerLink]="['/adminprofile', admin.id, 'tables', 'profesores']" role="button">Profesores</h5>
-    </div>
-    <div class="p-5 border border-2 border-dark col-12 col-sm-8 col-md-10">
-        <div class="container-fluid">
-            <h5>Perfil</h5>
-            <img src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="Teacher Image"
-                class="img-thumbnail w-25">
-            <div class="d-inline-block m-4 align-bottom">
-                <p>Seleccionar foto de perfil: </p>
-                <input class="btn btn-primary file-upload w-100" type="file">
+<div class="all">
+    <div class="contentRow">
+
+        <div class="options">
+
+            <!-- <h2 [routerLink]="['/adminprofile', admin.id]" role="button">Administrar</h2> -->
+            <div class="adminName">
+                <h2>Administrador {{username}}</h2>
+            </div>
+            <div class="links">
+                <div class="link">
+                    <h5 [routerLink]="['/adminprofile', admin.id]" role="button">Mi perfil</h5>
+                </div>
+                <div class="link">
+                    <h5 [routerLink]="['/adminprofile', admin.id, 'tables', 'alumnos']" role="button">Alumnos</h5>
+                </div>
+                <div class="link">
+                    <h5 [routerLink]="['/adminprofile', admin.id, 'tables', 'profesores']" role="button">Profesores</h5>
+                </div>
+
+
+
+            </div>
+
+        </div>
+        <div class="content">
+            <div class="variableContent">
+                <div class="picture">
+                    <div class="perfil">
+                        <h5>Perfil</h5>
+                    </div>
+                    <img src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="Teacher Image"
+                        class="img-thumbnail">
+                    <!--   <div class="charge">
+                    <div class="texto">
+                        <p class="btn btn-outline-secondary p-1">Seleccionar imagen</p>
+                    </div>
+                    <div class="upload"><input class="btn btn-primary file-upload" type="file"></div>
+                </div>
+            </div> -->
+                    <div class="charge">
+                        <div class="texto">
+                            <button class="btn btn-outline-secondary p-1" (click)="fileInput.click()">Seleccionar
+                                imagen</button>
+                        </div>
+                        <div class="upload">
+                            <input #fileInput class="btn btn-primary file-upload" type="file" style="display: none;">
+                        </div>
+                    </div>
+
+
+                    <div class="data">
+                        <div class="dataB">
+                            <p>Nombre: {{admin.nombre}} {{admin.apellidos}}</p>
+                            <p>Nombre de usuario: {{admin.username}}</p>
+                            <p>Método de identificación: {{admin.email}}</p>
+                            <p>Rol: Administrador</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row mt-4 justify-content-around">
-            <div class="col-12 col-sm-6 col-md-4">
-                <p>Nombre: {{admin.nombre}} {{admin.apellidos}}</p>
-                <p>Nombre de usuario: {{admin.username}}</p>
-                <p>Método de identificación: {{admin.email}}</p>
-                <p>Rol: Administrador</p>
-            </div>
-        </div>
     </div>
-</div>

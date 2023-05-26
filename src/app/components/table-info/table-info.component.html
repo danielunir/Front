@@ -2,6 +2,7 @@
 <div class="row">
     <div class="p-5 border border-2 border-dark col-12 col-sm-4 col-md-2">
         <h2 [routerLink]="['/adminprofile', admin.id]" role="button">Administrar</h2>
+        <h5 [routerLink]="['/adminprofile', admin.id]" role="button">Mi perfil</h5>
         <h5 [routerLink]="['/adminprofile', admin.id, 'tables', 'alumnos']" role="button">Alumnos</h5>
         <h5 [routerLink]="['/adminprofile', admin.id, 'tables', 'profesores']" role="button">Profesores</h5>
     </div>
@@ -9,7 +10,7 @@
         <h5 *ngIf="this.profType === 'alumnos'">Alumnos</h5>
         <h5 *ngIf="this.profType === 'profesores'">Profesores</h5>
         <div class="table-responsive">
-            <table class="table table-hover table-bordered">
+            <table *ngIf="dataLoaded" class="table table-hover table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -18,7 +19,7 @@
                         <th scope="col">Ciudad</th>
                         <th scope="col">Teléfono</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Fecha Nacimiento</th>
+                        <th scope="col">Nacimiento</th>
                         <th scope="col" *ngIf="this.profType === 'alumnos'">Estudia</th>
                         <th scope="col" *ngIf="this.profType === 'profesores'">Cuota</th>
                         <th scope="col" *ngIf="this.profType === 'profesores'">Experiencia</th>
