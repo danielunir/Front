@@ -1,30 +1,31 @@
 .rowContainer {
 
-    display: flex;
-    flex-direction: column;
-    min-width: 300px;
-    max-width: 1550px;
-    margin: 0px auto;
-    padding: 0px;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  max-width: 1550px;
+  margin: 0px auto;
+  padding: 0px;
+  min-height: 73.1vh;
 }
 
 @media (min-height: 1640px) {
+  .footerContainer {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+
+  .x {
+    min-width: 1600px;
+  }
+
+  @media (max-width: 900px) {
     .footerContainer {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        width: 100%;
-        bottom: 0;
+      position: unset;
     }
-
-    .x {
-        min-width: 1600px;
-    }
-
-    @media (max-width: 900px) {
-        .footerContainer {
-            position: unset;
-        }
-    }
+  }
 
 }
