@@ -1,13 +1,17 @@
 .teacher {
     display: flex;
-    border: 1px solid black
+    border: 1px solid black;
+    margin-bottom: 2rem;
+    width: 50rem;
 }
 
 .teacher_img {
-    width: 10rem;
-    height: 10rem;
+    width: 5rem;
+    height: 5rem;
 }
 
 .teacher_data {
-    flex-grow: 0;
+    width: 100%;
+    padding: 1rem;
+    align-items: space-between;
 }
