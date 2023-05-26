@@ -1,0 +1,27 @@
+<app-header [logado]="logado"></app-header>
+<div class="row">
+    <div class="p-5 border border-2 border-dark col-12 col-sm-4 col-md-2">
+        <h2>Mis profesores</h2>
+    </div>
+    <div class="p-5 border border-2 border-dark col-12 col-sm-8 col-md-10">
+        <div class="teacher" *ngFor="let teacher of teachers; let i=index">
+            <div class="teacher_img">
+                <img class="" [src]="teachers[i].datos_per.foto" [alt]="teachers[i].datos_per.nombre"
+                    class="img-thumbnail w-25">
+            </div>
+            <div class="teacher_data">
+                <p>{{teachers[i].datos_per.nombre}} {{teachers[i].datos_per.apellidos}}
+                    {{teachers[i].cuota}} €/h</p>
+                <div class="d-flex flex-row justify-content-between">
+                    <p>
+                        {{teachers[i].datos_per.telefono}}
+                    </p>
+                    <p>
+                        {{teachers[i].datos_per.email}}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

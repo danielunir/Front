@@ -1,0 +1,13 @@
+.teacher {
+    display: flex;
+    border: 1px solid black
+}
+
+.teacher_img {
+    width: 10rem;
+    height: 10rem;
+}
+
+.teacher_data {
+    flex-grow: 0;
+}
