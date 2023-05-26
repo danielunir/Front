@@ -31,6 +31,8 @@ import { TeacherScoreComponent } from './components/teacher-score/teacher-score.
 import { TeachersHomeLogadoComponent } from './components/teachers-home-logado/teachers-home-logado.component';
 import { TeachersHomeCardsComponent } from './components/teachers-home-cards/teachers-home-cards.component';
 import { TableInfoComponent } from './components/table-info/table-info.component';
+import { TeachersOfAlumnoComponent } from './components/teachers-of-alumno/teachers-of-alumno.component';
+import { AlumnosOfTeacherComponent } from './components/alumnos-of-teacher/alumnos-of-teacher.component';
 
 
 
@@ -61,6 +63,8 @@ import { TableInfoComponent } from './components/table-info/table-info.component
     TeachersHomeLogadoComponent,
     TeachersHomeCardsComponent,
     TableInfoComponent,
+    TeachersOfAlumnoComponent,
+    AlumnosOfTeacherComponent,
   ],
   imports: [
     BrowserModule,
