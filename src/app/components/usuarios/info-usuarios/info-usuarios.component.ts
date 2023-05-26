@@ -13,6 +13,8 @@ export class InfoUsuariosComponent implements OnInit {
   @ViewChild("t1") t1!: ElementRef;
   @ViewChild("t2") t2!: ElementRef;
 
+  @ViewChild("lbt2") lbt2!: ElementRef;
+
   userId!: number;
   role: string = '';
 
@@ -40,6 +42,7 @@ export class InfoUsuariosComponent implements OnInit {
     this.renderer2.removeAttribute(this.t2.nativeElement, "disabled");
     this.renderer2.setAttribute(this.t2.nativeElement, 'checked', 'true');
     this.renderer2.removeAttribute(this.t1.nativeElement, 'checked');
+    this.renderer2.setAttribute(this.lbt2.nativeElement, 'style', 'display: inline-block')
   }
 
   continue($event: any) {
