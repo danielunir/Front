@@ -12,9 +12,14 @@ export class TeacherScoreComponent {
   teachers_list: any;
 
   pageHome: boolean = true;
+
+  loading: boolean;
+
   constructor(
     private puntuacionService: PuntuacionService
-  ) { }
+  ) {
+      this.loading = true;
+   }
 
   async ngOnInit() {
     this.teachers_list = [];
@@ -26,6 +31,7 @@ export class TeacherScoreComponent {
     try {
       const response = await this.puntuacionService.getBestScore();
       this.teachers_list = response;
+      this.loading = false;
     }
     catch (error) {
       alert('No hay profesores disponibles en la BBDD');

@@ -31,6 +31,7 @@ import { TeacherScoreComponent } from './components/teacher-score/teacher-score.
 import { TeachersHomeLogadoComponent } from './components/teachers-home-logado/teachers-home-logado.component';
 import { TeachersHomeCardsComponent } from './components/teachers-home-cards/teachers-home-cards.component';
 import { TableInfoComponent } from './components/table-info/table-info.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 
@@ -61,6 +62,7 @@ import { TableInfoComponent } from './components/table-info/table-info.component
     TeachersHomeLogadoComponent,
     TeachersHomeCardsComponent,
     TableInfoComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

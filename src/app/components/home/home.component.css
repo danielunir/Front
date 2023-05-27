@@ -6,7 +6,7 @@
   max-width: 1550px;
   margin: 0px auto;
   padding: 0px;
-  min-height: 73.1vh;
+  /* min-height: 73.1vh; */
 }
 
 @media (min-height: 1640px) {
