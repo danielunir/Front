@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AdminService } from 'src/app/services/admin.service';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { TeachersService } from 'src/app/services/teachers.service';
@@ -9,12 +10,14 @@ import { TeachersService } from 'src/app/services/teachers.service';
   templateUrl: './table-info.component.html',
   styleUrls: ['./table-info.component.css']
 })
-export class TableInfoComponent implements OnInit {
+export class TableInfoComponent implements OnInit, OnDestroy {
   logado: boolean = true;
   admin: any = {}
   studentList: [] = [];
   teacherList: [] = [];
   profType: string = '';
+  dataLoaded: boolean = false;
+  private subscription: Subscription | null = null;
 
   constructor(
     private studentsService: AlumnosService,
@@ -24,18 +27,32 @@ export class TableInfoComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.activateRoute.params.subscribe(async (params: any) => {
+    this.subscription = this.activateRoute.params.subscribe(async (params: any) => {
       let currentId: number = params.adminId;
       this.profType = params.tableType;
-      let response: any = await this.adminService.getByUserId(currentId);
-      this.admin = response;
-    });
 
-    const studentsResponse = await this.studentsService.getAllStudents();
-    const teacherResponse = await this.teachersService.getAll();
-    this.studentList = studentsResponse.results;
-    this.teacherList = teacherResponse.results;
-    console.log(this.studentList);
-    console.log(this.teacherList);
+      try {
+        let response: any = await this.adminService.getByUserId(currentId);
+        this.admin = response;
+
+        if (this.profType === 'alumnos') {
+          const studentsResponse = await this.studentsService.getAllStudents();
+          this.studentList = studentsResponse.results;
+        } else if (this.profType === 'profesores') {
+          const teacherResponse = await this.teachersService.getAll();
+          this.teacherList = teacherResponse.results;
+        }
+
+        this.dataLoaded = true;
+      } catch (error) {
+        console.error('Error obteniendo datos:', error);
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
