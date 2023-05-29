@@ -10,7 +10,13 @@ import { AdminService } from 'src/app/services/admin.service';
 export class AdminprofileComponent {
 
   logado: boolean = true;
-  admin: any = {}
+  admin: any = {};
+  username: string = '';
+
+  checkUsername() {
+    const username = localStorage.getItem('username');
+    this.username = username ? username : '';
+  }
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -19,6 +25,8 @@ export class AdminprofileComponent {
   }
 
   async ngOnInit() {
+    this.checkUsername();
+
     this.activateRoute.params.subscribe(async (params: any) => {
       let currentId: number = params.adminId;
       let response: any = await this.adminService.getByUserId(currentId);

@@ -10,6 +10,8 @@ import { StudentprofileComponent } from './components/profiles/studentprofile/st
 import { TeacherprofileComponent } from './components/profiles/teacherprofile/teacherprofile.component';
 import { AdminprofileComponent } from './components/profiles/adminprofile/adminprofile.component';
 import { TableInfoComponent } from './components/table-info/table-info.component';
+import { TeachersOfAlumnoComponent } from './components/teachers-of-alumno/teachers-of-alumno.component';
+import { AlumnosOfTeacherComponent } from './components/alumnos-of-teacher/alumnos-of-teacher.component';
 
 
 const routes: Routes = [
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'teacherprofile/:teacherId', component: TeacherprofileComponent },
   { path: 'adminprofile/:adminId', component: AdminprofileComponent },
   { path: 'adminprofile/:adminId/tables/:tableType', component: TableInfoComponent },
+  { path: 'studentprofile/:studentId/tables/:profesores', component: TeachersOfAlumnoComponent },
+  { path: 'teacherprofile/:teacherId/tables/:alumnos', component: AlumnosOfTeacherComponent },
   { path: '**', component: HomeComponent }
 ];
 
