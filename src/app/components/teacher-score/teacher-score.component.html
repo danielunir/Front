@@ -3,6 +3,7 @@
     <div *ngFor="let current_teacher of teachers_list; let i = index" class="carousel-item" [class.active]="i == 0">
       <app-teacher-score-card class="card d-block w-100" [teacher]="current_teacher"></app-teacher-score-card>
     </div>
+    <app-spinner *ngIf="loading"></app-spinner>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UneteComponent } from './components/unete/unete.component';
@@ -31,8 +31,12 @@ import { TeacherScoreComponent } from './components/teacher-score/teacher-score.
 import { TeachersHomeLogadoComponent } from './components/teachers-home-logado/teachers-home-logado.component';
 import { TeachersHomeCardsComponent } from './components/teachers-home-cards/teachers-home-cards.component';
 import { TableInfoComponent } from './components/table-info/table-info.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SearchTeacherComponent } from './components/search-teacher/search-teacher.component';
+import { FilterMateriaPipe } from './pipes/filter-materia.pipe';
 import { TeachersOfAlumnoComponent } from './components/teachers-of-alumno/teachers-of-alumno.component';
 import { AlumnosOfTeacherComponent } from './components/alumnos-of-teacher/alumnos-of-teacher.component';
+
 
 
 
@@ -63,6 +67,9 @@ import { AlumnosOfTeacherComponent } from './components/alumnos-of-teacher/alumn
     TeachersHomeLogadoComponent,
     TeachersHomeCardsComponent,
     TableInfoComponent,
+    SpinnerComponent,
+    SearchTeacherComponent,
+    FilterMateriaPipe,
     TeachersOfAlumnoComponent,
     AlumnosOfTeacherComponent,
   ],
@@ -71,6 +78,7 @@ import { AlumnosOfTeacherComponent } from './components/alumnos-of-teacher/alumn
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     AgmCoreModule.forRoot(environment.googleMaps)
   ],
   providers: [],

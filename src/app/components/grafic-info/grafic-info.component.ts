@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class GraficInfoComponent {
 
+  search: boolean = false;
+
 }
