@@ -13,6 +13,8 @@ export class StudentprofileComponent implements OnInit {
 
   logado: boolean = true;
   student: any = {}
+  teachers: any = []
+  currentId: number = 0
 
 
   constructor(
@@ -23,8 +25,8 @@ export class StudentprofileComponent implements OnInit {
 
   async ngOnInit() {
     this.activateRoute.params.subscribe(async (params: any) => {
-      let currentId: number = params.studentId;
-      let response: any = await this.alumnoService.getByUserId(currentId);
+      this.currentId = params.studentId;
+      let response: any = await this.alumnoService.getByUserId(this.currentId);
       this.student = response;
     });
   }
