@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UneteComponent } from './components/unete/unete.component';
@@ -32,6 +32,9 @@ import { TeachersHomeLogadoComponent } from './components/teachers-home-logado/t
 import { TeachersHomeCardsComponent } from './components/teachers-home-cards/teachers-home-cards.component';
 import { TableInfoComponent } from './components/table-info/table-info.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SearchTeacherComponent } from './components/search-teacher/search-teacher.component';
+import { FilterMateriaPipe } from './pipes/filter-materia.pipe';
+
 
 
 
@@ -63,12 +66,15 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     TeachersHomeCardsComponent,
     TableInfoComponent,
     SpinnerComponent,
+    SearchTeacherComponent,
+    FilterMateriaPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     AgmCoreModule.forRoot(environment.googleMaps)
   ],
   providers: [],
