@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, mergeMap, switchMap } from 'rxjs/operators';
 import { Teacher } from 'src/app/interfaces/teacher.interface';
 import { CountriesService } from 'src/app/services/countries.service';
+import { TeachersService } from 'src/app/services/teachers.service';
 
 @Component({
   selector: 'app-mapa',
@@ -20,7 +21,18 @@ export class MapaComponent implements OnInit {
 
   teachersPositions: Teacher[] = [];
 
-  constructor(private countriesService: CountriesService) {
+  @Input() search!: boolean;
+
+  teachers_list: any;
+
+  totalPages: number = 0;
+  arrPages: number[] = [];
+  currentPage: number = 0;
+
+  constructor(
+    private countriesService: CountriesService,
+    private teachersService: TeachersService
+    ) {
   }
 
 
@@ -36,19 +48,55 @@ export class MapaComponent implements OnInit {
 
       } else {
         this.geolocal = true;
-        const address = await this.countriesService.getDireccion(this.lat, this.long)
 
-        this.address = { "direccion": address.results[0].formatted_address }
+        try {
+          const address = await this.countriesService.getDireccion(this.lat, this.long)
 
+          this.address = { "direccion": address.results[0].formatted_address }
+        } catch (error) {
+          console.log(error);
+        }
       }
 
-        const teacher = await this.countriesService.getTeachersNearby(this.address)
+      if(!this.search) {
+        try {
+          const teacher = await this.countriesService.getTeachersNearby(this.address)
 
-        this.teachersPositions = teacher;
+          this.teachersPositions = teacher;
+
+          this.teachersPositions[2]?.latitud
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        this.teachers()
+      }
+    });
+
+    this.teachers_list = [];
+  }
+
+  async teachers(pNum: number = 1): Promise<void> {
+    try {
+      let result: any = await this.teachersService.getTeachersHome(pNum);
+      this.currentPage = result.page;
+        this.totalPages = result.totalPages;
+        this.teachers_list = result.results;
+
+        this.teachersPositions = result.results;
 
         this.teachersPositions[2]?.latitud
 
-    });
+        console.log(result);
+        if (this.arrPages.length !== this.totalPages) {
+          this.arrPages = [];
+          for (let i = 1; i <= this.totalPages; i++) {
+            this.arrPages.push(i);
+          }
+        }
+    } catch (error) {
+      alert('No hay profesores disponibles en la BBDD');
+    }
   }
 
 }
