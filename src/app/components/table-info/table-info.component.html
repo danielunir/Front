@@ -7,14 +7,17 @@
                 <h2 *ngIf="this.profType === 'profesores'">Administar Profesores</h2>
             </div>
             <div class="links">
-                <div class="link">
-                    <h5 [routerLink]="['/adminprofile', admin.id]" role="button">Mi perfil</h5>
+                <div [routerLink]="['/adminprofile', admin.id, 'tables', 'alumnos']" role="button"
+                    [ngClass]="{'selected': profType === 'alumnos', 'link': profType === 'profesores'}">
+                    <h5>Alumnos</h5>
                 </div>
-                <div class="link">
-                    <h5 [routerLink]="['/adminprofile', admin.id, 'tables', 'alumnos']" role="button">Alumnos</h5>
+                <div class="link" [routerLink]="['/adminprofile', admin.id]" role="button">
+                    <h5>Mi perfil</h5>
                 </div>
-                <div class="link">
-                    <h5 [routerLink]="['/adminprofile', admin.id, 'tables', 'profesores']" role="button">Profesores</h5>
+
+                <div [routerLink]="['/adminprofile', admin.id, 'tables', 'profesores']" role="button"
+                    [ngClass]="{'selected': profType === 'profesores', 'link': profType === 'alumnos'}">
+                    <h5>Profesores</h5>
                 </div>
             </div>
         </div>

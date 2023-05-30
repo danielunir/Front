@@ -52,7 +52,7 @@
 .links {
     display: flex;
     justify-content: space-around;
-    padding: 0.5rem
+
 }
 
 .link {
@@ -60,6 +60,14 @@
     justify-content: center;
     text-align: center;
     flex: 1;
+    box-sizing: border-box;
+    padding: 0.5rem;
+}
+
+.noSelected {
+    background-color: rgb(226, 226, 226);
+    box-shadow: inset 0px -3px 5px -5px rgba(0, 0, 0, 0.3);
+
 }
 
 
