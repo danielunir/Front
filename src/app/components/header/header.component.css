@@ -132,9 +132,41 @@ i {
   color: #FF5722;
 }
 
-.registerNoLoged {
+/* .registerNoLoged {
+  color: rgb(137, 137, 137);
   margin-right: 5rem;
+  font-size: 1rem;
+} */
+
+.registerNoLoged {
+  color: rgb(137, 137, 137);
+  margin-right: 5rem;
+  font-size: 1rem;
+  animation: blinker 6s linear 1 forwards;
 }
+
+@keyframes blinker {
+
+  0%,
+  30%,
+  60%,
+  90%,
+  80% {
+    opacity: 1;
+  }
+
+  15%,
+  45%,
+  75%,
+  95% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 
 .info-user {
   margin-right: 5rem;
@@ -145,7 +177,11 @@ i {
   cursor: default;
 }
 
-
+@media(max-width: 900px) {
+  .registerNoLoged {
+    display: none;
+  }
+}
 
 
 

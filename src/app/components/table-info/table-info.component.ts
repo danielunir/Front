@@ -38,9 +38,11 @@ export class TableInfoComponent implements OnInit, OnDestroy {
         if (this.profType === 'alumnos') {
           const studentsResponse = await this.studentsService.getAllStudents();
           this.studentList = studentsResponse.results;
+          console.log(this.studentList);
         } else if (this.profType === 'profesores') {
           const teacherResponse = await this.teachersService.getAll();
           this.teacherList = teacherResponse.results;
+          console.log(this.teacherList);
         }
 
         this.dataLoaded = true;
