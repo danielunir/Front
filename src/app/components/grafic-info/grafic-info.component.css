@@ -1,0 +1,67 @@
+.mapAndTeachersContainer {
+  display: flex;
+  max-width: 100%;
+  margin-left: 8%;
+  margin-right: 8%;
+  margin-top: 0rem;
+  margin-bottom: 3rem;
+  height: 23rem;
+  gap: 0.6rem;
+}
+
+.mapContainer {
+  display: flex;
+  height: 100%;
+  width: 75%;
+  min-width: 50%;
+
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.teacherContainer {
+  display: flex;
+  width: 25%;
+  max-width: 50%;
+  min-width: 368px;
+  height: 100%;
+}
+
+.teacher {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+
+@media (max-width: 900px) {
+
+  .mapAndTeachersContainer {
+    flex-direction: column;
+    align-items: center;
+    height: 50rem;
+    max-height: 85vh;
+    gap: 3.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .mapContainer,
+  .teacherContainer {
+    width: 100%;
+    height: 24rem;
+  }
+
+  .mapContainer {
+    min-width: 323px;
+  }
+
+  .teacherContainer {
+    margin-left: 7%;
+    margin-right: 7%;
+    min-width: 323px;
+  }
+
+}

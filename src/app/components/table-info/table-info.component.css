@@ -1,0 +1,160 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+th,
+td,
+tr {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.fa-check {
+    color: rgb(22, 216, 25);
+    font-size: 1.75rem;
+}
+
+.fa-trash-can {
+    color: rgb(198, 3, 3);
+    font-size: 1.4rem;
+}
+
+.custom-padding {
+    padding-bottom: 88px;
+}
+
+.all {
+
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 1550px;
+    margin: 0px auto;
+    padding: 0px;
+}
+
+.contentRow {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 95vw;
+    max-width: 100%;
+    min-width: 300px;
+    margin: 0 auto;
+    background-color: whitesmoke;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 200px;
+}
+
+.adminName {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: left;
+    color: white;
+    background-color: #0d47a1;
+    padding: 1rem;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    background-color: rgb(226, 226, 226);
+    box-shadow: inset 0px -3px 5px -5px rgba(0, 0, 0, 0.3);
+}
+
+.selected {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    padding: 0.5rem;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    box-shadow: 0px 4px 5px -5px rgba(0, 0, 0, 0.3);
+}
+
+.picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* min-width: 280px; */
+    max-width: 100%;
+    padding: 0.5rem;
+}
+
+.perfil {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+.imgContent {
+    display: flex;
+    width: 200px;
+    height: 200px;
+}
+
+img {
+    border-radius: 50%;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.charge {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding: 0.5rem;
+}
+
+.texto {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.upload {
+    display: flex;
+    max-width: 100%;
+    padding: 0.5rem;
+}
+
+.btn {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.data {
+    display: flex;
+    width: 100%;
+}
+
+.variableContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.5rem;
+    align-items: center;
+}

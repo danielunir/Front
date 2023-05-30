@@ -1,0 +1,15 @@
+<div class="cards-equipo my-5">
+  <ul>
+    <li *ngFor="let current_teacher of teachersHome_list">
+      <app-teachers-home-cards class="card" [teacher]="current_teacher"></app-teachers-home-cards>
+    </li>
+  </ul>
+</div>
+<div class="container-fluid d-flex flex-wrap gap-5 justify-content-center my-5">
+  <nav class="d-flex justify-content-center mb-5">
+    <ul class="pagination pagination-lg">
+      <li *ngFor="let pagina of arrPages" class="page-item"><button class="page-link" [ngClass]="{'active': (currentPage === pagina)}" (click)="teachersHome(pagina)">{{pagina}}</button>
+      </li>
+    </ul>
+  </nav>
+</div>
