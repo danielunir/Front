@@ -86,9 +86,10 @@ tr {
     padding: 0.5rem;
 }
 
-content {
+.content {
     display: flex;
     width: 100%;
+    box-shadow: 0px 4px 5px -5px rgba(0, 0, 0, 0.3);
 }
 
 .picture {
