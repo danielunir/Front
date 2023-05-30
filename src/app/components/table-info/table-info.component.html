@@ -80,7 +80,8 @@
                                     <td>{{teacher['fecha_nacimiento'] | date: 'dd/MM/YYYY'}}</td>
                                     <td>{{teacher['cuota']}}€/h</td>
                                     <td>{{teacher['experiencia']}}</td>
-                                    <td><button class="btn"><i class="fa-solid fa-check"></i></button></td>
+                                    <td><button *ngIf="teacher['status'] === 0" class="btn"><i
+                                                class="fa-solid fa-check"></i></button></td>
                                     <td><button class="btn"><i class="fa-solid fa-trash-can"></i></button>
                                     </td>
                                 </tr>
