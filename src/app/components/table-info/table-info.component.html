@@ -1,0 +1,93 @@
+<app-header [logado]="logado"></app-header>
+<div class="all">
+    <div class="contentRow">
+        <div class="options">
+            <div class="adminName">
+                <h2 *ngIf="this.profType === 'alumnos'">Administar Alumnos</h2>
+                <h2 *ngIf="this.profType === 'profesores'">Administar Profesores</h2>
+            </div>
+            <div class="links">
+                <div [routerLink]="['/adminprofile', admin.id, 'tables', 'alumnos']" role="button"
+                    [ngClass]="{'selected': profType === 'alumnos', 'link': profType === 'profesores'}">
+                    <h5>Alumnos</h5>
+                </div>
+                <div class="link" [routerLink]="['/adminprofile', admin.id]" role="button">
+                    <h5>Mi perfil</h5>
+                </div>
+
+                <div [routerLink]="['/adminprofile', admin.id, 'tables', 'profesores']" role="button"
+                    [ngClass]="{'selected': profType === 'profesores', 'link': profType === 'alumnos'}">
+                    <h5>Profesores</h5>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="variableContent">
+                <div class="pt-5  col-12 col-sm-8 col-md-10 custom-padding">
+                    <!-- <h5 *ngIf="this.profType === 'alumnos'">Alumnos</h5>
+                    <h5 *ngIf="this.profType === 'profesores'">Profesores</h5> -->
+                    <div class="table-responsive">
+                        <table *ngIf="dataLoaded" class="table table-hover table-bordered">
+                            <thead *ngIf="this.profType === 'alumnos'">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Dirección</th>
+                                    <th scope="col">Ciudad</th>
+                                    <th scope="col">Teléfono</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Nacimiento</th>
+                                    <th scope="col">Estudia</th>
+                                    <th scope="col">Borrar</th>
+                                </tr>
+                            </thead>
+                            <thead *ngIf="this.profType === 'profesores'">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Dirección</th>
+                                    <th scope="col">Ciudad</th>
+                                    <th scope="col">Teléfono</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Nacimiento</th>
+                                    <th scope="col">Cuota</th>
+                                    <th scope="col">Experiencia</th>
+                                    <th scope="col">Validar</th>
+                                    <th scope="col">Borrar</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngIf="this.profType === 'alumnos'">
+                                <tr *ngFor="let student of studentList">
+                                    <th scope="row">{{student['id']}}</th>
+                                    <td>{{student['nombre']}} {{student['apellidos']}}</td>
+                                    <td>{{student['direccion']}}</td>
+                                    <td>{{student['ciudad']}}, {{student['codigo_postal']}}</td>
+                                    <td>{{student['telefono']}}</td>
+                                    <td>{{student['email']}}</td>
+                                    <td>{{student['fecha_nacimiento'] | date: 'dd/MM/YYYY'}}</td>
+                                    <td>{{student['estudia']}}</td>
+                                    <td><button class="btn"><i class="fa-solid fa-trash-can"></i></button></td>
+                                </tr>
+                            </tbody>
+                            <tbody *ngIf="this.profType === 'profesores'">
+                                <tr *ngFor="let teacher of teacherList">
+                                    <th scope="row">{{teacher['id']}}</th>
+                                    <td>{{teacher['nombre']}} {{teacher['apellidos']}}</td>
+                                    <td>{{teacher['direccion']}}</td>
+                                    <td>{{teacher['ciudad']}}, {{teacher['codigo_postal']}}</td>
+                                    <td>{{teacher['telefono']}}</td>
+                                    <td>{{teacher['email']}}</td>
+                                    <td>{{teacher['fecha_nacimiento'] | date: 'dd/MM/YYYY'}}</td>
+                                    <td>{{teacher['cuota']}}€/h</td>
+                                    <td>{{teacher['experiencia']}}</td>
+                                    <td><button *ngIf="teacher['status'] === 0" class="btn"><i
+                                                class="fa-solid fa-check"></i></button></td>
+                                    <td><button class="btn"><i class="fa-solid fa-trash-can"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>

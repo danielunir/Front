@@ -1,0 +1,40 @@
+<app-header [logado]="logado"></app-header>
+<div class="row">
+  <div class="p-5 border border-2 border-dark col-12 col-sm-4 col-md-2">
+    <h2>Gestionar</h2>
+    <h5 [routerLink]="['/teacherprofile', currentId, 'tables', 'alumnos']" role="button">Mis Alumnos</h5>
+  </div>
+  <div class="p-5 border border-2 border-dark col-12 col-sm-8 col-md-10">
+    <div class="container-fluid">
+      <h5>Perfil</h5>
+
+      <img [src]="teacher.foto" [alt]="teacher.nombre" class="img-thumbnail w-25">
+
+      <div class="d-inline-block m-4 align-bottom">
+        <p>Seleccionar foto de perfil: </p>
+        <input class="btn btn-primary file-upload w-100" type="file">
+      </div>
+    </div>
+    <div class="row mt-4 justify-content-around">
+      <div class="col-12 col-sm-6 col-md-4">
+        <p>Nombre: {{teacher.nombre}} {{teacher.apellidos}}</p>
+        <p>Nombre de usuario: {{teacher.username}}</p>
+        <p>Email: {{teacher.email}}</p>
+        <p>Dirección: {{teacher.direccion}}</p>
+        <p>Población: {{teacher.ciudad}}</p>
+        <p>Teléfono: {{teacher.telefono}}</p>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4">
+        <p>Rol: Profesor</p>
+        <p>Cuota: {{teacher.cuota}}€/h</p>
+        <p>Experiencia: {{teacher.experiencia}}</p>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4">
+        <p>Status:</p>
+        <ul class="list-group">
+          <li class="list-group-item"><i class="fa-solid fa-check"></i> {{teacher.status}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

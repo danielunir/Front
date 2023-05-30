@@ -1,0 +1,21 @@
+@host = https://teachers-groupb.herokuapp.com
+
+//LOGIN
+
+POST {{host}}/api/users/login
+Content-Type: application/json
+
+{
+  "email": "dc6@gmail.com",
+  "password": "12345"
+}
+
+###
+//GET PROFILE
+GET {{host}}/api/users/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMjEsImV4cCI6MTY4NDg4Njc3NiwiaWF0IjoxNjg0ODcyMzc2fQ.RrRbp8LRHaetNmPnEpyTREvIBIhEcc7hUqMftmPCdYk
+
+###
+//GET TEACHERS
+GET {{host}}/api/alumno/teachers/151
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMjEsImV4cCI6MTY4NTExODczMiwiaWF0IjoxNjg1MTA0MzMyfQ.A3ELRBRhSbrkNCBTxkjtsenxpmHzCmZ08O9euXxK6oU

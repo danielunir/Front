@@ -1,0 +1,17 @@
+<form novalidate [formGroup]="formRegisterPerfilAlumno" (ngSubmit)="getDataPerfilAlumno()">
+  <div class="mb-3">
+    <div class="row">
+      <div class="mb-3 col-12">
+        <label class="form-label">Breve descripción de sus necesidades de aprendizaje</label>
+        <textarea class="form-control textarea" formControlName="estudia" (keypress)="onKey($event)" [ngClass]="{'borde-rojo' : contador >= contadorMax}"></textarea>
+        <p class="small-text">{{contador + 1}} / {{ contadorMax }}</p>
+        <p class="error" *ngIf="checkControl('estudia', 'required')">El campo es requerido</p>
+      </div>
+      <div class="mb-3">
+        <p class="text-end small-text">* Todos los campos son obligatorios</p>
+        <input type="hidden" formControlName="status" value="1">
+      </div>
+    </div>
+    <input class="form-control" type="submit" value="Confirmar" class="btn btn-primary" [disabled]="!formRegisterPerfilAlumno.valid">
+  </div>
+</form>
