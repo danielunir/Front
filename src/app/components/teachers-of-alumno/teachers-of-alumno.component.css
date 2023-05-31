@@ -1,48 +1,3 @@
-.teacherContent {
-    display: grid;
-    grid-template-columns: repeat(2, 40%);
-    justify-content: space-between;
-    max-width: 100%;
-    grid-gap: 1rem;
-    margin: 2rem;
-}
-
-@media (max-width: 700px) {
-    .teacherContent {
-        grid-template-columns: 275px;
-        margin-top: 2rem;
-        margin-bottom: 3rem;
-    }
-}
-
-.teacher {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
-    max-width: fit-content;
-    min-width: 275px;
-    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
-}
-
-.pictureContent {
-    display: flex;
-    margin: 1rem;
-}
-
-.teacher_img {
-
-    width: 5rem;
-    height: 5rem;
-}
-
-.teacher_data {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 1rem;
-    align-items: space-between;
-}
-
 * {
     padding: 0;
     margin: 0;
@@ -137,6 +92,16 @@ tr {
     box-shadow: 0px 4px 5px -5px rgba(0, 0, 0, 0.3);
 }
 
+.teacher_data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: fit-content;
+    padding: 1rem;
+    color: rgba(0, 0, 0, 0.85);
+}
+
 .picture {
     display: flex;
     flex-direction: column;
@@ -152,10 +117,48 @@ tr {
     padding: 0.5rem;
 }
 
+.teacherContent {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-between;
+    width: 100%;
+    grid-gap: 2rem;
+    padding: 2rem;
+}
+
+@media (max-width: 1050px) {
+    .teacherContent {
+        grid-template-columns: repeat(1, auto);
+        justify-content: center;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .teacher {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.teacher {
+    display: flex;
+    width: 100%;
+    min-width: 275px;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+    background-image: url(https://media.istockphoto.com/id/182666258/es/foto/fondo-de-papel-especial.jpg?s=170667a&w=0&k=20&c=DeEe7k8WaGdVokeS2e7vQ3pcdQP_oJGExsT3wUR3eas=);
+
+}
+
 .imgContent {
     display: flex;
     width: 200px;
-    height: 200px;
+    padding: 0.5rem;
 }
 
 img {
@@ -163,6 +166,7 @@ img {
     width: 100%;
     object-fit: cover;
     overflow: hidden;
+    opacity: 90%;
 }
 
 .charge {

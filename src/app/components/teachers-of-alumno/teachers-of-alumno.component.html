@@ -20,13 +20,14 @@
             </div>
         </div>
         <div class="content">
-            <div class="variableContent">
+            <div *ngIf="teachers" class="variableContent">
                 <!-- <div class="pt-5  col-12 col-sm-8 col-md-10 custom-padding"></div> -->
 
                 <div class="teacherContent">
                     <div class="teacher" *ngFor="let teacher of teachers; let i=index">
-                        <div class="pictureContent"><img class="teacher_img" [src]="teachers[i].datos_per.foto"
-                                [alt]="teachers[i].datos_per.nombre" class="img-thumbnail w-25"></div>
+                        <div class="imgContent"><img [src]="teachers[i].datos_per.foto"
+                                [alt]="teachers[i].datos_per.nombre">
+                        </div>
 
                         <div class="teacher_data">
 
