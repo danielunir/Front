@@ -15,14 +15,14 @@
         <p *ngIf="!logado && currentRoute === 'registro'" class="pt-3 registerNoLoged">Introduzca sus datos para
           registrarse
         </p>
-        <p *ngIf="logado && currentRoute !== 'home' && currentRoute !== 'info-usuario' && role !== 'admin'"
+        <!--   <p *ngIf="logado && currentRoute !== 'home' && currentRoute !== 'info-usuario' && role !== 'admin'"
           class="pt-3 privateArea">Bienvenido a tu área personal {{username}}</p>
 
         <p *ngIf="logado && currentRoute === 'info-usuario' && role !== 'admin'" class="pt-3 privateArea">Completa tu
-          perfil {{username}}</p>
+          perfil {{username}}</p> -->
 
-        <p *ngIf="logado && currentRoute !== 'home' && role === 'admin'" class="pt-3 privateArea">Bienvenido al área de
-          administración {{username}}</p>
+        <!-- <p *ngIf="logado && currentRoute !== 'home' && role === 'admin'" class="pt-3 privateArea"> --><!-- Bienvenido al área de
+          administración {{username}} --><!-- Área de administración</p> -->
 
         <ul class="navbar-nav">
           <li *ngIf="!logado && currentRoute === 'home'; else privateAccess" class="nav-item">
