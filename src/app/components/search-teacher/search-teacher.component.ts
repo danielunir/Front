@@ -18,6 +18,8 @@ export class SearchTeacherComponent implements OnInit {
   listaNiveles: string[] = ["Primaria", "ESO","FP", "Bachillerato", "Diplomatura", "Grado", "Máster y Doctorado", "Personas Mayores"];
 
   teachers_list: any = [];
+  teachers_page: any = [];
+  totalTeachers_page: any = [];
 
   totalPages: number = 0;
   arrPages: number[] = [];
@@ -54,13 +56,10 @@ export class SearchTeacherComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe( async (params: any) => {
-      console.log(params)
       let currentId: number = params.studentId;
 
-      console.log(currentId)
       try {
         let response: any = await this.alumnosService.getByUserId(currentId);
-        console.log(response);
         this.student = response;
       } catch (error) {
         alert(error);
@@ -68,6 +67,7 @@ export class SearchTeacherComponent implements OnInit {
     })
 
     this.teachers_list = [];
+    this.teachers_page = [];
 
     this.teachers();
   }
@@ -77,14 +77,28 @@ export class SearchTeacherComponent implements OnInit {
       let result: any = await this.teachersService.getTeachersHome(pNum);
       this.currentPage = result.page;
       this.totalPages = result.totalPages;
-      this.teachers_list = result.results;
-      console.log(result);
+
       if (this.arrPages.length !== this.totalPages) {
         this.arrPages = [];
-        for (let i = 1; i <= this.totalPages; i++) {
+        for (let i = 1; i < this.totalPages; i++) {
           this.arrPages.push(i);
+          this.teachers_page = await this.totalTeachers(i);
+
+          this.totalTeachers_page.push.apply(this.totalTeachers_page, this.teachers_page);
         }
       }
+      this.teachers_list = this.totalTeachers_page;
+
+    } catch (error) {
+      alert('No hay profesores disponibles en la BBDD');
+    }
+  }
+
+  async totalTeachers(pNum: number): Promise<any> {
+    try {
+      let result: any = await this.teachersService.getTeachersHome(pNum);
+      const teachers_page: any = result.results;
+      return teachers_page;
     } catch (error) {
       alert('No hay profesores disponibles en la BBDD');
     }
@@ -156,6 +170,6 @@ export class SearchTeacherComponent implements OnInit {
                 }
                 );
                 this.teachers_list = this.resultadoFiltrado;
-    },200)
+    },1000)
   }
 }
