@@ -23,7 +23,8 @@ export class AlumnosOfTeacherComponent {
 
   async ngOnInit() {
     this.activateRoute.params.subscribe(async (params: any) => {
-      let currentId: number = params.teacherId;
+      let currentId: number = params.teacherId
+      console.log(currentId)
       this.alumnos = await this.ramasService.getByUserId(currentId)
       console.log(this.alumnos)
     });
