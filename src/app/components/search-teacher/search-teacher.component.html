@@ -87,11 +87,11 @@
                 </div>
               </form>
             </div>
-            <div class="zona-profesores" id="lista-profesores">
+            <div class="zona-profesores col-10" id="lista-profesores">
               <div class="slider-container-tv cards-productos mt-6 text-center">
                 <ul class="flex flex-wrap justify-evenly gap-y-6" id="resultado">
                   <li *ngFor="let current_teacher of teachers_list | filterMateria:filterTeacher">
-                    <app-teachers-home-cards class="card" [teacher]="current_teacher"></app-teachers-home-cards>
+                    <app-teachers-home-cards class="card mb-3" [teacher]="current_teacher"></app-teachers-home-cards>
                   </li>
                 </ul>
               </div>
