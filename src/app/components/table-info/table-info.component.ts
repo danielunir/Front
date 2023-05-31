@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AdminService } from 'src/app/services/admin.service';
 import { AlumnosService } from 'src/app/services/alumnos.service';
@@ -23,7 +23,8 @@ export class TableInfoComponent implements OnInit, OnDestroy {
     private studentsService: AlumnosService,
     private teachersService: TeachersService,
     private activateRoute: ActivatedRoute,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private router: Router
   ) { }
 
   async ngOnInit() {
@@ -40,7 +41,7 @@ export class TableInfoComponent implements OnInit, OnDestroy {
           this.studentList = studentsResponse.results;
           console.log(this.studentList);
         } else if (this.profType === 'profesores') {
-          const teacherResponse = await this.teachersService.getAll();
+          const teacherResponse = await this.teachersService.getTeachersAdmin();
           this.teacherList = teacherResponse.results;
           console.log(this.teacherList);
         }
@@ -50,6 +51,36 @@ export class TableInfoComponent implements OnInit, OnDestroy {
         console.error('Error obteniendo datos:', error);
       }
     });
+  }
+
+  async validateTeacher(teacherId: number) {
+    try {
+      const response: any = await this.teachersService.setActive(teacherId, { status: 1 });
+      console.log(response);
+      this.router.navigate(['/adminprofile', teacherId, 'tables', 'profesores']);
+    } catch (error) {
+      console.error('Error en la validación del profesor: ', error);
+    }
+  }
+
+  async deleteTeacher(teacherId: number) {
+    try {
+      const response: any = await this.teachersService.setInactive(teacherId, { status: 0 });
+      console.log(response);
+      this.router.navigate(['/adminprofile', teacherId, 'tables', 'profesores']);
+    } catch (error) {
+      console.error('Error en el borrado del profesor: ', error);
+    }
+  }
+
+  async deleteStudent(studentId: number) {
+    try {
+      const response: any = await this.studentsService.setInactive(studentId, { status: 0 });
+      console.log(response);
+      this.router.navigate(['/adminprofile', studentId, 'tables', 'alumnos']);
+    } catch (error) {
+      console.error('Error en el borrado del alumno: ', error);
+    }
   }
 
   ngOnDestroy() {
