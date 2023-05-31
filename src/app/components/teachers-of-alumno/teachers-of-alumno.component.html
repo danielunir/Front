@@ -4,7 +4,6 @@
         <div class="options">
             <div class="adminName">
                 <h2>Área personal <!-- {{student.username}} --></h2>
-
             </div>
             <div class="links"> <!-- Cambiar currenId por current.id -->
                 <div class="selected" [routerLink]="['/studentprofile', currentId, 'tables', 'alumnos']" role="button">
@@ -21,41 +20,29 @@
         </div>
         <div class="content">
             <div *ngIf="teachers" class="variableContent">
-                <!-- <div class="pt-5  col-12 col-sm-8 col-md-10 custom-padding"></div> -->
-
                 <div class="teacherContent">
                     <div class="teacher" *ngFor="let teacher of teachers; let i=index">
                         <div class="imgContent"><img [src]="teachers[i].datos_per.foto"
                                 [alt]="teachers[i].datos_per.nombre">
                         </div>
-
                         <div class="teacher_data">
-
                             <div>
                                 <p>{{teachers[i].datos_per.nombre}} {{teachers[i].datos_per.apellidos}}</p>
                             </div>
                             <div>
                                 <p>{{teachers[i].cuota}} €/h</p>
                             </div>
-                            <div class="d-flex flex-row gap-3">
+                            <div>
                                 <p> {{teachers[i].experiencia}}</p>
                             </div>
-                            <div class="">
+                            <div>
                                 <p>{{teachers[i].datos_per.telefono}}</p>
                             </div>
                             <div>
                                 <p>{{teachers[i].datos_per.email}}</p>
                             </div>
-
-
-
-
-
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
