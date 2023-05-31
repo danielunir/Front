@@ -52,6 +52,33 @@ export class TableInfoComponent implements OnInit, OnDestroy {
     });
   }
 
+  async validateTeacher(teacherId: number) {
+    try {
+      const response: any = await this.teachersService.setActive(teacherId, { status: 1 });
+      console.log(response);
+    } catch (error) {
+      console.error('Error en la validación del profesor: ', error);
+    }
+  }
+
+  async deleteTeacher(teacherId: number) {
+    try {
+      const response: any = await this.teachersService.setInactive(teacherId, { status: 0 });
+      console.log(response);
+    } catch (error) {
+      console.error('Error en el borrado del profesor: ', error);
+    }
+  }
+
+  async deleteStudent(studentId: number) {
+    try {
+      const response: any = await this.studentsService.setInactive(studentId, { status: 0 });
+      console.log(response);
+    } catch (error) {
+      console.error('Error en el borrado del alumno: ', error);
+    }
+  }
+
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();

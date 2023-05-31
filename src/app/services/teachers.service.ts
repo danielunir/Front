@@ -60,4 +60,27 @@ export class TeachersService {
     )
   }
 
+  setActive(userId: any, values: { status: number }) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_login')!
+      })
+    }
+
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/active/${userId}`, values, httpOptions)
+    )
+  }
+
+  setInactive(userId: any, values: { status: number }) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_login')!
+      })
+    }
+
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/inactive/${userId}`, values, httpOptions)
+    )
+  }
 }

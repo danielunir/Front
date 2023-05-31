@@ -60,4 +60,16 @@ export class AlumnosService {
       this.httpClient.get<any>(`${this.baseUrl}/teachers/${userId}`, httpOptions)
     )
   }
+
+  setInactive(userId: any, values: { status: number }) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_login')!
+      })
+    }
+
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/inactive/${userId}`, values, httpOptions)
+    )
+  }
 }
