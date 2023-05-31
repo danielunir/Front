@@ -60,25 +60,27 @@
             <div *ngIf="alumnos" class="variableContent">
                 <div class="teacherContent">
                     <div class="teacher" *ngFor="let alumno of alumnos; let i=index">
-                        <div class="imgContent"><img [src]="alumnos[i].datos_per.foto"
-                                [alt]="alumnos[i].datos_per.nombre">
+                        <div class="imgContent"><img [src]="alumno.foto" [alt]="alumno.nombre">
                         </div>
                         <div class="teacher_data">
                             <div>
-                                <p>{{alumnos[i].alumno.nombre}}
-                                    {{alumnos[i].alumno.apellidos}}</p>
+                                <p>Nombre: {{alumno.alumno.nombre}}
+                                    {{alumno.alumno.apellidos}}</p>
                             </div>
                             <div>
-                                <p>{{alumnos[i].alumno.direccion}}</p>
+                                <p>Estudia: {{alumno.alumno.estudia}}</p>
                             </div>
                             <div>
-                                <p> {{alumnos[i].alumno.ciudad}}</p>
+                                <p>Dirección: {{alumno.alumno.direccion}}</p>
                             </div>
                             <div>
-                                <p>{{alumnos[i].alumno.telefono}}</p>
+                                <p>Ciudad: {{alumno.alumno.ciudad}}</p>
                             </div>
                             <div>
-                                <p>{{alumnos[i].alumno.email}}</p>
+                                <p>Teléfono: {{alumno.alumno.telefono}}</p>
+                            </div>
+                            <div>
+                                <p>Email: {{alumno.alumno.email}}</p>
                             </div>
                         </div>
                     </div>
