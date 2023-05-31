@@ -82,23 +82,15 @@ export class SearchTeacherComponent implements OnInit {
         this.arrPages = [];
         for (let i = 1; i < this.totalPages; i++) {
           this.arrPages.push(i);
-          this.teachers_page = await this.totalTeachers(i);
+
+          let respuesta: any = await this.teachersService.getTeachersHome(i);
+          this.teachers_page = respuesta.results;
 
           this.totalTeachers_page.push.apply(this.totalTeachers_page, this.teachers_page);
         }
       }
       this.teachers_list = this.totalTeachers_page;
 
-    } catch (error) {
-      alert('No hay profesores disponibles en la BBDD');
-    }
-  }
-
-  async totalTeachers(pNum: number): Promise<any> {
-    try {
-      let result: any = await this.teachersService.getTeachersHome(pNum);
-      const teachers_page: any = result.results;
-      return teachers_page;
     } catch (error) {
       alert('No hay profesores disponibles en la BBDD');
     }
@@ -128,8 +120,6 @@ export class SearchTeacherComponent implements OnInit {
         ).filter(
           function filtrarCuotaMax(teacher: any) {
             const { cuotamax } = datosFiltrados;
-
-            console.log(teacher.cuota)
 
             if(cuotamax) {
               return teacher.cuota <= cuotamax;
@@ -170,6 +160,6 @@ export class SearchTeacherComponent implements OnInit {
                 }
                 );
                 this.teachers_list = this.resultadoFiltrado;
-    },1000)
+    },500)
   }
 }
