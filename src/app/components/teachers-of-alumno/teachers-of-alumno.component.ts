@@ -10,7 +10,8 @@ import { AlumnosService } from 'src/app/services/alumnos.service';
 export class TeachersOfAlumnoComponent {
 
   logado: boolean = true;
-  teachers: any = []
+  teachers: any = [];
+  currentId: string = '';
 
 
   constructor(
@@ -20,8 +21,8 @@ export class TeachersOfAlumnoComponent {
 
   async ngOnInit() {
     this.activateRoute.params.subscribe(async (params: any) => {
-      let currentId: number = params.studentId;
-      this.teachers = await this.alumnoService.getAllTeachers(currentId)
+      this.currentId = params.studentId;
+      this.teachers = await this.alumnoService.getAllTeachers(this.currentId)
       console.log(this.teachers)
     });
   }

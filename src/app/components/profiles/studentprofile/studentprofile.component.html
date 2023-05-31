@@ -1,37 +1,64 @@
 <app-header [logado]="logado"></app-header>
-<div class="row">
-  <div class="p-5 border border-2 border-dark col-12 col-sm-4 col-md-2">
-    <h2>Gestionar</h2>
-    <h5 [routerLink]="['/studentprofile', currentId, 'tables', 'profesores']" role="button">Mis Profesores</h5>
-  </div>
-  <div class="p-5 border border-2 border-dark col-12 col-sm-8 col-md-10">
-    <div class="container-fluid">
-      <h5>Perfil</h5>
-      <img [src]="student.foto" [alt]="student.nombre" class="img-thumbnail w-25">
-      <div class="d-inline-block m-4 align-bottom">
-        <p>Seleccionar foto de perfil: </p>
-        <input class="btn btn-primary file-upload w-100" type="file">
+<div class="all">
+  <div class="contentRow">
+
+    <div class="options">
+
+      <div class="adminName">
+        <h2>Área personal {{student.username}}</h2>
+      </div>
+      <div class="links">
+        <div class="link noSelected" [routerLink]="['/studentprofile', currentId, 'tables', 'profesores']"
+          role="button">
+          <h5>Mis profesores</h5>
+        </div>
+        <div class="link" [routerLink]="['/studentprofile', currentId]" role="button">
+          <h5>Mi perfil</h5>
+        </div>
+
+        <!-- <div class="link noSelected" [routerLink]="['/studentprofile', currentId, 'buscar', 'profesores']" role="button">
+          <h5>Buscar Profesores</h5>
+        </div> -->
+
+        <div class="link noSelected" role="button">
+          <h5>Buscar Profesores</h5>
+        </div>
 
       </div>
+
     </div>
-    <div class="row mt-4 justify-content-around">
-      <div class="col-12 col-sm-6 col-md-4">
-        <p>Nombre: {{student.nombre}} {{student.apellidos}}</p>
-        <p>Nombre de usuario: {{student.username}}</p>
-        <p>Email: {{student.email}} </p>
-        <p>Rol: Alumno</p>
-      </div>
-      <div class="col-12 col-sm-6 col-md-4">
-        <p>Dirección: {{student.direccion}}</p>
-        <p>Población: {{student.ciudad}}</p>
-        <p>Teléfono: {{student.telefono}}</p>
-      </div>
-      <div class="col-12 col-sm-6 col-md-4">
-        <p>Estudia:</p>
-        <ul class="list-group">
-          <li class="list-group-item"><i class="fa-solid fa-check"></i> {{student.estudia}}</li>
-        </ul>
+    <div class="content">
+      <div class="variableContent">
+        <div class="picture">
+
+          <div class="imgContent">
+            <img [src]="student.foto" [alt]="student.nombre" class="img-thumbnail">
+          </div>
+
+          <div class="charge">
+            <div class="texto">
+              <button class="btn btn-outline-secondary p-1" (click)="fileInput.click()">Seleccionar
+                imagen</button>
+            </div>
+            <div class="upload">
+              <input #fileInput class="btn btn-primary file-upload" type="file" style="display: none;">
+            </div>
+          </div>
+
+          <div class="data">
+            <div class="dataB">
+              <p>Nombre: {{student.nombre}} {{student.apellidos}}</p>
+              <p>Nombre de usuario: {{student.username}}</p>
+              <p>Email: {{student.email}}</p>
+              <p>Rol: Alumno</p>
+              <p>Estudia: {{student.estudia}}</p>
+              <p>Dirección: {{student.direccion}}</p>
+              <p>Población: {{student.ciudad}}</p>
+              <p>Teléfono: {{student.telefono}}</p>
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
