@@ -45,7 +45,7 @@
     <div class="contentRow">
         <div class="options">
             <div class="adminName">
-                <h2>Área personal <!-- {{teacher.username}} --></h2>
+                <h2>Área personal de {{teacherName}}</h2>
             </div>
             <div class="links"> <!-- Cambiar currenId por current.id -->
                 <div class="selected" [routerLink]="['/teacherprofile', currentId, 'tables', 'alumnos']" role="button">
@@ -64,24 +64,26 @@
                         </div>
                         <div class="teacher_data">
                             <div>
-                                <p>Nombre: {{alumno.alumno.nombre}}
+                                <p>{{alumno.alumno.nombre}}
                                     {{alumno.alumno.apellidos}}</p>
                             </div>
                             <div>
-                                <p>Estudia: {{alumno.alumno.estudia}}</p>
+                                <p>{{alumno.alumno.estudia}}</p>
                             </div>
                             <div>
-                                <p>Dirección: {{alumno.alumno.direccion}}</p>
+                                <p><i class="fa-regular fa-envelope"></i> {{alumno.alumno.email}}</p>
                             </div>
                             <div>
-                                <p>Ciudad: {{alumno.alumno.ciudad}}</p>
+                                <p><i class="fa-brands fa-whatsapp"></i> {{alumno.alumno.telefono}}</p>
+                            </div>
+
+                            <div>
+                                <p><i class="fa-solid fa-location-dot"></i> {{alumno.alumno.direccion}}</p>
                             </div>
                             <div>
-                                <p>Teléfono: {{alumno.alumno.telefono}}</p>
+                                <p>{{alumno.alumno.ciudad}}</p>
                             </div>
-                            <div>
-                                <p>Email: {{alumno.alumno.email}}</p>
-                            </div>
+
                         </div>
                     </div>
                 </div>

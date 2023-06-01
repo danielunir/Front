@@ -14,6 +14,7 @@ export class AlumnosOfTeacherComponent {
   alumnos: any = [];
   alumnoData: any = [];
   currentId: string = '';
+  teacherName: string = '';
 
 
   constructor(
@@ -24,10 +25,9 @@ export class AlumnosOfTeacherComponent {
 
   async ngOnInit() {
     this.activateRoute.params.subscribe(async (params: any) => {
-      this.currentId = params.teacherId
-      console.log(this.currentId);
+      this.currentId = params.teacherId;
+      this.teacherName = localStorage.getItem('username') || '';
       this.alumnos = await this.ramasService.getByUserId(this.currentId);
-      console.log(this.alumnos);
     });
   }
 

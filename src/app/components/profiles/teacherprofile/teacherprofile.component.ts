@@ -27,7 +27,6 @@ export class TeacherprofileComponent implements OnInit {
       this.currentId = params.teacherId;
       let response: any = await this.teacherService.getByUserId(this.currentId);
       this.teacher = response;
-      console.log(this.teacher)
     });
   }
 
