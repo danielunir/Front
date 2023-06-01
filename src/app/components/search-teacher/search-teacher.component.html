@@ -1,23 +1,37 @@
 <app-header [logado]="logado"></app-header>
-<div class="row">
-  <div class="p-5 border border-2 border-dark col-12 col-sm-4 col-md-2">
-    <h2 role="button" class="pointer my-4" [routerLink]="['/studentprofile', student.id, 'search']">Gestionar</h2>
-    <h5 role="button" class="pointer my-4" [routerLink]="['/studentprofile', student.id, 'search']">Buscar Profesores</h5>
-    <h5 role="button" class="pointer my-4">Mis Profesores</h5>
-    <h5 role="button" class="pointer my-4" [routerLink]="['/studentprofile', student.id]">Mi Perfil</h5>
+<div class="all">
+  <div class="contentRow">
+    <div class="options">
+      <div class="adminName">
+        <h2>Área Personal
+          <!-- {{student.username}} -->
+        </h2>
+      </div>
+      <div class="links">
+        <!-- Cambiar currenId por current.id -->
+        <div class="link noSelected" [routerLink]="['/studentprofile', currentId, 'tables', 'alumnos']" role="button">
+          <h5>Mis profesores</h5>
+        </div>
+        <div class="link noSelected" [routerLink]="['/studentprofile', currentId]" role="button">
+          <h5>Mi perfil</h5>
+        </div>
+
+        <div class="link selected" [routerLink]="['/studentprofile', currentId, 'search']" role="button">
+          <h5>Buscar Profesores</h5>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="p-5 border border-2 border-dark col-12 col-sm-8 col-md-10">
+  <div class="p-5 col-12 col-sm-8 col-md-10 content">
     <div class="container-fluid">
-      <h5>Buscar</h5>
       <div class="containerMap">
         <div class="mapContainer">
           <app-mapa [search]="search" class="map"></app-mapa>
         </div>
       </div>
-      <section class="todos my-4 p-4">
-        <h2 class="mb-4">Todos los profesores</h2>
+      <section class="my-4 p-4">
         <div class="ordenar row justify-content-end">
-          <form class="col-3" action="">
+          <form class="col-3">
             <label for="ordenar" class="form-label">Ordenar por:</label>
             <select class="form-control" name="ordenar" id="ordenar">
               <option value="">Seleccione</option>
