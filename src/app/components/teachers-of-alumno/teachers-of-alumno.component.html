@@ -3,7 +3,7 @@
     <div class="contentRow">
         <div class="options">
             <div class="adminName">
-                <h2>Área personal <!-- {{student.username}} --></h2>
+                <h2>Área personal {{studentName}}</h2>
             </div>
             <div class="links"> <!-- Cambiar currenId por current.id -->
                 <div class="selected" [routerLink]="['/studentprofile', currentId, 'tables', 'alumnos']" role="button">
@@ -22,47 +22,65 @@
             <div *ngIf="teachers" class="variableContent">
                 <div class="teacherContent">
                     <div class="teacher" *ngFor="let teacher of teachers; let i=index">
-                        <div class="imgContent"><img [src]="teachers[i].datos_per.foto"
-                                [alt]="teachers[i].datos_per.nombre">
+                        <div class="a">
+                            <div class="imgContent"><img [src]="teachers[i].datos_per.foto"
+                                    [alt]="teachers[i].datos_per.nombre">
+                            </div>
+                            <div class="teacher_data">
+                                <div>
+                                    <p>{{teachers[i].datos_per.nombre}} {{teachers[i].datos_per.apellidos}}</p>
+                                </div>
+                                <div>
+                                    <p>{{teachers[i].cuota}} €/h</p>
+                                </div>
+                                <div>
+                                    <p> {{teachers[i].experiencia}}</p>
+                                </div>
+                                <div>
+                                    <p><i class="fa-brands fa-whatsapp"></i> {{teachers[i].datos_per.telefono}}</p>
+                                </div>
+                                <div>
+                                    <p><i class="fa-regular fa-envelope"></i> {{teachers[i].datos_per.email}}</p>
+                                </div>
+                                <div>
+                                    <i class="fa-solid fa-location-dot"></i> {{teachers[i].datos_per.direccion}}
+                                </div>
+                                <div>
+                                    {{teachers[i].datos_per.ciudad}}
+                                </div>
+                            </div>
                         </div>
-                        <div class="teacher_data">
-                            <div>
-                                <p>{{teachers[i].datos_per.nombre}} {{teachers[i].datos_per.apellidos}}</p>
+                        <div class="b">
+                            <div class="centerContent">
+                                <form novalidate [formGroup]="formTeacherScore"
+                                    (ngSubmit)="putTeacherScore(teachers[i], currentId)"
+                                    oninput="scorevalue.value = score.valueAsNumber">
+                                    <div class="opinionGrafic">
+                                        <div class="form-label">Valórame</div>
+                                        <div class="scoreContent">
+                                            <div class="rangeInput"><input type="range" class="form-range form-control"
+                                                    min="0" max="10" step="0.5" formControlName="score" name="score">
+                                            </div>
+
+                                            <div class="outputContent"><output name="scorevalue" for="score">5</output>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="opinionText">
+                                        <div>
+                                            <textarea class="form-control" formControlName="opinion_text"
+                                                placeholder="Escribe tu opinión"></textarea>
+                                        </div>
+                                        <div>
+                                            <input type="submit" value="Valorar" class="form-control btn btn-primary">
+                                        </div>
+                                    </div>
+
+                                </form>
                             </div>
-                            <div>
-                                <p>{{teachers[i].cuota}} €/h</p>
-                            </div>
-                            <div>
-                                <p> {{teachers[i].experiencia}}</p>
-                            </div>
-                            <div>
-                                <p>{{teachers[i].datos_per.telefono}}</p>
-                            </div>
-                            <div>
-                                <p>{{teachers[i].datos_per.email}}</p>
-                            </div>
-                        </div>
-                        <div class="teacher_data">
-                            <p>Valora tu profesor:</p>
-                            <form novalidate [formGroup]="formTeacherScore"
-                                (ngSubmit)="putTeacherScore(teachers[i], currentId)"
-                                oninput="scorevalue.value = score.valueAsNumber">
-                                <div class="mb-3">
-                                    <label class="form-label">Puntuación</label>
-                                    <input type="range" class="form-range form-control" min="0" max="10" step="0.5"
-                                        formControlName="score" name="score">
-                                    <output name="scorevalue" for="score">5</output>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Escribe tu opinión:</label>
-                                    <textarea class="form-control" formControlName="opinion_text"></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="submit" value="Valorar" class="form-control btn btn-primary">
-                                </div>
-                            </form>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
