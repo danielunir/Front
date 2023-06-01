@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
@@ -13,10 +13,20 @@ export class PuntuacionService {
     private httpClient: HttpClient
   ) {
     this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/puntuacion';
-   }
+  }
 
-   getBestScore(): Promise<any> {
+  getBestScore(): Promise<any> {
     return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}`));
+  }
+
+  postScore(values: { profesor_id: number, alumno_id: number, puntuacion: number, opinion: string }): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_login')!
+      })
+    }
+
+    return firstValueFrom(this.httpClient.post<any>(`${this.baseUrl}`, values, httpOptions));
   }
 }
 
