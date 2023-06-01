@@ -42,6 +42,26 @@
                                 <p>{{teachers[i].datos_per.email}}</p>
                             </div>
                         </div>
+                        <div class="teacher_data">
+                            <p>Valora tu profesor:</p>
+                            <form novalidate [formGroup]="formTeacherScore"
+                                (ngSubmit)="putTeacherScore(teachers[i], currentId)"
+                                oninput="scorevalue.value = score.valueAsNumber">
+                                <div class="mb-3">
+                                    <label class="form-label">Puntuación</label>
+                                    <input type="range" class="form-range form-control" min="0" max="10" step="0.5"
+                                        formControlName="score" name="score">
+                                    <output name="scorevalue" for="score">5</output>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Escribe tu opinión:</label>
+                                    <textarea class="form-control" formControlName="opinion_text"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="submit" value="Valorar" class="form-control btn btn-primary">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
