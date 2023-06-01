@@ -1,4 +1,4 @@
-<app-header [logado]="logado"></app-header>
+<!-- <app-header [logado]="logado"></app-header>
 <div class="row">
     <div class="p-5 border border-2 border-dark col-12 col-sm-4 col-md-2">
         <h2>Mis alumnos</h2>
@@ -38,4 +38,52 @@
             </table>
         </div>
     </div>
-</div>
+</div> -->
+
+<app-header [logado]="logado"></app-header>
+<div class="all">
+    <div class="contentRow">
+        <div class="options">
+            <div class="adminName">
+                <h2>Área personal <!-- {{teacher.username}} --></h2>
+            </div>
+            <div class="links"> <!-- Cambiar currenId por current.id -->
+                <div class="selected" [routerLink]="['/teacherprofile', currentId, 'tables', 'alumnos']" role="button">
+                    <h5>Mis alumnos</h5>
+                </div>
+                <div class="link" [routerLink]="['/teacherprofile', currentId]" role="button">
+                    <h5>Mi perfil</h5>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div *ngIf="alumnos" class="variableContent">
+                <div class="teacherContent">
+                    <div class="teacher" *ngFor="let alumno of alumnos; let i=index">
+                        <div class="imgContent"><img [src]="alumno.foto" [alt]="alumno.nombre">
+                        </div>
+                        <div class="teacher_data">
+                            <div>
+                                <p>Nombre: {{alumno.alumno.nombre}}
+                                    {{alumno.alumno.apellidos}}</p>
+                            </div>
+                            <div>
+                                <p>Estudia: {{alumno.alumno.estudia}}</p>
+                            </div>
+                            <div>
+                                <p>Dirección: {{alumno.alumno.direccion}}</p>
+                            </div>
+                            <div>
+                                <p>Ciudad: {{alumno.alumno.ciudad}}</p>
+                            </div>
+                            <div>
+                                <p>Teléfono: {{alumno.alumno.telefono}}</p>
+                            </div>
+                            <div>
+                                <p>Email: {{alumno.alumno.email}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

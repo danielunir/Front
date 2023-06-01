@@ -1,0 +1,142 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.all {
+
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 1550px;
+    margin: 0px auto;
+    padding: 0px;
+}
+
+.contentRow {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 95vw;
+    max-width: 100%;
+    min-width: 300px;
+    margin: 0 auto;
+    background-color: whitesmoke;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 200px;
+}
+
+.adminName {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: left;
+    color: white;
+    background-color: #0d47a1;
+    padding: 1rem;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    background-color: rgb(226, 226, 226);
+    box-shadow: inset 0px -3px 5px -5px rgba(0, 0, 0, 0.3);
+}
+
+.selected {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    padding: 0.5rem;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    box-shadow: 0px 4px 5px -5px rgba(0, 0, 0, 0.3);
+}
+
+.variableContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.5rem;
+    align-items: center;
+}
+
+.teacherContent {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-between;
+    width: 100%;
+    grid-gap: 2rem;
+    padding: 2rem;
+}
+
+.teacher {
+    display: flex;
+    width: 100%;
+    min-width: 275px;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+    background-image: url(https://media.istockphoto.com/id/182666258/es/foto/fondo-de-papel-especial.jpg?s=170667a&w=0&k=20&c=DeEe7k8WaGdVokeS2e7vQ3pcdQP_oJGExsT3wUR3eas=);
+}
+
+.imgContent {
+    display: flex;
+    width: 200px;
+    padding: 0.5rem;
+}
+
+img {
+    border-radius: 50%;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    opacity: 95%;
+}
+
+.teacher_data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: fit-content;
+    padding: 1rem;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+
+@media (max-width: 1050px) {
+    .teacherContent {
+        grid-template-columns: repeat(1, auto);
+        justify-content: center;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .teacher {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+    }
+}
