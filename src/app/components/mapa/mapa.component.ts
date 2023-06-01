@@ -84,6 +84,7 @@ export class MapaComponent implements OnInit {
         this.teachers_list = result.results;
 
         this.teachersPositions = result.results;
+        console.log(this.teachersPositions)
 
         this.teachersPositions[2]?.latitud
 
@@ -95,7 +96,7 @@ export class MapaComponent implements OnInit {
           }
         }
     } catch (error) {
-      alert('No hay profesores disponibles en la BBDD');
+      console.log(error);
     }
   }
 

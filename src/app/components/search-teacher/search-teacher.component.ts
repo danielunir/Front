@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { TeachersService } from 'src/app/services/teachers.service';
@@ -18,6 +18,8 @@ export class SearchTeacherComponent implements OnInit {
   listaNiveles: string[] = ["Primaria", "ESO","FP", "Bachillerato", "Diplomatura", "Grado", "Máster y Doctorado", "Personas Mayores"];
 
   teachers_list: any = [];
+  teachers_page: any = [];
+  totalTeachers_page: any = [];
 
   totalPages: number = 0;
   arrPages: number[] = [];
@@ -39,9 +41,7 @@ export class SearchTeacherComponent implements OnInit {
   cuotamax: string = '';
   puntuacion: string = '';
 
-
   resultadoFiltrado: any;
-
 
 
   constructor(
@@ -54,13 +54,10 @@ export class SearchTeacherComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe( async (params: any) => {
-      console.log(params)
       let currentId: number = params.studentId;
 
-      console.log(currentId)
       try {
         let response: any = await this.alumnosService.getByUserId(currentId);
-        console.log(response);
         this.student = response;
       } catch (error) {
         alert(error);
@@ -68,89 +65,115 @@ export class SearchTeacherComponent implements OnInit {
     })
 
     this.teachers_list = [];
+    this.teachers_page = [];
 
     this.teachers();
-
-    this.resultadoFiltrado = this.teachers_list;
   }
 
   async teachers(pNum: number = 1): Promise<void> {
+
     try {
       let result: any = await this.teachersService.getTeachersHome(pNum);
       this.currentPage = result.page;
-        this.totalPages = result.totalPages;
-        this.teachers_list = result.results;
-        console.log(result);
-        if (this.arrPages.length !== this.totalPages) {
-          this.arrPages = [];
-          for (let i = 1; i <= this.totalPages; i++) {
-            this.arrPages.push(i);
-          }
+      this.totalPages = result.totalPages;
+
+      if (this.arrPages.length !== this.totalPages) {
+        this.arrPages = [];
+        for (let i = 1; i < this.totalPages; i++) {
+          this.arrPages.push(i);
+
+          let respuesta: any = await this.teachersService.getTeachersHome(i);
+          this.teachers_page = respuesta.results;
+
+          this.totalTeachers_page.push.apply(this.totalTeachers_page, this.teachers_page);
         }
+      }
+      this.limpiar();
+      this.teachers_list = this.totalTeachers_page;
+
     } catch (error) {
-      alert('No hay profesores disponibles en la BBDD');
+      alert('error');
+    }
+  }
+
+  limpiar() {
+    const resultado: any = document.getElementById('resultado');
+    console.log(resultado)
+    if(resultado) {
+      while (resultado.firstChild) {
+        resultado.removeChild(resultado.firstChild);
+      }
     }
   }
 
   filtrarProfesor() {
-    this.resultadoFiltrado = this.teachers_list.filter(this.filtrarCuotaMin).filter(this.filtrarCuotaMax).filter(this.filtrarMateria).filter(this.filtrarNivel).filter(this.filtrarPuntuacion);
+
+    setTimeout(() => {
+      this.datosFiltrados.materia = this.materia;
+      this.datosFiltrados.nivel = this.nivel;
+      this.datosFiltrados.cuotamin = this.cuotamin;
+      this.datosFiltrados.cuotamax = this.cuotamax;
+      this.datosFiltrados.puntuacion = this.puntuacion;
+
+      let datosFiltrados = this.datosFiltrados;
+
+      this.resultadoFiltrado = this.totalTeachers_page.filter(
+        function filtrarCuotaMin(teacher: any) {
+          let { cuotamin } = datosFiltrados;
+
+          cuotamin = Number(cuotamin);
+
+          if(cuotamin) {
+            return teacher.cuota >= cuotamin;
+          }
+          return teacher;
+        }
+        ).filter(
+          function filtrarCuotaMax(teacher: any) {
+            let { cuotamax } = datosFiltrados;
+
+            cuotamax = Number(cuotamax);
+
+            if(cuotamax) {
+              return teacher.cuota <= cuotamax;
+            }
+            return teacher;
+          }
+          ).filter(
+            function filtrarMateria(teacher:any) {
+              const { materia } = datosFiltrados;
+              console.log(materia);
+
+              if(materia) {
+                for(let i = 0; i < teacher.materias.length; i++){
+                  return teacher.materias[i].rama === materia;
+                }
+              }
+              return teacher;
+            }
+            ).filter(
+              function filtrarNivel(teacher:any) {
+                const { nivel } = datosFiltrados;
+
+                if(nivel) {
+                  return teacher.materias.nivel === nivel;
+                }
+                return teacher;
+              }
+              ).filter(
+                function filtrarPuntuacion(teacher: any) {
+                  let { puntuacion } = datosFiltrados;
+
+                  puntuacion = Number(puntuacion);
+
+                  if(puntuacion) {
+                    return ((teacher.puntuacion >= puntuacion) && (teacher.puntuacion <= (puntuacion + 2)));
+                  }
+                  return teacher;
+                }
+                );
+                this.limpiar();
+                this.teachers_list = this.resultadoFiltrado;
+              },300)
   }
-
-  filtrarCuotaMin(teacher: any) {
-    const { cuotamin } = this.datosFiltrados;
-
-    if(cuotamin) {
-      return teacher.cuota >= cuotamin;
-    }
-    return teacher;
-  }
-
-  filtrarCuotaMax(teacher: any) {
-    const { cuotamax } = this.datosFiltrados;
-
-    if(cuotamax) {
-      return teacher.cuota <= cuotamax;
-    }
-    return teacher;
-  }
-
-  filtrarMateria(teacher:any) {
-    const { materia } = this.datosFiltrados;
-
-    if(materia) {
-      return teacher.materia === materia;
-    }
-    return teacher;
-  }
-
-  filtrarNivel(teacher:any) {
-    const { nivel } = this.datosFiltrados;
-
-    if(nivel) {
-      return teacher.nivel === nivel;
-    }
-    return teacher;
-  }
-
-  filtrarPuntuacion(teacher: any) {
-    let { puntuacion } = this.datosFiltrados;
-
-    puntuacion = Number(puntuacion);
-
-    if(puntuacion) {
-      return ((teacher.puntuacion >= puntuacion) && (teacher.puntuacion <= (puntuacion + 2)));
-    }
-    return teacher;
-  }
-
-  ActualizarLista() {
-    this.datosFiltrados.materia = this.filterTeacher;
-    this.datosFiltrados.nivel = this.nivel;
-    this.datosFiltrados.cuotamin = this.cuotamin;
-    this.datosFiltrados.cuotamax = this.cuotamax;
-    this.datosFiltrados.puntuacion = this.puntuacion;
-
-    this.filtrarProfesor();
-  }
-
 }
