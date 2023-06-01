@@ -137,11 +137,9 @@ img {
 }
 
 .teacherContent {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
+    display: flex;
     justify-content: center;
-    width: 100%;
-    grid-gap: 2rem;
+    width: fit-content;
     padding: 2rem;
 }
 
@@ -177,15 +175,6 @@ img {
     color: rgba(0, 0, 0, 0.85);
 }
 
-
-@media (max-width: 1050px) {
-    .teacherContent {
-        grid-template-columns: repeat(1, auto);
-        margin-top: 2rem;
-        margin-bottom: 3rem;
-        padding: 0.5rem;
-    }
-}
 
 @media (max-width: 550px) {
     .teacher {

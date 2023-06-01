@@ -29,7 +29,23 @@
     </div>
     <div class="content">
       <div *ngIf="student.foto" class="variableContent">
-        <div class="picture">
+
+        <div class="teacherContent">
+          <div class="teacher">
+            <div class="imgContent"><img [src]="student.foto" [alt]="student.nombre" class="img-thumbnail">
+            </div>
+            <div class="teacher_data">
+              <p>{{student.nombre}} {{student.apellidos}}</p>
+              <p>{{student.estudia}}</p>
+              <p><i class="fa-regular fa-envelope"></i> {{student.email}}</p>
+              <p><i class="fa-brands fa-whatsapp"></i> {{student.telefono}}</p>
+              <p><i class="fa-solid fa-location-dot"></i> {{student.direccion}}</p>
+              <p>{{student.ciudad}}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="picture">
 
           <div class="imgContent">
             <img [src]="student.foto" [alt]="student.nombre" class="img-thumbnail">
@@ -58,7 +74,7 @@
 
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
