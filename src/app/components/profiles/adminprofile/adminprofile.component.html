@@ -4,7 +4,6 @@
 
         <div class="options">
 
-            <!-- <h2 [routerLink]="['/adminprofile', admin.id]" role="button">Administrar</h2> -->
             <div class="adminName">
                 <h2>Administrador {{username}}</h2>
             </div>
@@ -22,29 +21,18 @@
                     <h5>Profesores</h5>
                 </div>
 
-
-
             </div>
 
         </div>
         <div class="content">
             <div class="variableContent">
                 <div class="picture">
-                    <!--  <div class="perfil">
-                        <h5>Perfil</h5>
-                    </div> -->
+
                     <div class="imgContent">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtphRFBIir5vPvccBP5uMA7GdCkM3cx2-1w&usqp=CAU"
                             alt="Teacher Image" class="img-thumbnail">
                     </div>
 
-                    <!--   <div class="charge">
-                    <div class="texto">
-                        <p class="btn btn-outline-secondary p-1">Seleccionar imagen</p>
-                    </div>
-                    <div class="upload"><input class="btn btn-primary file-upload" type="file"></div>
-                </div>
-            </div> -->
                     <div class="charge">
                         <div class="texto">
                             <button class="btn btn-outline-secondary p-1" (click)="fileInput.click()">Seleccionar
@@ -54,7 +42,6 @@
                             <input #fileInput class="btn btn-primary file-upload" type="file" style="display: none;">
                         </div>
                     </div>
-
 
                     <div class="data">
                         <div class="dataB">

@@ -36,6 +36,16 @@ export class TeachersService {
 
   }
 
+  getTeachersAdmin(): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_login')!
+      })
+    }
+
+    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}/all`, httpOptions));
+  }
+
   registroProfesor(values: { cuota: number, experiencia: string, status: number, usuario_id: string }) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -60,4 +70,27 @@ export class TeachersService {
     )
   }
 
+  setActive(userId: any, values: { status: number }) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_login')!
+      })
+    }
+
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/active/${userId}`, values, httpOptions)
+    )
+  }
+
+  setInactive(userId: any, values: { status: number }) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_login')!
+      })
+    }
+
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/inactive/${userId}`, values, httpOptions)
+    )
+  }
 }
