@@ -53,11 +53,12 @@
                     <label for="cuotamin" class="form-label">Cuota Mínima</label>
                     <select class="form-control" name="cuotamin" id="cuotamin" [(ngModel)]="cuotamin" (change)="filtrarProfesor()">
                       <option value="">Seleccione</option>
-                      <option value="10">10€</option>
-                      <option value="20">20€</option>
-                      <option value="30">30€</option>
-                      <option value="40">40€</option>
-                      <option value="50">50€</option>
+                      <option value="9.9">10€</option>
+                      <option value="19.9">20€</option>
+                      <option value="29.9">30€</option>
+                      <option value="39.9">40€</option>
+                      <option value="49.9">50€</option>
+                      <option value="59.9">60€</option>
                     </select>
                   </div>
                   <div class="mt-3">
@@ -89,8 +90,8 @@
             </div>
             <div class="zona-profesores col-10" id="lista-profesores">
               <div class="slider-container-tv cards-productos mt-6 text-center">
-                <ul class="flex flex-wrap justify-evenly gap-y-6" id="resultado">
-                  <li *ngFor="let current_teacher of teachers_list | filterMateria:filterTeacher">
+                <ul class="flex flex-wrap justify-evenly gap-y-6">
+                  <li class="resultado" *ngFor="let current_teacher of teachers_list | filterMateria:filterTeacher" id="resultado">
                     <app-teachers-home-cards class="card mb-3" [teacher]="current_teacher"></app-teachers-home-cards>
                   </li>
                 </ul>

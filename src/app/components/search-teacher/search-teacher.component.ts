@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { TeachersService } from 'src/app/services/teachers.service';
@@ -41,9 +41,7 @@ export class SearchTeacherComponent implements OnInit {
   cuotamax: string = '';
   puntuacion: string = '';
 
-
   resultadoFiltrado: any;
-
 
 
   constructor(
@@ -73,6 +71,7 @@ export class SearchTeacherComponent implements OnInit {
   }
 
   async teachers(pNum: number = 1): Promise<void> {
+
     try {
       let result: any = await this.teachersService.getTeachersHome(pNum);
       this.currentPage = result.page;
@@ -89,15 +88,25 @@ export class SearchTeacherComponent implements OnInit {
           this.totalTeachers_page.push.apply(this.totalTeachers_page, this.teachers_page);
         }
       }
+      this.limpiar();
       this.teachers_list = this.totalTeachers_page;
 
     } catch (error) {
-      alert('No hay profesores disponibles en la BBDD');
+      alert('error');
+    }
+  }
+
+  limpiar() {
+    const resultado: any = document.getElementById('resultado');
+    console.log(resultado)
+    if(resultado) {
+      while (resultado.firstChild) {
+        resultado.removeChild(resultado.firstChild);
+      }
     }
   }
 
   filtrarProfesor() {
-    this.teachers();
 
     setTimeout(() => {
       this.datosFiltrados.materia = this.materia;
@@ -108,9 +117,11 @@ export class SearchTeacherComponent implements OnInit {
 
       let datosFiltrados = this.datosFiltrados;
 
-      this.resultadoFiltrado = this.teachers_list.filter(
+      this.resultadoFiltrado = this.totalTeachers_page.filter(
         function filtrarCuotaMin(teacher: any) {
-          const { cuotamin } = datosFiltrados;
+          let { cuotamin } = datosFiltrados;
+
+          cuotamin = Number(cuotamin);
 
           if(cuotamin) {
             return teacher.cuota >= cuotamin;
@@ -119,7 +130,9 @@ export class SearchTeacherComponent implements OnInit {
         }
         ).filter(
           function filtrarCuotaMax(teacher: any) {
-            const { cuotamax } = datosFiltrados;
+            let { cuotamax } = datosFiltrados;
+
+            cuotamax = Number(cuotamax);
 
             if(cuotamax) {
               return teacher.cuota <= cuotamax;
@@ -159,7 +172,8 @@ export class SearchTeacherComponent implements OnInit {
                   return teacher;
                 }
                 );
+                this.limpiar();
                 this.teachers_list = this.resultadoFiltrado;
-    },500)
+              },300)
   }
 }
