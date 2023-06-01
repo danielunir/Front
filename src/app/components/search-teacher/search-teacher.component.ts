@@ -12,6 +12,7 @@ export class SearchTeacherComponent implements OnInit {
 
   logado: boolean = true;
   student: any = {};
+  currentId: number = 0;
 
   search: boolean = true;
 
@@ -54,10 +55,10 @@ export class SearchTeacherComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe( async (params: any) => {
-      let currentId: number = params.studentId;
+      this.currentId = params.studentId;
 
       try {
-        let response: any = await this.alumnosService.getByUserId(currentId);
+        let response: any = await this.alumnosService.getByUserId(this.currentId);
         this.student = response;
       } catch (error) {
         alert(error);

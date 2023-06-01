@@ -8,21 +8,20 @@
         <h2>Área personal {{student.username}}</h2>
       </div>
       <div class="links">
-        <div class="link noSelected" [routerLink]="['/studentprofile', currentId, 'tables', 'profesores']"
-          role="button">
+        <div class="link noSelected" [routerLink]="['/studentprofile', currentId, 'tables', 'profesores']" role="button">
           <h5>Mis profesores</h5>
         </div>
         <div class="link" [routerLink]="['/studentprofile', currentId]" role="button">
           <h5>Mi perfil</h5>
         </div>
 
-        <!-- <div class="link noSelected" [routerLink]="['/studentprofile', currentId, 'buscar', 'profesores']" role="button">
-          <h5>Buscar Profesores</h5>
-        </div> -->
-
-        <div class="link noSelected" role="button">
+        <div class="link noSelected" [routerLink]="['/studentprofile', currentId, 'search']" role="button">
           <h5>Buscar Profesores</h5>
         </div>
+
+        <!-- <div class="link noSelected" role="button">
+          <h5>Buscar Profesores</h5>
+        </div> -->
 
       </div>
 
