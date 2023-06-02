@@ -41,8 +41,12 @@ export class SearchTeacherComponent implements OnInit {
   cuotamin: string = '';
   cuotamax: string = '';
   puntuacion: string = '';
+  cuota: number = 0;
 
   resultadoFiltrado: any;
+
+  ordenar: string = '';
+  ordenadoPor: string = '';
 
 
   constructor(
@@ -93,6 +97,7 @@ export class SearchTeacherComponent implements OnInit {
       }
       this.limpiar();
       this.teachers_list = this.totalTeachers_page;
+      console.log(this.teachers_list);
 
     } catch (error) {
       alert('error');
@@ -111,7 +116,7 @@ export class SearchTeacherComponent implements OnInit {
 
   filtrarProfesor() {
 
-    setTimeout(() => {
+    // setTimeout(() => {
       this.datosFiltrados.materia = this.materia;
       this.datosFiltrados.nivel = this.nivel;
       this.datosFiltrados.cuotamin = this.cuotamin;
@@ -148,9 +153,11 @@ export class SearchTeacherComponent implements OnInit {
               console.log(materia);
 
               if(materia) {
-                for(let i = 0; i < teacher.materias.length; i++){
-                  return teacher.materias[i].rama === materia;
-                }
+                // for(let i = 0; i < teacher.materias.length; i++){
+                  console.log(teacher.materias.length)
+                  console.log(teacher.materias[0].rama)
+                  return teacher.materias[0].rama === materia;
+                // }
               }
               return teacher;
             }
@@ -159,7 +166,9 @@ export class SearchTeacherComponent implements OnInit {
                 const { nivel } = datosFiltrados;
 
                 if(nivel) {
-                  return teacher.materias.nivel === nivel;
+                  for(let i = 0; i < teacher.materias.length; i++){
+                    return teacher.materias[i].nivel === nivel;
+                  }
                 }
                 return teacher;
               }
@@ -175,8 +184,88 @@ export class SearchTeacherComponent implements OnInit {
                   return teacher;
                 }
                 );
+
+                if (this.resultadoFiltrado.length) {
+                  if (this.ordenadoPor) {
+                    switch (this.ordenadoPor) {
+                      case 'pa':
+                        this.ordenarCuotaMenorMayor();
+                        this.ordenadoPor = 'pa';
+                        break;
+                      case 'pd':
+                        this.ordenarCuotaMayorMenor();
+                        this.ordenadoPor = 'pd';
+                        break;
+                      // case 'na':
+                      //   ordenarNombreAscendente();
+                      //   ordenadoPor = 'na';
+                      //   break;
+                      // case 'nd':
+                      //   ordenarNombreDescendente();
+                      //   ordenadoPor = 'nd';
+                      //   break;
+                      default:
+                        this.ordenadoPor = '';
+                        break;
+                    }
+                  } else {
+                    this.teachers_list = this.resultadoFiltrado;
+                  }
+                  return this.resultadoFiltrado;
+                } else {
+                  // console.log('No hay resultados');
+                  // noResultados();
+                }
+
                 this.limpiar();
                 this.teachers_list = this.resultadoFiltrado;
-              },300)
+              // },300)
+  }
+
+  ordenarTeachers() {
+    // const ordenarProductos = () => {
+      switch (this.ordenar) {
+        case 'pa':
+          this.ordenarCuotaMenorMayor();
+          this.ordenadoPor = 'pa';
+          break;
+        case 'pd':
+          this.ordenarCuotaMayorMenor();
+          this.ordenadoPor = 'pd';
+          break;
+        // case 'na':
+        //   ordenarNombreAscendente();
+        //   ordenadoPor = 'na';
+        //   break;
+        // case 'nd':
+        //   ordenarNombreDescendente();
+        //   ordenadoPor = 'nd';
+        //   break;
+        default:
+          this.ordenadoPor = '';
+          break;
+      }
+
+  }
+
+  ordenarCuotaMenorMayor = () => {
+    if (this.resultadoFiltrado) {
+      const resultadoOrdenado = this.resultadoFiltrado.sort((a: any, b: any) => a.cuota - b.cuota);
+      this.teachers_list = resultadoOrdenado;
+    } else {
+      const resultadoOrdenado = this.totalTeachers_page.sort((a: any, b: any) => a.cuota - b.cuota);
+      this.teachers_list = resultadoOrdenado;
+    }
+  }
+
+
+  ordenarCuotaMayorMenor = () => {
+    if (this.resultadoFiltrado) {
+      const resultadoOrdenado = this.resultadoFiltrado.sort((a: any, b: any) => b.cuota - a.cuota);
+      this.teachers_list = resultadoOrdenado;
+    } else {
+      const resultadoOrdenado = this.totalTeachers_page.sort((a: any, b: any) => b.cuota - a.cuota);
+      this.teachers_list = resultadoOrdenado;
+    }
   }
 }

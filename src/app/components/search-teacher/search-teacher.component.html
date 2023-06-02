@@ -33,7 +33,7 @@
         <div class="ordenar row justify-content-end">
           <form class="col-3">
             <label for="ordenar" class="form-label">Ordenar por:</label>
-            <select class="form-control" name="ordenar" id="ordenar">
+            <select class="form-control" name="ordenar" id="ordenar" [(ngModel)]="ordenar" (change)="ordenarTeachers()">
               <option value="">Seleccione</option>
               <option value="pa">Cuota: más baja la primera</option>
               <option value="pd">Cuota: más alta la primera</option>
@@ -50,7 +50,25 @@
                 <div class="materias md:flex flex-row">
                   <div class="mt-3">
                     <label class="form-label" for="materia">Materia</label>
-                    <input class="form-control" type="search" name="materia" placeholder="Buscar..." [(ngModel)]="materia" (keyup)="filtrarProfesor()">
+                    <select class="form-control" name="materia" placeholder="Buscar..." [(ngModel)]="materia" (change)="filtrarProfesor()">
+                      <option value="">Seleccione</option>
+                      <option value="Biología">Biología</option>
+                      <option value="Ciencias Naturales">Ciencias Naturales</option>
+                      <option value="Ciencias Sociales">Ciencias Sociales</option>
+                      <option value="Educación Física y Deporte">Educación Física y Deporte</option>
+                      <option value="Educación Infantil">Educación Infantil</option>
+                      <option value="Estadística">Estadística</option>
+                      <option value="Filosofía">Filosofía</option>
+                      <option value="Física">Física</option>
+                      <option value="Física Computacional">Física Computacional</option>
+                      <option value="Historia">Historia</option>
+                      <option value="Historia del Arte">Historia del Arte</option>
+                      <option value="Idiomas">Idiomas</option>
+                      <option value="Informática">Informática</option>
+                      <option value="Literatura">Literatura</option>
+                      <option value="Matemáticas">Matemáticas</option>
+                      <option value="Química">Química</option>
+                    </select>
                   </div>
                 </div>
                 <div class="niveles md:flex flex-row justify-between 2xl:block">
