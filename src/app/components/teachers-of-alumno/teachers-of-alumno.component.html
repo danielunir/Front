@@ -51,7 +51,78 @@
                             </div>
                         </div>
                         <div class="b">
-                            <div class="centerContent">
+
+                            <button type="button" class="btn btn-outline-secondary valueTeacher" data-bs-toggle="modal"
+                                [attr.data-bs-target]="'#exampleModal'+i">
+                                Valora a tu profesor
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" [id]="'exampleModal'+i" tabindex="-1"
+                                aria-labelledby="'exampleModalLabel'+i" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <div class="title-container">
+                                                <h1 class="modal-title" [id]="'exampleModalLabel'+i"><i
+                                                        class="fa-solid fa-book"></i> TeacherApp
+                                                </h1>
+                                            </div>
+
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="centerContent">
+                                                <form novalidate [formGroup]="formTeacherScore"
+                                                    (ngSubmit)="putTeacherScore(teachers[i], currentId)"
+                                                    oninput="scorevalue.value = score.valueAsNumber">
+                                                    <div class="opinionGrafic">
+                                                        <div class="form-label">Valorar a
+                                                            {{teachers[i].datos_per.nombre}}
+                                                        </div>
+                                                        <div class="scoreContent">
+                                                            <div class="rangeInput"><input type="range"
+                                                                    class="form-range form-control" min="0" max="10"
+                                                                    step="0.5" formControlName="score" name="score">
+                                                            </div>
+
+                                                            <div class="outputContent">
+                                                                <output name="scorevalue" for="score"
+                                                                    [ngClass]="getColorClass(formTeacherScore.get('score')?.value)">
+                                                                    {{formTeacherScore.get('score')?.value}}
+                                                                </output>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="opinionText">
+                                                        <div>
+                                                            <textarea class="form-control"
+                                                                formControlName="opinion_text"
+                                                                placeholder="Escribe tu opinión"></textarea>
+                                                        </div>
+                                                        <div class="send">
+                                                            <input type="submit" value="Valorar"
+                                                                class="form-control btn btn-primary sending"
+                                                                data-bs-dismiss="modal">
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <p>Valora a tu profesor del 0 al 10 deslizando el control y comparte tu
+                                                opinión con la comunidad de TeacherApp</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- <div class="centerContent">
                                 <form novalidate [formGroup]="formTeacherScore"
                                     (ngSubmit)="putTeacherScore(teachers[i], currentId)"
                                     oninput="scorevalue.value = score.valueAsNumber">
@@ -77,7 +148,7 @@
                                     </div>
 
                                 </form>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
