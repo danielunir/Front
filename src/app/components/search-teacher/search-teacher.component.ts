@@ -80,11 +80,13 @@ export class SearchTeacherComponent implements OnInit {
 
       if (this.arrPages.length !== this.totalPages) {
         this.arrPages = [];
-        for (let i = 1; i < this.totalPages; i++) {
+        for (let i = 1; i <= this.totalPages; i++) {
           this.arrPages.push(i);
 
           let respuesta: any = await this.teachersService.getTeachersHome(i);
           this.teachers_page = respuesta.results;
+
+          console.log(respuesta);
 
           this.totalTeachers_page.push.apply(this.totalTeachers_page, this.teachers_page);
         }
