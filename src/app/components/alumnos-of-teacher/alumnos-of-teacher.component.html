@@ -60,7 +60,10 @@
             <div *ngIf="alumnos" class="variableContent">
                 <div class="teacherContent">
                     <div class="teacher" *ngFor="let alumno of alumnos; let i=index">
-                        <div class="imgContent"><img [src]="alumno.foto" [alt]="alumno.nombre">
+                        <div class="imgContent"><img *ngIf="alumno.foto" [src]="alumno.foto" [alt]="alumno.nombre"> <img
+                                *ngIf="!alumno.foto"
+                                src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"
+                                class="img-thumbnail" alt="usuario sin imagen">
                         </div>
                         <div class="teacher_data">
                             <div>

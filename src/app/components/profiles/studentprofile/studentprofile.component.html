@@ -28,11 +28,15 @@
 
     </div>
     <div class="content">
-      <div *ngIf="student" class="variableContent">
+      <div *ngIf="student.nombre" class="variableContent">
 
         <div class="teacherContent">
           <div class="teacher">
-            <div class="imgContent"><img [src]="student.foto" [alt]="student.nombre" class="img-thumbnail">
+            <div class="imgContent"><img *ngIf="student.foto" [src]="student.foto" [alt]="student.nombre"
+                class="img-thumbnail">
+              <img *ngIf="!student.foto"
+                src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"
+                class="img-thumbnail">
             </div>
             <div class="teacher_data">
               <p>{{student.nombre}} {{student.apellidos}}</p>
