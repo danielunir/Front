@@ -8,7 +8,8 @@
         <h2>Área personal {{student.username}}</h2>
       </div>
       <div class="links">
-        <div class="link noSelected" [routerLink]="['/studentprofile', currentId, 'tables', 'profesores']" role="button">
+        <div class="link noSelected" [routerLink]="['/studentprofile', currentId, 'tables', 'profesores']"
+          role="button">
           <h5>Mis profesores</h5>
         </div>
         <div class="link" [routerLink]="['/studentprofile', currentId]" role="button">
@@ -27,7 +28,7 @@
 
     </div>
     <div class="content">
-      <div *ngIf="student.foto" class="variableContent">
+      <div *ngIf="student" class="variableContent">
 
         <div class="teacherContent">
           <div class="teacher">
