@@ -60,11 +60,15 @@
 
     </div>
     <div class="content">
-      <div *ngIf="teacher" class="variableContent">
+      <div *ngIf="teacher.nombre" class="variableContent">
 
         <div class="teacherContent">
           <div class="teacher">
-            <div class="imgContent"><img [src]="teacher.foto" [alt]="teacher.nombre" class="img-thumbnail">
+            <div class="imgContent"><img *ngIf="teacher.foto" [src]="teacher.foto" [alt]="teacher.nombre"
+                class="img-thumbnail">
+              <img *ngIf="!teacher.foto"
+                src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"
+                class="img-thumbnail">
             </div>
             <div class="teacher_data">
               <p>{{teacher.nombre}} {{teacher.apellidos}}</p>

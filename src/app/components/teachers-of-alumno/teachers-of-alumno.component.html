@@ -23,8 +23,11 @@
                 <div class="teacherContent">
                     <div class="teacher" *ngFor="let teacher of teachers; let i=index">
                         <div class="a">
-                            <div class="imgContent"><img [src]="teachers[i].datos_per.foto"
-                                    [alt]="teachers[i].datos_per.nombre">
+                            <div class="imgContent"><img *ngIf="teachers[i].datos_per.foto"
+                                    [src]="teachers[i].datos_per.foto" [alt]="teachers[i].datos_per.nombre"
+                                    alt="imagen de un profesor"> <img *ngIf="!teachers[i].datos_per.foto"
+                                    src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"
+                                    class="img-thumbnail" alt="usuario sin imagen">
                             </div>
                             <div class="teacher_data">
                                 <div>
