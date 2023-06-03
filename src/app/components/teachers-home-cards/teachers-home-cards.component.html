@@ -6,7 +6,7 @@
     <div class="card-body">
       <h5 class="card-title text-center">{{teacher.nombre}} {{teacher.apellidos}}</h5>
       <p class="card-text">{{teacher.experiencia}}</p>
-      <p><span class="card-text" *ngFor="let materia of teacher.materias"> {{materia.rama}} {{materia.nivel}}, </span></p>
+      <p><span class="card-text" *ngFor="let materia of teacher.materias"> {{materia.rama}} {{materia.nivel}} </span></p>
     </div>
     <ul class="list-group list-group-flush">
       <!-- <div class="stars-outer">
