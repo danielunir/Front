@@ -37,6 +37,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [HomeGuard]
+  providers: [HomeGuard, ProfileGuard, UserRoleGuard]
 })
 export class AppRoutingModule { }
