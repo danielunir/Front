@@ -5,3 +5,77 @@ p {
 .card-body {
   padding-bottom: 6px;
 }
+
+.stars-outer {
+  display: flex;
+  position: relative;
+  font-family: FontAwesome;
+  font-size: 32px;
+  width: 180px;
+  margin: 0 auto;
+  justify-content: left;
+}
+
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+
+.stars-inner {
+  display: block;
+  position: absolute;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-inner::before {
+  display: block;
+  text-align: left;
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #f8ce0b;
+  margin: 0;
+}
+
+img {
+  height: 100%;
+  border-radius: 6px;
+}
+
+/**/
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: transparent;
+
+
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+.card-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+
+.card-title {
+  margin: 0rem;
+  /* Elimina el margen para que "Teacher" esté alineado con el borde de la tarjeta */
+}

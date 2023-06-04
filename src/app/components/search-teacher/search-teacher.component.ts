@@ -153,11 +153,11 @@ export class SearchTeacherComponent implements OnInit {
               console.log(materia);
 
               if(materia) {
-                // for(let i = 0; i < teacher.materias.length; i++){
+                for(let i = 0; i < teacher.materias.length; i++){
                   console.log(teacher.materias.length)
                   console.log(teacher.materias[0].rama)
                   return teacher.materias[0].rama === materia;
-                // }
+                }
               }
               return teacher;
             }
@@ -177,9 +177,18 @@ export class SearchTeacherComponent implements OnInit {
                   let { puntuacion } = datosFiltrados;
 
                   puntuacion = Number(puntuacion);
+                  console.log(puntuacion);
+
+                  if(teacher.promedio.length === 0) {
+                    teacher.promedio = 0.1;
+                    if(puntuacion) {
+                      return ((Number(teacher.promedio) >= puntuacion) && (Number(teacher.promedio) < (puntuacion + 1.9)));
+                    }
+                  }
+                  console.log(Number(teacher.promedio));
 
                   if(puntuacion) {
-                    return ((teacher.puntuacion >= puntuacion) && (teacher.puntuacion <= (puntuacion + 2)));
+                    return ((Number(teacher.promedio) >= puntuacion) && (Number(teacher.promedio) < (puntuacion + 1.9)));
                   }
                   return teacher;
                 }
@@ -196,14 +205,14 @@ export class SearchTeacherComponent implements OnInit {
                         this.ordenarCuotaMayorMenor();
                         this.ordenadoPor = 'pd';
                         break;
-                      // case 'na':
-                      //   ordenarNombreAscendente();
-                      //   ordenadoPor = 'na';
-                      //   break;
-                      // case 'nd':
-                      //   ordenarNombreDescendente();
-                      //   ordenadoPor = 'nd';
-                      //   break;
+                      case 'na':
+                        this.ordenarValoracionMenorMayor();
+                        this.ordenadoPor = 'na';
+                        break;
+                      case 'nd':
+                        this.ordenarValoracionMayorMenor();
+                        this.ordenadoPor = 'nd';
+                        break;
                       default:
                         this.ordenadoPor = '';
                         break;
@@ -233,14 +242,14 @@ export class SearchTeacherComponent implements OnInit {
           this.ordenarCuotaMayorMenor();
           this.ordenadoPor = 'pd';
           break;
-        // case 'na':
-        //   ordenarNombreAscendente();
-        //   ordenadoPor = 'na';
-        //   break;
-        // case 'nd':
-        //   ordenarNombreDescendente();
-        //   ordenadoPor = 'nd';
-        //   break;
+        case 'na':
+          this.ordenarValoracionMenorMayor();
+          this.ordenadoPor = 'na';
+          break;
+        case 'nd':
+          this.ordenarValoracionMayorMenor();
+          this.ordenadoPor = 'nd';
+          break;
         default:
           this.ordenadoPor = '';
           break;
@@ -265,6 +274,26 @@ export class SearchTeacherComponent implements OnInit {
       this.teachers_list = resultadoOrdenado;
     } else {
       const resultadoOrdenado = this.totalTeachers_page.sort((a: any, b: any) => b.cuota - a.cuota);
+      this.teachers_list = resultadoOrdenado;
+    }
+  }
+
+  ordenarValoracionMenorMayor = () => {
+    if (this.resultadoFiltrado) {
+      const resultadoOrdenado = this.resultadoFiltrado.sort((a: any, b: any) => a.promedio - b.promedio);
+      this.teachers_list = resultadoOrdenado;
+    } else {
+      const resultadoOrdenado = this.totalTeachers_page.sort((a: any, b: any) => a.promedio - b.promedio);
+      this.teachers_list = resultadoOrdenado;
+    }
+  }
+
+  ordenarValoracionMayorMenor = () => {
+    if (this.resultadoFiltrado) {
+      const resultadoOrdenado = this.resultadoFiltrado.sort((a: any, b: any) => b.promedio - a.promedio);
+      this.teachers_list = resultadoOrdenado;
+    } else {
+      const resultadoOrdenado = this.totalTeachers_page.sort((a: any, b: any) => b.promedio - a.promedio);
       this.teachers_list = resultadoOrdenado;
     }
   }

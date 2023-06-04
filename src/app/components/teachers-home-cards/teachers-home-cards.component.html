@@ -17,5 +17,8 @@
       <li class="list-group-item">Tel: {{teacher.telefono}}</li>
       <li class="list-group-item">{{teacher.cuota | currency: 'EUR'}}</li>
     </ul>
+    <div class="stars-outer">
+      <div class="stars-inner" [ngStyle]="{'width': startPercentatgeRounded}"></div>
+    </div>
   </div>
 </div>
