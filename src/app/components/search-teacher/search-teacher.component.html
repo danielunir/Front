@@ -110,6 +110,7 @@
                     <label class="form-label" for="puntuacion">Valoración</label>
                     <select class="form-control" name="puntuacion" id="puntuacion" [(ngModel)]="puntuacion" (change)="filtrarProfesor()">
                       <option value="">Seleccione</option>
+                      <option value="0.1">Sin Valoración</option>
                       <option value="2">1 Estrella</option>
                       <option value="4">2 Estrellas</option>
                       <option value="6">3 Estrellas</option>
