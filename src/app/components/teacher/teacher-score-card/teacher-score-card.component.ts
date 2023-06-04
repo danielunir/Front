@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-teacher-score-card',
   templateUrl: './teacher-score-card.component.html',
   styleUrls: ['./teacher-score-card.component.css']
 })
-export class TeacherScoreCardComponent {
+export class TeacherScoreCardComponent implements OnInit {
 
   @Input() teacher!: any;
 
