@@ -15,6 +15,7 @@ import { TeachersOfAlumnoComponent } from './components/teachers-of-alumno/teach
 import { AlumnosOfTeacherComponent } from './components/alumnos-of-teacher/alumnos-of-teacher.component';
 import { ProfileGuard } from './guards/profile.guard';
 import { UserRoleGuard } from './guards/userRole.guard';
+import { RoleExistGuard } from './guards/roleExists.guard';
 
 
 
@@ -22,7 +23,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [HomeGuard] },
   { path: 'registro', component: RegistroComponent },
-  { path: 'info-usuario', component: InfoUsuariosComponent },
+  { path: 'info-usuario', component: InfoUsuariosComponent, canActivate: [RoleExistGuard] },
   { path: 'teachers', component: TeacherComponent },
   { path: 'studentprofile/:studentId', component: StudentprofileComponent, canActivate: [ProfileGuard, UserRoleGuard] },
   { path: 'studentprofile/:studentId/search', component: SearchTeacherComponent, canActivate: [UserRoleGuard] },
@@ -37,6 +38,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [HomeGuard, ProfileGuard, UserRoleGuard]
+  providers: [HomeGuard, ProfileGuard, UserRoleGuard, RoleExistGuard]
 })
 export class AppRoutingModule { }
