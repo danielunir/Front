@@ -8,7 +8,8 @@
         <h2>Área personal {{student.username}}</h2>
       </div>
       <div class="links">
-        <div class="link noSelected" [routerLink]="['/studentprofile', currentId, 'tables', 'profesores']" role="button">
+        <div class="link noSelected" [routerLink]="['/studentprofile', currentId, 'tables', 'profesores']"
+          role="button">
           <h5>Mis profesores</h5>
         </div>
         <div class="link" [routerLink]="['/studentprofile', currentId]" role="button">
@@ -27,8 +28,28 @@
 
     </div>
     <div class="content">
-      <div *ngIf="student.foto" class="variableContent">
-        <div class="picture">
+      <div *ngIf="student.nombre" class="variableContent">
+
+        <div class="teacherContent">
+          <div class="teacher">
+            <div class="imgContent"><img *ngIf="student.foto" [src]="student.foto" [alt]="student.nombre"
+                class="img-thumbnail">
+              <img *ngIf="!student.foto"
+                src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"
+                class="img-thumbnail">
+            </div>
+            <div class="teacher_data">
+              <p>{{student.nombre}} {{student.apellidos}}</p>
+              <p>{{student.estudia}}</p>
+              <p><i class="fa-regular fa-envelope"></i> {{student.email}}</p>
+              <p><i class="fa-brands fa-whatsapp"></i> {{student.telefono}}</p>
+              <p><i class="fa-solid fa-location-dot"></i> {{student.direccion}}</p>
+              <p>{{student.ciudad}}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="picture">
 
           <div class="imgContent">
             <img [src]="student.foto" [alt]="student.nombre" class="img-thumbnail">
@@ -57,7 +78,7 @@
 
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

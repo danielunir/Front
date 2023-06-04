@@ -38,7 +38,6 @@ export class TeacherprofileComponent implements OnInit {
       }
       let response: any = await this.teacherService.getByUserId(this.currentId);
       this.teacher = response;
-      console.log(this.teacher)
     });
   }
 

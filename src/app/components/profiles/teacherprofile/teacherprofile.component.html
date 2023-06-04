@@ -46,7 +46,7 @@
     <div class="options">
 
       <div class="adminName">
-        <h2>Área personal {{teacher.username}}</h2>
+        <h2>Área personal de {{teacher.username}}</h2>
       </div>
       <div class="links">
         <div class="link noSelected" [routerLink]="['/teacherprofile', currentId, 'tables', 'profesores']" role="button">
@@ -59,35 +59,23 @@
 
     </div>
     <div class="content">
-      <div *ngIf="teacher" class="variableContent">
-        <div class="picture">
-
-          <div class="imgContent">
-            <img [src]="teacher.foto" [alt]="teacher.nombre" class="img-thumbnail">
-          </div>
-
-          <div class="charge">
-            <div class="texto">
-              <button class="btn btn-outline-secondary p-1" (click)="fileInput.click()">Seleccionar
-                imagen</button>
+      <div *ngIf="teacher.nombre" class="variableContent">
+        <div class="teacherContent">
+          <div class="teacher">
+            <div class="imgContent"><img *ngIf="teacher.foto" [src]="teacher.foto" [alt]="teacher.nombre"
+                class="img-thumbnail">
+              <img *ngIf="!teacher.foto"
+                src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"
+                class="img-thumbnail">
             </div>
-            <div class="upload">
-              <input #fileInput class="btn btn-primary file-upload" type="file" style="display: none;">
-            </div>
-          </div>
-
-          <div class="data">
-            <div class="dataB">
-              <p>Nombre: {{teacher.nombre}} {{teacher.apellidos}}</p>
-              <p>Nombre de usuario: {{teacher.username}}</p>
-              <p>Email: {{teacher.email}}</p>
-              <p>Rol: Profesor</p>
-              <p>Cuota: {{teacher.cuota}}€/h</p>
-              <p>Experiencia: {{teacher.experiencia}}</p>
-              <p>Dirección: {{teacher.direccion}}</p>
-              <p>Población: {{teacher.ciudad}}</p>
-              <p>Teléfono: {{teacher.telefono}}</p>
-
+            <div class="teacher_data">
+              <p>{{teacher.nombre}} {{teacher.apellidos}}</p>
+              <p>{{teacher.experiencia}}</p>
+              <p>{{teacher.cuota}}€/h</p>
+              <p><i class="fa-regular fa-envelope"></i> {{teacher.email}}</p>
+              <p><i class="fa-brands fa-whatsapp"></i> {{teacher.telefono}}</p>
+              <p><i class="fa-solid fa-location-dot"></i> {{teacher.direccion}}</p>
+              <p>{{teacher.ciudad}}</p>
             </div>
           </div>
         </div>
