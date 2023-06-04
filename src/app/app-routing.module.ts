@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [HomeGuard] },
   { path: 'registro', component: RegistroComponent },
   { path: 'info-usuario', component: InfoUsuariosComponent, canActivate: [RoleExistGuard] },
-  { path: 'teachers', component: TeacherComponent },
+  { path: 'teachers', component: TeacherComponent, canActivate: [RoleExistGuard] },
   { path: 'studentprofile/:studentId', component: StudentprofileComponent, canActivate: [ProfileGuard, UserRoleGuard] },
   { path: 'studentprofile/:studentId/search', component: SearchTeacherComponent, canActivate: [UserRoleGuard] },
   { path: 'teacherprofile/:teacherId', component: TeacherprofileComponent, canActivate: [ProfileGuard, UserRoleGuard] },
