@@ -1,13 +1,24 @@
-<img [src]="teacher.foto" class="card-img-top" [alt]="teacher.nombre">
-<div class="card-body">
-  <h5 class="card-title text-center">{{teacher.nombre}} {{teacher.apellidos}}</h5>
-  <p class="card-text">{{teacher.experiencia}}</p>
+<div class="row g-2">
+  <div class="col-md-4">
+    <img [src]="teacher.foto" class="img-fluid rounded-start" [alt]="teacher.nombre">
+  </div>
+  <div class="col-md-8">
+    <div class="card-body">
+      <h5 class="card-title text-center">{{teacher.nombre}} {{teacher.apellidos}}</h5>
+      <p class="card-text">{{teacher.experiencia}}</p>
+      <p><span class="card-text" *ngFor="let materia of teacher.materias"> {{materia.rama}} {{materia.nivel}} </span></p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <!-- <div class="stars-outer">
+        <div class="stars-inner" [ngStyle]="{'width': startPercentatgeRounded}"></div>
+      </div> -->
+      <!-- <li class="list-group-item">{{teacher.promedio_puntuacion}}</li> -->
+      <li class="list-group-item">{{teacher.direccion}}, {{teacher.ciudad}}</li>
+      <li class="list-group-item">Tel: {{teacher.telefono}}</li>
+      <li class="list-group-item">{{teacher.cuota | currency: 'EUR'}}</li>
+    </ul>
+    <div class="stars-outer">
+      <div class="stars-inner" [ngStyle]="{'width': startPercentatgeRounded}"></div>
+    </div>
+  </div>
 </div>
-<ul class="list-group list-group-flush">
-  <!-- <div class="stars-outer">
-    <div class="stars-inner" [ngStyle]="{'width': startPercentatgeRounded}"></div>
-  </div> -->
-  <!-- <li class="list-group-item">{{teacher.promedio_puntuacion}}</li> -->
-  <li class="list-group-item">{{teacher.direccion}}, {{teacher.ciudad}}</li>
-  <li class="list-group-item">{{teacher.cuota | currency: 'EUR'}}</li>
-</ul>

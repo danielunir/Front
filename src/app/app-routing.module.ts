@@ -13,6 +13,9 @@ import { TableInfoComponent } from './components/table-info/table-info.component
 import { SearchTeacherComponent } from './components/search-teacher/search-teacher.component';
 import { TeachersOfAlumnoComponent } from './components/teachers-of-alumno/teachers-of-alumno.component';
 import { AlumnosOfTeacherComponent } from './components/alumnos-of-teacher/alumnos-of-teacher.component';
+import { ProfileGuard } from './guards/profile.guard';
+import { UserRoleGuard } from './guards/userRole.guard';
+import { RoleExistGuard } from './guards/roleExists.guard';
 
 
 
@@ -20,21 +23,21 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [HomeGuard] },
   { path: 'registro', component: RegistroComponent },
-  { path: 'info-usuario', component: InfoUsuariosComponent },
-  { path: 'teachers', component: TeacherComponent },
-  { path: 'studentprofile/:studentId', component: StudentprofileComponent },
-  { path: 'studentprofile/:studentId/search', component: SearchTeacherComponent },
-  { path: 'teacherprofile/:teacherId', component: TeacherprofileComponent },
-  { path: 'adminprofile/:adminId', component: AdminprofileComponent },
-  { path: 'adminprofile/:adminId/tables/:tableType', component: TableInfoComponent },
-  { path: 'studentprofile/:studentId/tables/:profesores', component: TeachersOfAlumnoComponent },
-  { path: 'teacherprofile/:teacherId/tables/:alumnos', component: AlumnosOfTeacherComponent },
+  { path: 'info-usuario', component: InfoUsuariosComponent, canActivate: [RoleExistGuard] },
+  { path: 'teachers', component: TeacherComponent, canActivate: [RoleExistGuard] },
+  { path: 'studentprofile/:studentId', component: StudentprofileComponent, canActivate: [ProfileGuard, UserRoleGuard] },
+  { path: 'studentprofile/:studentId/search', component: SearchTeacherComponent, canActivate: [UserRoleGuard] },
+  { path: 'teacherprofile/:teacherId', component: TeacherprofileComponent, canActivate: [ProfileGuard, UserRoleGuard] },
+  { path: 'adminprofile/:adminId', component: AdminprofileComponent, canActivate: [UserRoleGuard] },
+  { path: 'adminprofile/:adminId/tables/:tableType', component: TableInfoComponent, canActivate: [UserRoleGuard] },
+  { path: 'studentprofile/:studentId/tables/:profesores', component: TeachersOfAlumnoComponent, canActivate: [UserRoleGuard] },
+  { path: 'teacherprofile/:teacherId/tables/:alumnos', component: AlumnosOfTeacherComponent, canActivate: [UserRoleGuard] },
   { path: '**', component: HomeComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [HomeGuard]
+  providers: [HomeGuard, ProfileGuard, UserRoleGuard, RoleExistGuard]
 })
 export class AppRoutingModule { }
