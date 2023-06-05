@@ -11,8 +11,10 @@ import { RamasService } from 'src/app/services/ramas.service';
 export class AlumnosOfTeacherComponent {
 
   logado: boolean = true;
-  alumnos: any = []
-  alumnoData: any = []
+  alumnos: any = [];
+  alumnoData: any = [];
+  currentId: string = '';
+  teacherName: string = '';
 
 
   constructor(
@@ -23,10 +25,9 @@ export class AlumnosOfTeacherComponent {
 
   async ngOnInit() {
     this.activateRoute.params.subscribe(async (params: any) => {
-      let currentId: number = params.teacherId
-      console.log(currentId)
-      this.alumnos = await this.ramasService.getByUserId(currentId)
-      console.log(this.alumnos)
+      this.currentId = params.teacherId;
+      this.teacherName = localStorage.getItem('username') || '';
+      this.alumnos = await this.ramasService.getByUserId(this.currentId);
     });
   }
 

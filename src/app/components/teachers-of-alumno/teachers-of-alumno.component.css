@@ -1,17 +1,305 @@
-.teacher {
-    display: flex;
-    border: 1px solid black;
-    margin-bottom: 2rem;
-    width: 50rem;
+* {
+    padding: 0;
+    margin: 0;
 }
 
-.teacher_img {
-    width: 5rem;
-    height: 5rem;
+.all {
+
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 1550px;
+    margin: 0px auto;
+    padding: 0px;
+}
+
+.contentRow {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 95vw;
+    max-width: 100%;
+    min-width: 300px;
+    margin: 0 auto;
+    background-color: whitesmoke;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 200px;
+}
+
+.adminName {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: left;
+    color: white;
+    background-color: #0d47a1;
+    padding: 1rem;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    background-color: rgb(226, 226, 226);
+    box-shadow: inset 0px -3px 5px -5px rgba(0, 0, 0, 0.3);
+}
+
+.selected {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    padding: 0.5rem;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    box-shadow: 0px 4px 5px -5px rgba(0, 0, 0, 0.3);
+}
+
+.variableContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.5rem;
+    align-items: center;
+}
+
+.teacherContent {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-between;
+    width: 100%;
+    grid-gap: 2rem;
+    padding: 2rem;
+}
+
+.teacher {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 275px;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+    background-image: url(https://media.istockphoto.com/id/182666258/es/foto/fondo-de-papel-especial.jpg?s=170667a&w=0&k=20&c=DeEe7k8WaGdVokeS2e7vQ3pcdQP_oJGExsT3wUR3eas=);
+}
+
+.imgContent {
+    display: flex;
+    width: 200px;
+    padding: 0.5rem;
+}
+
+img {
+    border-radius: 50%;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    opacity: 95%;
 }
 
 .teacher_data {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: fit-content;
     padding: 1rem;
-    align-items: space-between;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.a {
+    display: flex;
+
+}
+
+.b {
+    display: flex;
+    /* justify-content: center; */
+    justify-content: flex-end;
+    padding: 1rem;
+    width: 100%;
+}
+
+.centerContent {
+    display: flex;
+    justify-content: center;
+    width: 260px;
+}
+
+.valueContent {
+    display: flex;
+}
+
+.scoreContent {
+    display: flex;
+    width: 100%;
+    height: 3rem;
+}
+
+.outputContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    font-size: 1.25rem;
+    font-weight: bolder;
+    /*  padding: 0 1.5rem;
+    color: #FF5722; */
+}
+
+form {
+    width: 100%;
+}
+
+.opinionGrafic {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.opinionText {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.rangeInput {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    /* width: 100px; */
+
+}
+
+textarea {
+    padding: 0.5rem;
+}
+
+.send {
+    margin-top: 0.5rem;
+}
+
+.form-label {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* .btn-primary {
+    margin-top: 0.5rem;
+} */
+
+.modal-dialog {
+    /* position: relative; */
+    margin: 0 auto;
+    /* display: table; */
+    /* This is important */
+    /* overflow-y: auto;
+    overflow-x: auto;
+    width: auto;
+    min-width: 300px; */
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.modal-title {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #FF5722;
+
+    .fa-book {
+        color: #0d47a1;
+    }
+
+}
+
+.modal-header {
+    padding: 1rem;
+}
+
+.modal-body {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.modal-footer {
+    padding: 1rem;
+    font-size: medium;
+    font-weight: 100;
+    color: gray;
+    text-align: center;
+}
+
+.color-red {
+    color: red;
+}
+
+.color-blue {
+    color: blue;
+}
+
+.color-green {
+    /* color: green; */
+    color: rgb(20, 187, 5);
+}
+
+.color-excelent {
+    /*   */
+    /* color: #FF5722; */
+    color: gold;
+    font-size: 1.5rem;
+}
+
+.valueTeacher {
+    padding: 0.5rem;
+}
+
+.sending {
+    padding: 0.1rem;
+}
+
+
+
+
+@media (max-width: 1050px) {
+    .teacherContent {
+        grid-template-columns: repeat(1, auto);
+        justify-content: center;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
 }
