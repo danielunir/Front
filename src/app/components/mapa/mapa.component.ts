@@ -86,7 +86,10 @@ export class MapaComponent implements OnInit {
         this.teachersPositions = result.results;
         console.log(this.teachersPositions)
 
-        this.teachersPositions[2]?.latitud
+        for(let i = 0; i < this.teachersPositions.length; i++) {
+          this.teachersPositions[i].latitud
+
+        }
 
         console.log(result);
         if (this.arrPages.length !== this.totalPages) {
