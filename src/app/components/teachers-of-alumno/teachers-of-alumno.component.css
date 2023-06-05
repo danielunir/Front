@@ -90,6 +90,7 @@
 
 .teacher {
     display: flex;
+    flex-direction: column;
     width: 100%;
     min-width: 275px;
     box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
@@ -120,6 +121,169 @@ img {
     color: rgba(0, 0, 0, 0.85);
 }
 
+.a {
+    display: flex;
+
+}
+
+.b {
+    display: flex;
+    /* justify-content: center; */
+    justify-content: flex-end;
+    padding: 1rem;
+    width: 100%;
+}
+
+.centerContent {
+    display: flex;
+    justify-content: center;
+    width: 260px;
+}
+
+.valueContent {
+    display: flex;
+}
+
+.scoreContent {
+    display: flex;
+    width: 100%;
+    height: 3rem;
+}
+
+.outputContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    font-size: 1.25rem;
+    font-weight: bolder;
+    /*  padding: 0 1.5rem;
+    color: #FF5722; */
+}
+
+form {
+    width: 100%;
+}
+
+.opinionGrafic {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.opinionText {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.rangeInput {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    /* width: 100px; */
+
+}
+
+textarea {
+    padding: 0.5rem;
+}
+
+.send {
+    margin-top: 0.5rem;
+}
+
+.form-label {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* .btn-primary {
+    margin-top: 0.5rem;
+} */
+
+.modal-dialog {
+    /* position: relative; */
+    margin: 0 auto;
+    /* display: table; */
+    /* This is important */
+    /* overflow-y: auto;
+    overflow-x: auto;
+    width: auto;
+    min-width: 300px; */
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.modal-title {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #FF5722;
+
+    .fa-book {
+        color: #0d47a1;
+    }
+
+}
+
+.modal-header {
+    padding: 1rem;
+}
+
+.modal-body {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.modal-footer {
+    padding: 1rem;
+    font-size: medium;
+    font-weight: 100;
+    color: gray;
+    text-align: center;
+}
+
+.color-red {
+    color: red;
+}
+
+.color-blue {
+    color: blue;
+}
+
+.color-green {
+    /* color: green; */
+    color: rgb(20, 187, 5);
+}
+
+.color-excelent {
+    /*   */
+    /* color: #FF5722; */
+    color: gold;
+    font-size: 1.5rem;
+}
+
+.valueTeacher {
+    padding: 0.5rem;
+}
+
+.sending {
+    padding: 0.1rem;
+}
+
+
+
 
 @media (max-width: 1050px) {
     .teacherContent {
@@ -132,11 +296,10 @@ img {
 }
 
 @media (max-width: 550px) {
-    .teacher {
+    .a {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
-        box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
     }
 }
