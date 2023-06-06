@@ -1,4 +1,5 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-main',
@@ -9,8 +10,15 @@ export class MainComponent implements OnInit {
 
   title: string;
 
-  constructor() {
+  remitente: any;
+  destinatario: any;
+
+  constructor(
+
+  ) {
     this.title = 'Mensajes privados'
+
+
   }
 
   ngOnInit(): void {

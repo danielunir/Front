@@ -4,6 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// Modulo personalizado
+import { MessagesModule } from './messages/messages.module';
+
 import { AppComponent } from './app.component';
 import { UneteComponent } from './components/unete/unete.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -79,7 +82,8 @@ import { AlumnosOfTeacherComponent } from './components/alumnos-of-teacher/alumn
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    AgmCoreModule.forRoot(environment.googleMaps)
+    AgmCoreModule.forRoot(environment.googleMaps),
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

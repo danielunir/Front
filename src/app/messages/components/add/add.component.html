@@ -1,5 +1,37 @@
-<div class="col-lg-10">
-  <h3>{{title}}</h3>
-
-  <!-- formulario envio mensajes -->
+<div class="all">
+  <div class="contentRow">
+    <div class="options">
+      <div class="adminName">
+        <h2>{{title}}</h2>
+      </div>
+      <div class="links">
+        <div class="link selected" [routerLinkActive]="['active']" [routerLink]="['enviar']" role="button">
+          <h5>Enviar Mensaje</h5>
+        </div>
+        <div class="link noSelected" [routerLinkActive]="['active']" [routerLink]="['recibidos']" role="button">
+          <h5>Mensajes Recibidos</h5>
+        </div>
+        <div class="link noSelected" [routerLinkActive]="['active']" [routerLink]="['enviados']" role="button">
+          <h5>Mensajes Enviados</h5>
+        </div>
+      </div>
+      <div class="container mx-auto">
+        <div class="row">
+          <div class="mt-5">
+            <h3>{{title}}</h3>
+            <form class="mt-4 mb-5" novalidate [formGroup]="formEnvioMensaje" (ngSubmit)="onSubmit()">
+              <input type="hidden" formControlName="remitente" [(ngModel)]="remitente">
+              <input type="hidden" formControlName="destinatario" [(ngModel)]="destinatario">
+              <div class="mb-3 col-12">
+                <label class="form-label">Mensaje</label>
+                <textarea class="form-control" formControlName="contenido" cols="30" rows="10"></textarea>
+                <p class="error" *ngIf="checkControl('contenido', 'required')">El campo es requerido</p>
+              </div>
+              <input class="form-control" type="submit" value="{{title}}" class="btn btn-lg btn-primary" [disabled]="!formEnvioMensaje.valid">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
