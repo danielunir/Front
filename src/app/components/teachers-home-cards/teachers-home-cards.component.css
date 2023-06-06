@@ -79,3 +79,32 @@ img {
   margin: 0rem;
   /* Elimina el margen para que "Teacher" esté alineado con el borde de la tarjeta */
 }
+
+.buttoncontent {
+  display: flex;
+  margin-top: 0rem;
+}
+
+.cita-button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  background-color: #FF5722;
+  border-color: #da4112;
+}
+
+.btn:active {
+  background-color: #fac406;
+  border-color: #d9b85e;
+}
+
+@media (max-width: 956px) {
+  .buttoncontent {
+    margin-top: 0;
+  }
+}

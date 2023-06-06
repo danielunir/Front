@@ -45,7 +45,7 @@
         <div class="todos-profesores ">
           <div class="zona-filtros row justify-content-start">
             <h4 class="filtros">Filtros</h4>
-            <div class="contenedor-filtros col-2">
+            <div class="contenedor-filtros col-12 col-lg-2">
               <form id="filtros" class="form-group">
                 <div class="materias md:flex flex-row">
                   <div class="mt-3">
@@ -121,9 +121,9 @@
                 </div>
               </form>
             </div>
-            <div class="zona-profesores col-10" id="lista-profesores">
+            <div class="zona-profesores col-12 col-lg-10 mt-4" id="lista-profesores">
               <div class="slider-container-tv cards-productos mt-6 text-center">
-                <ul class="flex flex-wrap justify-evenly gap-y-6">
+                <ul class="flex flex-wrap justify-evenly gap-y-6 max-width">
                   <li class="resultado" *ngFor="let current_teacher of teachers_list | filterMateria:filterTeacher" id="resultado">
                     <app-teachers-home-cards class="card mb-3" [teacher]="current_teacher"></app-teachers-home-cards>
                   </li>
