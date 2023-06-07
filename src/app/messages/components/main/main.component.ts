@@ -22,7 +22,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('main.component cargado...')
+
   }
 
 }

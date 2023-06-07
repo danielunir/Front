@@ -10,9 +10,9 @@ const messagesRoutes: Routes = [
   {
     path: 'mensajes', component: MainComponent,
       children: [
-        { path: '', redirectTo: 'recibidos', pathMatch: 'full' },
+        { path: '', redirectTo: 'enviar', pathMatch: 'full' },
         { path: 'enviar', component: AddComponent },
-        { path: 'recibidos', component: ReceivedComponent },
+        { path: 'recibidos/:destinatarioId/:remitenteId', component: ReceivedComponent },
         { path: 'enviados', component: SendedComponent }
       ]
   }

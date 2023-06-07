@@ -5,13 +5,13 @@
         <h2>{{title}}</h2>
       </div>
       <div class="links">
-        <div class="link selected" [routerLinkActive]="['active']" [routerLink]="['enviar']" role="button">
+        <div class="link selected" [routerLinkActive]="['active']" [routerLink]="['/mensajes','enviar', remitente, destinatario]" role="button">
           <h5>Enviar Mensaje</h5>
         </div>
-        <div class="link noSelected" [routerLinkActive]="['active']" [routerLink]="['recibidos']" role="button">
+        <div class="link noSelected" (click)="changeOrigin()" [routerLinkActive]="['active']" [routerLink]="['/mensajes', 'recibidos', destinatario, remitente]" role="button">
           <h5>Mensajes Recibidos</h5>
         </div>
-        <div class="link noSelected" [routerLinkActive]="['active']" [routerLink]="['enviados']" role="button">
+        <div class="link noSelected" [routerLinkActive]="['active']" [routerLink]="['/mensajes', 'enviados', remitente, destinatario]" role="button">
           <h5>Mensajes Enviados</h5>
         </div>
       </div>

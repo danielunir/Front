@@ -49,7 +49,7 @@
         <h2>Área personal de {{teacher.username}}</h2>
       </div>
       <div class="links">
-        <div class="link noSelected" [routerLink]="['/teacherprofile', currentId, 'tables', 'profesores']" role="button">
+        <div class="link noSelected" [routerLink]="['/teacherprofile', currentId, 'tables', 'alumnos']" role="button">
           <h5>Mis alumnos</h5>
         </div>
         <div class="link" [routerLink]="['/teacherprofile', currentId]" role="button">
@@ -62,11 +62,8 @@
       <div *ngIf="teacher.nombre" class="variableContent">
         <div class="teacherContent">
           <div class="teacher">
-            <div class="imgContent"><img *ngIf="teacher.foto" [src]="teacher.foto" [alt]="teacher.nombre"
-                class="img-thumbnail">
-              <img *ngIf="!teacher.foto"
-                src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"
-                class="img-thumbnail">
+            <div class="imgContent"><img *ngIf="teacher.foto" [src]="teacher.foto" [alt]="teacher.nombre" class="img-thumbnail">
+              <img *ngIf="!teacher.foto" src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png" class="img-thumbnail">
             </div>
             <div class="teacher_data">
               <p>{{teacher.nombre}} {{teacher.apellidos}}</p>

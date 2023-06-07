@@ -39,6 +39,7 @@ import { SearchTeacherComponent } from './components/search-teacher/search-teach
 import { FilterMateriaPipe } from './pipes/filter-materia.pipe';
 import { TeachersOfAlumnoComponent } from './components/teachers-of-alumno/teachers-of-alumno.component';
 import { AlumnosOfTeacherComponent } from './components/alumnos-of-teacher/alumnos-of-teacher.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 
 
@@ -75,6 +76,7 @@ import { AlumnosOfTeacherComponent } from './components/alumnos-of-teacher/alumn
     FilterMateriaPipe,
     TeachersOfAlumnoComponent,
     AlumnosOfTeacherComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
