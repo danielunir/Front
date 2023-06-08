@@ -34,7 +34,7 @@ export class MessageService {
     }
 
     return firstValueFrom(
-      this.httpClient.get<any>(`${this.baseUrl}`, httpOptions)
+      this.httpClient.post<any>(`${this.baseUrl}`, values, httpOptions)
     )
    }
 }
