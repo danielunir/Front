@@ -18,7 +18,8 @@
       <div class="container mx-auto">
         <div class="row">
           <div class="mt-5">
-            <h3>{{title}}</h3>
+            <h3 *ngIf="role === 'profesor' && alumno != undefined">{{title}} a {{alumno[0]?.alumno.nombre}} {{alumno[0]?.alumno.apellidos}}</h3>
+            <h3 *ngIf="role === 'alumno' && profesor != undefined">{{title}} a {{profesor[0]?.datos_per.nombre}} {{profesor[0]?.datos_per.apellidos}}</h3>
             <form class="mt-4 mb-5" novalidate [formGroup]="formEnvioMensaje" (ngSubmit)="onSubmit()">
               <input type="hidden" formControlName="remitente" [(ngModel)]="remitente">
               <input type="hidden" formControlName="destinatario" [(ngModel)]="destinatario">
