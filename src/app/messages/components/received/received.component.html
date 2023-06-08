@@ -1,0 +1,44 @@
+<div class="all">
+  <div class="contentRow">
+    <div class="options">
+      <div class="adminName">
+        <h2>{{title}}</h2>
+      </div>
+      <div class="links">
+        <div class="link noSelected" [routerLinkActive]="['active']" [routerLink]="['/mensajes','enviar', remitente, destinatario]" role="button">
+          <h5>Enviar Mensaje</h5>
+        </div>
+        <div class="link selected" [routerLinkActive]="['active']" [routerLink]="['/mensajes', 'recibidos', destinatario, remitente]" role="button">
+          <h5>Mensajes</h5>
+        </div>
+      </div>
+      <div class="container mx-auto">
+        <div class="row">
+          <div class="mt-5 col-12 col-md-4">
+            <h3 *ngIf="role === 'profesor' && alumno != undefined">{{title}} con {{alumno[0]?.alumno.nombre}} {{alumno[0]?.alumno.apellidos}}</h3>
+            <h3 *ngIf="role === 'alumno' && profesor != undefined">{{title}} a {{profesor[0]?.datos_per.nombre}} {{profesor[0]?.datos_per.apellidos}}</h3>
+            <form class="mt-4 mb-5" novalidate [formGroup]="formGetMessage" (ngSubmit)="onSubmit()">
+              <input type="hidden" formControlName="remitente" [(ngModel)]="remitente">
+              <input type="hidden" formControlName="destinatario" [(ngModel)]="destinatario">
+              <input class="form-control" type="submit" value="Consultar Mensajes" class="btn btn-lg btn-primary w-50 m-auto">
+            </form>
+            <input *ngIf="role === 'alumno'" type="button" class="form-control btn btn-lg btn-primary mb-5 w-50 m-auto" [routerLink]="['/studentprofile', this.remitente, 'tables', 'profesores']" value="Salir">
+            <input *ngIf="role === 'profesor'" type="button" class="form-control btn btn-lg btn-primary mb-5 w-50 m-auto" [routerLink]="['/teacherprofile', this.remitente, 'tables', 'alumnos']" value="Salir">
+          </div>
+          <div class="mt-5 col-12 col-md-8">
+            <div *ngFor="let conversacion of conversaciones">
+              <div class="card mb-3 col-md-5" [ngClass]="conversacion.remitente != this.remitente ? 'offset-md-7' : ''">
+                <div class="card-body p-2 col-12">
+                  <p *ngIf="conversacion.remitente == this.remitente">Tú</p>
+                  <p *ngIf="conversacion.remitente != this.remitente">Interlocutor</p>
+                  <h6 class="card-subtitle mb-2 text-muted text-end">{{conversacion.fecha_act | date: 'd/M/yyyy h:mm:ss'}}</h6>
+                  <p class="card-text">{{conversacion.mensaje}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
