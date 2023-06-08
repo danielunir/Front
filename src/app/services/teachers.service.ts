@@ -8,11 +8,13 @@ import { firstValueFrom } from 'rxjs';
 export class TeachersService {
 
   private baseUrl: string;
+  private emailUrl: string;
 
   constructor(
     private httpClient: HttpClient
   ) {
     this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/teachers';
+    this.emailUrl = 'https://teachers-groupb.herokuapp.com/api/mail';
   }
 
   getAll(pPage: number = 1): Promise<any> {
@@ -55,6 +57,18 @@ export class TeachersService {
 
     return firstValueFrom(
       this.httpClient.post<any>(`${this.baseUrl}/`, values, httpOptions)
+    )
+  }
+
+  envioEmail(values: { destinatario: string, asunto: string, cuerpo: string }) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_login')!
+      })
+    }
+
+    return firstValueFrom(
+      this.httpClient.post<any>(`${this.emailUrl}`, values, httpOptions)
     )
   }
 
