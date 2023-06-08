@@ -7,14 +7,16 @@
         <h2 *ngIf="this.profType === 'profesores'">Administar Profesores</h2>
       </div>
       <div class="links">
-        <div [routerLink]="['/adminprofile', admin.id, 'tables', 'alumnos']" role="button" [ngClass]="{'selected': profType === 'alumnos', 'link': profType === 'profesores'}">
+        <div [routerLink]="['/adminprofile', admin.id, 'tables', 'alumnos']" role="button"
+          [ngClass]="{'selected': profType === 'alumnos', 'link': profType === 'profesores'}">
           <h5>Alumnos</h5>
         </div>
         <div class="link" [routerLink]="['/adminprofile', admin.id]" role="button">
           <h5>Mi perfil</h5>
         </div>
 
-        <div [routerLink]="['/adminprofile', admin.id, 'tables', 'profesores']" role="button" [ngClass]="{'selected': profType === 'profesores', 'link': profType === 'alumnos'}">
+        <div [routerLink]="['/adminprofile', admin.id, 'tables', 'profesores']" role="button"
+          [ngClass]="{'selected': profType === 'profesores', 'link': profType === 'alumnos'}">
           <h5>Profesores</h5>
         </div>
       </div>
@@ -36,6 +38,7 @@
                   <th scope="col">Email</th>
                   <th scope="col">Nacimiento</th>
                   <th scope="col">Estudia</th>
+                  <th scope="col">Activo</th>
                   <th scope="col">Borrar</th>
                 </tr>
               </thead>
@@ -64,7 +67,15 @@
                   <td>{{student['email']}}</td>
                   <td>{{student['fecha_nacimiento'] | date: 'dd/MM/YYYY'}}</td>
                   <td>{{student['estudia']}}</td>
-                  <td><button class="btn" (click)="deleteStudent(student['usuario_id'])"><i class="fa-solid fa-trash-can"></i></button></td>
+                  <td>
+                    <i class="fa-solid fa-user-xmark" *ngIf="student['status'] === 0"></i>
+                    <i class="fa-solid fa-user-check" *ngIf="student['status'] === 1" style="color: green"></i>
+                  </td>
+                  <td>
+                    <button class="btn" (click)="deleteStudent(student['usuario_id'])"
+                      *ngIf="student['status'] === 1"><i class="fa-solid fa-trash-can"></i></button>
+                    <i class="fa-solid fa-trash-can" style="color: black" *ngIf="student['status'] === 0"></i>
+                  </td>
                 </tr>
               </tbody>
               <tbody *ngIf="this.profType === 'profesores'">
@@ -78,8 +89,17 @@
                   <td>{{teacher['fecha_nacimiento'] | date: 'dd/MM/YYYY'}}</td>
                   <td>{{teacher['cuota']}}€/h</td>
                   <td>{{teacher['experiencia']}}</td>
-                  <td><button *ngIf="teacher['status'] === 0" class="btn" (click)="validateTeacher(teacher['usuario_id'])"><i class="fa-solid fa-check"></i></button></td>
-                  <td><button class="btn"><i class="fa-solid fa-trash-can" (click)="deleteTeacher(teacher['usuario_id'])"></i></button>
+                  <td>
+                    <button *ngIf="teacher['status'] === 0" class="btn"
+                      (click)="validateTeacher(teacher['usuario_id'])"><i class="fa-solid fa-user-xmark"></i></button>
+                    <button *ngIf="teacher['status'] === 1" class="btn"><i class="fa-solid fa-user-check"
+                        style="color: green"></i></button>
+                  </td>
+                  <td>
+                    <button *ngIf="teacher['status'] === 1" class="btn"
+                      (click)="deleteTeacher(teacher['usuario_id'])"><i class="fa-solid fa-trash-can"></i></button>
+                    <button *ngIf="teacher['status'] === 0" class="btn"><i class="fa-solid fa-trash-can"
+                        style="color: black"></i></button>
                   </td>
                 </tr>
               </tbody>
