@@ -35,6 +35,7 @@ export class TableInfoComponent implements OnInit, OnDestroy {
       try {
         let response: any = await this.adminService.getByUserId(currentId);
         this.admin = response;
+        console.log(this.admin)
 
         if (this.profType === 'alumnos') {
           const studentsResponse = await this.studentsService.getAllStudents();
@@ -57,7 +58,8 @@ export class TableInfoComponent implements OnInit, OnDestroy {
     try {
       const response: any = await this.teachersService.setActive(teacherId, { status: 1 });
       console.log(response);
-      this.router.navigate(['/adminprofile', teacherId, 'tables', 'profesores']);
+      this.router.navigate(['/adminprofile', this.admin.usuario_id
+        , 'tables', 'profesores']);
     } catch (error) {
       console.error('Error en la validación del profesor: ', error);
     }
@@ -67,7 +69,7 @@ export class TableInfoComponent implements OnInit, OnDestroy {
     try {
       const response: any = await this.teachersService.setInactive(teacherId, { status: 0 });
       console.log(response);
-      this.router.navigate(['/adminprofile', teacherId, 'tables', 'profesores']);
+      this.router.navigate(['/adminprofile', this.admin.usuario_id, 'tables', 'profesores']);
     } catch (error) {
       console.error('Error en el borrado del profesor: ', error);
     }
@@ -77,7 +79,7 @@ export class TableInfoComponent implements OnInit, OnDestroy {
     try {
       const response: any = await this.studentsService.setInactive(studentId, { status: 0 });
       console.log(response);
-      this.router.navigate(['/adminprofile', studentId, 'tables', 'alumnos']);
+      this.router.navigate(['/adminprofile', this.admin.usuario_id, 'tables', 'alumnos']);
     } catch (error) {
       console.error('Error en el borrado del alumno: ', error);
     }
