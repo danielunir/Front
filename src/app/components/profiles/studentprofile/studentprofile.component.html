@@ -8,8 +8,7 @@
         <h2>Área personal {{student.username}}</h2>
       </div>
       <div class="links">
-        <div class="link noSelected" [routerLink]="['/studentprofile', currentId, 'tables', 'profesores']"
-          role="button">
+        <div class="link noSelected" [routerLink]="['/studentprofile', currentId, 'tables', 'profesores']" role="button">
           <h5>Mis profesores</h5>
         </div>
         <div class="link" [routerLink]="['/studentprofile', currentId]" role="button">
@@ -32,11 +31,8 @@
 
         <div class="teacherContent">
           <div class="teacher">
-            <div class="imgContent"><img *ngIf="student.foto" [src]="student.foto" [alt]="student.nombre"
-                class="img-thumbnail">
-              <img *ngIf="!student.foto"
-                src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"
-                class="img-thumbnail">
+            <div class="imgContent"><img *ngIf="student.foto" [src]="student.foto" [alt]="student.nombre" class="img-thumbnail">
+              <img *ngIf="!student.foto" src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png" class="img-thumbnail">
             </div>
             <div class="teacher_data">
               <p>{{student.nombre}} {{student.apellidos}}</p>
@@ -82,3 +78,4 @@
       </div>
     </div>
   </div>
+</div>

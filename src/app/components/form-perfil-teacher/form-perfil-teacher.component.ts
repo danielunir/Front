@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NivelesService } from 'src/app/services/niveles.service';
 import { RamasService } from 'src/app/services/ramas.service';
 import { TeachersService } from 'src/app/services/teachers.service';
+import { environment } from 'src/environments/environments';
 
 @Component({
   selector: 'app-form-perfil-teacher',
@@ -23,12 +23,11 @@ export class FormPerfilTeacherComponent {
 
   values: any;
   valuesRamaCo: any;
-  // valuesArea: any;
+  valuesEmail: any;
 
   constructor(
     private teachersService: TeachersService,
     private ramasService: RamasService,
-    private nivelesService: NivelesService,
     private router: Router
   ) {
 
@@ -74,7 +73,7 @@ export class FormPerfilTeacherComponent {
 
     this.values = { cuota, experiencia, usuario_id }
     this.valuesRamaCo = { usuario_id, materia_id, nivel_id }
-    // this.valuesNivel = { nivel_id, usuario_id }
+    this.valuesEmail = { "destinatario": environment.correo_admin, "asunto": `Nuevo registro Profesor ${usuario_id}`, "cuerpo": `Se ha registrado el profesor con identificación ${usuario_id} quedando pendiente de validación` }
 
     try {
       const response = await this.teachersService.registroProfesor(this.values);
@@ -99,18 +98,18 @@ export class FormPerfilTeacherComponent {
       console.log(error)
     }
 
-    // try {
-    //   const responseNivel = await this.nivelesService.registroNiveles(this.valuesNivel);
+    try {
+      const sendEmail = await this.teachersService.envioEmail(this.valuesEmail);
 
-    //   console.log(responseNivel)
-    //   if (!responseNivel.insertId) {
-    //     alert(responseNivel.fatal);
-    //     return alert('Registro de datos de perfil Niveles erroneo')
-    //   }
+      console.log(sendEmail);
+      // if (!responseNivel.insertId) {
+      //   alert(responseNivel.fatal);
+      //   return alert('Registro de datos de perfil Niveles erroneo')
+      // }
 
-    // } catch (error) {
-    //   console.log(error)
-    // }
+    } catch (error) {
+      console.log(error)
+    }
     this.router.navigate([`/teacherprofile/${this.usuarioId}`]);
   }
 }
