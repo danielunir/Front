@@ -197,6 +197,12 @@ ul {
   flex-direction: column;
 }
 
+.zona-profesores {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
 
 /* .variableContent {
   display: flex;

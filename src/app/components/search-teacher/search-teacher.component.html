@@ -110,7 +110,17 @@
             </div>
           </div>
         </div>
-        <div class="todos-profesores ">
+        <!--   <div class="zona-profesores" id="lista-profesores">
+          <div class="slider-container-tv cards-productos mt-6 text-center">
+            <ul class="flex flex-wrap justify-evenly gap-y-6 max-width">
+              <li class="resultado" *ngFor="let current_teacher of teachers_list | filterMateria:filterTeacher"
+                id="resultado">
+                <app-teachers-home-cards class="card mb-3" [teacher]="current_teacher"></app-teachers-home-cards>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+        <!--  <div class="todos-profesores ">
           <div class="zona-filtros row justify-content-start">
             <div class="zona-profesores col-12 col-lg-10 mt-4" id="lista-profesores">
               <div class="slider-container-tv cards-productos mt-6 text-center">
@@ -123,10 +133,13 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <!-- <div class="teacherContent"> -->
-        <!-- <div class="teacher" *ngFor="let teacher of teachers_list | filterMateria:filterTeacher" id="resultado">
+        <div class="teacherContent">
+          <div class="teacher" *ngFor="let teacher of teachers_list | filterMateria:filterTeacher" id="resultado">
+            <app-teachers-home-cards class="card mb-3" [teacher]="teacher"></app-teachers-home-cards>
+          </div>
+          <!-- <div class="teacher" *ngFor="let teacher of teachers_list | filterMateria:filterTeacher" id="resultado">
             <div class="a">
               <div class="imgContent"><img *ngIf="teacher.foto" [src]="teacher.foto" [alt]="teacher.nombre"> <img
                   *ngIf="!teacher.foto"
@@ -163,7 +176,7 @@
             </div>
           </div> -->
 
-        <!-- </div> -->
+        </div>
       </section>
 
     </div>
