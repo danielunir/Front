@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'src/app/services/message.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AlumnosService } from 'src/app/services/alumnos.service';
+import { RamasService } from 'src/app/services/ramas.service';
 
 @Component({
   selector: 'app-received',
@@ -16,12 +18,20 @@ export class ReceivedComponent implements OnInit {
 
   remitente: any;
   destinatario: any;
+  alumno: any;
+  profesor: any;
+  role: string | null= '';
+
+  conversaciones: any;
+  conversacionesOrdenadas: any;
 
   constructor(
     private messageService: MessageService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private ramasService: RamasService,
+    private alumnosService: AlumnosService
   ) {
-    this.title = 'Mensajes recibidos';
+    this.title = 'Mensajes';
 
     this.formGetMessage = new FormGroup({
       destinatario: new FormControl("", []),
@@ -30,7 +40,7 @@ export class ReceivedComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
 
     const remitenteId: number = this.activatedRoute.snapshot.params['remitenteId'];
     const destinatarioId: number = this.activatedRoute.snapshot.params['destinatarioId'];
@@ -38,19 +48,43 @@ export class ReceivedComponent implements OnInit {
     this.remitente = remitenteId;
     this.destinatario = destinatarioId;
 
+    try {
+      this.role = localStorage.getItem('user_role');
+      if (this.role === 'profesor') {
+        const alumnos = await this.ramasService.getByUserId(remitenteId);
+        if (alumnos) {
+          let alumno = alumnos.filter((alumno: any) =>
+             alumno.alumno.usuario_id === Number(this.destinatario));
+          this.alumno = alumno;
+        }
+      } else if (this.role === 'alumno') {
+        const profesores = await this.alumnosService.getAllTeachers(remitenteId);
+        if (profesores) {
+          let profesor = profesores.filter((profesor: any) => profesor.datos_per.usuario_id === Number(this.destinatario));
+          this.profesor = profesor;
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 
-  changeOrigin() {
-    const intermedia = this.remitente;
-    this.remitente = this.destinatario;
-    this.destinatario = intermedia;
-  }
+  // changeOrigin() {
+  //   const intermedia = this.remitente;
+  //   this.remitente = this.destinatario;
+  //   this.destinatario = intermedia;
+  // }
 
   async onSubmit() {
 
     try {
-      const response = await this.messageService.getMessages(this.formGetMessage.value);
-      console.log(response);
+      this.conversaciones = await this.messageService.getMessages(this.formGetMessage.value);
+      console.log(this.conversaciones);
+
+      this.conversacionesOrdenadas = this.conversaciones.sort((a: any, b: any) => new Date(a.fecha_act).getTime() > new Date(b.fecha_act).getTime());
+
+      console.log(this.conversacionesOrdenadas);
     } catch (error) {
       console.log(error);
     }

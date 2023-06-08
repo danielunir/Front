@@ -19,7 +19,6 @@ import { RoleExistGuard } from './guards/roleExists.guard';
 import { MainComponent } from './messages/components/main/main.component';
 import { AddComponent } from './messages/components/add/add.component';
 import { ReceivedComponent } from './messages/components/received/received.component';
-import { SendedComponent } from './messages/components/sended/sended.component';
 import { MessagesComponent } from './components/messages/messages.component';
 
 
@@ -41,8 +40,7 @@ const routes: Routes = [
   children: [
     { path: '', redirectTo: 'enviar', pathMatch: 'full' },
     { path: 'enviar/:remitenteId/:destinatarioId', component: AddComponent },
-    { path: 'recibidos/:destinatarioId/:remitenteId', component: ReceivedComponent },
-    { path: 'enviados/:remitenteId/:destinatarioId', component: SendedComponent }
+    { path: 'recibidos/:destinatarioId/:remitenteId', component: ReceivedComponent }
   ] },
   // { path: 'mensajes', loadChildren: () => import('./messages/messages.module').then(m => m.MessagesModule) },
   { path: '**', component: HomeComponent }

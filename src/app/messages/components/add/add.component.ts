@@ -93,7 +93,7 @@ export class AddComponent implements OnInit {
     try {
       const response = await this.messageService.addMessage(this.formEnvioMensaje.value);
       console.log(response);
-      this.router.navigate(['/mensajes', 'enviados', this.remitente, this.destinatario]);
+      this.router.navigate(['/mensajes', 'recibidos', this.destinatario, this.remitente]);
     } catch (error) {
       console.log(error);
     }
