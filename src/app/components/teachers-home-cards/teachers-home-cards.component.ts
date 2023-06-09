@@ -11,7 +11,7 @@ import { ClaseService } from 'src/app/services/clase.service';
 })
 export class TeachersHomeCardsComponent implements OnInit {
 
-  @Input() teacher!:any;
+  @Input() teacher!: any;
 
   startTotal: number = 5;
   rating!: number;
@@ -41,7 +41,9 @@ export class TeachersHomeCardsComponent implements OnInit {
     this.rating = this.teacher.promedio / 2;
 
     this.startPercentatge = (this.rating / this.startTotal) * 100;
-    this.startPercentatgeRounded = `${(Math.round(this.startPercentatge / 10 ) * 10)}%`;
+
+    this.startPercentatgeRounded = `${(Math.round(this.startPercentatge / 10) * 10)}%`;
+
 
     const usuarioId: number = this.activatedRoute.snapshot.params['studentId'];
 

@@ -1,33 +1,46 @@
-<div class="row g-2">
-  <div class="col-md-4">
-    <img [src]="teacher.foto" class="img-fluid rounded-start" [alt]="teacher.nombre">
+<div class="a">
+  <div class="imgContent"><img *ngIf="teacher.foto" [src]="teacher.foto" [alt]="teacher.nombre"> <img
+      *ngIf="!teacher.foto"
+      src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"
+      class="img-thumbnail" alt="usuario sin imagen">
   </div>
-  <div class="col-md-8">
-    <div class="card-body">
-      <h5 class="card-title text-center">{{teacher.nombre}} {{teacher.apellidos}}</h5>
-      <p class="card-text">{{teacher.experiencia}}</p>
-      <p><span class="card-text" *ngFor="let materia of teacher.materias"> {{materia.rama}} {{materia.nivel}} </span></p>
+  <div class="teacher_data">
+    <div>
+      <p>{{teacher.nombre}} {{teacher.apellidos}}</p>
     </div>
-    <ul class="list-group list-group-flush">
-      <!-- <div class="stars-outer">
-        <div class="stars-inner" [ngStyle]="{'width': startPercentatgeRounded}"></div>
-      </div> -->
-      <!-- <li class="list-group-item">{{teacher.promedio_puntuacion}}</li> -->
-      <li class="list-group-item">{{teacher.direccion}}, {{teacher.ciudad}}</li>
-      <li class="list-group-item">Tel: {{teacher.telefono}}</li>
-      <li class="list-group-item">{{teacher.cuota | currency: 'EUR'}}</li>
-    </ul>
-    <div class="stars-outer">
-      <div class="stars-inner" [ngStyle]="{'width': startPercentatgeRounded}"></div>
+    <div>
+      <p>{{teacher.cuota}} €/h</p>
     </div>
-    <div class="buttoncontent justify-content-center">
+    <div>
+      <p>{{teacher.experiencia}}</p>
+      <p *ngFor="let materia of teacher.materias"> {{materia.rama}} {{materia.nivel}}</p>
+    </div>
+    <div>
+      <p><i class="fa-brands fa-whatsapp"></i> {{teacher.telefono}}</p>
+    </div>
+    <div>
+      <p><i class="fa-regular fa-envelope"></i> {{teacher.email}}</p>
+    </div>
+    <div>
+      <i class="fa-solid fa-location-dot"></i> {{teacher.direccion}}
+    </div>
+    <div>
+      {{teacher.ciudad}}
+    </div>
+  </div>
+</div>
+<div class="b">
+  <div class="stars-outer">
+    <div class="stars-inner" [ngStyle]="{'width': startPercentatgeRounded}"></div>
+  </div>
+  <div class="buttoncontent">
+    <form class="" novalidate [formGroup]="formCrearClase" (ngSubmit)="onSubmit()">
+      <input type="hidden" formControlName="profesor_id" [(ngModel)]="profesor_id">
+      <input type="hidden" formControlName="alumno_id" [(ngModel)]="alumno_id">
+      <input type="hidden" formControlName="rama_co_id" [(ngModel)]="rama_co_id">
+      <input class="btn btn-primary mt-3 cita-button" type="submit" (click)="solicitarClase()" [routerLink]=""
+        value="Solicitar Clase">
+    </form>
+  </div>
 
-      <form class="" novalidate [formGroup]="formCrearClase" (ngSubmit)="onSubmit()">
-        <input type="hidden" formControlName="profesor_id" [(ngModel)]="profesor_id">
-        <input type="hidden" formControlName="alumno_id" [(ngModel)]="alumno_id">
-        <input type="hidden" formControlName="rama_co_id" [(ngModel)]="rama_co_id">
-        <input class="btn btn-primary mt-3 cita-button" type="submit" (click)="solicitarClase()" [routerLink]="" value="Solicitar Clase">
-      </form>
-    </div>
-  </div>
 </div>
