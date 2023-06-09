@@ -1,135 +1,117 @@
 <app-header [logado]="logado"></app-header>
 <div class="all">
-    <div class="contentRow">
-        <div class="options">
-            <div class="adminName">
-                <h2>Área personal {{studentName}}</h2>
-            </div>
-            <div class="links">
-                <div class="selected" [routerLink]="['/studentprofile', currentId, 'tables', 'alumnos']" role="button">
-                    <h5>Mis profesores</h5>
-                </div>
-                <div class="link" [routerLink]="['/studentprofile', currentId]" role="button">
-                    <h5>Mi perfil</h5>
-                </div>
-
-                <div class="link" [routerLink]="['/studentprofile', currentId, 'search']" role="button">
-                    <h5>Buscar Profesores</h5>
-                </div>
-            </div>
+  <div class="contentRow">
+    <div class="options">
+      <div class="adminName">
+        <h2>Área personal {{studentName}}</h2>
+      </div>
+      <div class="links">
+        <div *ngIf="status === 1" class="selected" [routerLink]="['/studentprofile', currentId, 'tables', 'alumnos']" role="button">
+          <h5>Mis profesores</h5>
         </div>
-        <div class="content">
-            <div *ngIf="teachers" class="variableContent">
-                <div class="teacherContent">
-                    <div class="teacher" *ngFor="let teacher of teachers; let i=index">
-                        <div class="a">
-                            <div class="imgContent"><img *ngIf="teachers[i].datos_per.foto"
-                                    [src]="teachers[i].datos_per.foto" [alt]="teachers[i].datos_per.nombre"
-                                    alt="imagen de un profesor"> <img *ngIf="!teachers[i].datos_per.foto"
-                                    src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"
-                                    class="img-thumbnail" alt="usuario sin imagen">
+        <div class="link" [routerLink]="['/studentprofile', currentId]" role="button">
+          <h5>Mi perfil</h5>
+        </div>
+
+        <div *ngIf="status === 1" class="link" [routerLink]="['/studentprofile', currentId, 'search']" role="button">
+          <h5>Buscar Profesores</h5>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div *ngIf="teachers" class="variableContent">
+        <div class="teacherContent">
+          <div class="teacher" *ngFor="let teacher of teachers; let i=index">
+            <div class="a">
+              <div class="imgContent"><img *ngIf="teachers[i].datos_per.foto" [src]="teachers[i].datos_per.foto" [alt]="teachers[i].datos_per.nombre" alt="imagen de un profesor"> <img *ngIf="!teachers[i].datos_per.foto" src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png" class="img-thumbnail" alt="usuario sin imagen">
+              </div>
+              <div class="teacher_data">
+                <div>
+                  <p>{{teachers[i].datos_per.nombre}} {{teachers[i].datos_per.apellidos}}</p>
+                </div>
+                <div>
+                  <p>{{teachers[i].cuota}} €/h</p>
+                </div>
+                <div>
+                  <p> {{teachers[i].experiencia}}</p>
+                </div>
+                <div>
+                  <p><i class="fa-brands fa-whatsapp"></i> {{teachers[i].datos_per.telefono}}</p>
+                </div>
+                <div>
+                  <p><i class="fa-regular fa-envelope"></i> {{teachers[i].datos_per.email}}</p>
+                </div>
+                <div>
+                  <i class="fa-solid fa-location-dot"></i> {{teachers[i].datos_per.direccion}}
+                </div>
+                <div>
+                  {{teachers[i].datos_per.ciudad}}
+                </div>
+              </div>
+            </div>
+            <div class="b">
+
+              <button type="button" class="btn btn-outline-secondary me-2 valueTeacher" [routerLink]="['/mensajes', 'enviar', remitenteId, teachers[i].usuario_id]">
+                Contactar
+              </button>
+              <button type="button" class="btn btn-outline-secondary valueTeacher" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal'+i">
+                Valorar
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" [id]="'exampleModal'+i" tabindex="-1" aria-labelledby="'exampleModalLabel'+i" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <div class="title-container">
+                        <h1 class="modal-title" [id]="'exampleModalLabel'+i"><i class="fa-solid fa-book"></i> TeacherApp
+                        </h1>
+                      </div>
+
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="centerContent">
+                        <form novalidate [formGroup]="formTeacherScore" (ngSubmit)="putTeacherScore(teachers[i], currentId)" oninput="scorevalue.value = score.valueAsNumber">
+                          <div class="opinionGrafic">
+                            <div class="form-label">Valorar a
+                              {{teachers[i].datos_per.nombre}}
                             </div>
-                            <div class="teacher_data">
-                                <div>
-                                    <p>{{teachers[i].datos_per.nombre}} {{teachers[i].datos_per.apellidos}}</p>
-                                </div>
-                                <div>
-                                    <p>{{teachers[i].cuota}} €/h</p>
-                                </div>
-                                <div>
-                                    <p> {{teachers[i].experiencia}}</p>
-                                </div>
-                                <div>
-                                    <p><i class="fa-brands fa-whatsapp"></i> {{teachers[i].datos_per.telefono}}</p>
-                                </div>
-                                <div>
-                                    <p><i class="fa-regular fa-envelope"></i> {{teachers[i].datos_per.email}}</p>
-                                </div>
-                                <div>
-                                    <i class="fa-solid fa-location-dot"></i> {{teachers[i].datos_per.direccion}}
-                                </div>
-                                <div>
-                                    {{teachers[i].datos_per.ciudad}}
-                                </div>
+                            <div class="scoreContent">
+                              <div class="rangeInput"><input type="range" class="form-range form-control" min="0" max="10" step="0.5" formControlName="score" name="score">
+                              </div>
+
+                              <div class="outputContent">
+                                <output name="scorevalue" for="score" [ngClass]="getColorClass(formTeacherScore.get('score')?.value)">
+                                  {{formTeacherScore.get('score')?.value}}
+                                </output>
+
+                              </div>
+
                             </div>
-                        </div>
-                        <div class="b">
-
-                            <button type="button" class="btn btn-outline-secondary me-2 valueTeacher"
-                                [routerLink]="['/mensajes', 'enviar', remitenteId, teachers[i].usuario_id]">
-                                Contactar
-                            </button>
-                            <button type="button" class="btn btn-outline-secondary valueTeacher" data-bs-toggle="modal"
-                                [attr.data-bs-target]="'#exampleModal'+i">
-                                Valorar
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" [id]="'exampleModal'+i" tabindex="-1"
-                                aria-labelledby="'exampleModalLabel'+i" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <div class="title-container">
-                                                <h1 class="modal-title" [id]="'exampleModalLabel'+i"><i
-                                                        class="fa-solid fa-book"></i> TeacherApp
-                                                </h1>
-                                            </div>
-
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="centerContent">
-                                                <form novalidate [formGroup]="formTeacherScore"
-                                                    (ngSubmit)="putTeacherScore(teachers[i], currentId)"
-                                                    oninput="scorevalue.value = score.valueAsNumber">
-                                                    <div class="opinionGrafic">
-                                                        <div class="form-label">Valorar a
-                                                            {{teachers[i].datos_per.nombre}}
-                                                        </div>
-                                                        <div class="scoreContent">
-                                                            <div class="rangeInput"><input type="range"
-                                                                    class="form-range form-control" min="0" max="10"
-                                                                    step="0.5" formControlName="score" name="score">
-                                                            </div>
-
-                                                            <div class="outputContent">
-                                                                <output name="scorevalue" for="score"
-                                                                    [ngClass]="getColorClass(formTeacherScore.get('score')?.value)">
-                                                                    {{formTeacherScore.get('score')?.value}}
-                                                                </output>
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="opinionText">
-                                                        <div>
-                                                            <textarea class="form-control"
-                                                                formControlName="opinion_text"
-                                                                placeholder="Escribe tu opinión"></textarea>
-                                                        </div>
-                                                        <div class="send">
-                                                            <input type="submit" value="Valorar"
-                                                                class="form-control btn btn-primary sending"
-                                                                data-bs-dismiss="modal">
-                                                        </div>
-                                                    </div>
-
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <p>Valora a tu profesor del 0 al 10 deslizando el control y comparte tu
-                                                opinión con la comunidad de TeacherApp</p>
-                                        </div>
-                                    </div>
-                                </div>
+                          </div>
+                          <div class="opinionText">
+                            <div>
+                              <textarea class="form-control" formControlName="opinion_text" placeholder="Escribe tu opinión"></textarea>
                             </div>
+                            <div class="send">
+                              <input type="submit" value="Valorar" class="form-control btn btn-primary sending" data-bs-dismiss="modal">
+                            </div>
+                          </div>
+
+                        </form>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <p>Valora a tu profesor del 0 al 10 deslizando el control y comparte tu
+                        opinión con la comunidad de TeacherApp</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
 
-                            <!-- <div class="centerContent">
+              <!-- <div class="centerContent">
                                 <form novalidate [formGroup]="formTeacherScore"
                                     (ngSubmit)="putTeacherScore(teachers[i], currentId)"
                                     oninput="scorevalue.value = score.valueAsNumber">
@@ -156,9 +138,9 @@
 
                                 </form>
                             </div> -->
-                        </div>
-                    </div>
-
-                </div>
             </div>
+          </div>
+
         </div>
+      </div>
+    </div>
