@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { RamasService } from 'src/app/services/ramas.service';
 import { TeachersService } from 'src/app/services/teachers.service';
 import { environment } from 'src/environments/environments';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-perfil-teacher',
@@ -79,8 +80,13 @@ export class FormPerfilTeacherComponent {
       const response = await this.teachersService.registroProfesor(this.values);
 
       if (!response.usuario_id) {
-        alert(response.fatal);
-        return alert('Registro de datos de perfil Profesor erroneo')
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Registro  de datos de perfil erroneo. Algo fue mal, vuelve a intentarlo',
+        })
+        console.log(response.fatal);
+        return response.fatal;
       }
     } catch (error) {
       console.log(error)
@@ -91,8 +97,13 @@ export class FormPerfilTeacherComponent {
 
       // console.log(responseArea)
       if (!responseRamaCo.insertId) {
-        alert(responseRamaCo.fatal);
-        return alert('Registro de datos de perfil Ramas erroneo')
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Registro  de datos de perfil erroneo. Algo fue mal, vuelve a intentarlo',
+        })
+        console.log(responseRamaCo.fatal);
+        return responseRamaCo.fatal;
       }
     } catch (error) {
       console.log(error)
@@ -110,6 +121,13 @@ export class FormPerfilTeacherComponent {
     } catch (error) {
       console.log(error)
     }
+
+    Swal.fire({
+          icon: 'success',
+          title: 'Bienvenid@',
+          text: 'Tu registro esta completo. Puedes acceder a tu zona privada',
+        })
+
     this.router.navigate([`/teacherprofile/${this.usuarioId}`]);
   }
 }

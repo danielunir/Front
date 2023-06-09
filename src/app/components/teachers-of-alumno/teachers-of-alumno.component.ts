@@ -16,6 +16,8 @@ export class TeachersOfAlumnoComponent {
   teachers: any = [];
   currentId: number = 0;
   studentName: string = '';
+  remitenteId: string = '';
+  destinatarioId: string = '';
 
 
   constructor(
@@ -40,6 +42,7 @@ export class TeachersOfAlumnoComponent {
   async ngOnInit() {
     this.activateRoute.params.subscribe(async (params: any) => {
       this.currentId = parseInt(params.studentId);
+      this.remitenteId = this.currentId.toString();
       this.studentName = localStorage.getItem('username') || '';
       this.teachers = await this.alumnoService.getAllTeachers(this.currentId)
       console.log('this.teachers', this.teachers)
