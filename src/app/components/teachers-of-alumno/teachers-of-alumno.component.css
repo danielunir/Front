@@ -302,4 +302,8 @@ textarea {
         align-items: center;
         width: 100%;
     }
+
+    .b {
+        justify-content: space-around;
+    }
 }
