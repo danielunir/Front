@@ -212,6 +212,7 @@ ul {
   align-items: center;
 }*/
 
+
 .teacherContent {
   display: grid;
   grid-template-columns: repeat(2, auto);
@@ -221,7 +222,37 @@ ul {
   padding: 2rem;
 }
 
-.teacherContent {
+.teacher {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 275px;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+  background-image: url(https://media.istockphoto.com/id/182666258/es/foto/fondo-de-papel-especial.jpg?s=170667a&w=0&k=20&c=DeEe7k8WaGdVokeS2e7vQ3pcdQP_oJGExsT3wUR3eas=);
+}
+
+@media (max-width: 1050px) {
+  .teacherContent {
+    grid-template-columns: repeat(1, auto);
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+/*HACEN REFERENCIA A TEACHER CARD Y YA ESTÁN EN HOME CARDS*/
+
+/* .teacherContent {
   display: grid;
   grid-template-columns: repeat(2, auto);
   justify-content: space-between;
@@ -271,7 +302,6 @@ img {
 
 .b {
   display: flex;
-  /* justify-content: center; */
   justify-content: flex-end;
   padding: 1rem;
   width: 100%;
@@ -295,4 +325,4 @@ img {
     align-items: center;
     width: 100%;
   }
-}
+} */
