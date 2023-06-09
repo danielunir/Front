@@ -13,12 +13,14 @@ export class TeachersOfAlumnoComponent {
 
   formTeacherScore: FormGroup;
   logado: boolean = true;
+  student: any = {};
   teachers: any = [];
   currentId: number = 0;
   studentName: string = '';
   remitenteId: string = '';
   destinatarioId: string = '';
 
+  status: number = 1;
 
   constructor(
     private alumnoService: AlumnosService,
@@ -46,6 +48,10 @@ export class TeachersOfAlumnoComponent {
       this.studentName = localStorage.getItem('username') || '';
       this.teachers = await this.alumnoService.getAllTeachers(this.currentId)
       console.log('this.teachers', this.teachers)
+      let response: any = await this.alumnoService.getByUserId(this.currentId);
+        this.student = response;
+
+        this.status = response.status;
     });
   }
 

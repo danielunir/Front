@@ -16,6 +16,7 @@ export class StudentprofileComponent implements OnInit {
   student: any = {}
   teachers: any = []
   currentId: number = 0
+  status: number = 1;
 
 
   constructor(
@@ -40,6 +41,8 @@ export class StudentprofileComponent implements OnInit {
       }
       let response: any = await this.alumnoService.getByUserId(this.currentId);
       this.student = response;
+
+      this.status = response.status;
     });
   }
 
