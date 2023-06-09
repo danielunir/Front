@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class PuntuacionService {
   constructor(
     private httpClient: HttpClient
   ) {
-    this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/puntuacion';
+    this.baseUrl = `${environment.base_Url}puntuacion`;
   }
 
   getBestScore(): Promise<any> {
