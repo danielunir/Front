@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-user',
@@ -90,12 +91,22 @@ export class FormUserComponent {
       this.insertarId.emit(this.insertId);
       this.rolUser = this.formRegisterUsuario.value.role;
       this.determinarRol.emit(this.rolUser)
+      Swal.fire({
+        icon: 'success',
+        title: 'Ya formas parte de TeacherApp',
+        text: 'Completa tu registro logandote',
+      })
 
       this.router.navigate(['/home']);
 
       if (!response.insertId) {
-        alert(response.fatal);
-        return alert('Registro de usuario erroneo');
+        console.log(response.fatal);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Registro de usuario erroneo',
+        })
+        // return alert('Registro de usuario erroneo');
       }
     } catch (error) {
       console.log(error);
