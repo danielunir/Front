@@ -34,7 +34,13 @@
     <div class="stars-inner" [ngStyle]="{'width': startPercentatgeRounded}"></div>
   </div>
   <div class="buttoncontent">
-    <button class="btn btn-primary mt-3 cita-button" [routerLink]="">Solicitar Clase</button>
+    <form class="" novalidate [formGroup]="formCrearClase" (ngSubmit)="onSubmit()">
+      <input type="hidden" formControlName="profesor_id" [(ngModel)]="profesor_id">
+      <input type="hidden" formControlName="alumno_id" [(ngModel)]="alumno_id">
+      <input type="hidden" formControlName="rama_co_id" [(ngModel)]="rama_co_id">
+      <input class="btn btn-primary mt-3 cita-button" type="submit" (click)="solicitarClase()" [routerLink]=""
+        value="Solicitar Clase">
+    </form>
   </div>
 
 </div>

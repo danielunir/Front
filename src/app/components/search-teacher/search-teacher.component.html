@@ -29,9 +29,6 @@
       </div>
       <section class="seccion">
         <div class="filterContent">
-          <!-- <div class="A-titleFilter">
-            <h4 class="filtros">Filtrar profesores</h4>
-          </div> -->
           <div class="B-filters">
             <div class="order">
               <form class="form-group">
@@ -110,19 +107,6 @@
             </div>
           </div>
         </div>
-        <!-- ESTE ES EL DE DEV -->
-        <!-- <div class="zona-profesores" id="lista-profesores">
-          <div class="slider-container-tv cards-productos mt-6 text-center">
-            <ul class="flex flex-wrap justify-evenly gap-y-6 max-width">
-              <li class="resultado" *ngFor="let current_teacher of teachers_list | filterMateria:filterTeacher"
-                id="resultado">
-                <app-teachers-home-cards class="card mb-3" [teacher]="current_teacher"></app-teachers-home-cards>
-              </li>
-            </ul>
-          </div>
-        </div> -->
-        <!-- FIN DEL DE DEV -->
-
         <div class="teacherContent">
           <div class="teacher" *ngFor="let teacher of teachers_list | filterMateria:filterTeacher" id="resultado">
             <app-teachers-home-cards [teacher]="teacher"></app-teachers-home-cards>
