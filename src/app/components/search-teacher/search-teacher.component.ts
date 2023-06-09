@@ -48,6 +48,8 @@ export class SearchTeacherComponent implements OnInit {
   ordenar: string = '';
   ordenadoPor: string = '';
 
+  status: number = 1;
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -64,6 +66,8 @@ export class SearchTeacherComponent implements OnInit {
       try {
         let response: any = await this.alumnosService.getByUserId(this.currentId);
         this.student = response;
+
+        this.status = response.status;
       } catch (error) {
         alert(error);
       }

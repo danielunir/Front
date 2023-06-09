@@ -8,14 +8,14 @@
         </h2>
       </div>
       <div class="links">
-        <div class="link noSelected" [routerLink]="['/studentprofile', currentId, 'tables', 'alumnos']" role="button">
+        <div *ngIf="status === 1" class="link noSelected" [routerLink]="['/studentprofile', currentId, 'tables', 'alumnos']" role="button">
           <h5>Mis profesores</h5>
         </div>
         <div class="link noSelected" [routerLink]="['/studentprofile', currentId]" role="button">
           <h5>Mi perfil</h5>
         </div>
 
-        <div class="link selected" [routerLink]="['/studentprofile', currentId, 'search']" role="button">
+        <div *ngIf="status === 1" class="link selected" [routerLink]="['/studentprofile', currentId, 'search']" role="button">
           <h5>Buscar Profesores</h5>
         </div>
       </div>
@@ -32,8 +32,7 @@
           <div class="B-filters">
             <div class="order">
               <form class="form-group">
-                <select class="form-control" name="ordenar" id="ordenar" [(ngModel)]="ordenar"
-                  (change)="ordenarTeachers()">
+                <select class="form-control" name="ordenar" id="ordenar" [(ngModel)]="ordenar" (change)="ordenarTeachers()">
                   <option value="">Ordenar listado</option>
                   <option value="pa">Precio ascendente</option>
                   <option value="pd">Precio descendente</option>
@@ -43,8 +42,7 @@
               </form>
             </div>
             <div class="materia">
-              <select class="form-control justify-content-center" name="materia" [(ngModel)]="materia"
-                (change)="filtrarProfesor()">
+              <select class="form-control justify-content-center" name="materia" [(ngModel)]="materia" (change)="filtrarProfesor()">
                 <option value="">Mareria</option>
                 <option value="Biología">Biología</option>
                 <option value="Ciencias Naturales">Ciencias Naturales</option>
@@ -71,8 +69,7 @@
               </select>
             </div>
             <div class="minPrice">
-              <select class="form-control" name="cuotamin" id="cuotamin" [(ngModel)]="cuotamin"
-                (change)="filtrarProfesor()">
+              <select class="form-control" name="cuotamin" id="cuotamin" [(ngModel)]="cuotamin" (change)="filtrarProfesor()">
                 <option value="">Precio min</option>
                 <option value="9.9">10€</option>
                 <option value="19.9">20€</option>
@@ -83,8 +80,7 @@
               </select>
             </div>
             <div class="maxPrice">
-              <select class="form-control" name="cuotamax" id="cuotamax" [(ngModel)]="cuotamax"
-                (change)="filtrarProfesor()">
+              <select class="form-control" name="cuotamax" id="cuotamax" [(ngModel)]="cuotamax" (change)="filtrarProfesor()">
                 <option value="">Precio max</option>
                 <option value="40.1">40€</option>
                 <option value="50.1">50€</option>
@@ -94,8 +90,7 @@
               </select>
             </div>
             <div class="valueTeacher">
-              <select class="form-control" name="puntuacion" id="puntuacion" [(ngModel)]="puntuacion"
-                (change)="filtrarProfesor()">
+              <select class="form-control" name="puntuacion" id="puntuacion" [(ngModel)]="puntuacion" (change)="filtrarProfesor()">
                 <option value="">Valoración</option>
                 <option value="0.1">Sin Valoración</option>
                 <option value="2">1 Estrella</option>
