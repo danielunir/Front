@@ -16,6 +16,10 @@ import { AlumnosOfTeacherComponent } from './components/alumnos-of-teacher/alumn
 import { ProfileGuard } from './guards/profile.guard';
 import { UserRoleGuard } from './guards/userRole.guard';
 import { RoleExistGuard } from './guards/roleExists.guard';
+import { MainComponent } from './messages/components/main/main.component';
+import { AddComponent } from './messages/components/add/add.component';
+import { ReceivedComponent } from './messages/components/received/received.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 
 
@@ -32,6 +36,13 @@ const routes: Routes = [
   { path: 'adminprofile/:adminId/tables/:tableType', component: TableInfoComponent, canActivate: [UserRoleGuard] },
   { path: 'studentprofile/:studentId/tables/:profesores', component: TeachersOfAlumnoComponent, canActivate: [UserRoleGuard] },
   { path: 'teacherprofile/:teacherId/tables/:alumnos', component: AlumnosOfTeacherComponent, canActivate: [UserRoleGuard] },
+  { path:'mensajes', component: MessagesComponent,
+  children: [
+    { path: '', redirectTo: 'enviar', pathMatch: 'full' },
+    { path: 'enviar/:remitenteId/:destinatarioId', component: AddComponent },
+    { path: 'recibidos/:destinatarioId/:remitenteId', component: ReceivedComponent }
+  ] },
+  // { path: 'mensajes', loadChildren: () => import('./messages/messages.module').then(m => m.MessagesModule) },
   { path: '**', component: HomeComponent }
 ];
 

@@ -1,0 +1,40 @@
+<div class="all">
+  <div class="contentRow">
+    <div class="options">
+      <div class="adminName">
+        <h2>{{title}}</h2>
+      </div>
+      <div class="links">
+        <div class="link noSelected" [routerLinkActive]="['active']" [routerLink]="['/mensajes','enviar', remitente, destinatario]" role="button">
+          <h5>Enviar Mensaje</h5>
+        </div>
+        <div class="link noSelected" (click)="changeOrigin()" [routerLinkActive]="['active']" [routerLink]="['/mensajes', 'recibidos', destinatario, remitente]" role="button">
+          <h5>Mensajes Recibidos</h5>
+        </div>
+        <div class="link selected" [routerLinkActive]="['active']" [routerLink]="['/mensajes', 'enviados', remitente, destinatario]" role="button">
+          <h5>Mensajes Enviados</h5>
+        </div>
+      </div>
+      <div class="container mx-auto">
+        <div class="row">
+          <div class="mt-5 col-12 col-md-4">
+            <h3>{{title}}</h3>
+            <form class="mt-4 mb-5" novalidate [formGroup]="formGetMessage" (ngSubmit)="onSubmit()">
+              <input type="hidden" formControlName="remitente" [(ngModel)]="remitente">
+              <input type="hidden" formControlName="destinatario" [(ngModel)]="destinatario">
+              <input class="form-control" type="submit" value="Ver Mensajes" class="btn btn-lg btn-primary">
+            </form>
+          </div>
+          <div class="mt-5 col-12 col-md-8">
+            <div class="card">
+              <div class="card-body p-2">
+                <h6 class="card-subtitle mb-2 text-muted">Card Subtitle</h6>
+                <p class="card-text">This is some text within a card body.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
