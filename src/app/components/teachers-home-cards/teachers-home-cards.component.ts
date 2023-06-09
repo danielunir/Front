@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { ClaseService } from 'src/app/services/clase.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-teachers-home-cards',
@@ -49,7 +50,7 @@ export class TeachersHomeCardsComponent implements OnInit {
 
     try {
       const alumno = await this.alumnosService.getByUserId(usuarioId);
-      console.log(alumno);
+      // console.log(alumno);
       this.alumno_id = alumno.id;
 
     } catch (error) {
@@ -62,15 +63,24 @@ export class TeachersHomeCardsComponent implements OnInit {
     console.log(this.teacher);
   }
 
-  solicitarClase() {
-
-  }
-
   async onSubmit() {
 
     try {
       const response = await this.claseService.registroClase(this.formCrearClase.value);
       console.log(response);
+      if(!response) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Algo fue mal, vuelve a intentarlo',
+        })
+      } else {
+        Swal.fire({
+          icon: 'success',
+          title: 'Conseguido',
+          text: 'Puedes acceder a "Mis Profesores" y conversar con tu profesor',
+        })
+      }
     } catch (error) {
       console.log(error);
     }
