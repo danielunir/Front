@@ -5,6 +5,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { TeachersService } from 'src/app/services/teachers.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { AlumnosService } from 'src/app/services/alumnos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -100,7 +101,12 @@ export class HeaderComponent implements OnInit {
 
       if (response.fatal) {
         this.formLogin.reset();
-        return alert(response.fatal);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Algo fue mal, vuelve a intentarlo',
+        })
+        return response.fatal;
 
       }
 
