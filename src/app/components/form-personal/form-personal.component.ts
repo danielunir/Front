@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PersonalService } from 'src/app/services/personal.service';
 import { ProfileService } from 'src/app/services/profile.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-personal',
@@ -101,8 +102,13 @@ export class FormPersonalComponent {
         // console.log(response);
 
         if (!response.usuario_id) {
-          alert(response.fatal);
-          return alert('Registro  de datos personales erroneo')
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Registro  de datos personales erroneo. Algo fue mal, vuelve a intentarlo',
+          })
+          console.log(response.fatal);
+          return response.fatal;
         }
       } catch (error) {
         console.log(error);
@@ -115,8 +121,13 @@ export class FormPersonalComponent {
         const response = await this.personalService.registroPersonalAlumno(this.formRegisterPersonal.value);
 
         if (!response.usuario_id) {
-          alert(response.fatal);
-          return alert('Registro  de datos personales erroneo')
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Registro  de datos personales erroneo. Algo fue mal, vuelve a intentarlo',
+          })
+          console.log(response.fatal);
+          return response.fatal;
         }
       } catch (error) {
         console.log(error);

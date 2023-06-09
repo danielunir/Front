@@ -1,22 +1,115 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-shadow: 0px 4px 5px -5px rgba(0, 0, 0, 0.3);
+}
+
 .containerMap {
   display: flex;
   max-width: 100%;
-  margin-left: 8%;
-  margin-right: 8%;
-  margin-top: 0rem;
-  margin-bottom: 3rem;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  height: 23rem;
 }
 
 .mapContainer {
   display: flex;
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 
 .map {
   width: 100%;
   height: 100%;
-  height: 30rem;
+}
+
+.filterContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.A-titleFilter {
+  display: flex;
+  justify-content: center;
+}
+
+.B-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.order {
+  display: flex;
+}
+
+.materia {
+  display: flex;
+}
+
+.nivel {
+  display: flex;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .ordenar{
+
+} */
+
+/* .orderForm{
+
+} */
+
+.form-group {
+  max-width: fit-content;
+}
+
+.form-control {
+  max-width: fit-content;
+}
+
+option {
+  max-width: fit-content;
+}
+
+select {
+  max-width: fit-content;
+  font-size: small;
+}
+
+
+.todos-profesores {
+  display: flex;
+}
+
+.zona-filtros {
+  display: flex;
+}
+
+.materias {
+  display: flex;
+  flex-direction: row;
+}
+
+.niveles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.margenTres {
+  display: flex;
+  margin: 3rem
 }
 
 .pointer {
@@ -98,18 +191,18 @@ ul {
   padding: 0.5rem;
 }
 
-.content {
+
+.contenedor-filtros {
   display: flex;
-  width: 100%;
-  box-shadow: 0px 4px 5px -5px rgba(0, 0, 0, 0.3);
+  flex-direction: column;
 }
 
-@media (max-width: 767px) {
-  .max-width {
-    max-width: 500px;
-    margin: 0 auto;
-  }
+.zona-profesores {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
+
 
 /* .variableContent {
   display: flex;
@@ -117,7 +210,8 @@ ul {
   width: 100%;
   padding: 0.5rem;
   align-items: center;
-}
+}*/
+
 
 .teacherContent {
   display: grid;
@@ -130,36 +224,12 @@ ul {
 
 .teacher {
   display: flex;
+  flex-direction: column;
   width: 100%;
   min-width: 275px;
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
   background-image: url(https://media.istockphoto.com/id/182666258/es/foto/fondo-de-papel-especial.jpg?s=170667a&w=0&k=20&c=DeEe7k8WaGdVokeS2e7vQ3pcdQP_oJGExsT3wUR3eas=);
 }
-
-.imgContent {
-  display: flex;
-  width: 200px;
-  padding: 0.5rem;
-}
-
-/* img {
-  border-radius: 50%;
-  width: 100%;
-  object-fit: cover;
-  overflow: hidden;
-  opacity: 95%;
-} */
-/*
-.teacher_data {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  width: fit-content;
-  padding: 1rem;
-  color: rgba(0, 0, 0, 0.85);
-}
-
 
 @media (max-width: 1050px) {
   .teacherContent {
@@ -172,11 +242,10 @@ ul {
 }
 
 @media (max-width: 550px) {
-  .teacher {
+  .a {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
   }
-} */
+}
