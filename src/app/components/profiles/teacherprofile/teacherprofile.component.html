@@ -62,8 +62,26 @@
       <div *ngIf="teacher.nombre" class="variableContent">
         <div class="teacherContent">
           <div class="teacher">
-            <div class="imgContent"><img *ngIf="teacher.foto" [src]="teacher.foto" [alt]="teacher.nombre" class="img-thumbnail">
-              <img *ngIf="!teacher.foto" src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png" class="img-thumbnail">
+            <div class="image" *ngIf="!previsualizacion">
+              <div class="imgContent"><img *ngIf="teacher.foto" [src]="baseDownload + teacher.foto" [alt]="teacher.nombre" class="img-thumbnail">
+                <img *ngIf="!teacher.foto" src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png" class="img-thumbnail">
+              </div>
+              <div class="texto">
+                <button class="btn btn-outline-secondary p-1" (click)="fileInput.click()">Seleccionar
+                  imagen</button>
+              </div>
+            </div>
+            <div class="charge justify-content-end">
+              <div *ngIf="previsualizacion" class="imgContent">
+                <img [src]="previsualizacion" alt="" width="100px" class="img-thumbnail">
+              </div>
+              <div *ngIf="previsualizacion" class="subir mx-auto">
+                <button class="btn btn-outline-secondary p-1 me-2" (click)="subirArchivo()">Subir imagen</button>
+                <button class="btn btn-outline-secondary p-1" (click)="cancelar()">Cancelar</button>
+              </div>
+              <div class="upload">
+                <input #fileInput class="btn btn-primary file-upload" type="file" style="display: none;" (change)="capturarFile($event)" name="file0">
+              </div>
             </div>
             <div class="teacher_data">
               <p>{{teacher.nombre}} {{teacher.apellidos}}</p>
