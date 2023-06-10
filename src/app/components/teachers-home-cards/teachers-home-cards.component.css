@@ -34,15 +34,8 @@ p {
 
 .buttoncontent {
   display: flex;
+  justify-content: flex-end;
   margin-top: 0rem;
-}
-
-.cita-button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .btn {
