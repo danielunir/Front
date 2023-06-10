@@ -5,3 +5,19 @@ agm-map {
   border-radius: 6px;
   overflow: hidden;
 }
+
+.teacherMap {
+  display: flex;
+  align-items: center;
+}
+
+.imgMap {
+  display: flex;
+  height: 20px;
+  width: 20px;
+}
+
+.nameMap {
+  display: flex;
+  margin-left: 0.5rem;
+}
