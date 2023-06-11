@@ -231,6 +231,13 @@ ul {
   background-image: url(https://media.istockphoto.com/id/182666258/es/foto/fondo-de-papel-especial.jpg?s=170667a&w=0&k=20&c=DeEe7k8WaGdVokeS2e7vQ3pcdQP_oJGExsT3wUR3eas=);
 }
 
+.contentAll {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
 @media (max-width: 1050px) {
   .teacherContent {
     grid-template-columns: repeat(1, auto);

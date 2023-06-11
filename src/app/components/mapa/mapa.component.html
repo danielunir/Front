@@ -11,8 +11,11 @@
   <!-- cargar información de los diferentes profesores -->
   <agm-marker *ngFor="let teacher of teachersPositions" [latitude]="teacher?.latitud!" [longitude]="teacher?.longitud!">
     <agm-info-window>
-      <h5>Nombre: {{teacher?.nombre}}</h5>
-      <h6>Apellidos: {{teacher?.apellidos}}</h6>
+      <div class="teacherMap">
+        <div class="imgMap"><img src="{{teacher.foto}}" alt="imagen de teacher {{teacher.nombre}}{{teacher.apellidos}}">
+        </div>
+        <div class="nameMap">{{teacher?.nombre}} {{teacher?.apellidos}}</div>
+      </div>
     </agm-info-window>
   </agm-marker>
 

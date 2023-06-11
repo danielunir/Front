@@ -34,6 +34,7 @@ p {
 
 .buttoncontent {
   display: flex;
+  justify-content: flex-end;
   margin-top: 0rem;
 }
 
@@ -79,7 +80,7 @@ img {
   justify-content: center;
   align-items: flex-start;
   width: fit-content;
-  padding: 1rem;
+  padding: 1rem 1rem 0.5rem 1rem;
   color: rgba(0, 0, 0, 0.85);
 }
 
@@ -92,7 +93,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1rem;
+  padding: 0rem 1rem 1rem 1rem;
   width: 100%;
 }
 
