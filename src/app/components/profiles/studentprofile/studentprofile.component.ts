@@ -96,7 +96,7 @@ export class StudentprofileComponent implements OnInit {
         formularioDeDatos.append('file0', archivo)
       })
 
-      this.restService.post(`http://localhost:3000/api/personal/upload/${this.currentId}`, formularioDeDatos)
+      this.restService.post(`${environment.base_Url}personal/upload/${this.currentId}`, formularioDeDatos)
         .subscribe((res: any) => {
           console.log('Respuesta del servidor', res)
         })
