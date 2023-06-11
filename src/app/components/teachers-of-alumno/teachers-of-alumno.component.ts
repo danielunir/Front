@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { PuntuacionService } from 'src/app/services/puntuacion.service';
+import { environment } from 'src/environments/environments';
 
 @Component({
   selector: 'app-teachers-of-alumno',
@@ -21,6 +22,8 @@ export class TeachersOfAlumnoComponent {
   destinatarioId: string = '';
 
   status: number = 1;
+
+  baseDownload: string = '';
 
   constructor(
     private alumnoService: AlumnosService,
@@ -53,6 +56,8 @@ export class TeachersOfAlumnoComponent {
 
         this.status = response.status;
     });
+
+    this.baseDownload = environment.base_Download;
   }
 
   async putTeacherScore(teacher: any, currentId: number) {
