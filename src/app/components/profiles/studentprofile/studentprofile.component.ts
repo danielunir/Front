@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { environment } from 'src/environments/environments';
+import { DomSanitizer } from '@angular/platform-browser';
+import { RestService } from 'src/app/services/rest.service';
+
 
 
 @Component({
@@ -17,13 +21,19 @@ export class StudentprofileComponent implements OnInit {
   teachers: any = []
   currentId: number = 0
   status: number = 1;
+  baseDownload: string = '';
+
+  previsualizacion: string = '';
+  archivos: any = []
 
 
   constructor(
     private activateRoute: ActivatedRoute,
     private alumnoService: AlumnosService,
     private usuariosService: UsuariosService,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer,
+    private restService: RestService
   ) {
   }
 
@@ -44,6 +54,63 @@ export class StudentprofileComponent implements OnInit {
 
       this.status = response.status;
     });
+
+    this.baseDownload = environment.base_Download;
   }
+
+  capturarFile(event: any): any {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+    })
+    this.archivos.push(archivoCapturado);
+
+  }
+
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) => {
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+      return;
+    } catch (error) {
+      return null;
+    }
+  })
+
+  subirArchivo(): any {
+    try {
+      const formularioDeDatos = new FormData();
+      this.archivos.forEach((archivo: any) => {
+        formularioDeDatos.append('file0', archivo)
+      })
+
+      this.restService.post(`http://localhost:3000/api/personal/upload/${this.currentId}`, formularioDeDatos)
+        .subscribe((res: any) => {
+          console.log('Respuesta del servidor', res)
+        })
+        setTimeout(() => {
+          console.log(this.currentId)
+          this.router.navigate([`/studentprofile/${this.currentId}/tables/profesores`]);
+        }, 1000)
+      } catch (error) {
+        console.log('Error', error);
+      }
+    }
+
+    cancelar(): void {
+      this.router.navigate([`/studentprofile/${this.currentId}/tables/profesores`]);
+    }
 
 }

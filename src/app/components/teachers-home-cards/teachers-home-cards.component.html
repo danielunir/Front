@@ -1,8 +1,5 @@
 <div class="a">
-  <div class="imgContent"><img *ngIf="teacher.foto" [src]="teacher.foto" [alt]="teacher.nombre"> <img
-      *ngIf="!teacher.foto"
-      src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"
-      class="img-thumbnail" alt="usuario sin imagen">
+  <div class="imgContent"><img *ngIf="teacher.foto" [src]="baseDownload + teacher.foto" [alt]="teacher.nombre"> <img *ngIf="!teacher.foto" src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png" class="img-thumbnail" alt="usuario sin imagen">
   </div>
   <div class="teacher_data">
     <div>
@@ -38,8 +35,7 @@
       <input type="hidden" formControlName="profesor_id" [(ngModel)]="profesor_id">
       <input type="hidden" formControlName="alumno_id" [(ngModel)]="alumno_id">
       <input type="hidden" formControlName="rama_co_id" [(ngModel)]="rama_co_id">
-      <input class="btn btn-primary mt-3 cita-button" type="submit" [routerLink]=""
-        value="Solicitar Clase">
+      <input class="btn btn-primary mt-3 cita-button" type="submit" [routerLink]="" value="Solicitar Clase">
     </form>
   </div>
 

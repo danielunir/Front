@@ -34,15 +34,8 @@ p {
 
 .buttoncontent {
   display: flex;
+  justify-content: flex-end;
   margin-top: 0rem;
-}
-
-.cita-button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .btn {
@@ -54,9 +47,6 @@ p {
   background-color: #fac406;
   border-color: #d9b85e;
 }
-
-
-/* Nueva card*/
 
 .imgContent {
   display: flex;
@@ -79,7 +69,7 @@ img {
   justify-content: center;
   align-items: flex-start;
   width: fit-content;
-  padding: 1rem;
+  padding: 1rem 1rem 0.5rem 1rem;
   color: rgba(0, 0, 0, 0.85);
 }
 
@@ -92,7 +82,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1rem;
+  padding: 0rem 1rem 1rem 1rem;
   width: 100%;
 }
 

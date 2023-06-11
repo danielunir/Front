@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environments';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ export class MessageService {
  baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/chat';
+    this.baseUrl = `${environment.base_Url}chat`;
    }
 
    addMessage(values: { remitente: number, destinatario: number, contenido: string }) {
