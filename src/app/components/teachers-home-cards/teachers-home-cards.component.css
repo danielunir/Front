@@ -2,18 +2,36 @@ p {
   margin-bottom: 0;
 }
 
+.card-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
 .stars-outer {
   display: flex;
   position: relative;
   font-family: FontAwesome;
-  font-size: 32px;
-  width: 180px;
+  font-size: 1.5rem;
+  width: 100%;
   margin: 0 auto;
   justify-content: left;
 }
 
 .stars-outer::before {
   content: "\f006 \f006 \f006 \f006 \f006";
+  font-size: 1.5rem;
+  justify-content: left;
 }
 
 .stars-inner {
@@ -50,17 +68,20 @@ p {
 
 .imgContent {
   display: flex;
-  width: 200px;
-  height: 200px;
-  padding: 0.5rem;
+  width: 184px;
+  height: 184px;
+  margin: 0.5rem;
+  position: relative;
+
 }
 
 img {
-  border-radius: 50%;
+  /* border-radius: 50%; */
   width: 100%;
-  object-fit: cover;
-  overflow: hidden;
+  /*  object-fit: cover;
+  overflow: hidden; */
   opacity: 95%;
+  border-radius: 6px;
 }
 
 .teacher_data {
