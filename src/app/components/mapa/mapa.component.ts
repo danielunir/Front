@@ -4,6 +4,7 @@ import { map, mergeMap, switchMap } from 'rxjs/operators';
 import { Teacher } from 'src/app/interfaces/teacher.interface';
 import { CountriesService } from 'src/app/services/countries.service';
 import { TeachersService } from 'src/app/services/teachers.service';
+import { environment } from 'src/environments/environments';
 
 @Component({
   selector: 'app-mapa',
@@ -28,6 +29,8 @@ export class MapaComponent implements OnInit {
   totalPages: number = 0;
   arrPages: number[] = [];
   currentPage: number = 0;
+
+  baseDownload: string = '';
 
   constructor(
     private countriesService: CountriesService,
@@ -74,6 +77,8 @@ export class MapaComponent implements OnInit {
     });
 
     this.teachers_list = [];
+
+    this.baseDownload = environment.base_Download;
   }
 
   async teachers(pNum: number = 1): Promise<void> {

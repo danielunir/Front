@@ -1,57 +1,44 @@
 <app-header [logado]="logado"></app-header>
 <div class="all">
-    <div class="contentRow">
+  <div class="contentRow">
 
-        <div class="options">
+    <div class="options">
 
-            <div class="adminName">
-                <h2>Administrador {{username}}</h2>
-            </div>
-            <div class="links">
-                <div class="link noSelected" [routerLink]="['/adminprofile', admin.id, 'tables', 'alumnos']"
-                    role="button">
-                    <h5>Alumnos</h5>
-                </div>
-                <div class="link" [routerLink]="['/adminprofile', admin.id]" role="button">
-                    <h5>Mi perfil</h5>
-                </div>
-
-                <div class="link noSelected" [routerLink]="['/adminprofile', admin.id, 'tables', 'profesores']"
-                    role="button">
-                    <h5>Profesores</h5>
-                </div>
-
-            </div>
-
+      <div class="adminName">
+        <h2>Administrador {{username}}</h2>
+      </div>
+      <div class="links">
+        <div class="link noSelected" [routerLink]="['/adminprofile', admin.id, 'tables', 'alumnos']" role="button">
+          <h5>Alumnos</h5>
         </div>
-        <div class="content">
-            <div class="variableContent">
-                <div class="picture">
-
-                    <div class="imgContent">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtphRFBIir5vPvccBP5uMA7GdCkM3cx2-1w&usqp=CAU"
-                            alt="Teacher Image" class="img-thumbnail">
-                    </div>
-
-                    <div class="charge">
-                        <div class="texto">
-                            <button class="btn btn-outline-secondary p-1" (click)="fileInput.click()">Seleccionar
-                                imagen</button>
-                        </div>
-                        <div class="upload">
-                            <input #fileInput class="btn btn-primary file-upload" type="file" style="display: none;">
-                        </div>
-                    </div>
-
-                    <div class="data">
-                        <div class="dataB">
-                            <p>Nombre: {{admin.nombre}} {{admin.apellidos}}</p>
-                            <p>Nombre de usuario: {{admin.username}}</p>
-                            <p>Email: {{admin.email}}</p>
-                            <p>Rol: Administrador</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="link" [routerLink]="['/adminprofile', admin.id]" role="button">
+          <h5>Mi perfil</h5>
         </div>
+
+        <div class="link noSelected" [routerLink]="['/adminprofile', admin.id, 'tables', 'profesores']" role="button">
+          <h5>Profesores</h5>
+        </div>
+
+      </div>
+
     </div>
+    <div class="content">
+      <div class="variableContent">
+        <div class="picture">
+
+          <div class="imgContent">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtphRFBIir5vPvccBP5uMA7GdCkM3cx2-1w&usqp=CAU" alt="Teacher Image" class="img-thumbnail">
+          </div>
+
+          <div class="data">
+            <div class="dataB">
+              <p>Nombre: {{admin.nombre}} {{admin.apellidos}}</p>
+              <p>Nombre de usuario: {{admin.username}}</p>
+              <p>Email: {{admin.email}}</p>
+              <p>Rol: Administrador</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environments';
 
 @Component({
   selector: 'app-teacher-score-card',
@@ -13,6 +14,7 @@ export class TeacherScoreCardComponent implements OnInit {
   rating!: number;
   startPercentatge!: number;
   startPercentatgeRounded!: string;
+  baseDownload: string = '';
 
   constructor() {
   }
@@ -22,6 +24,8 @@ export class TeacherScoreCardComponent implements OnInit {
 
     this.startPercentatge = (this.rating / this.startTotal) * 100;
     this.startPercentatgeRounded = `${(Math.round(this.startPercentatge / 10 ) * 10)}%`;
+
+    this.baseDownload = environment.base_Download;
   }
 
 
