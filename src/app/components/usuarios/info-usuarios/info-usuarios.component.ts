@@ -29,7 +29,6 @@ export class InfoUsuariosComponent implements OnInit {
     const data = await this.profileService.getProfile();
 
     this.userId = data.id;
-    // console.log(this.userId);
     this.role = data.role;
   }
 

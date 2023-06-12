@@ -100,13 +100,11 @@ export class FormUserComponent {
       this.router.navigate(['/home']);
 
       if (!response.insertId) {
-        console.log(response.fatal);
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: 'Registro de usuario erroneo',
         })
-        // return alert('Registro de usuario erroneo');
       }
     } catch (error) {
       console.log(error);

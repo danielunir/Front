@@ -42,7 +42,6 @@ const routes: Routes = [
     { path: 'enviar/:remitenteId/:destinatarioId', component: AddComponent },
     { path: 'recibidos/:destinatarioId/:remitenteId', component: ReceivedComponent }
   ] },
-  // { path: 'mensajes', loadChildren: () => import('./messages/messages.module').then(m => m.MessagesModule) },
   { path: '**', component: HomeComponent }
 ];
 

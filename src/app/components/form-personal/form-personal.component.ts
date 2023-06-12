@@ -72,15 +72,6 @@ export class FormPersonalComponent {
     return false;
   }
 
-  // async datarecovery(){
-  //   const data = await this.profileService.getProfile();
-
-  //   this.userId = data.id;
-  //   console.log(this.userId);
-  //   this.role = data.role;
-  //   this.rol.emit(this.role);
-  // }
-
   async getDataPersonal() {
 
     const data = await this.profileService.getProfile();
@@ -88,18 +79,11 @@ export class FormPersonalComponent {
     this.userId = data.id;
     this.role = data.role;
 
-    // console.log(this.role);
-
-
-
     this.formRegisterPersonal.value.usuario_id = this.userId;
-
-    // console.log(this.formRegisterPersonal.value)
 
     if (this.role === 'profesor') {
       try {
         const response = await this.personalService.registroPersonalProfesor(this.formRegisterPersonal.value);
-        // console.log(response);
 
         if (!response.usuario_id) {
           Swal.fire({
@@ -107,7 +91,6 @@ export class FormPersonalComponent {
             title: 'Oops...',
             text: 'Registro  de datos personales erroneo. Algo fue mal, vuelve a intentarlo',
           })
-          console.log(response.fatal);
           return response.fatal;
         }
       } catch (error) {
@@ -126,7 +109,6 @@ export class FormPersonalComponent {
             title: 'Oops...',
             text: 'Registro  de datos personales erroneo. Algo fue mal, vuelve a intentarlo',
           })
-          console.log(response.fatal);
           return response.fatal;
         }
       } catch (error) {
