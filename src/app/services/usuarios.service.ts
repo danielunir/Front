@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, firstValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class UsuariosService {
   private _logged: BehaviorSubject<boolean>;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/users';
+    this.baseUrl = `${environment.base_Url}users`;
     this.loggedIn = localStorage.getItem('token_login') ? true : false;
     this._logged = new BehaviorSubject(this.loggedIn);
   }
