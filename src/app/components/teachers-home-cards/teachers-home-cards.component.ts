@@ -73,7 +73,7 @@ export class TeachersHomeCardsComponent implements OnInit {
     try {
       const response = await this.claseService.registroClase(this.formCrearClase.value);
       console.log(response);
-      if(!response) {
+      if (!response) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
