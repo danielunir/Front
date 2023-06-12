@@ -2,22 +2,36 @@ p {
   margin-bottom: 0;
 }
 
-.card-body {
-  padding-bottom: 6px;
+.card-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 .stars-outer {
   display: flex;
   position: relative;
   font-family: FontAwesome;
-  font-size: 32px;
-  width: 180px;
+  font-size: 1.5rem;
+  width: 100%;
   margin: 0 auto;
   justify-content: left;
 }
 
 .stars-outer::before {
   content: "\f006 \f006 \f006 \f006 \f006";
+  font-size: 1.5rem;
+  justify-content: left;
 }
 
 .stars-inner {
@@ -36,61 +50,10 @@ p {
   margin: 0;
 }
 
-img {
-  height: 100%;
-  border-radius: 6px;
-}
-
-/**/
-.card {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border: transparent;
-
-
-}
-
-.card-img-top {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-}
-
-.card-overlay {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-}
-
-
-.card-title {
-  margin: 0rem;
-  /* Elimina el margen para que "Teacher" esté alineado con el borde de la tarjeta */
-}
-
 .buttoncontent {
   display: flex;
+  justify-content: flex-end;
   margin-top: 0rem;
-}
-
-.cita-button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .btn {
@@ -103,8 +66,63 @@ img {
   border-color: #d9b85e;
 }
 
-@media (max-width: 956px) {
-  .buttoncontent {
-    margin-top: 0;
+.imgContent {
+  display: flex;
+  width: 184px;
+  height: 184px;
+  margin: 0.5rem;
+  position: relative;
+
+}
+
+img {
+  /* border-radius: 50%; */
+  width: 100%;
+  /*  object-fit: cover;
+  overflow: hidden; */
+  opacity: 95%;
+  border-radius: 6px;
+}
+
+.teacher_data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: fit-content;
+  padding: 1rem 1rem 0.5rem 1rem;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.a {
+  display: flex;
+
+}
+
+.b {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0rem 1rem 1rem 1rem;
+  width: 100%;
+}
+
+
+@media (max-width: 1050px) {
+  .teacherContent {
+    grid-template-columns: repeat(1, auto);
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 }

@@ -16,7 +16,7 @@ export class SearchTeacherComponent implements OnInit {
 
   search: boolean = true;
 
-  listaNiveles: string[] = ["Primaria", "ESO","FP", "Bachillerato", "Diplomatura", "Grado", "Máster y Doctorado", "Personas Mayores"];
+  listaNiveles: string[] = ["Primaria", "ESO", "FP", "Bachillerato", "Diplomatura", "Grado", "Máster y Doctorado", "Personas Mayores"];
 
   teachers_list: any = [];
   teachers_page: any = [];
@@ -48,22 +48,26 @@ export class SearchTeacherComponent implements OnInit {
   ordenar: string = '';
   ordenadoPor: string = '';
 
+  status: number = 1;
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private alumnosService: AlumnosService,
     private teachersService: TeachersService
-    ){
+  ) {
 
   }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe( async (params: any) => {
+    this.activatedRoute.params.subscribe(async (params: any) => {
       this.currentId = params.studentId;
 
       try {
         let response: any = await this.alumnosService.getByUserId(this.currentId);
         this.student = response;
+
+        this.status = response.status;
       } catch (error) {
         alert(error);
       }
@@ -107,7 +111,7 @@ export class SearchTeacherComponent implements OnInit {
   limpiar() {
     const resultado: any = document.getElementById('resultado');
     console.log(resultado)
-    if(resultado) {
+    if (resultado) {
       while (resultado.firstChild) {
         resultado.removeChild(resultado.firstChild);
       }
@@ -117,143 +121,143 @@ export class SearchTeacherComponent implements OnInit {
   filtrarProfesor() {
 
     // setTimeout(() => {
-      this.datosFiltrados.materia = this.materia;
-      this.datosFiltrados.nivel = this.nivel;
-      this.datosFiltrados.cuotamin = this.cuotamin;
-      this.datosFiltrados.cuotamax = this.cuotamax;
-      this.datosFiltrados.puntuacion = this.puntuacion;
+    this.datosFiltrados.materia = this.materia;
+    this.datosFiltrados.nivel = this.nivel;
+    this.datosFiltrados.cuotamin = this.cuotamin;
+    this.datosFiltrados.cuotamax = this.cuotamax;
+    this.datosFiltrados.puntuacion = this.puntuacion;
 
-      let datosFiltrados = this.datosFiltrados;
+    let datosFiltrados = this.datosFiltrados;
 
-      this.resultadoFiltrado = this.totalTeachers_page.filter(
-        function filtrarCuotaMin(teacher: any) {
-          let { cuotamin } = datosFiltrados;
+    this.resultadoFiltrado = this.totalTeachers_page.filter(
+      function filtrarCuotaMin(teacher: any) {
+        let { cuotamin } = datosFiltrados;
 
-          cuotamin = Number(cuotamin);
+        cuotamin = Number(cuotamin);
 
-          if(cuotamin) {
-            return teacher.cuota >= cuotamin;
-          }
-          return teacher;
+        if (cuotamin) {
+          return teacher.cuota >= cuotamin;
         }
-        ).filter(
-          function filtrarCuotaMax(teacher: any) {
-            let { cuotamax } = datosFiltrados;
+        return teacher;
+      }
+    ).filter(
+      function filtrarCuotaMax(teacher: any) {
+        let { cuotamax } = datosFiltrados;
 
-            cuotamax = Number(cuotamax);
+        cuotamax = Number(cuotamax);
 
-            if(cuotamax) {
-              return teacher.cuota <= cuotamax;
-            }
-            return teacher;
+        if (cuotamax) {
+          return teacher.cuota <= cuotamax;
+        }
+        return teacher;
+      }
+    ).filter(
+      function filtrarMateria(teacher: any) {
+        const { materia } = datosFiltrados;
+        console.log(materia);
+
+        if (materia) {
+          for (let i = 0; i < teacher.materias.length; i++) {
+            console.log(teacher.materias.length)
+            console.log(teacher.materias[0].rama)
+            return teacher.materias[0].rama === materia;
           }
-          ).filter(
-            function filtrarMateria(teacher:any) {
-              const { materia } = datosFiltrados;
-              console.log(materia);
+        }
+        return teacher;
+      }
+    ).filter(
+      function filtrarNivel(teacher: any) {
+        const { nivel } = datosFiltrados;
 
-              if(materia) {
-                for(let i = 0; i < teacher.materias.length; i++){
-                  console.log(teacher.materias.length)
-                  console.log(teacher.materias[0].rama)
-                  return teacher.materias[0].rama === materia;
-                }
-              }
-              return teacher;
-            }
-            ).filter(
-              function filtrarNivel(teacher:any) {
-                const { nivel } = datosFiltrados;
+        if (nivel) {
+          for (let i = 0; i < teacher.materias.length; i++) {
+            return teacher.materias[i].nivel === nivel;
+          }
+        }
+        return teacher;
+      }
+    ).filter(
+      function filtrarPuntuacion(teacher: any) {
+        let { puntuacion } = datosFiltrados;
 
-                if(nivel) {
-                  for(let i = 0; i < teacher.materias.length; i++){
-                    return teacher.materias[i].nivel === nivel;
-                  }
-                }
-                return teacher;
-              }
-              ).filter(
-                function filtrarPuntuacion(teacher: any) {
-                  let { puntuacion } = datosFiltrados;
+        puntuacion = Number(puntuacion);
+        console.log(puntuacion);
 
-                  puntuacion = Number(puntuacion);
-                  console.log(puntuacion);
+        if (teacher.promedio.length === 0) {
+          teacher.promedio = 0.1;
+          if (puntuacion) {
+            return ((Number(teacher.promedio) >= puntuacion) && (Number(teacher.promedio) < (puntuacion + 1.9)));
+          }
+        }
+        console.log(Number(teacher.promedio));
 
-                  if(teacher.promedio.length === 0) {
-                    teacher.promedio = 0.1;
-                    if(puntuacion) {
-                      return ((Number(teacher.promedio) >= puntuacion) && (Number(teacher.promedio) < (puntuacion + 1.9)));
-                    }
-                  }
-                  console.log(Number(teacher.promedio));
+        if (puntuacion) {
+          return ((Number(teacher.promedio) >= puntuacion) && (Number(teacher.promedio) < (puntuacion + 1.9)));
+        }
+        return teacher;
+      }
+    );
 
-                  if(puntuacion) {
-                    return ((Number(teacher.promedio) >= puntuacion) && (Number(teacher.promedio) < (puntuacion + 1.9)));
-                  }
-                  return teacher;
-                }
-                );
+    if (this.resultadoFiltrado.length) {
+      if (this.ordenadoPor) {
+        switch (this.ordenadoPor) {
+          case 'pa':
+            this.ordenarCuotaMenorMayor();
+            this.ordenadoPor = 'pa';
+            break;
+          case 'pd':
+            this.ordenarCuotaMayorMenor();
+            this.ordenadoPor = 'pd';
+            break;
+          case 'na':
+            this.ordenarValoracionMenorMayor();
+            this.ordenadoPor = 'na';
+            break;
+          case 'nd':
+            this.ordenarValoracionMayorMenor();
+            this.ordenadoPor = 'nd';
+            break;
+          default:
+            this.ordenadoPor = '';
+            break;
+        }
+      } else {
+        this.teachers_list = this.resultadoFiltrado;
+      }
+      return this.resultadoFiltrado;
+    } else {
+      // console.log('No hay resultados');
+      // noResultados();
+    }
 
-                if (this.resultadoFiltrado.length) {
-                  if (this.ordenadoPor) {
-                    switch (this.ordenadoPor) {
-                      case 'pa':
-                        this.ordenarCuotaMenorMayor();
-                        this.ordenadoPor = 'pa';
-                        break;
-                      case 'pd':
-                        this.ordenarCuotaMayorMenor();
-                        this.ordenadoPor = 'pd';
-                        break;
-                      case 'na':
-                        this.ordenarValoracionMenorMayor();
-                        this.ordenadoPor = 'na';
-                        break;
-                      case 'nd':
-                        this.ordenarValoracionMayorMenor();
-                        this.ordenadoPor = 'nd';
-                        break;
-                      default:
-                        this.ordenadoPor = '';
-                        break;
-                    }
-                  } else {
-                    this.teachers_list = this.resultadoFiltrado;
-                  }
-                  return this.resultadoFiltrado;
-                } else {
-                  // console.log('No hay resultados');
-                  // noResultados();
-                }
-
-                this.limpiar();
-                this.teachers_list = this.resultadoFiltrado;
-              // },300)
+    this.limpiar();
+    this.teachers_list = this.resultadoFiltrado;
+    // },300)
   }
 
   ordenarTeachers() {
     // const ordenarProductos = () => {
-      switch (this.ordenar) {
-        case 'pa':
-          this.ordenarCuotaMenorMayor();
-          this.ordenadoPor = 'pa';
-          break;
-        case 'pd':
-          this.ordenarCuotaMayorMenor();
-          this.ordenadoPor = 'pd';
-          break;
-        case 'na':
-          this.ordenarValoracionMenorMayor();
-          this.ordenadoPor = 'na';
-          break;
-        case 'nd':
-          this.ordenarValoracionMayorMenor();
-          this.ordenadoPor = 'nd';
-          break;
-        default:
-          this.ordenadoPor = '';
-          break;
-      }
+    switch (this.ordenar) {
+      case 'pa':
+        this.ordenarCuotaMenorMayor();
+        this.ordenadoPor = 'pa';
+        break;
+      case 'pd':
+        this.ordenarCuotaMayorMenor();
+        this.ordenadoPor = 'pd';
+        break;
+      case 'na':
+        this.ordenarValoracionMenorMayor();
+        this.ordenadoPor = 'na';
+        break;
+      case 'nd':
+        this.ordenarValoracionMayorMenor();
+        this.ordenadoPor = 'nd';
+        break;
+      default:
+        this.ordenadoPor = '';
+        break;
+    }
 
   }
 
