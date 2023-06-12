@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class RamasService {
   private baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/clase';
+    this.baseUrl = `${environment.base_Url}clase`;
   }
 
   registroRamasCo(values: { usuario_id: number, materia_id: number, nivel_id: number }) {

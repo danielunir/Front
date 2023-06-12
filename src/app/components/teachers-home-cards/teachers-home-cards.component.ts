@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { ClaseService } from 'src/app/services/clase.service';
 import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environments';
 
 @Component({
   selector: 'app-teachers-home-cards',
@@ -24,6 +25,8 @@ export class TeachersHomeCardsComponent implements OnInit {
   profesor_id: any;
   alumno_id: any;
   rama_co_id: any;
+
+  baseDownload: string = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -61,6 +64,8 @@ export class TeachersHomeCardsComponent implements OnInit {
     this.rama_co_id = this.teacher.materias[0].materia_id;
 
     console.log(this.teacher);
+
+    this.baseDownload = environment.base_Download;
   }
 
   async onSubmit() {

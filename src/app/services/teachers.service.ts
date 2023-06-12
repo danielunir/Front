@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class TeachersService {
   constructor(
     private httpClient: HttpClient
   ) {
-    this.baseUrl = 'https://teachers-groupb.herokuapp.com/api/teachers';
-    this.emailUrl = 'https://teachers-groupb.herokuapp.com/api/mail';
+    this.baseUrl = `${environment.base_Url}teachers`;
+    this.emailUrl = `${environment.base_Url}mail`;
   }
 
   getAll(pPage: number = 1): Promise<any> {

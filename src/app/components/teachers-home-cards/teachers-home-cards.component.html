@@ -1,14 +1,8 @@
 <div class="a">
-  <div class="imgContent"><img *ngIf="teacher.foto" [src]="teacher.foto" [alt]="teacher.nombre"> <img
+  <div class="imgContent"><img *ngIf="teacher.foto" [src]="baseDownload + teacher.foto" [alt]="teacher.nombre"> <img
       *ngIf="!teacher.foto"
       src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"
       class="img-thumbnail" alt="usuario sin imagen">
-    <div class="card-overlay">
-      <!-- <h5 class="card-title">Teacher <br>{{teacher.teacher.nombre}} {{teacher.teacher.apellidos}}</h5> -->
-      <div class="stars-outer">
-        <div class="stars-inner" [ngStyle]="{'width': startPercentatgeRounded}"></div>
-      </div>
-    </div>
   </div>
   <div class="teacher_data">
     <div>
@@ -36,9 +30,9 @@
   </div>
 </div>
 <div class="b">
-  <!-- <div class="stars-outer">
+  <div class="stars-outer">
     <div class="stars-inner" [ngStyle]="{'width': startPercentatgeRounded}"></div>
-  </div> -->
+  </div>
   <div class="buttoncontent">
     <form class="" novalidate [formGroup]="formCrearClase" (ngSubmit)="onSubmit()">
       <input type="hidden" formControlName="profesor_id" [(ngModel)]="profesor_id">
