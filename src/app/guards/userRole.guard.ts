@@ -12,8 +12,8 @@ export class UserRoleGuard implements CanActivate {
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        const currentUserId = localStorage.getItem('user_id'); // obtén el ID del usuario del almacenamiento local
-        const userRole = localStorage.getItem('user_role'); // obtén el rol del usuario del almacenamiento local
+        const currentUserId = localStorage.getItem('user_id');
+        const userRole = localStorage.getItem('user_role');
         let requestedUserId;
 
         if (route.params['studentId']) {

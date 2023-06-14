@@ -8,7 +8,6 @@
     <agm-info-window></agm-info-window>
   </agm-marker>
 
-  <!-- cargar información de los diferentes profesores -->
   <agm-marker *ngFor="let teacher of teachersPositions" [latitude]="teacher?.latitud!" [longitude]="teacher?.longitud!">
     <agm-info-window>
       <div class="teacherMap">

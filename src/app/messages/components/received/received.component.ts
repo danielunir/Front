@@ -70,12 +70,6 @@ export class ReceivedComponent implements OnInit {
 
   }
 
-  // changeOrigin() {
-  //   const intermedia = this.remitente;
-  //   this.remitente = this.destinatario;
-  //   this.destinatario = intermedia;
-  // }
-
   async onSubmit() {
 
     try {

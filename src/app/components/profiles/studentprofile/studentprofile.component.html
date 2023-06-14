@@ -18,13 +18,7 @@
         <div *ngIf="status === 1" class="link noSelected" [routerLink]="['/studentprofile', currentId, 'search']" role="button">
           <h5>Buscar Profesores</h5>
         </div>
-
-        <!-- <div class="link noSelected" role="button">
-          <h5>Buscar Profesores</h5>
-        </div> -->
-
       </div>
-
     </div>
     <div class="content">
       <div *ngIf="student.nombre" class="variableContent">
@@ -65,37 +59,6 @@
             </div>
           </div>
         </div>
-
-        <!-- <div class="picture">
-
-          <div class="imgContent">
-            <img [src]="student.foto" [alt]="student.nombre" class="img-thumbnail">
-          </div>
-
-          <div class="charge">
-            <div class="texto">
-              <button class="btn btn-outline-secondary p-1" (click)="fileInput.click()">Seleccionar
-                imagen</button>
-            </div>
-            <div class="upload">
-              <input #fileInput class="btn btn-primary file-upload" type="file" style="display: none;">
-            </div>
-          </div>
-
-          <div class="data">
-            <div class="dataB">
-              <p>Nombre: {{student.nombre}} {{student.apellidos}}</p>
-              <p>Nombre de usuario: {{student.username}}</p>
-              <p>Email: {{student.email}}</p>
-              <p>Rol: Alumno</p>
-              <p>Estudia: {{student.estudia}}</p>
-              <p>Dirección: {{student.direccion}}</p>
-              <p>Población: {{student.ciudad}}</p>
-              <p>Teléfono: {{student.telefono}}</p>
-
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>

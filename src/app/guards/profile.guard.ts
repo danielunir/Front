@@ -14,7 +14,6 @@ export class ProfileGuard implements CanActivate {
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         const currentUserId = localStorage.getItem('user_id');
 
-        // aquí intentamos obtener el id correcto basado en el tipo de perfil
         let requestedUserId;
         if (route.params['studentId']) {
             requestedUserId = route.params['studentId'];

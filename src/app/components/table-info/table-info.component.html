@@ -7,16 +7,14 @@
         <h2 *ngIf="this.profType === 'profesores'">Administar Profesores</h2>
       </div>
       <div class="links">
-        <div [routerLink]="['/adminprofile', admin.id, 'tables', 'alumnos']" role="button"
-          [ngClass]="{'selected': profType === 'alumnos', 'link': profType === 'profesores'}">
+        <div [routerLink]="['/adminprofile', admin.id, 'tables', 'alumnos']" role="button" [ngClass]="{'selected': profType === 'alumnos', 'link': profType === 'profesores'}">
           <h5>Alumnos</h5>
         </div>
         <div class="link" [routerLink]="['/adminprofile', admin.id]" role="button">
           <h5>Mi perfil</h5>
         </div>
 
-        <div [routerLink]="['/adminprofile', admin.id, 'tables', 'profesores']" role="button"
-          [ngClass]="{'selected': profType === 'profesores', 'link': profType === 'alumnos'}">
+        <div [routerLink]="['/adminprofile', admin.id, 'tables', 'profesores']" role="button" [ngClass]="{'selected': profType === 'profesores', 'link': profType === 'alumnos'}">
           <h5>Profesores</h5>
         </div>
       </div>
@@ -24,8 +22,6 @@
     <div class="content">
       <div class="variableContent">
         <div class="pt-5  col-12 col-sm-8 col-md-10 custom-padding">
-          <!-- <h5 *ngIf="this.profType === 'alumnos'">Alumnos</h5>
-                    <h5 *ngIf="this.profType === 'profesores'">Profesores</h5> -->
           <div class="table-responsive">
             <table *ngIf="dataLoaded" class="table table-hover table-bordered">
               <thead *ngIf="this.profType === 'alumnos'">
@@ -72,8 +68,7 @@
                     <i class="fa-solid fa-user-check" *ngIf="student['status'] === 1" style="color: green"></i>
                   </td>
                   <td>
-                    <button class="btn" (click)="deleteStudent(student['usuario_id'])"
-                      *ngIf="student['status'] === 1"><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="btn" (click)="deleteStudent(student['usuario_id'])" *ngIf="student['status'] === 1"><i class="fa-solid fa-trash-can"></i></button>
                     <i class="fa-solid fa-trash-can" style="color: black" *ngIf="student['status'] === 0"></i>
                   </td>
                 </tr>
@@ -90,16 +85,12 @@
                   <td>{{teacher['cuota']}}€/h</td>
                   <td>{{teacher['experiencia']}}</td>
                   <td>
-                    <button *ngIf="teacher['status'] === 0" class="btn"
-                      (click)="validateTeacher(teacher['usuario_id'])"><i class="fa-solid fa-user-xmark"></i></button>
-                    <button *ngIf="teacher['status'] === 1" class="btn"><i class="fa-solid fa-user-check"
-                        style="color: green"></i></button>
+                    <button *ngIf="teacher['status'] === 0" class="btn" (click)="validateTeacher(teacher['usuario_id'])"><i class="fa-solid fa-user-xmark"></i></button>
+                    <button *ngIf="teacher['status'] === 1" class="btn"><i class="fa-solid fa-user-check" style="color: green"></i></button>
                   </td>
                   <td>
-                    <button *ngIf="teacher['status'] === 1" class="btn"
-                      (click)="deleteTeacher(teacher['usuario_id'])"><i class="fa-solid fa-trash-can"></i></button>
-                    <button *ngIf="teacher['status'] === 0" class="btn"><i class="fa-solid fa-trash-can"
-                        style="color: black"></i></button>
+                    <button *ngIf="teacher['status'] === 1" class="btn" (click)="deleteTeacher(teacher['usuario_id'])"><i class="fa-solid fa-trash-can"></i></button>
+                    <button *ngIf="teacher['status'] === 0" class="btn"><i class="fa-solid fa-trash-can" style="color: black"></i></button>
                   </td>
                 </tr>
               </tbody>

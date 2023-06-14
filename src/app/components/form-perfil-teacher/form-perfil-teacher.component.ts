@@ -16,8 +16,6 @@ export class FormPerfilTeacherComponent {
   contador = 0;
   contadorMax = 255;
 
-  // nivelesSeleccionados:string[] = [];
-
   formRegisterPerfilTeacher: FormGroup;
 
   @Input() usuarioId: number = 0;
@@ -65,8 +63,6 @@ export class FormPerfilTeacherComponent {
   }
 
   async getDataPerfilTeacher() {
-
-    // this.formRegisterPerfilTeacher.value.nivel = this.nivelesSeleccionados.toString();
 
     this.formRegisterPerfilTeacher.value.usuario_id = this.usuarioId;
 

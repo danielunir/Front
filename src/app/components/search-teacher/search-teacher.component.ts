@@ -116,7 +116,7 @@ export class SearchTeacherComponent implements OnInit {
 
   filtrarProfesor() {
 
-    // setTimeout(() => {
+
     this.datosFiltrados.materia = this.materia;
     this.datosFiltrados.nivel = this.nivel;
     this.datosFiltrados.cuotamin = this.cuotamin;
@@ -225,7 +225,6 @@ export class SearchTeacherComponent implements OnInit {
   }
 
   ordenarTeachers() {
-    // const ordenarProductos = () => {
     switch (this.ordenar) {
       case 'pa':
         this.ordenarCuotaMenorMayor();

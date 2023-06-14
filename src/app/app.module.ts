@@ -36,7 +36,6 @@ import { TeachersHomeCardsComponent } from './components/teachers-home-cards/tea
 import { TableInfoComponent } from './components/table-info/table-info.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SearchTeacherComponent } from './components/search-teacher/search-teacher.component';
-import { FilterMateriaPipe } from './pipes/filter-materia.pipe';
 import { TeachersOfAlumnoComponent } from './components/teachers-of-alumno/teachers-of-alumno.component';
 import { AlumnosOfTeacherComponent } from './components/alumnos-of-teacher/alumnos-of-teacher.component';
 import { MessagesComponent } from './components/messages/messages.component';
@@ -73,7 +72,6 @@ import { MessagesComponent } from './components/messages/messages.component';
     TableInfoComponent,
     SpinnerComponent,
     SearchTeacherComponent,
-    FilterMateriaPipe,
     TeachersOfAlumnoComponent,
     AlumnosOfTeacherComponent,
     MessagesComponent,

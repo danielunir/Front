@@ -9,7 +9,7 @@ export class RestService {
   constructor(private http: HttpClient) { }
 
   public get(url:string){
-    return this.http.get(url); // GET
+    return this.http.get(url);
   }
 
   public post(url:string, body: any){

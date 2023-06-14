@@ -1,45 +1,3 @@
-<!-- <app-header [logado]="logado"></app-header>
-<div class="row">
-    <div class="p-5 border border-2 border-dark col-12 col-sm-4 col-md-2">
-        <h2>Mis alumnos</h2>
-    </div>
-    <div class="p-5 border border-2 border-dark col-12 col-sm-8 col-md-10">
-        <div class="table-responsive">
-            <table class="table table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Dirección</th>
-                        <th scope="col">Ciudad</th>
-                        <th scope="col">Teléfono</th>
-                        <th scope="col">Email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let alumno of alumnos; let i=index">
-                        <th>
-                            {{alumnos[i].alumno.nombre}}
-                            {{alumnos[i].alumno.apellidos}}
-                        </th>
-                        <th>
-                            {{alumnos[i].alumno.direccion}}
-                        </th>
-                        <th>
-                            {{alumnos[i].alumno.ciudad}}
-                        </th>
-                        <th>
-                            {{alumnos[i].alumno.telefono}}
-                        </th>
-                        <th>
-                            {{alumnos[i].alumno.email}}
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div> -->
-
 <app-header [logado]="logado"></app-header>
 <div class="all">
   <div class="contentRow">
@@ -48,7 +6,6 @@
         <h2>Área personal de {{teacherName}}</h2>
       </div>
       <div class="links">
-        <!-- Cambiar currenId por current.id -->
         <div class="selected" [routerLink]="['/teacherprofile', currentId, 'tables', 'alumnos']" role="button">
           <h5>Mis alumnos</h5>
         </div>
