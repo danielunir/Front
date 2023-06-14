@@ -1,5 +1,13 @@
 <div class="a">
-  <div class="imgContent"><img *ngIf="teacher.foto" [src]="baseDownload + teacher.foto" [alt]="teacher.nombre"> <img *ngIf="!teacher.foto" src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png" class="img-thumbnail" alt="usuario sin imagen">
+  <div class="imgContent"><img *ngIf="teacher.foto" [src]="baseDownload + teacher.foto" [alt]="teacher.nombre"> <img
+      *ngIf="!teacher.foto"
+      src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"
+      class="img-thumbnail" alt="usuario sin imagen">
+    <div class="card-overlay">
+      <div class="stars-outer">
+        <div class="stars-inner" [ngStyle]="{'width': startPercentatgeRounded}"></div>
+      </div>
+    </div>
   </div>
   <div class="teacher_data">
     <div>
@@ -10,8 +18,11 @@
     </div>
     <div>
       <p>{{teacher.experiencia}}</p>
-      <p *ngFor="let materia of teacher.materias"> {{materia.rama}} {{materia.nivel}}</p>
+      <div *ngIf="teacher && teacher.materias && teacher.materias.length > 0">
+        <p *ngFor="let materia of teacher.materias"> {{materia.rama}} {{materia.nivel}}</p>
+      </div>
     </div>
+
     <div>
       <p><i class="fa-brands fa-whatsapp"></i> {{teacher.telefono}}</p>
     </div>
@@ -27,9 +38,6 @@
   </div>
 </div>
 <div class="b">
-  <div class="stars-outer">
-    <div class="stars-inner" [ngStyle]="{'width': startPercentatgeRounded}"></div>
-  </div>
   <div class="buttoncontent">
     <form class="" novalidate [formGroup]="formCrearClase" (ngSubmit)="onSubmit()">
       <input type="hidden" formControlName="profesor_id" [(ngModel)]="profesor_id">
