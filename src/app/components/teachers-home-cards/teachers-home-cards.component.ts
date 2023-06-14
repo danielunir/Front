@@ -60,7 +60,9 @@ export class TeachersHomeCardsComponent implements OnInit {
     }
 
     this.profesor_id = this.teacher.id;
-    this.rama_co_id = this.teacher.materias[0].materia_id;
+    if (this.teacher && this.teacher.materias && this.teacher.materias.length > 0) {
+      this.rama_co_id = this.teacher.materias[0].materia_id;
+    }
 
     this.baseDownload = environment.base_Download;
   }
