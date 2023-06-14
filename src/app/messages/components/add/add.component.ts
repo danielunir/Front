@@ -50,8 +50,6 @@ export class AddComponent implements OnInit {
 
       this.remitente = remitenteId;
       this.destinatario = destinatarioId;
-      console.log(remitenteId)
-      console.log(destinatarioId)
 
       try {
         this.role = localStorage.getItem('user_role');
@@ -92,7 +90,6 @@ export class AddComponent implements OnInit {
 
     try {
       const response = await this.messageService.addMessage(this.formEnvioMensaje.value);
-      console.log(response);
       this.router.navigate(['/mensajes', 'recibidos', this.destinatario, this.remitente]);
     } catch (error) {
       console.log(error);

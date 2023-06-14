@@ -94,14 +94,11 @@ export class SearchTeacherComponent implements OnInit {
           let respuesta: any = await this.teachersService.getTeachersHome(i);
           this.teachers_page = respuesta.results;
 
-          console.log(respuesta);
-
           this.totalTeachers_page.push.apply(this.totalTeachers_page, this.teachers_page);
         }
       }
       this.limpiar();
       this.teachers_list = this.totalTeachers_page;
-      console.log(this.teachers_list);
 
     } catch (error) {
       alert('error');
@@ -110,7 +107,6 @@ export class SearchTeacherComponent implements OnInit {
 
   limpiar() {
     const resultado: any = document.getElementById('resultado');
-    console.log(resultado)
     if (resultado) {
       while (resultado.firstChild) {
         resultado.removeChild(resultado.firstChild);
@@ -154,12 +150,9 @@ export class SearchTeacherComponent implements OnInit {
     ).filter(
       function filtrarMateria(teacher: any) {
         const { materia } = datosFiltrados;
-        console.log(materia);
 
         if (materia) {
           for (let i = 0; i < teacher.materias.length; i++) {
-            console.log(teacher.materias.length)
-            console.log(teacher.materias[0].rama)
             return teacher.materias[0].rama === materia;
           }
         }
@@ -181,7 +174,6 @@ export class SearchTeacherComponent implements OnInit {
         let { puntuacion } = datosFiltrados;
 
         puntuacion = Number(puntuacion);
-        console.log(puntuacion);
 
         if (teacher.promedio.length === 0) {
           teacher.promedio = 0.1;
@@ -189,7 +181,6 @@ export class SearchTeacherComponent implements OnInit {
             return ((Number(teacher.promedio) >= puntuacion) && (Number(teacher.promedio) < (puntuacion + 1.9)));
           }
         }
-        console.log(Number(teacher.promedio));
 
         if (puntuacion) {
           return ((Number(teacher.promedio) >= puntuacion) && (Number(teacher.promedio) < (puntuacion + 1.9)));
@@ -226,13 +217,11 @@ export class SearchTeacherComponent implements OnInit {
       }
       return this.resultadoFiltrado;
     } else {
-      // console.log('No hay resultados');
-      // noResultados();
+
     }
 
     this.limpiar();
     this.teachers_list = this.resultadoFiltrado;
-    // },300)
   }
 
   ordenarTeachers() {

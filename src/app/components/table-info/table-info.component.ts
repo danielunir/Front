@@ -36,16 +36,13 @@ export class TableInfoComponent implements OnInit, OnDestroy {
       try {
         let response: any = await this.adminService.getByUserId(currentId);
         this.admin = response;
-        console.log(this.admin)
 
         if (this.profType === 'alumnos') {
           const studentsResponse = await this.studentsService.getAllStudents();
           this.studentList = studentsResponse.results;
-          console.log(this.studentList);
         } else if (this.profType === 'profesores') {
           const teacherResponse = await this.teachersService.getTeachersAdmin();
           this.teacherList = teacherResponse.results;
-          console.log(this.teacherList);
         }
 
         this.dataLoaded = true;
@@ -58,7 +55,6 @@ export class TableInfoComponent implements OnInit, OnDestroy {
   async validateTeacher(teacherId: number) {
     try {
       const response: any = await this.teachersService.setActive(teacherId, { status: 1 });
-      console.log(response);
 
       Swal.fire({
         title: '¿Quieres validar a este profesor?',
@@ -87,7 +83,6 @@ export class TableInfoComponent implements OnInit, OnDestroy {
   async deleteTeacher(teacherId: number) {
     try {
       const response: any = await this.teachersService.setInactive(teacherId, { status: 0 });
-      console.log(response);
 
       Swal.fire({
         title: '¿Estás seguro de que deseas invalidar a este profesor?',
@@ -116,7 +111,7 @@ export class TableInfoComponent implements OnInit, OnDestroy {
   async deleteStudent(studentId: number) {
     try {
       const response: any = await this.studentsService.setInactive(studentId, { status: 0 });
-      console.log(response);
+
 
       Swal.fire({
         title: '¿Estás seguro de que deseas desactivar a este alumno?',
