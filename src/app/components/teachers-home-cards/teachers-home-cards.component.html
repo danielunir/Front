@@ -18,8 +18,11 @@
     </div>
     <div>
       <p>{{teacher.experiencia}}</p>
-      <p *ngFor="let materia of teacher.materias"> {{materia.rama}} {{materia.nivel}}</p>
+      <div *ngIf="teacher && teacher.materias && teacher.materias.length > 0">
+        <p *ngFor="let materia of teacher.materias"> {{materia.rama}} {{materia.nivel}}</p>
+      </div>
     </div>
+
     <div>
       <p><i class="fa-brands fa-whatsapp"></i> {{teacher.telefono}}</p>
     </div>
