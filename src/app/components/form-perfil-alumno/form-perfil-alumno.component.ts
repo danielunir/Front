@@ -65,7 +65,6 @@ export class FormPerfilAlumnoComponent {
           title: 'Oops...',
           text: 'Registro  de datos de perfil erroneo. Algo fue mal, vuelve a intentarlo',
         })
-        console.log(response.fatal);
         return response.fatal;
       } else {
         Swal.fire({
@@ -73,8 +72,6 @@ export class FormPerfilAlumnoComponent {
           title: 'Bienvenid@',
           text: 'Tu registro esta completo. Puedes acceder a tu zona privada',
         })
-        // console.log(response.fatal);
-        // return response.fatal;
       }
 
     } catch (error) {

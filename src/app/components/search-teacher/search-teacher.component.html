@@ -103,7 +103,7 @@
           </div>
         </div>
         <div class="teacherContent">
-          <div class="teacher" *ngFor="let teacher of teachers_list | filterMateria:filterTeacher" id="resultado">
+          <div class="teacher" *ngFor="let teacher of teachers_list" id="resultado">
             <app-teachers-home-cards [teacher]="teacher" class="contentAll"></app-teachers-home-cards>
           </div>
         </div>

@@ -101,7 +101,6 @@ export class StudentprofileComponent implements OnInit {
           console.log('Respuesta del servidor', res)
         })
         setTimeout(() => {
-          console.log(this.currentId)
           this.router.navigate([`/studentprofile/${this.currentId}/tables/profesores`]);
         }, 1000)
       } catch (error) {

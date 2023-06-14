@@ -48,7 +48,6 @@ export class SendedComponent implements OnInit {
 
     try {
       const response = await this.messageService.getMessages(this.formGetMessage.value);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }

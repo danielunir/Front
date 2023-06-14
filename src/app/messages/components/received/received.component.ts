@@ -80,11 +80,9 @@ export class ReceivedComponent implements OnInit {
 
     try {
       this.conversaciones = await this.messageService.getMessages(this.formGetMessage.value);
-      console.log(this.conversaciones);
 
       this.conversacionesOrdenadas = this.conversaciones.sort((a: any, b: any) => new Date(a.fecha_act).getTime() > new Date(b.fecha_act).getTime());
 
-      console.log(this.conversacionesOrdenadas);
     } catch (error) {
       console.log(error);
     }

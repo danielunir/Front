@@ -33,7 +33,6 @@ export class AlumnosOfTeacherComponent {
       this.remitenteId = this.currentId.toString()
       this.teacherName = localStorage.getItem('username') || '';
       this.alumnos = await this.ramasService.getByUserId(this.currentId);
-      console.log(this.alumnos);
 
       this.baseDownload = environment.base_Download;
     });

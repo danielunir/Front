@@ -50,7 +50,7 @@ export class TeachersOfAlumnoComponent {
       this.remitenteId = this.currentId.toString();
       this.studentName = localStorage.getItem('username') || '';
       this.teachers = await this.alumnoService.getAllTeachers(this.currentId)
-      console.log('this.teachers', this.teachers)
+
       let response: any = await this.alumnoService.getByUserId(this.currentId);
         this.student = response;
 
@@ -63,7 +63,7 @@ export class TeachersOfAlumnoComponent {
   async putTeacherScore(teacher: any, currentId: number) {
     try {
       const response: any = await this.puntuacionService.postScore({ profesor_id: teacher["id"], alumno_id: currentId, puntuacion: this.formTeacherScore.value.score, opinion: this.formTeacherScore.value.opinion_text });
-      console.log(response);
+
       this.formTeacherScore.value.score = 5;
       this.formTeacherScore.value.opinion_text = "";
       // Reset form

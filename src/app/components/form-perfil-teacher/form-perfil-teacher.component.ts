@@ -85,7 +85,6 @@ export class FormPerfilTeacherComponent {
           title: 'Oops...',
           text: 'Registro  de datos de perfil erroneo. Algo fue mal, vuelve a intentarlo',
         })
-        console.log(response.fatal);
         return response.fatal;
       }
     } catch (error) {
@@ -95,14 +94,12 @@ export class FormPerfilTeacherComponent {
     try {
       const responseRamaCo = await this.ramasService.registroRamasCo(this.valuesRamaCo);
 
-      // console.log(responseArea)
       if (!responseRamaCo.insertId) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: 'Registro  de datos de perfil erroneo. Algo fue mal, vuelve a intentarlo',
         })
-        console.log(responseRamaCo.fatal);
         return responseRamaCo.fatal;
       }
     } catch (error) {
@@ -112,11 +109,6 @@ export class FormPerfilTeacherComponent {
     try {
       const sendEmail = await this.teachersService.envioEmail(this.valuesEmail);
 
-      console.log(sendEmail);
-      // if (!responseNivel.insertId) {
-      //   alert(responseNivel.fatal);
-      //   return alert('Registro de datos de perfil Niveles erroneo')
-      // }
 
     } catch (error) {
       console.log(error)

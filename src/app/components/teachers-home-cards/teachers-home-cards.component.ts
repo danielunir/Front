@@ -53,7 +53,6 @@ export class TeachersHomeCardsComponent implements OnInit {
 
     try {
       const alumno = await this.alumnosService.getByUserId(usuarioId);
-      // console.log(alumno);
       this.alumno_id = alumno.id;
 
     } catch (error) {
@@ -65,9 +64,6 @@ export class TeachersHomeCardsComponent implements OnInit {
       this.rama_co_id = this.teacher.materias[0].materia_id;
     }
 
-
-    console.log(this.teacher);
-
     this.baseDownload = environment.base_Download;
   }
 
@@ -75,8 +71,7 @@ export class TeachersHomeCardsComponent implements OnInit {
 
     try {
       const response = await this.claseService.registroClase(this.formCrearClase.value);
-      console.log(response);
-      if (!response) {
+      if(!response) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
